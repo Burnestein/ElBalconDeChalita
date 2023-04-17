@@ -9,7 +9,7 @@ namespace El_Balcon_de_Chalita.mysql
         {
 
             string servidor = "";
-            string basededatos = "u778442198_elbalcon";
+            string basededatos = "";
             string usuario = "u778442198_root";
             string password = "Oscar2490";
 
