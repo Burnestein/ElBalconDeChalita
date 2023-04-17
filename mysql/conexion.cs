@@ -8,7 +8,7 @@ namespace El_Balcon_de_Chalita.mysql
         public static MySqlConnection Conexion()
         {
 
-            string servidor = "212.1.208.51";
+            string servidor = "";
             string basededatos = "u778442198_elbalcon";
             string usuario = "u778442198_root";
             string password = "Oscar2490";
