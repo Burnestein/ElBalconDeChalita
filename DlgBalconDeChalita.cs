@@ -850,5 +850,13 @@ namespace El_Balcon_de_Chalita
         {
 
         }
+
+        private void btnBuscarCliente_Click(object sender, EventArgs e)
+        {
+
+            busquedaclientes ventanabusqueda = new busquedaclientes();
+            ventanabusqueda.Show();
+
+        }
     }
 }
