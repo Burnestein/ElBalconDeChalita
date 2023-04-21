@@ -53,7 +53,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="busquedaclientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="busquedaclientes.Designer.cs">
+      <DependentUpon>busquedaclientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="cliente.cs" />
+    <Compile Include="consulta.cs" />
     <Compile Include="contabilidad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +86,9 @@
     <Compile Include="mysql\conexion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="busquedaclientes.resx">
+      <DependentUpon>busquedaclientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="contabilidad.resx">
       <DependentUpon>contabilidad.cs</DependentUpon>
     </EmbeddedResource>
