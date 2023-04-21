@@ -25,7 +25,6 @@ namespace El_Balcon_de_Chalita
         private string correoCliente = "";
         private double totalReserva = 0;
         private string idCompañia = "";
-        
         //---------------------------------------------------------------------
         //Atributo.
         //---------------------------------------------------------------------
@@ -850,19 +849,6 @@ namespace El_Balcon_de_Chalita
         private void CbxClientesInventarioClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-        }
-
-        private void btnBuscarCliente_Click(object sender, EventArgs e)
-        {
-            busquedaclientes ventanabusqueda = new busquedaclientes();
-            string busqueda = tbxBuscarCliente.Text;
-            ventanabusqueda.Show();
-            ventanabusqueda.buscarClientes(busqueda);
-        }
-        
-        public string Busqueda
-        {
-            get { return tbxBuscarCliente.Text; }
         }
     }
 }
