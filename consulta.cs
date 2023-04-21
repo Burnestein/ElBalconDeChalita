@@ -37,6 +37,40 @@ namespace El_Balcon_de_Chalita
             }
             
         }
+
+        public DataTable ConsultarClientes(string cadena)
+        {
+            string busqueda = cadena;
+            MySqlConnection conexionBD = mysql.conexion.Conexion();
+            conexionBD.Open();
+
+            try
+            {
+                string consulta = "" +
+                    "SELECT * FROM Clientes " +
+                    "WHERE " +
+                    "nombre LIKE @Busqueda" +
+                    " OR apellidoPaterno LIKE @Busqueda" +
+                    " OR apellidoMaterno LIKE @Busqueda" +
+                    " OR numCelular LIKE @Busqueda" +
+                    " OR email LIKE @Busqueda" +
+                    " OR codigoCliente LIKE @Busqueda";
+                MySqlCommand comando = new MySqlCommand(consulta, conexionBD);
+                comando.Parameters.AddWithValue("@Busqueda", "%" + busqueda + "%"); //"%" para indicar que debe incluir cualquier valor que contenga la cadena busqueda en cualquier posicion
+
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                DataTable tablaClientes = new DataTable();
+                adaptador.Fill(tablaClientes);
+
+                return tablaClientes;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error al realizar la consulta:" + ex.Message);
+                return null;
+            }
+
+        }
     }
 
 

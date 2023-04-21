@@ -12,12 +12,18 @@ namespace El_Balcon_de_Chalita
 {
     public partial class busquedaclientes : Form
     {
-        
+        consulta miconsulta = new consulta();
         public busquedaclientes()
         {
             InitializeComponent();
-            consulta miconsulta = new consulta();
-            dgvBuscCliente.DataSource = miconsulta.ConsultarClientes();
+            
+            
+            
+        }
+
+        public void buscarClientes(string busqueda)
+        {
+            dgvBuscCliente.DataSource = miconsulta.ConsultarClientes(busqueda);
         }
 
         private void btnBuscCanc_Click(object sender, EventArgs e)
