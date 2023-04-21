@@ -47,11 +47,11 @@ namespace El_Balcon_de_Chalita
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.TsbGuardar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.TsbCerrar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.TsbActualizar = new System.Windows.Forms.ToolStripButton();
             this.TsbConsultar = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.TsbCerrar = new System.Windows.Forms.ToolStripButton();
             this.TpgReservaciones = new System.Windows.Forms.TabPage();
             this.label6 = new System.Windows.Forms.Label();
             this.cbxCompañias = new System.Windows.Forms.ComboBox();
@@ -128,6 +128,9 @@ namespace El_Balcon_de_Chalita
             this.label11 = new System.Windows.Forms.Label();
             this.CbxClientesInventarioClientes = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.LblBuscar = new System.Windows.Forms.Label();
+            this.tbxBuscarCliente = new System.Windows.Forms.TextBox();
+            this.btnBuscarCliente = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -154,7 +157,7 @@ namespace El_Balcon_de_Chalita
             this.ayudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1380, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1380, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -170,13 +173,13 @@ namespace El_Balcon_de_Chalita
             // nuevoToolStripMenuItem
             // 
             this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(145, 26);
             this.nuevoToolStripMenuItem.Text = "Nuevo";
             // 
             // guardarToolStripMenuItem
             // 
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(145, 26);
             this.guardarToolStripMenuItem.Text = "Guardar";
             // 
             // editarToolStripMenuItem
@@ -234,7 +237,7 @@ namespace El_Balcon_de_Chalita
             this.TsbConsultar,
             this.toolStripButton1,
             this.TsbCerrar});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 28);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 30);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1380, 74);
             this.toolStrip1.TabIndex = 2;
@@ -290,16 +293,6 @@ namespace El_Balcon_de_Chalita
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 74);
             // 
-            // TsbCerrar
-            // 
-            this.TsbCerrar.AutoSize = false;
-            this.TsbCerrar.Image = ((System.Drawing.Image)(resources.GetObject("TsbCerrar.Image")));
-            this.TsbCerrar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.TsbCerrar.Name = "TsbCerrar";
-            this.TsbCerrar.Size = new System.Drawing.Size(100, 60);
-            this.TsbCerrar.Text = "Cerrar";
-            this.TsbCerrar.Click += new System.EventHandler(this.TsbCerrar_Click);
-            // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
@@ -334,6 +327,16 @@ namespace El_Balcon_de_Chalita
             this.toolStripButton1.Text = "Contabilidad";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
+            // TsbCerrar
+            // 
+            this.TsbCerrar.AutoSize = false;
+            this.TsbCerrar.Image = ((System.Drawing.Image)(resources.GetObject("TsbCerrar.Image")));
+            this.TsbCerrar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TsbCerrar.Name = "TsbCerrar";
+            this.TsbCerrar.Size = new System.Drawing.Size(100, 60);
+            this.TsbCerrar.Text = "Cerrar";
+            this.TsbCerrar.Click += new System.EventHandler(this.TsbCerrar_Click);
+            // 
             // TpgReservaciones
             // 
             this.TpgReservaciones.BackColor = System.Drawing.SystemColors.Control;
@@ -353,10 +356,10 @@ namespace El_Balcon_de_Chalita
             this.TpgReservaciones.Controls.Add(this.CCheckOut);
             this.TpgReservaciones.Controls.Add(this.CCheckIn);
             this.TpgReservaciones.Location = new System.Drawing.Point(4, 54);
-            this.TpgReservaciones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TpgReservaciones.Margin = new System.Windows.Forms.Padding(4);
             this.TpgReservaciones.Name = "TpgReservaciones";
-            this.TpgReservaciones.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.TpgReservaciones.Size = new System.Drawing.Size(1372, 436);
+            this.TpgReservaciones.Padding = new System.Windows.Forms.Padding(4);
+            this.TpgReservaciones.Size = new System.Drawing.Size(1372, 438);
             this.TpgReservaciones.TabIndex = 1;
             this.TpgReservaciones.Text = "Reservaciones";
             this.TpgReservaciones.Click += new System.EventHandler(this.TpgReservaciones_Click);
@@ -377,7 +380,7 @@ namespace El_Balcon_de_Chalita
             // 
             this.cbxCompañias.FormattingEnabled = true;
             this.cbxCompañias.Location = new System.Drawing.Point(209, 113);
-            this.cbxCompañias.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbxCompañias.Margin = new System.Windows.Forms.Padding(4);
             this.cbxCompañias.Name = "cbxCompañias";
             this.cbxCompañias.Size = new System.Drawing.Size(160, 24);
             this.cbxCompañias.TabIndex = 12;
@@ -386,7 +389,7 @@ namespace El_Balcon_de_Chalita
             // txtSubTotal
             // 
             this.txtSubTotal.Location = new System.Drawing.Point(49, 162);
-            this.txtSubTotal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSubTotal.Margin = new System.Windows.Forms.Padding(4);
             this.txtSubTotal.Name = "txtSubTotal";
             this.txtSubTotal.Size = new System.Drawing.Size(132, 22);
             this.txtSubTotal.TabIndex = 11;
@@ -415,7 +418,7 @@ namespace El_Balcon_de_Chalita
             // txtTotal
             // 
             this.txtTotal.Location = new System.Drawing.Point(49, 113);
-            this.txtTotal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTotal.Margin = new System.Windows.Forms.Padding(4);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(132, 22);
             this.txtTotal.TabIndex = 8;
@@ -424,7 +427,7 @@ namespace El_Balcon_de_Chalita
             // btnConsultarReservas
             // 
             this.btnConsultarReservas.Location = new System.Drawing.Point(749, 326);
-            this.btnConsultarReservas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnConsultarReservas.Margin = new System.Windows.Forms.Padding(4);
             this.btnConsultarReservas.Name = "btnConsultarReservas";
             this.btnConsultarReservas.Size = new System.Drawing.Size(165, 55);
             this.btnConsultarReservas.TabIndex = 7;
@@ -441,7 +444,7 @@ namespace El_Balcon_de_Chalita
             this.fechaDeEntrada,
             this.fechaDeSalida});
             this.DgbReservaciones.Location = new System.Drawing.Point(113, 287);
-            this.DgbReservaciones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DgbReservaciones.Margin = new System.Windows.Forms.Padding(4);
             this.DgbReservaciones.Name = "DgbReservaciones";
             this.DgbReservaciones.RowHeadersWidth = 51;
             this.DgbReservaciones.Size = new System.Drawing.Size(591, 121);
@@ -479,7 +482,7 @@ namespace El_Balcon_de_Chalita
             // BtnReservar
             // 
             this.BtnReservar.Location = new System.Drawing.Point(193, 202);
-            this.BtnReservar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnReservar.Margin = new System.Windows.Forms.Padding(4);
             this.BtnReservar.Name = "BtnReservar";
             this.BtnReservar.Size = new System.Drawing.Size(141, 52);
             this.BtnReservar.TabIndex = 6;
@@ -491,7 +494,7 @@ namespace El_Balcon_de_Chalita
             // 
             this.CbxClientes.FormattingEnabled = true;
             this.CbxClientes.Location = new System.Drawing.Point(49, 54);
-            this.CbxClientes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CbxClientes.Margin = new System.Windows.Forms.Padding(4);
             this.CbxClientes.Name = "CbxClientes";
             this.CbxClientes.Size = new System.Drawing.Size(284, 24);
             this.CbxClientes.TabIndex = 5;
@@ -547,6 +550,9 @@ namespace El_Balcon_de_Chalita
             // 
             // TbgClientes
             // 
+            this.TbgClientes.Controls.Add(this.btnBuscarCliente);
+            this.TbgClientes.Controls.Add(this.tbxBuscarCliente);
+            this.TbgClientes.Controls.Add(this.LblBuscar);
             this.TbgClientes.Controls.Add(this.pictureBox1);
             this.TbgClientes.Controls.Add(this.LblGenero);
             this.TbgClientes.Controls.Add(this.CbxGenero);
@@ -571,10 +577,10 @@ namespace El_Balcon_de_Chalita
             this.TbgClientes.Controls.Add(this.LblApellidoP);
             this.TbgClientes.Controls.Add(this.LblNombre);
             this.TbgClientes.Location = new System.Drawing.Point(4, 54);
-            this.TbgClientes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TbgClientes.Margin = new System.Windows.Forms.Padding(4);
             this.TbgClientes.Name = "TbgClientes";
-            this.TbgClientes.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.TbgClientes.Size = new System.Drawing.Size(1372, 438);
+            this.TbgClientes.Padding = new System.Windows.Forms.Padding(4);
+            this.TbgClientes.Size = new System.Drawing.Size(1372, 436);
             this.TbgClientes.TabIndex = 0;
             this.TbgClientes.Text = "Clientes";
             this.TbgClientes.UseVisualStyleBackColor = true;
@@ -584,9 +590,9 @@ namespace El_Balcon_de_Chalita
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(4, 4);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(317, 430);
+            this.pictureBox1.Size = new System.Drawing.Size(317, 428);
             this.pictureBox1.TabIndex = 38;
             this.pictureBox1.TabStop = false;
             // 
@@ -987,11 +993,11 @@ namespace El_Balcon_de_Chalita
             this.TbcPrincipal.Controls.Add(this.Inventario);
             this.TbcPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TbcPrincipal.ItemSize = new System.Drawing.Size(150, 50);
-            this.TbcPrincipal.Location = new System.Drawing.Point(0, 102);
-            this.TbcPrincipal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TbcPrincipal.Location = new System.Drawing.Point(0, 104);
+            this.TbcPrincipal.Margin = new System.Windows.Forms.Padding(4);
             this.TbcPrincipal.Name = "TbcPrincipal";
             this.TbcPrincipal.SelectedIndex = 0;
-            this.TbcPrincipal.Size = new System.Drawing.Size(1380, 496);
+            this.TbcPrincipal.Size = new System.Drawing.Size(1380, 494);
             this.TbcPrincipal.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.TbcPrincipal.TabIndex = 4;
             // 
@@ -999,9 +1005,9 @@ namespace El_Balcon_de_Chalita
             // 
             this.Inventario.Controls.Add(this.TbcInventarioBalcon);
             this.Inventario.Location = new System.Drawing.Point(4, 54);
-            this.Inventario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Inventario.Margin = new System.Windows.Forms.Padding(4);
             this.Inventario.Name = "Inventario";
-            this.Inventario.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Inventario.Padding = new System.Windows.Forms.Padding(4);
             this.Inventario.Size = new System.Drawing.Size(1372, 438);
             this.Inventario.TabIndex = 2;
             this.Inventario.Text = "Inventario";
@@ -1013,7 +1019,7 @@ namespace El_Balcon_de_Chalita
             this.TbcInventarioBalcon.Controls.Add(this.tabPage2);
             this.TbcInventarioBalcon.ItemSize = new System.Drawing.Size(150, 45);
             this.TbcInventarioBalcon.Location = new System.Drawing.Point(11, 18);
-            this.TbcInventarioBalcon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TbcInventarioBalcon.Margin = new System.Windows.Forms.Padding(4);
             this.TbcInventarioBalcon.Name = "TbcInventarioBalcon";
             this.TbcInventarioBalcon.SelectedIndex = 0;
             this.TbcInventarioBalcon.Size = new System.Drawing.Size(1169, 377);
@@ -1034,9 +1040,9 @@ namespace El_Balcon_de_Chalita
             this.tabPage1.Controls.Add(this.txtCantidadObjeto);
             this.tabPage1.Controls.Add(this.txtNombreObjeto);
             this.tabPage1.Location = new System.Drawing.Point(4, 49);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage1.Size = new System.Drawing.Size(1161, 324);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Inventario del Balcon";
@@ -1045,7 +1051,7 @@ namespace El_Balcon_de_Chalita
             // btnVerInventarioBalcon
             // 
             this.btnVerInventarioBalcon.Location = new System.Drawing.Point(1001, 149);
-            this.btnVerInventarioBalcon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnVerInventarioBalcon.Margin = new System.Windows.Forms.Padding(4);
             this.btnVerInventarioBalcon.Name = "btnVerInventarioBalcon";
             this.btnVerInventarioBalcon.Size = new System.Drawing.Size(137, 62);
             this.btnVerInventarioBalcon.TabIndex = 11;
@@ -1061,7 +1067,7 @@ namespace El_Balcon_de_Chalita
             this.cantidadObjeto,
             this.precioObjeto});
             this.DgbInventarioBalcon.Location = new System.Drawing.Point(521, 28);
-            this.DgbInventarioBalcon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DgbInventarioBalcon.Margin = new System.Windows.Forms.Padding(4);
             this.DgbInventarioBalcon.Name = "DgbInventarioBalcon";
             this.DgbInventarioBalcon.RowHeadersWidth = 51;
             this.DgbInventarioBalcon.Size = new System.Drawing.Size(457, 185);
@@ -1091,7 +1097,7 @@ namespace El_Balcon_de_Chalita
             // btnConsultarObjeto
             // 
             this.btnConsultarObjeto.Location = new System.Drawing.Point(364, 28);
-            this.btnConsultarObjeto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnConsultarObjeto.Margin = new System.Windows.Forms.Padding(4);
             this.btnConsultarObjeto.Name = "btnConsultarObjeto";
             this.btnConsultarObjeto.Size = new System.Drawing.Size(100, 28);
             this.btnConsultarObjeto.TabIndex = 9;
@@ -1102,7 +1108,7 @@ namespace El_Balcon_de_Chalita
             // btnEditarObjeto
             // 
             this.btnEditarObjeto.Location = new System.Drawing.Point(364, 82);
-            this.btnEditarObjeto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEditarObjeto.Margin = new System.Windows.Forms.Padding(4);
             this.btnEditarObjeto.Name = "btnEditarObjeto";
             this.btnEditarObjeto.Size = new System.Drawing.Size(100, 28);
             this.btnEditarObjeto.TabIndex = 8;
@@ -1113,7 +1119,7 @@ namespace El_Balcon_de_Chalita
             // btnEliminarObjeto
             // 
             this.btnEliminarObjeto.Location = new System.Drawing.Point(364, 129);
-            this.btnEliminarObjeto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEliminarObjeto.Margin = new System.Windows.Forms.Padding(4);
             this.btnEliminarObjeto.Name = "btnEliminarObjeto";
             this.btnEliminarObjeto.Size = new System.Drawing.Size(100, 28);
             this.btnEliminarObjeto.TabIndex = 7;
@@ -1124,7 +1130,7 @@ namespace El_Balcon_de_Chalita
             // btnGuardarObjeto
             // 
             this.btnGuardarObjeto.Location = new System.Drawing.Point(152, 182);
-            this.btnGuardarObjeto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGuardarObjeto.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardarObjeto.Name = "btnGuardarObjeto";
             this.btnGuardarObjeto.Size = new System.Drawing.Size(133, 28);
             this.btnGuardarObjeto.TabIndex = 6;
@@ -1166,7 +1172,7 @@ namespace El_Balcon_de_Chalita
             // txtPrecioObjeto
             // 
             this.txtPrecioObjeto.Location = new System.Drawing.Point(152, 129);
-            this.txtPrecioObjeto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPrecioObjeto.Margin = new System.Windows.Forms.Padding(4);
             this.txtPrecioObjeto.Name = "txtPrecioObjeto";
             this.txtPrecioObjeto.Size = new System.Drawing.Size(132, 22);
             this.txtPrecioObjeto.TabIndex = 2;
@@ -1175,7 +1181,7 @@ namespace El_Balcon_de_Chalita
             // 
             this.txtCantidadObjeto.AcceptsReturn = true;
             this.txtCantidadObjeto.Location = new System.Drawing.Point(152, 82);
-            this.txtCantidadObjeto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCantidadObjeto.Margin = new System.Windows.Forms.Padding(4);
             this.txtCantidadObjeto.Name = "txtCantidadObjeto";
             this.txtCantidadObjeto.Size = new System.Drawing.Size(132, 22);
             this.txtCantidadObjeto.TabIndex = 1;
@@ -1183,7 +1189,7 @@ namespace El_Balcon_de_Chalita
             // txtNombreObjeto
             // 
             this.txtNombreObjeto.Location = new System.Drawing.Point(152, 28);
-            this.txtNombreObjeto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombreObjeto.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombreObjeto.Name = "txtNombreObjeto";
             this.txtNombreObjeto.Size = new System.Drawing.Size(132, 22);
             this.txtNombreObjeto.TabIndex = 0;
@@ -1200,9 +1206,9 @@ namespace El_Balcon_de_Chalita
             this.tabPage2.Controls.Add(this.CbxClientesInventarioClientes);
             this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Location = new System.Drawing.Point(4, 49);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage2.Size = new System.Drawing.Size(1161, 324);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Inventario de los clientes";
@@ -1211,7 +1217,7 @@ namespace El_Balcon_de_Chalita
             // BtnConsultarInventarioCliente
             // 
             this.BtnConsultarInventarioCliente.Location = new System.Drawing.Point(733, 218);
-            this.BtnConsultarInventarioCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnConsultarInventarioCliente.Margin = new System.Windows.Forms.Padding(4);
             this.BtnConsultarInventarioCliente.Name = "BtnConsultarInventarioCliente";
             this.BtnConsultarInventarioCliente.Size = new System.Drawing.Size(308, 50);
             this.BtnConsultarInventarioCliente.TabIndex = 7;
@@ -1227,7 +1233,7 @@ namespace El_Balcon_de_Chalita
             this.cantidad,
             this.FechaReg});
             this.DgbInventarioCliente.Location = new System.Drawing.Point(439, 20);
-            this.DgbInventarioCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DgbInventarioCliente.Margin = new System.Windows.Forms.Padding(4);
             this.DgbInventarioCliente.Name = "DgbInventarioCliente";
             this.DgbInventarioCliente.RowHeadersWidth = 51;
             this.DgbInventarioCliente.Size = new System.Drawing.Size(603, 185);
@@ -1257,7 +1263,7 @@ namespace El_Balcon_de_Chalita
             // BtnGuardarObjetoCliente
             // 
             this.BtnGuardarObjetoCliente.Location = new System.Drawing.Point(27, 218);
-            this.BtnGuardarObjetoCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnGuardarObjetoCliente.Margin = new System.Windows.Forms.Padding(4);
             this.BtnGuardarObjetoCliente.Name = "BtnGuardarObjetoCliente";
             this.BtnGuardarObjetoCliente.Size = new System.Drawing.Size(252, 50);
             this.BtnGuardarObjetoCliente.TabIndex = 6;
@@ -1268,7 +1274,7 @@ namespace El_Balcon_de_Chalita
             // TxtNombreObjetoCliente
             // 
             this.TxtNombreObjetoCliente.Location = new System.Drawing.Point(27, 103);
-            this.TxtNombreObjetoCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtNombreObjetoCliente.Margin = new System.Windows.Forms.Padding(4);
             this.TxtNombreObjetoCliente.Name = "TxtNombreObjetoCliente";
             this.TxtNombreObjetoCliente.Size = new System.Drawing.Size(251, 22);
             this.TxtNombreObjetoCliente.TabIndex = 5;
@@ -1276,7 +1282,7 @@ namespace El_Balcon_de_Chalita
             // TxtCantidadObjetoCliente
             // 
             this.TxtCantidadObjetoCliente.Location = new System.Drawing.Point(27, 165);
-            this.TxtCantidadObjetoCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtCantidadObjetoCliente.Margin = new System.Windows.Forms.Padding(4);
             this.TxtCantidadObjetoCliente.Name = "TxtCantidadObjetoCliente";
             this.TxtCantidadObjetoCliente.Size = new System.Drawing.Size(251, 22);
             this.TxtCantidadObjetoCliente.TabIndex = 4;
@@ -1305,7 +1311,7 @@ namespace El_Balcon_de_Chalita
             // 
             this.CbxClientesInventarioClientes.FormattingEnabled = true;
             this.CbxClientesInventarioClientes.Location = new System.Drawing.Point(27, 42);
-            this.CbxClientesInventarioClientes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CbxClientesInventarioClientes.Margin = new System.Windows.Forms.Padding(4);
             this.CbxClientesInventarioClientes.Name = "CbxClientesInventarioClientes";
             this.CbxClientesInventarioClientes.Size = new System.Drawing.Size(251, 24);
             this.CbxClientesInventarioClientes.TabIndex = 2;
@@ -1321,6 +1327,32 @@ namespace El_Balcon_de_Chalita
             this.label10.TabIndex = 1;
             this.label10.Text = "Cliente al que le pertenecen los objetos";
             // 
+            // LblBuscar
+            // 
+            this.LblBuscar.AutoSize = true;
+            this.LblBuscar.Location = new System.Drawing.Point(384, 37);
+            this.LblBuscar.Name = "LblBuscar";
+            this.LblBuscar.Size = new System.Drawing.Size(52, 17);
+            this.LblBuscar.TabIndex = 39;
+            this.LblBuscar.Text = "Buscar";
+            // 
+            // tbxBuscarCliente
+            // 
+            this.tbxBuscarCliente.Location = new System.Drawing.Point(442, 33);
+            this.tbxBuscarCliente.Name = "tbxBuscarCliente";
+            this.tbxBuscarCliente.Size = new System.Drawing.Size(207, 22);
+            this.tbxBuscarCliente.TabIndex = 40;
+            // 
+            // btnBuscarCliente
+            // 
+            this.btnBuscarCliente.Location = new System.Drawing.Point(655, 33);
+            this.btnBuscarCliente.Name = "btnBuscarCliente";
+            this.btnBuscarCliente.Size = new System.Drawing.Size(44, 22);
+            this.btnBuscarCliente.TabIndex = 41;
+            this.btnBuscarCliente.Text = "...";
+            this.btnBuscarCliente.UseVisualStyleBackColor = true;
+            this.btnBuscarCliente.Click += new System.EventHandler(this.btnBuscarCliente_Click);
+            // 
             // DlgBalconDeChalita
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1333,7 +1365,7 @@ namespace El_Balcon_de_Chalita
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DlgBalconDeChalita";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "El Balcon de Chalita";
@@ -1465,5 +1497,8 @@ namespace El_Balcon_de_Chalita
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaReg;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnBuscarCliente;
+        private System.Windows.Forms.TextBox tbxBuscarCliente;
+        private System.Windows.Forms.Label LblBuscar;
     }
 }

@@ -25,6 +25,7 @@ namespace El_Balcon_de_Chalita
         private string correoCliente = "";
         private double totalReserva = 0;
         private string idCompañia = "";
+
         //---------------------------------------------------------------------
         //Atributo.
         //---------------------------------------------------------------------
@@ -43,7 +44,7 @@ namespace El_Balcon_de_Chalita
             //Llenamos los combobox de los clientes y compañias afiliadas
             llenarComboBoxClientes();
             llenarComboBoxCompañiasAfiliadas();
-            
+
         }
 
         private void llenarComboBoxClientes()
@@ -58,7 +59,7 @@ namespace El_Balcon_de_Chalita
                 CbxClientes.Items.Add(clientes[i]);
                 CbxClientesInventarioClientes.Items.Add(clientes[i]);
             }
-            
+
         }
 
         private void llenarComboBoxCompañiasAfiliadas()
@@ -160,8 +161,8 @@ namespace El_Balcon_de_Chalita
 
                     && dia != "" && estadoCivil != "" && genero != "")
                 {
-                   Regex mRegxExpression;    
-                   mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
+                    Regex mRegxExpression;
+                    mRegxExpression = new Regex(@"^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$");
 
                     if (mRegxExpression.IsMatch(correo.Trim()))
                     {
@@ -179,7 +180,7 @@ namespace El_Balcon_de_Chalita
                             comando.ExecuteNonQuery();
                             //Mostramos alerta de correcta ejecucion
                             MessageBox.Show("Registro guardado exitosamente");
-                            CbxClientes.Items.Add(codigo+"-"+nombre);
+                            CbxClientes.Items.Add(codigo + "-" + nombre);
                             CbxClientesInventarioClientes.Items.Add(codigo + "-" + nombre);
                             //Ejecutamos funcion para limpiar los campos
                             limpiarCampos();
@@ -535,7 +536,7 @@ namespace El_Balcon_de_Chalita
                 {
                     while (reader.Read())
                     {
-                        string nombreCliente = reader.GetString(7)+" "+ reader.GetString(8)+" "+ reader.GetString(9);
+                        string nombreCliente = reader.GetString(7) + " " + reader.GetString(8) + " " + reader.GetString(9);
                         DataGridViewRow row = (DataGridViewRow)DgbReservaciones.Rows[contador].Clone();
                         row.Cells[0].Value = reader.GetString(0);
                         row.Cells[1].Value = nombreCliente;
@@ -552,7 +553,7 @@ namespace El_Balcon_de_Chalita
             }
         }
 
-    
+
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
@@ -562,7 +563,7 @@ namespace El_Balcon_de_Chalita
 
         }
 
-      
+
         private void cbxCompañias_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Obtenemos el valor del input seleccionado
@@ -590,8 +591,8 @@ namespace El_Balcon_de_Chalita
                     comando.ExecuteNonQuery();
                     MessageBox.Show("Objeto guardado correctamente");
                     limpiarCamposFormInventario();
-                   
-                    DgbInventarioBalcon.Rows.Add(nombreObjeto,cantidad,precio);
+
+                    DgbInventarioBalcon.Rows.Add(nombreObjeto, cantidad, precio);
 
                 }
                 catch (MySqlException ex)
@@ -609,7 +610,7 @@ namespace El_Balcon_de_Chalita
         {
             MySqlDataReader reader = null;
             string nombreObjeto = txtNombreObjeto.Text;
-            string query = "select * from inventariobalcon where nombre = '"+nombreObjeto+"' ";
+            string query = "select * from inventariobalcon where nombre = '" + nombreObjeto + "' ";
             MySqlConnection conexionBD = mysql.conexion.Conexion();
             conexionBD.Open();
 
@@ -713,7 +714,7 @@ namespace El_Balcon_de_Chalita
                         DataGridViewRow row = (DataGridViewRow)DgbInventarioBalcon.Rows[contador].Clone();
                         row.Cells[0].Value = reader.GetString(1);
                         row.Cells[1].Value = reader.GetString(2);
-                        row.Cells[2].Value = "$"+reader.GetString(3);
+                        row.Cells[2].Value = "$" + reader.GetString(3);
                         DgbInventarioBalcon.Rows.Add(row);
                         contador++;
                     }
@@ -739,7 +740,8 @@ namespace El_Balcon_de_Chalita
             string idCliente = obtenerClaveCliente[0];
             string nombreObjetoCliente = TxtNombreObjetoCliente.Text;
             string cantidadObjetoCliente = TxtCantidadObjetoCliente.Text;
-            if (CbxClientesInventarioClientes.SelectedIndex != -1 && nombreObjetoCliente != "" && cantidadObjetoCliente != "") {
+            if (CbxClientesInventarioClientes.SelectedIndex != -1 && nombreObjetoCliente != "" && cantidadObjetoCliente != "")
+            {
 
                 string query = "insert into inventarioclientes (nombreObjeto,cantidadObjeto,idCliente) values('" + nombreObjetoCliente + "','" + cantidadObjetoCliente + "','" + idCliente + "')";
                 MySqlConnection conexionBD = mysql.conexion.Conexion();
@@ -750,7 +752,8 @@ namespace El_Balcon_de_Chalita
                     MySqlCommand comando = new MySqlCommand(query, conexionBD);
                     comando.ExecuteNonQuery();
                     MessageBox.Show("Objeto guardado en el inventario del cliente.");
-                } catch (MySqlException ex)
+                }
+                catch (MySqlException ex)
                 {
                     MessageBox.Show("Error al guardar el objeto: " + ex.Message);
                 }
@@ -850,5 +853,19 @@ namespace El_Balcon_de_Chalita
         {
 
         }
+
+        private void btnBuscarCliente_Click(object sender, EventArgs e)
+        {
+            busquedaclientes ventanabusqueda = new busquedaclientes();
+            string busqueda = tbxBuscarCliente.Text;
+            ventanabusqueda.Show();
+            ventanabusqueda.buscarClientes(busqueda);
+        }
+
+        public string Busqueda
+        {
+            get { return tbxBuscarCliente.Text; }
+        }
+
     }
 }
