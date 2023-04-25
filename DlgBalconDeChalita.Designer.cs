@@ -157,7 +157,7 @@ namespace El_Balcon_de_Chalita
             this.ayudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1380, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1380, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -237,7 +237,7 @@ namespace El_Balcon_de_Chalita
             this.TsbConsultar,
             this.toolStripButton1,
             this.TsbCerrar});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 28);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 30);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1380, 74);
             this.toolStrip1.TabIndex = 2;
@@ -580,7 +580,7 @@ namespace El_Balcon_de_Chalita
             this.TbgClientes.Margin = new System.Windows.Forms.Padding(4);
             this.TbgClientes.Name = "TbgClientes";
             this.TbgClientes.Padding = new System.Windows.Forms.Padding(4);
-            this.TbgClientes.Size = new System.Drawing.Size(1372, 438);
+            this.TbgClientes.Size = new System.Drawing.Size(1372, 436);
             this.TbgClientes.TabIndex = 0;
             this.TbgClientes.Text = "Clientes";
             this.TbgClientes.UseVisualStyleBackColor = true;
@@ -618,7 +618,7 @@ namespace El_Balcon_de_Chalita
             this.pictureBox1.Location = new System.Drawing.Point(4, 4);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(317, 430);
+            this.pictureBox1.Size = new System.Drawing.Size(317, 428);
             this.pictureBox1.TabIndex = 38;
             this.pictureBox1.TabStop = false;
             // 
@@ -1019,11 +1019,11 @@ namespace El_Balcon_de_Chalita
             this.TbcPrincipal.Controls.Add(this.Inventario);
             this.TbcPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TbcPrincipal.ItemSize = new System.Drawing.Size(150, 50);
-            this.TbcPrincipal.Location = new System.Drawing.Point(0, 102);
+            this.TbcPrincipal.Location = new System.Drawing.Point(0, 104);
             this.TbcPrincipal.Margin = new System.Windows.Forms.Padding(4);
             this.TbcPrincipal.Name = "TbcPrincipal";
             this.TbcPrincipal.SelectedIndex = 0;
-            this.TbcPrincipal.Size = new System.Drawing.Size(1380, 496);
+            this.TbcPrincipal.Size = new System.Drawing.Size(1380, 494);
             this.TbcPrincipal.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.TbcPrincipal.TabIndex = 4;
             // 
