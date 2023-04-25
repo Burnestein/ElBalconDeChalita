@@ -25,6 +25,7 @@ namespace El_Balcon_de_Chalita
         private string correoCliente = "";
         private double totalReserva = 0;
         private string idCompañia = "";
+        private cliente micliente = new cliente();
 
         //---------------------------------------------------------------------
         //Atributo.
@@ -44,6 +45,8 @@ namespace El_Balcon_de_Chalita
             //Llenamos los combobox de los clientes y compañias afiliadas
             llenarComboBoxClientes();
             llenarComboBoxCompañiasAfiliadas();
+            //this.micliente = micliente;
+            
 
         }
 
@@ -227,6 +230,19 @@ namespace El_Balcon_de_Chalita
             CbxGenero.SelectedIndex = -1;
 
         }
+
+        public void LlenarFormulario(cliente micliente)
+        {
+            lblCliente.Text = "Cliente: " + micliente.Nombre + " " + micliente.ApellidoPaterno + " " + micliente.ApellidoMaterno;
+            TbxCodigo.Text = micliente.CodigoCliente;
+            TbxNombre.Text = micliente.Nombre;
+            TbxApellidoP.Text = micliente.ApellidoPaterno;
+            TbxApellidoM.Text = micliente.ApellidoMaterno;
+            TbxCorreo.Text = micliente.Email;
+            TbxLugarProcedencia.Text = micliente.LugarProcedencia;
+            TbxTelefonoMovil.Text = micliente.NumCelular;
+
+        }
         //---------------------------------------------------------------------
         //Cierra de la aplicacion.
         //----------------------------------------------------------------------
@@ -239,6 +255,28 @@ namespace El_Balcon_de_Chalita
         }
         /* Funcion para acutualizar algun cliente de la BD en base a su clave
         @return void */
+        private void LimpiarFormulario()
+        {
+            lblCliente.Text = "Cliente:";
+            tbxBuscarCliente.Text = "";
+            TbxCodigo.Text = "";
+            TbxNombre.Text = "";
+            TbxApellidoP.Text = "";
+            TbxApellidoM.Text = "";
+            TbxCorreo.Text = "";
+            TbxLugarProcedencia.Text = "";
+            TbxTelefonoMovil.Text = "";
+            CbxEstadocivil.SelectedIndex = -1;
+            CbxDia.SelectedIndex = -1;
+            CbxMes.SelectedIndex = -1;
+            CbxAño.SelectedIndex = -1;
+            CbxGenero.SelectedIndex = -1;
+        }
+        public void ActualizarForm()
+        {
+            LimpiarFormulario();
+            LlenarFormulario(micliente);
+        }
         private void TsbActualizar_Click(object sender, EventArgs e)
         {
             try
@@ -283,7 +321,7 @@ namespace El_Balcon_de_Chalita
             {
                 MessageBox.Show("Datos incorrectos" + ex.Message);
             }
-
+            
         }
 
         /* Funcion que consulta la info de un cliente y llena el formulario con esa informacion
@@ -291,6 +329,7 @@ namespace El_Balcon_de_Chalita
         private void TsbConsultar_Click(object sender, EventArgs e)
         {
 
+            /*
             string codigo = TbxCodigo.Text;
             MySqlDataReader reader = null;
 
@@ -339,7 +378,7 @@ namespace El_Balcon_de_Chalita
                 MessageBox.Show("Error al realizar la consulta:" + ex.Message);
             }
 
-
+            */
 
 
         }
@@ -814,6 +853,7 @@ namespace El_Balcon_de_Chalita
                 MessageBox.Show("Debe seleccionar un cliente para la busqueda de su inventario");
             }
         }
+
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -856,10 +896,11 @@ namespace El_Balcon_de_Chalita
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
-            busquedaclientes ventanabusqueda = new busquedaclientes();
+            busquedaclientes ventanabusqueda = new busquedaclientes(micliente);
+            ventanabusqueda.formpadre = this;
             string busqueda = tbxBuscarCliente.Text;
-            ventanabusqueda.Show();
             ventanabusqueda.buscarClientes(busqueda);
+            ventanabusqueda.Show();
         }
 
         public string Busqueda
@@ -867,5 +908,10 @@ namespace El_Balcon_de_Chalita
             get { return tbxBuscarCliente.Text; }
         }
 
+        public cliente MiCliente
+        {
+            get { return micliente; }
+            set { micliente = value; }
+        }
     }
 }
