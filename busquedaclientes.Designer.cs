@@ -54,6 +54,7 @@ namespace El_Balcon_de_Chalita
             this.btnBuscAcept.TabIndex = 1;
             this.btnBuscAcept.Text = "Aceptar";
             this.btnBuscAcept.UseVisualStyleBackColor = true;
+            this.btnBuscAcept.Click += new System.EventHandler(this.btnBuscAcept_Click);
             // 
             // btnBuscCanc
             // 
