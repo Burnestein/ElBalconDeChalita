@@ -21,7 +21,7 @@ namespace El_Balcon_de_Chalita
 
             try
             {
-                string consulta = "SELECT * FROM Clientes";
+                string consulta = "SELECT * FROM clientes";
                 MySqlCommand comando = new MySqlCommand(consulta, conexionBD);
 
                 MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
@@ -47,7 +47,7 @@ namespace El_Balcon_de_Chalita
             try
             {
                 string consulta = "" +
-                    "SELECT * FROM Clientes " +
+                    "SELECT * FROM clientes " +
                     "WHERE " +
                     "nombre LIKE @Busqueda" +
                     " OR apellidoPaterno LIKE @Busqueda" +
