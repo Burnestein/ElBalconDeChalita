@@ -9,7 +9,7 @@ using MySql.Data.MySqlClient;
 namespace El_Balcon_de_Chalita
 {
     public class crud
-    {
+    {   
         protected string tablaConsulta = "";
         protected string queryEliminar = "";
         public List<string> leer()
