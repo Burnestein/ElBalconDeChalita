@@ -75,7 +75,6 @@ namespace El_Balcon_de_Chalita
             this.TbgClientes = new System.Windows.Forms.TabPage();
             this.btnBuscarCliente = new System.Windows.Forms.Button();
             this.tbxBuscarCliente = new System.Windows.Forms.TextBox();
-            this.LblBuscar = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.LblGenero = new System.Windows.Forms.Label();
             this.CbxGenero = new System.Windows.Forms.ComboBox();
@@ -241,6 +240,7 @@ namespace El_Balcon_de_Chalita
             this.toolStrip1.Location = new System.Drawing.Point(0, 28);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1380, 89);
+            this.toolStrip1.Stretch = true;
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -360,7 +360,7 @@ namespace El_Balcon_de_Chalita
             this.TpgReservaciones.Margin = new System.Windows.Forms.Padding(4);
             this.TpgReservaciones.Name = "TpgReservaciones";
             this.TpgReservaciones.Padding = new System.Windows.Forms.Padding(4);
-            this.TpgReservaciones.Size = new System.Drawing.Size(1372, 438);
+            this.TpgReservaciones.Size = new System.Drawing.Size(1372, 423);
             this.TpgReservaciones.TabIndex = 1;
             this.TpgReservaciones.Text = "Reservaciones";
             this.TpgReservaciones.Click += new System.EventHandler(this.TpgReservaciones_Click);
@@ -551,9 +551,9 @@ namespace El_Balcon_de_Chalita
             // 
             // TbgClientes
             // 
+            this.TbgClientes.Controls.Add(this.lblCliente);
             this.TbgClientes.Controls.Add(this.btnBuscarCliente);
             this.TbgClientes.Controls.Add(this.tbxBuscarCliente);
-            this.TbgClientes.Controls.Add(this.LblBuscar);
             this.TbgClientes.Controls.Add(this.pictureBox1);
             this.TbgClientes.Controls.Add(this.LblGenero);
             this.TbgClientes.Controls.Add(this.CbxGenero);
@@ -588,29 +588,21 @@ namespace El_Balcon_de_Chalita
             // 
             // btnBuscarCliente
             // 
-            this.btnBuscarCliente.Location = new System.Drawing.Point(655, 33);
+            this.btnBuscarCliente.Location = new System.Drawing.Point(1036, 32);
             this.btnBuscarCliente.Name = "btnBuscarCliente";
-            this.btnBuscarCliente.Size = new System.Drawing.Size(44, 22);
+            this.btnBuscarCliente.Size = new System.Drawing.Size(74, 30);
             this.btnBuscarCliente.TabIndex = 41;
-            this.btnBuscarCliente.Text = "...";
+            this.btnBuscarCliente.Text = "Buscar";
             this.btnBuscarCliente.UseVisualStyleBackColor = true;
             this.btnBuscarCliente.Click += new System.EventHandler(this.btnBuscarCliente_Click);
             // 
             // tbxBuscarCliente
             // 
-            this.tbxBuscarCliente.Location = new System.Drawing.Point(442, 33);
+            this.tbxBuscarCliente.Location = new System.Drawing.Point(1116, 32);
+            this.tbxBuscarCliente.Multiline = true;
             this.tbxBuscarCliente.Name = "tbxBuscarCliente";
-            this.tbxBuscarCliente.Size = new System.Drawing.Size(207, 22);
+            this.tbxBuscarCliente.Size = new System.Drawing.Size(201, 30);
             this.tbxBuscarCliente.TabIndex = 40;
-            // 
-            // LblBuscar
-            // 
-            this.LblBuscar.AutoSize = true;
-            this.LblBuscar.Location = new System.Drawing.Point(384, 37);
-            this.LblBuscar.Name = "LblBuscar";
-            this.LblBuscar.Size = new System.Drawing.Size(52, 17);
-            this.LblBuscar.TabIndex = 39;
-            this.LblBuscar.Text = "Buscar";
             // 
             // pictureBox1
             // 
@@ -891,7 +883,7 @@ namespace El_Balcon_de_Chalita
             // 
             // TbxCodigo
             // 
-            this.TbxCodigo.Location = new System.Drawing.Point(1124, 25);
+            this.TbxCodigo.Location = new System.Drawing.Point(1116, 116);
             this.TbxCodigo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TbxCodigo.Multiline = true;
             this.TbxCodigo.Name = "TbxCodigo";
@@ -957,7 +949,7 @@ namespace El_Balcon_de_Chalita
             // 
             this.LblCodigo.AutoSize = true;
             this.LblCodigo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.LblCodigo.Location = new System.Drawing.Point(1265, 6);
+            this.LblCodigo.Location = new System.Drawing.Point(1257, 97);
             this.LblCodigo.Name = "LblCodigo";
             this.LblCodigo.Size = new System.Drawing.Size(52, 17);
             this.LblCodigo.TabIndex = 26;
@@ -1357,8 +1349,8 @@ namespace El_Balcon_de_Chalita
             // lblCliente
             // 
             this.lblCliente.AutoSize = true;
-            this.lblCliente.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.lblCliente.Location = new System.Drawing.Point(1070, 37);
+            this.lblCliente.BackColor = System.Drawing.Color.Transparent;
+            this.lblCliente.Location = new System.Drawing.Point(390, 35);
             this.lblCliente.Name = "lblCliente";
             this.lblCliente.Size = new System.Drawing.Size(55, 17);
             this.lblCliente.TabIndex = 5;
@@ -1370,7 +1362,6 @@ namespace El_Balcon_de_Chalita
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1380, 624);
-            this.Controls.Add(this.lblCliente);
             this.Controls.Add(this.TbcPrincipal);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusStrip1);
@@ -1510,7 +1501,6 @@ namespace El_Balcon_de_Chalita
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnBuscarCliente;
         private System.Windows.Forms.TextBox tbxBuscarCliente;
-        private System.Windows.Forms.Label LblBuscar;
         private System.Windows.Forms.Label lblCliente;
     }
 }
