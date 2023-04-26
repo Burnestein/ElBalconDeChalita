@@ -246,6 +246,7 @@ namespace El_Balcon_de_Chalita
             TbxCorreo.Text = micliente.Email;
             TbxLugarProcedencia.Text = micliente.LugarProcedencia;
             TbxTelefonoMovil.Text = micliente.NumCelular;
+            LblClienteReserva.Text = "Cliente: " + micliente.Nombre + " " + micliente.ApellidoPaterno + " " + micliente.ApellidoMaterno;
 
         }
         //---------------------------------------------------------------------
