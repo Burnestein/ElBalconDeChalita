@@ -26,6 +26,7 @@ namespace El_Balcon_de_Chalita
         private double totalReserva = 0;
         private string idCompañia = "";
         private cliente micliente = new cliente();
+        consulta miconsulta = new consulta();
 
         //---------------------------------------------------------------------
         //Atributo.
@@ -229,6 +230,10 @@ namespace El_Balcon_de_Chalita
             CbxEstadocivil.SelectedIndex = -1;
             CbxGenero.SelectedIndex = -1;
 
+            lblCliente.Text = "Cliente:";
+            tbxBuscarCliente.Text = "";
+            
+
         }
 
         public void LlenarFormulario(cliente micliente)
@@ -255,26 +260,10 @@ namespace El_Balcon_de_Chalita
         }
         /* Funcion para acutualizar algun cliente de la BD en base a su clave
         @return void */
-        private void LimpiarFormulario()
-        {
-            lblCliente.Text = "Cliente:";
-            tbxBuscarCliente.Text = "";
-            TbxCodigo.Text = "";
-            TbxNombre.Text = "";
-            TbxApellidoP.Text = "";
-            TbxApellidoM.Text = "";
-            TbxCorreo.Text = "";
-            TbxLugarProcedencia.Text = "";
-            TbxTelefonoMovil.Text = "";
-            CbxEstadocivil.SelectedIndex = -1;
-            CbxDia.SelectedIndex = -1;
-            CbxMes.SelectedIndex = -1;
-            CbxAño.SelectedIndex = -1;
-            CbxGenero.SelectedIndex = -1;
-        }
+        
         public void ActualizarForm()
         {
-            LimpiarFormulario();
+            limpiarCampos();
             LlenarFormulario(micliente);
         }
         private void TsbActualizar_Click(object sender, EventArgs e)
@@ -557,7 +546,8 @@ namespace El_Balcon_de_Chalita
         //Funcion que mostrara los datos de las reservas en un dataGrid al ejecutar evento de click en el boton de consulta reservas
         private void button1_Click(object sender, EventArgs e)
         {
-            //Query para obtener las reservas enlazadas con los id de los clientes en su respectiva tabla
+            miconsulta.ConsultarReservaciones(DgbReservaciones, micliente);
+            /*//Query para obtener las reservas enlazadas con los id de los clientes en su respectiva tabla
             string obtenerReservas = "select * from reservaciones left join clientes on reservaciones.cliente = clientes.idCliente";
             MySqlDataReader reader = null;
             MySqlConnection conexionBD = mysql.conexion.Conexion();
@@ -590,6 +580,7 @@ namespace El_Balcon_de_Chalita
             {
                 MessageBox.Show(ex.Message);
             }
+            */
         }
 
 
@@ -896,6 +887,7 @@ namespace El_Balcon_de_Chalita
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("El Id Actual es: ", micliente.IdCliente);
             busquedaclientes ventanabusqueda = new busquedaclientes(micliente);
             ventanabusqueda.formpadre = this;
             string busqueda = tbxBuscarCliente.Text;
