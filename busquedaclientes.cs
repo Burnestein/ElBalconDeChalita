@@ -43,12 +43,13 @@ namespace El_Balcon_de_Chalita
             this.Close();
 
         }
-
+        // Pasa los datos de la fila seleccionada a los atributos del objeto
         public cliente SeleccionarCliente()
         {
             
             int selectedIndex = dgvBuscCliente.CurrentCell.RowIndex;
             micliente.IdCliente = dgvBuscCliente[0, selectedIndex].Value.ToString();
+            MessageBox.Show("El Id seleccionado es: ", micliente.IdCliente);
             micliente.Nombre = dgvBuscCliente[1, selectedIndex].Value.ToString();
             micliente.ApellidoPaterno = dgvBuscCliente[2, selectedIndex].Value.ToString();
             micliente.ApellidoMaterno = dgvBuscCliente[3, selectedIndex].Value.ToString();

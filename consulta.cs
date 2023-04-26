@@ -71,6 +71,90 @@ namespace El_Balcon_de_Chalita
             }
 
         }
+
+        public DataGridView ConsultarReservaciones(DataGridView tabla)
+        {
+            DataGridView DgbReservaciones = tabla;
+            //Query para obtener las reservas enlazadas con los id de los clientes en su respectiva tabla
+            string obtenerReservas = "select * from reservaciones left join clientes on reservaciones.cliente = clientes.idCliente";
+            MySqlDataReader reader = null;
+            MySqlConnection conexionBD = mysql.conexion.Conexion();
+            conexionBD.Open();
+            //Contador que sera el puntero para el numero de fila en la que se ira insertando la data de la BD
+            int contador = 0;
+            //Limpiamos el datagrid
+            DgbReservaciones.Rows.Clear();
+            DgbReservaciones.Refresh();
+            try
+            {
+                MySqlCommand comand = new MySqlCommand(obtenerReservas, conexionBD);
+                reader = comand.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        string nombreCliente = reader.GetString(7) + " " + reader.GetString(8) + " " + reader.GetString(9);
+                        DataGridViewRow row = (DataGridViewRow)DgbReservaciones.Rows[contador].Clone();
+                        row.Cells[0].Value = reader.GetString(0);
+                        row.Cells[1].Value = nombreCliente;
+                        row.Cells[2].Value = reader.GetString(2);
+                        row.Cells[3].Value = reader.GetString(3);
+                        DgbReservaciones.Rows.Add(row);
+                        contador++;
+                    }
+                }
+                return DgbReservaciones;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+
+        }
+
+        public DataGridView ConsultarReservaciones(DataGridView tabla, cliente cliente)
+        {
+            DataGridView DgbReservaciones = tabla;
+            string idCliente = cliente.IdCliente;
+            MessageBox.Show("El Id del cliente actual es: ", idCliente);
+            //Query para obtener las reservas enlazadas con los id de los clientes en su respectiva tabla
+            string obtenerReservas = "select * from reservaciones left join clientes on reservaciones.cliente = clientes.idCliente WHERE clientes LIKE @idCliente";
+            MySqlDataReader reader = null;
+            MySqlConnection conexionBD = mysql.conexion.Conexion();
+            conexionBD.Open();
+            //Contador que sera el puntero para el numero de fila en la que se ira insertando la data de la BD
+            int contador = 0;
+            //Limpiamos el datagrid
+            DgbReservaciones.Rows.Clear();
+            DgbReservaciones.Refresh();
+            try
+            {
+                MySqlCommand comand = new MySqlCommand(obtenerReservas, conexionBD);
+                reader = comand.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        string nombreCliente = reader.GetString(7) + " " + reader.GetString(8) + " " + reader.GetString(9);
+                        DataGridViewRow row = (DataGridViewRow)DgbReservaciones.Rows[contador].Clone();
+                        row.Cells[0].Value = reader.GetString(0);
+                        row.Cells[1].Value = nombreCliente;
+                        row.Cells[2].Value = reader.GetString(2);
+                        row.Cells[3].Value = reader.GetString(3);
+                        DgbReservaciones.Rows.Add(row);
+                        contador++;
+                    }
+                }
+                return DgbReservaciones;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+
+        }
     }
 
 
