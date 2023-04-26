@@ -35,6 +35,10 @@ namespace El_Balcon_de_Chalita
                 MessageBox.Show("Error al realizar la consulta:" + ex.Message);
                 return null;
             }
+            finally
+            {
+                conexionBD.Close();
+            }
 
         }
 
@@ -68,6 +72,10 @@ namespace El_Balcon_de_Chalita
             {
                 MessageBox.Show("Error al realizar la consulta:" + ex.Message);
                 return null;
+            }
+            finally
+            {
+                conexionBD.Close();
             }
 
         }
@@ -110,6 +118,10 @@ namespace El_Balcon_de_Chalita
                 MessageBox.Show(ex.Message);
                 return null;
             }
+            finally
+            {
+                conexionBD.Close();
+            }
 
         }
 
@@ -119,7 +131,6 @@ namespace El_Balcon_de_Chalita
             conexionBD.Open();
             DataGridView DgbReservaciones = tabla;
             int idCliente = cliente.IdCliente;
-            MessageBox.Show("El Id del cliente actual es: " + idCliente.ToString());
             //Query para obtener las reservas enlazadas con los id de los clientes en su respectiva tabla
             string obtenerReservas = "select * from reservaciones left join clientes on reservaciones.cliente = clientes.idCliente WHERE clientes.idCliente LIKE @idCliente";
             
@@ -154,6 +165,10 @@ namespace El_Balcon_de_Chalita
             {
                 MessageBox.Show(ex.Message);
                 return null;
+            }
+            finally
+            {
+                conexionBD.Close();
             }
 
         }

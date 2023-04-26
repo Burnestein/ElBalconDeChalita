@@ -49,15 +49,12 @@ namespace El_Balcon_de_Chalita
             
             int selectedIndex = dgvBuscCliente.CurrentCell.RowIndex;
             micliente.IdCliente = Convert.ToInt32(dgvBuscCliente[0, selectedIndex].Value);
-            MessageBox.Show("El Id seleccionado es: " + micliente.IdCliente);
             micliente.Nombre = dgvBuscCliente[1, selectedIndex].Value.ToString();
-            MessageBox.Show("El nombre seleccionado es: " + micliente.Nombre);
             micliente.ApellidoPaterno = dgvBuscCliente[2, selectedIndex].Value.ToString();
             micliente.ApellidoMaterno = dgvBuscCliente[3, selectedIndex].Value.ToString();
             micliente.NumCelular = dgvBuscCliente[4, selectedIndex].Value.ToString();
             micliente.Email = dgvBuscCliente[5, selectedIndex].Value.ToString();
             micliente.CodigoCliente = dgvBuscCliente[6, selectedIndex].Value.ToString();
-            MessageBox.Show("El codigo seleccionado es: " + micliente.CodigoCliente);
             micliente.Genero = dgvBuscCliente[7, selectedIndex].Value.ToString();
             micliente.LugarProcedencia = dgvBuscCliente[8, selectedIndex].Value.ToString();
             micliente.EstadoCivil = dgvBuscCliente[9, selectedIndex].Value.ToString();

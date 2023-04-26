@@ -857,7 +857,6 @@ namespace El_Balcon_de_Chalita
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("El Id Actual es: " + micliente.IdCliente);
             busquedaclientes ventanabusqueda = new busquedaclientes(micliente);
             ventanabusqueda.dlgbalcon = this;
             string busqueda = tbxBuscarCliente.Text;
