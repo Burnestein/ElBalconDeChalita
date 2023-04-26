@@ -4,7 +4,7 @@ namespace El_Balcon_de_Chalita
 {
     public class cliente : crud
     {
-        private string idCliente;
+        private int idCliente;
         private string nombre;
         private string apellidoPaterno;
         private string apellidoMaterno;
@@ -18,7 +18,7 @@ namespace El_Balcon_de_Chalita
 
         public cliente()
         {
-            idCliente = "";
+            idCliente = -1;
             nombre = "";
             apellidoPaterno = "";
             apellidoMaterno = "";
@@ -40,10 +40,10 @@ namespace El_Balcon_de_Chalita
             queryEliminar = query;
         }
 
-        public string IdCliente
+        public int IdCliente
         {
             get { return idCliente; }
-            set { nombre = value; }
+            set { idCliente = value; }
         }
 
         public string Nombre

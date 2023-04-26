@@ -12,9 +12,9 @@ namespace El_Balcon_de_Chalita
 {
     public partial class busquedaclientes : Form
     {
-        public DlgBalconDeChalita formpadre { get; set; }
+        public DlgBalconDeChalita dlgbalcon { get; set; }
         consulta miconsulta = new consulta();
-        cliente micliente = new cliente();
+        
         
         
         public busquedaclientes(cliente micliente)
@@ -35,27 +35,29 @@ namespace El_Balcon_de_Chalita
 
         private void btnBuscAcept_Click(object sender, EventArgs e)
         {
-            
-            formpadre.MiCliente = SeleccionarCliente();
-            formpadre.ActualizarForm();
+
+            SeleccionarCliente(dlgbalcon.MiCliente);
+            dlgbalcon.ActualizarForm();
             //mibalcon.ActualizarForm();
             
             this.Close();
 
         }
         // Pasa los datos de la fila seleccionada a los atributos del objeto
-        public cliente SeleccionarCliente()
+        public cliente SeleccionarCliente(cliente micliente)
         {
             
             int selectedIndex = dgvBuscCliente.CurrentCell.RowIndex;
-            micliente.IdCliente = dgvBuscCliente[0, selectedIndex].Value.ToString();
-            MessageBox.Show("El Id seleccionado es: ", micliente.IdCliente);
+            micliente.IdCliente = Convert.ToInt32(dgvBuscCliente[0, selectedIndex].Value);
+            MessageBox.Show("El Id seleccionado es: " + micliente.IdCliente);
             micliente.Nombre = dgvBuscCliente[1, selectedIndex].Value.ToString();
+            MessageBox.Show("El nombre seleccionado es: " + micliente.Nombre);
             micliente.ApellidoPaterno = dgvBuscCliente[2, selectedIndex].Value.ToString();
             micliente.ApellidoMaterno = dgvBuscCliente[3, selectedIndex].Value.ToString();
             micliente.NumCelular = dgvBuscCliente[4, selectedIndex].Value.ToString();
             micliente.Email = dgvBuscCliente[5, selectedIndex].Value.ToString();
             micliente.CodigoCliente = dgvBuscCliente[6, selectedIndex].Value.ToString();
+            MessageBox.Show("El codigo seleccionado es: " + micliente.CodigoCliente);
             micliente.Genero = dgvBuscCliente[7, selectedIndex].Value.ToString();
             micliente.LugarProcedencia = dgvBuscCliente[8, selectedIndex].Value.ToString();
             micliente.EstadoCivil = dgvBuscCliente[9, selectedIndex].Value.ToString();
