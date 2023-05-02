@@ -73,7 +73,9 @@ namespace El_Balcon_de_Chalita
             this.CCheckOut = new System.Windows.Forms.MonthCalendar();
             this.CCheckIn = new System.Windows.Forms.MonthCalendar();
             this.TbgClientes = new System.Windows.Forms.TabPage();
+            this.tlpClienteBoton1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblCliente = new System.Windows.Forms.Label();
+            this.btnBorrarCliente = new System.Windows.Forms.Button();
             this.btnBuscarCliente = new System.Windows.Forms.Button();
             this.tbxBuscarCliente = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -131,12 +133,15 @@ namespace El_Balcon_de_Chalita
             this.label11 = new System.Windows.Forms.Label();
             this.CbxClientesInventarioClientes = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.tlpClienteBoton2 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnborrarCliente2 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.TpgReservaciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgbReservaciones)).BeginInit();
             this.TbgClientes.SuspendLayout();
+            this.tlpClienteBoton1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.TbcPrincipal.SuspendLayout();
             this.Inventario.SuspendLayout();
@@ -145,6 +150,7 @@ namespace El_Balcon_de_Chalita
             ((System.ComponentModel.ISupportInitialize)(this.DgbInventarioBalcon)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgbInventarioCliente)).BeginInit();
+            this.tlpClienteBoton2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -341,6 +347,7 @@ namespace El_Balcon_de_Chalita
             // TpgReservaciones
             // 
             this.TpgReservaciones.BackColor = System.Drawing.SystemColors.Control;
+            this.TpgReservaciones.Controls.Add(this.tlpClienteBoton2);
             this.TpgReservaciones.Controls.Add(this.label6);
             this.TpgReservaciones.Controls.Add(this.cbxCompañias);
             this.TpgReservaciones.Controls.Add(this.txtSubTotal);
@@ -351,7 +358,6 @@ namespace El_Balcon_de_Chalita
             this.TpgReservaciones.Controls.Add(this.DgbReservaciones);
             this.TpgReservaciones.Controls.Add(this.BtnReservar);
             this.TpgReservaciones.Controls.Add(this.CbxClientes);
-            this.TpgReservaciones.Controls.Add(this.LblClienteReserva);
             this.TpgReservaciones.Controls.Add(this.label2);
             this.TpgReservaciones.Controls.Add(this.label1);
             this.TpgReservaciones.Controls.Add(this.CCheckOut);
@@ -504,12 +510,14 @@ namespace El_Balcon_de_Chalita
             // LblClienteReserva
             // 
             this.LblClienteReserva.AutoSize = true;
-            this.LblClienteReserva.Location = new System.Drawing.Point(45, 23);
+            this.LblClienteReserva.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LblClienteReserva.Location = new System.Drawing.Point(4, 0);
             this.LblClienteReserva.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblClienteReserva.Name = "LblClienteReserva";
-            this.LblClienteReserva.Size = new System.Drawing.Size(51, 17);
+            this.LblClienteReserva.Size = new System.Drawing.Size(73, 29);
             this.LblClienteReserva.TabIndex = 4;
             this.LblClienteReserva.Text = "Cliente";
+            this.LblClienteReserva.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label2
             // 
@@ -551,7 +559,7 @@ namespace El_Balcon_de_Chalita
             // 
             // TbgClientes
             // 
-            this.TbgClientes.Controls.Add(this.lblCliente);
+            this.TbgClientes.Controls.Add(this.tlpClienteBoton1);
             this.TbgClientes.Controls.Add(this.btnBuscarCliente);
             this.TbgClientes.Controls.Add(this.tbxBuscarCliente);
             this.TbgClientes.Controls.Add(this.pictureBox1);
@@ -586,15 +594,45 @@ namespace El_Balcon_de_Chalita
             this.TbgClientes.Text = "Clientes";
             this.TbgClientes.UseVisualStyleBackColor = true;
             // 
+            // tlpClienteBoton1
+            // 
+            this.tlpClienteBoton1.AutoSize = true;
+            this.tlpClienteBoton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tlpClienteBoton1.ColumnCount = 2;
+            this.tlpClienteBoton1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpClienteBoton1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpClienteBoton1.Controls.Add(this.lblCliente, 0, 0);
+            this.tlpClienteBoton1.Controls.Add(this.btnBorrarCliente, 1, 0);
+            this.tlpClienteBoton1.Location = new System.Drawing.Point(388, 32);
+            this.tlpClienteBoton1.Name = "tlpClienteBoton1";
+            this.tlpClienteBoton1.RowCount = 1;
+            this.tlpClienteBoton1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpClienteBoton1.Size = new System.Drawing.Size(162, 29);
+            this.tlpClienteBoton1.TabIndex = 43;
+            // 
             // lblCliente
             // 
             this.lblCliente.AutoSize = true;
             this.lblCliente.BackColor = System.Drawing.Color.Transparent;
-            this.lblCliente.Location = new System.Drawing.Point(390, 35);
+            this.lblCliente.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblCliente.Location = new System.Drawing.Point(3, 0);
             this.lblCliente.Name = "lblCliente";
-            this.lblCliente.Size = new System.Drawing.Size(55, 17);
+            this.lblCliente.Size = new System.Drawing.Size(75, 29);
             this.lblCliente.TabIndex = 5;
             this.lblCliente.Text = "Cliente:";
+            this.lblCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblCliente.TextChanged += new System.EventHandler(this.lblCliente_TextChanged);
+            // 
+            // btnBorrarCliente
+            // 
+            this.btnBorrarCliente.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnBorrarCliente.Location = new System.Drawing.Point(84, 3);
+            this.btnBorrarCliente.Name = "btnBorrarCliente";
+            this.btnBorrarCliente.Size = new System.Drawing.Size(75, 23);
+            this.btnBorrarCliente.TabIndex = 42;
+            this.btnBorrarCliente.Text = "Quitar";
+            this.btnBorrarCliente.UseVisualStyleBackColor = true;
+            this.btnBorrarCliente.Click += new System.EventHandler(this.btnBorrarCliente_Click);
             // 
             // btnBuscarCliente
             // 
@@ -1361,6 +1399,33 @@ namespace El_Balcon_de_Chalita
             this.label10.TabIndex = 1;
             this.label10.Text = "Cliente al que le pertenecen los objetos";
             // 
+            // tlpClienteBoton2
+            // 
+            this.tlpClienteBoton2.AutoSize = true;
+            this.tlpClienteBoton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tlpClienteBoton2.ColumnCount = 2;
+            this.tlpClienteBoton2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpClienteBoton2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpClienteBoton2.Controls.Add(this.LblClienteReserva, 0, 0);
+            this.tlpClienteBoton2.Controls.Add(this.btnborrarCliente2, 1, 0);
+            this.tlpClienteBoton2.Location = new System.Drawing.Point(49, 14);
+            this.tlpClienteBoton2.Name = "tlpClienteBoton2";
+            this.tlpClienteBoton2.RowCount = 1;
+            this.tlpClienteBoton2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpClienteBoton2.Size = new System.Drawing.Size(162, 29);
+            this.tlpClienteBoton2.TabIndex = 14;
+            // 
+            // btnborrarCliente2
+            // 
+            this.btnborrarCliente2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnborrarCliente2.Location = new System.Drawing.Point(84, 3);
+            this.btnborrarCliente2.Name = "btnborrarCliente2";
+            this.btnborrarCliente2.Size = new System.Drawing.Size(75, 23);
+            this.btnborrarCliente2.TabIndex = 5;
+            this.btnborrarCliente2.Text = "Quitar";
+            this.btnborrarCliente2.UseVisualStyleBackColor = true;
+            this.btnborrarCliente2.Click += new System.EventHandler(this.btnborrarCliente2_Click);
+            // 
             // DlgBalconDeChalita
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1389,6 +1454,8 @@ namespace El_Balcon_de_Chalita
             ((System.ComponentModel.ISupportInitialize)(this.DgbReservaciones)).EndInit();
             this.TbgClientes.ResumeLayout(false);
             this.TbgClientes.PerformLayout();
+            this.tlpClienteBoton1.ResumeLayout(false);
+            this.tlpClienteBoton1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.TbcPrincipal.ResumeLayout(false);
             this.Inventario.ResumeLayout(false);
@@ -1399,6 +1466,8 @@ namespace El_Balcon_de_Chalita
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgbInventarioCliente)).EndInit();
+            this.tlpClienteBoton2.ResumeLayout(false);
+            this.tlpClienteBoton2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1507,5 +1576,9 @@ namespace El_Balcon_de_Chalita
         private System.Windows.Forms.Button btnBuscarCliente;
         private System.Windows.Forms.TextBox tbxBuscarCliente;
         private System.Windows.Forms.Label lblCliente;
+        private System.Windows.Forms.Button btnBorrarCliente;
+        private System.Windows.Forms.TableLayoutPanel tlpClienteBoton1;
+        private System.Windows.Forms.TableLayoutPanel tlpClienteBoton2;
+        private System.Windows.Forms.Button btnborrarCliente2;
     }
 }

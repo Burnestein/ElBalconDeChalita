@@ -21,12 +21,12 @@ namespace El_Balcon_de_Chalita
         //---------------------------------------------------------------------
         private string fechaEntrada = "";
         private string fechaSalida = "";
-        private string idCliente = "";
+        private int idCliente;
         private string correoCliente = "";
         private double totalReserva = 0;
         private string idCompañia = "";
-        private cliente micliente = new cliente();
-        consulta miconsulta = new consulta();
+        private cliente micliente;
+        consulta miconsulta;
 
         //---------------------------------------------------------------------
         //Atributo.
@@ -41,6 +41,11 @@ namespace El_Balcon_de_Chalita
         {
             //Se inicializa el componente
             InitializeComponent();
+            CbxClientes.Visible = false;
+            btnBorrarCliente.Visible = false;
+            btnborrarCliente2.Visible = false;
+            micliente = new cliente();
+            miconsulta = new consulta();
             //Generamos el codigo en automatico del cliente
             generarCodigoCliente();
             //Llenamos los combobox de los clientes y compañias afiliadas
@@ -266,7 +271,9 @@ namespace El_Balcon_de_Chalita
         {
             limpiarCampos();
             LlenarFormulario(micliente);
-        }
+            idCliente = micliente.IdCliente;
+            correoCliente = micliente.Email;
+    }
         private void TsbActualizar_Click(object sender, EventArgs e)
         {
             try
@@ -413,10 +420,11 @@ namespace El_Balcon_de_Chalita
             //MessageBox.Show(fechaSalida);
         }
 
-
+        
         //Funcion para obtener la info del cliente que seleccionemos en el combobox
         private void cbxClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
+            /*
             //Obtenemos el valor del input seleccionado
             string nombreCliente = CbxClientes.GetItemText(CbxClientes.SelectedItem);
             //Hacemos un split para obtener solamente la clave del cliente
@@ -448,7 +456,9 @@ namespace El_Balcon_de_Chalita
             {
                 MessageBox.Show(ex.Message);
             }
+            */
         }
+
         public Boolean verificarFechaDisponible()
         {
             MySqlDataReader reader = null;
@@ -493,7 +503,7 @@ namespace El_Balcon_de_Chalita
         private void btnReservar_Click(object sender, EventArgs e)
         {
             //En caso de que todos los campos rqueridos sean llenados se procede a guardar la reserva
-            if (CbxClientes.SelectedIndex != -1 && fechaEntrada != "" && fechaSalida != "" && cbxCompañias.SelectedIndex != -1)
+            if (idCliente != -1 && fechaEntrada != "" && fechaSalida != "" && cbxCompañias.SelectedIndex != -1)
             {
                 Boolean reservaDisponible = verificarFechaDisponible();
                 if (reservaDisponible)
@@ -874,5 +884,38 @@ namespace El_Balcon_de_Chalita
             get { return micliente; }
             set { micliente = value; }
         }
+
+        private void btnBorrarCliente_Click(object sender, EventArgs e)
+        {
+            quitarCliente();
+        }
+
+        public void quitarCliente()
+        {
+            micliente = new cliente();
+            micliente.IdCliente = -1;
+            ActualizarForm();
+        }
+
+        private void lblCliente_TextChanged(object sender, EventArgs e)
+        {
+            if (micliente.IdCliente > -1)
+            {
+                btnBorrarCliente.Visible = true;
+                btnborrarCliente2.Visible = true;
+            }
+
+            else
+            {
+                btnBorrarCliente.Visible = false;
+                btnborrarCliente2.Visible = false;
+            }
+        }
+
+        private void btnborrarCliente2_Click(object sender, EventArgs e)
+        {
+            quitarCliente();
+        }
+
     }
 }
