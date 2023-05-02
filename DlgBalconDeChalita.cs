@@ -919,5 +919,10 @@ namespace El_Balcon_de_Chalita
             ventanabusqueda.buscarClientes(busqueda);
             ventanabusqueda.Show();
         }
+
+        private void btnConsultarReservasAll_Click(object sender, EventArgs e)
+        {
+            miconsulta.ConsultarReservaciones(DgbReservaciones);
+        }
     }
 }

@@ -128,7 +128,6 @@ namespace El_Balcon_de_Chalita
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.CbxClientesInventarioClientes = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.tslCliente = new System.Windows.Forms.ToolStripLabel();
@@ -136,6 +135,7 @@ namespace El_Balcon_de_Chalita
             this.tstbBuscarCliente = new System.Windows.Forms.ToolStripTextBox();
             this.tsbBuscarCliente = new System.Windows.Forms.ToolStripButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnConsultarReservasAll = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -351,6 +351,7 @@ namespace El_Balcon_de_Chalita
             // TpgReservaciones
             // 
             this.TpgReservaciones.BackColor = System.Drawing.SystemColors.Control;
+            this.TpgReservaciones.Controls.Add(this.btnConsultarReservasAll);
             this.TpgReservaciones.Controls.Add(this.tlpClienteBoton2);
             this.TpgReservaciones.Controls.Add(this.label6);
             this.TpgReservaciones.Controls.Add(this.cbxCompañias);
@@ -451,12 +452,12 @@ namespace El_Balcon_de_Chalita
             // 
             // btnConsultarReservas
             // 
-            this.btnConsultarReservas.Location = new System.Drawing.Point(749, 326);
+            this.btnConsultarReservas.Location = new System.Drawing.Point(941, 287);
             this.btnConsultarReservas.Margin = new System.Windows.Forms.Padding(4);
             this.btnConsultarReservas.Name = "btnConsultarReservas";
             this.btnConsultarReservas.Size = new System.Drawing.Size(165, 55);
             this.btnConsultarReservas.TabIndex = 7;
-            this.btnConsultarReservas.Text = "Ver reservas";
+            this.btnConsultarReservas.Text = "Reservas de cliente";
             this.btnConsultarReservas.UseVisualStyleBackColor = true;
             this.btnConsultarReservas.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -472,7 +473,7 @@ namespace El_Balcon_de_Chalita
             this.DgbReservaciones.Margin = new System.Windows.Forms.Padding(4);
             this.DgbReservaciones.Name = "DgbReservaciones";
             this.DgbReservaciones.RowHeadersWidth = 51;
-            this.DgbReservaciones.Size = new System.Drawing.Size(591, 121);
+            this.DgbReservaciones.Size = new System.Drawing.Size(821, 180);
             this.DgbReservaciones.TabIndex = 5;
             this.DgbReservaciones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -1216,7 +1217,6 @@ namespace El_Balcon_de_Chalita
             this.tabPage2.Controls.Add(this.label12);
             this.tabPage2.Controls.Add(this.label11);
             this.tabPage2.Controls.Add(this.CbxClientesInventarioClientes);
-            this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Location = new System.Drawing.Point(4, 49);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
@@ -1274,7 +1274,7 @@ namespace El_Balcon_de_Chalita
             // 
             // BtnGuardarObjetoCliente
             // 
-            this.BtnGuardarObjetoCliente.Location = new System.Drawing.Point(27, 218);
+            this.BtnGuardarObjetoCliente.Location = new System.Drawing.Point(29, 152);
             this.BtnGuardarObjetoCliente.Margin = new System.Windows.Forms.Padding(4);
             this.BtnGuardarObjetoCliente.Name = "BtnGuardarObjetoCliente";
             this.BtnGuardarObjetoCliente.Size = new System.Drawing.Size(252, 50);
@@ -1285,7 +1285,7 @@ namespace El_Balcon_de_Chalita
             // 
             // TxtNombreObjetoCliente
             // 
-            this.TxtNombreObjetoCliente.Location = new System.Drawing.Point(27, 103);
+            this.TxtNombreObjetoCliente.Location = new System.Drawing.Point(29, 37);
             this.TxtNombreObjetoCliente.Margin = new System.Windows.Forms.Padding(4);
             this.TxtNombreObjetoCliente.Name = "TxtNombreObjetoCliente";
             this.TxtNombreObjetoCliente.Size = new System.Drawing.Size(251, 22);
@@ -1293,7 +1293,7 @@ namespace El_Balcon_de_Chalita
             // 
             // TxtCantidadObjetoCliente
             // 
-            this.TxtCantidadObjetoCliente.Location = new System.Drawing.Point(27, 165);
+            this.TxtCantidadObjetoCliente.Location = new System.Drawing.Point(29, 99);
             this.TxtCantidadObjetoCliente.Margin = new System.Windows.Forms.Padding(4);
             this.TxtCantidadObjetoCliente.Name = "TxtCantidadObjetoCliente";
             this.TxtCantidadObjetoCliente.Size = new System.Drawing.Size(251, 22);
@@ -1302,7 +1302,7 @@ namespace El_Balcon_de_Chalita
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(23, 145);
+            this.label12.Location = new System.Drawing.Point(25, 79);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(64, 17);
@@ -1312,7 +1312,7 @@ namespace El_Balcon_de_Chalita
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(23, 86);
+            this.label11.Location = new System.Drawing.Point(25, 20);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(50, 17);
@@ -1329,16 +1329,6 @@ namespace El_Balcon_de_Chalita
             this.CbxClientesInventarioClientes.TabIndex = 2;
             this.CbxClientesInventarioClientes.Visible = false;
             this.CbxClientesInventarioClientes.SelectedIndexChanged += new System.EventHandler(this.CbxClientesInventarioClientes_SelectedIndexChanged);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(23, 22);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(257, 17);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "Cliente al que le pertenecen los objetos";
             // 
             // tableLayoutPanel1
             // 
@@ -1406,6 +1396,16 @@ namespace El_Balcon_de_Chalita
             this.tsbBuscarCliente.Size = new System.Drawing.Size(80, 33);
             this.tsbBuscarCliente.Text = "Buscar";
             this.tsbBuscarCliente.Click += new System.EventHandler(this.tsbBuscarCliente_Click);
+            // 
+            // btnConsultarReservasAll
+            // 
+            this.btnConsultarReservasAll.Location = new System.Drawing.Point(941, 349);
+            this.btnConsultarReservasAll.Name = "btnConsultarReservasAll";
+            this.btnConsultarReservasAll.Size = new System.Drawing.Size(165, 55);
+            this.btnConsultarReservasAll.TabIndex = 15;
+            this.btnConsultarReservasAll.Text = "Ver todas";
+            this.btnConsultarReservasAll.UseVisualStyleBackColor = true;
+            this.btnConsultarReservasAll.Click += new System.EventHandler(this.btnConsultarReservasAll_Click);
             // 
             // DlgBalconDeChalita
             // 
@@ -1541,7 +1541,6 @@ namespace El_Balcon_de_Chalita
         private System.Windows.Forms.DataGridViewTextBoxColumn precioObjeto;
         private System.Windows.Forms.Button btnVerInventarioBalcon;
         private System.Windows.Forms.ComboBox CbxClientesInventarioClientes;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox TxtNombreObjetoCliente;
         private System.Windows.Forms.TextBox TxtCantidadObjetoCliente;
         private System.Windows.Forms.Label label12;
@@ -1561,5 +1560,6 @@ namespace El_Balcon_de_Chalita
         private System.Windows.Forms.ToolStripButton tsbQuitarCliente;
         private System.Windows.Forms.ToolStripButton tsbBuscarCliente;
         private System.Windows.Forms.ToolStripTextBox tstbBuscarCliente;
+        private System.Windows.Forms.Button btnConsultarReservasAll;
     }
 }
