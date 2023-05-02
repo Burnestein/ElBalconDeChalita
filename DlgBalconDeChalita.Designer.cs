@@ -463,6 +463,7 @@ namespace El_Balcon_de_Chalita
             // 
             // DgbReservaciones
             // 
+            this.DgbReservaciones.BackgroundColor = System.Drawing.Color.White;
             this.DgbReservaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgbReservaciones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdReservacion,
@@ -1030,12 +1031,13 @@ namespace El_Balcon_de_Chalita
             // 
             this.TbcInventarioBalcon.Controls.Add(this.tabPage1);
             this.TbcInventarioBalcon.Controls.Add(this.tabPage2);
+            this.TbcInventarioBalcon.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TbcInventarioBalcon.ItemSize = new System.Drawing.Size(150, 45);
-            this.TbcInventarioBalcon.Location = new System.Drawing.Point(11, 18);
+            this.TbcInventarioBalcon.Location = new System.Drawing.Point(4, 4);
             this.TbcInventarioBalcon.Margin = new System.Windows.Forms.Padding(4);
             this.TbcInventarioBalcon.Name = "TbcInventarioBalcon";
             this.TbcInventarioBalcon.SelectedIndex = 0;
-            this.TbcInventarioBalcon.Size = new System.Drawing.Size(1169, 377);
+            this.TbcInventarioBalcon.Size = new System.Drawing.Size(1358, 545);
             this.TbcInventarioBalcon.TabIndex = 0;
             // 
             // tabPage1
@@ -1056,14 +1058,14 @@ namespace El_Balcon_de_Chalita
             this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Size = new System.Drawing.Size(1161, 324);
+            this.tabPage1.Size = new System.Drawing.Size(1350, 492);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Inventario del Balcon";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // btnVerInventarioBalcon
             // 
-            this.btnVerInventarioBalcon.Location = new System.Drawing.Point(1001, 149);
+            this.btnVerInventarioBalcon.Location = new System.Drawing.Point(1172, 264);
             this.btnVerInventarioBalcon.Margin = new System.Windows.Forms.Padding(4);
             this.btnVerInventarioBalcon.Name = "btnVerInventarioBalcon";
             this.btnVerInventarioBalcon.Size = new System.Drawing.Size(137, 62);
@@ -1079,11 +1081,11 @@ namespace El_Balcon_de_Chalita
             this.nombreObjeto,
             this.cantidadObjeto,
             this.precioObjeto});
-            this.DgbInventarioBalcon.Location = new System.Drawing.Point(521, 28);
+            this.DgbInventarioBalcon.Location = new System.Drawing.Point(707, 25);
             this.DgbInventarioBalcon.Margin = new System.Windows.Forms.Padding(4);
             this.DgbInventarioBalcon.Name = "DgbInventarioBalcon";
             this.DgbInventarioBalcon.RowHeadersWidth = 51;
-            this.DgbInventarioBalcon.Size = new System.Drawing.Size(457, 185);
+            this.DgbInventarioBalcon.Size = new System.Drawing.Size(457, 301);
             this.DgbInventarioBalcon.TabIndex = 10;
             // 
             // nombreObjeto
