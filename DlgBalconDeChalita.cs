@@ -21,12 +21,12 @@ namespace El_Balcon_de_Chalita
         //---------------------------------------------------------------------
         private string fechaEntrada = "";
         private string fechaSalida = "";
-        private string idCliente = "";
+        private int idCliente;
         private string correoCliente = "";
         private double totalReserva = 0;
         private string idCompañia = "";
-        private cliente micliente = new cliente();
-        consulta miconsulta = new consulta();
+        private cliente micliente;
+        consulta miconsulta;
 
         //---------------------------------------------------------------------
         //Atributo.
@@ -41,6 +41,11 @@ namespace El_Balcon_de_Chalita
         {
             //Se inicializa el componente
             InitializeComponent();
+            CbxClientes.Visible = false;
+            tsbQuitarCliente.Visible = false;
+            TsbConsultar.Visible = false;
+            micliente = new cliente();
+            miconsulta = new consulta();
             //Generamos el codigo en automatico del cliente
             generarCodigoCliente();
             //Llenamos los combobox de los clientes y compañias afiliadas
@@ -194,7 +199,9 @@ namespace El_Balcon_de_Chalita
                         catch (MySqlException ex)
 
                         {
-                            MessageBox.Show("Error durante la insercion del registro: " + ex.Message);
+                            //MessageBox.Show("Error durante la insercion del registro: " + ex.Message);
+                            //Intenta editar el registro
+                            actualizarRegistro();
                         }
                     }
                     else
@@ -230,15 +237,15 @@ namespace El_Balcon_de_Chalita
             CbxEstadocivil.SelectedIndex = -1;
             CbxGenero.SelectedIndex = -1;
 
-            lblCliente.Text = "Cliente:";
-            tbxBuscarCliente.Text = "";
+            tslCliente.Text = "Cliente:";
+            tstbBuscarCliente.Text = "";
             
 
         }
 
         public void LlenarFormulario(cliente micliente)
         {
-            lblCliente.Text = "Cliente: " + micliente.Nombre + " " + micliente.ApellidoPaterno + " " + micliente.ApellidoMaterno;
+            tslCliente.Text = "Cliente: " + micliente.Nombre + " " + micliente.ApellidoPaterno + " " + micliente.ApellidoMaterno;
             TbxCodigo.Text = micliente.CodigoCliente;
             TbxNombre.Text = micliente.Nombre;
             TbxApellidoP.Text = micliente.ApellidoPaterno;
@@ -246,7 +253,6 @@ namespace El_Balcon_de_Chalita
             TbxCorreo.Text = micliente.Email;
             TbxLugarProcedencia.Text = micliente.LugarProcedencia;
             TbxTelefonoMovil.Text = micliente.NumCelular;
-            LblClienteReserva.Text = "Cliente: " + micliente.Nombre + " " + micliente.ApellidoPaterno + " " + micliente.ApellidoMaterno;
 
         }
         //---------------------------------------------------------------------
@@ -266,8 +272,14 @@ namespace El_Balcon_de_Chalita
         {
             limpiarCampos();
             LlenarFormulario(micliente);
-        }
+            idCliente = micliente.IdCliente;
+            correoCliente = micliente.Email;
+    }
         private void TsbActualizar_Click(object sender, EventArgs e)
+        {
+            actualizarRegistro();
+        }
+        private void actualizarRegistro()
         {
             try
             {
@@ -311,7 +323,6 @@ namespace El_Balcon_de_Chalita
             {
                 MessageBox.Show("Datos incorrectos" + ex.Message);
             }
-            
         }
 
         /* Funcion que consulta la info de un cliente y llena el formulario con esa informacion
@@ -413,10 +424,11 @@ namespace El_Balcon_de_Chalita
             //MessageBox.Show(fechaSalida);
         }
 
-
+        
         //Funcion para obtener la info del cliente que seleccionemos en el combobox
         private void cbxClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
+            /*
             //Obtenemos el valor del input seleccionado
             string nombreCliente = CbxClientes.GetItemText(CbxClientes.SelectedItem);
             //Hacemos un split para obtener solamente la clave del cliente
@@ -448,7 +460,9 @@ namespace El_Balcon_de_Chalita
             {
                 MessageBox.Show(ex.Message);
             }
+            */
         }
+
         public Boolean verificarFechaDisponible()
         {
             MySqlDataReader reader = null;
@@ -493,7 +507,7 @@ namespace El_Balcon_de_Chalita
         private void btnReservar_Click(object sender, EventArgs e)
         {
             //En caso de que todos los campos rqueridos sean llenados se procede a guardar la reserva
-            if (CbxClientes.SelectedIndex != -1 && fechaEntrada != "" && fechaSalida != "" && cbxCompañias.SelectedIndex != -1)
+            if (idCliente != -1 && fechaEntrada != "" && fechaSalida != "" && cbxCompañias.SelectedIndex != -1)
             {
                 Boolean reservaDisponible = verificarFechaDisponible();
                 if (reservaDisponible)
@@ -734,13 +748,13 @@ namespace El_Balcon_de_Chalita
         private void BtnGuardarObjetoCliente_Click(object sender, EventArgs e)
         {
             //Obtenemos el valor del input seleccionado
-            string nombreCliente = CbxClientesInventarioClientes.GetItemText(CbxClientesInventarioClientes.SelectedItem);
+            //string nombreCliente = CbxClientesInventarioClientes.GetItemText(CbxClientesInventarioClientes.SelectedItem);
             //Hacemos un split para obtener solamente la clave del cliente
-            string[] obtenerClaveCliente = nombreCliente.Split('-');
-            string idCliente = obtenerClaveCliente[0];
+            //string[] obtenerClaveCliente = nombreCliente.Split('-');
+            //string idCliente = obtenerClaveCliente[0];
             string nombreObjetoCliente = TxtNombreObjetoCliente.Text;
             string cantidadObjetoCliente = TxtCantidadObjetoCliente.Text;
-            if (CbxClientesInventarioClientes.SelectedIndex != -1 && nombreObjetoCliente != "" && cantidadObjetoCliente != "")
+            if (idCliente > -1 && nombreObjetoCliente != "" && cantidadObjetoCliente != "")
             {
 
                 string query = "insert into inventarioclientes (nombreObjeto,cantidadObjeto,idCliente) values('" + nombreObjetoCliente + "','" + cantidadObjetoCliente + "','" + idCliente + "')";
@@ -768,13 +782,13 @@ namespace El_Balcon_de_Chalita
         {
             MySqlDataReader reader = null;
             //Obtenemos el valor del input seleccionado
-            string nombreCliente = CbxClientesInventarioClientes.GetItemText(CbxClientesInventarioClientes.SelectedItem);
+            //string nombreCliente = CbxClientesInventarioClientes.GetItemText(CbxClientesInventarioClientes.SelectedItem);
             //Hacemos un split para obtener solamente la clave del cliente
-            string[] obtenerClaveCliente = nombreCliente.Split('-');
-            string idCliente = obtenerClaveCliente[0];
+            //string[] obtenerClaveCliente = nombreCliente.Split('-');
+            //string idCliente = obtenerClaveCliente[0];
             string query = "select * from inventarioclientes where idCliente = '" + idCliente + "' ";
             int contador = 0;
-            if (CbxClientesInventarioClientes.SelectedIndex != -1)
+            if (idCliente > -1)
             {
                 //Limpiamos el datagrid
                 DgbInventarioCliente.Rows.Clear();
@@ -855,24 +869,60 @@ namespace El_Balcon_de_Chalita
 
         }
 
-        private void btnBuscarCliente_Click(object sender, EventArgs e)
-        {
-            busquedaclientes ventanabusqueda = new busquedaclientes(micliente);
-            ventanabusqueda.dlgbalcon = this;
-            string busqueda = tbxBuscarCliente.Text;
-            ventanabusqueda.buscarClientes(busqueda);
-            ventanabusqueda.Show();
-        }
 
         public string Busqueda
         {
-            get { return tbxBuscarCliente.Text; }
+            get { return tstbBuscarCliente.Text; }
         }
 
         public cliente MiCliente
         {
             get { return micliente; }
             set { micliente = value; }
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            quitarCliente();
+        }
+
+        public void quitarCliente()
+        {
+            micliente = new cliente();
+            micliente.IdCliente = -1;
+            ActualizarForm();
+        }
+
+        private void tslCliente_TextChanged(object sender, EventArgs e)
+        {
+            if (micliente.IdCliente > -1)
+            {
+                tsbQuitarCliente.Visible = true;
+            }
+
+            else
+            {
+                tsbQuitarCliente.Visible = false;
+            }
+        }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void tsbBuscarCliente_Click(object sender, EventArgs e)
+        {
+            busquedaclientes ventanabusqueda = new busquedaclientes(micliente);
+            ventanabusqueda.dlgbalcon = this;
+            string busqueda = tstbBuscarCliente.Text;
+            ventanabusqueda.buscarClientes(busqueda);
+            ventanabusqueda.Show();
+        }
+
+        private void btnConsultarReservasAll_Click(object sender, EventArgs e)
+        {
+            miconsulta.ConsultarReservaciones(DgbReservaciones);
         }
     }
 }
