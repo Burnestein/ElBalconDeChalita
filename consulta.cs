@@ -35,6 +35,10 @@ namespace El_Balcon_de_Chalita
                 MessageBox.Show("Error al realizar la consulta:" + ex.Message);
                 return null;
             }
+            finally
+            {
+                conexionBD.Close();
+            }
 
         }
 
@@ -69,9 +73,13 @@ namespace El_Balcon_de_Chalita
                 MessageBox.Show("Error al realizar la consulta:" + ex.Message);
                 return null;
             }
+            finally
+            {
+                conexionBD.Close();
+            }
 
         }
-
+        
         public DataGridView ConsultarReservaciones(DataGridView tabla)
         {
             DataGridView DgbReservaciones = tabla;
@@ -110,19 +118,23 @@ namespace El_Balcon_de_Chalita
                 MessageBox.Show(ex.Message);
                 return null;
             }
+            finally
+            {
+                conexionBD.Close();
+            }
 
         }
 
         public DataGridView ConsultarReservaciones(DataGridView tabla, cliente cliente)
         {
-            DataGridView DgbReservaciones = tabla;
-            string idCliente = cliente.IdCliente;
-            MessageBox.Show("El Id del cliente actual es: ", idCliente);
-            //Query para obtener las reservas enlazadas con los id de los clientes en su respectiva tabla
-            string obtenerReservas = "select * from reservaciones left join clientes on reservaciones.cliente = clientes.idCliente WHERE clientes LIKE @idCliente";
-            MySqlDataReader reader = null;
             MySqlConnection conexionBD = mysql.conexion.Conexion();
             conexionBD.Open();
+            DataGridView DgbReservaciones = tabla;
+            int idCliente = cliente.IdCliente;
+            //Query para obtener las reservas enlazadas con los id de los clientes en su respectiva tabla
+            string obtenerReservas = "select * from reservaciones left join clientes on reservaciones.cliente = clientes.idCliente WHERE clientes.idCliente LIKE @idCliente";
+            
+            MySqlDataReader reader = null;
             //Contador que sera el puntero para el numero de fila en la que se ira insertando la data de la BD
             int contador = 0;
             //Limpiamos el datagrid
@@ -130,8 +142,9 @@ namespace El_Balcon_de_Chalita
             DgbReservaciones.Refresh();
             try
             {
-                MySqlCommand comand = new MySqlCommand(obtenerReservas, conexionBD);
-                reader = comand.ExecuteReader();
+                MySqlCommand comando = new MySqlCommand(obtenerReservas, conexionBD);
+                comando.Parameters.AddWithValue("@idCliente", idCliente);
+                reader = comando.ExecuteReader();
                 if (reader.HasRows)
                 {
                     while (reader.Read())
@@ -152,6 +165,10 @@ namespace El_Balcon_de_Chalita
             {
                 MessageBox.Show(ex.Message);
                 return null;
+            }
+            finally
+            {
+                conexionBD.Close();
             }
 
         }
