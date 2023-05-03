@@ -56,7 +56,6 @@ namespace El_Balcon_de_Chalita
             llenarComboBoxCompañiasAfiliadas();
             //this.micliente = micliente;
             
-
         }
 
         private void llenarComboBoxClientes()
@@ -316,10 +315,14 @@ namespace El_Balcon_de_Chalita
             limpiarCamposCliente();
             limpiarCamposReservaciones();
             limpiarCamposFormInventario();
+            
             LlenarFormulario(micliente);
             idCliente = micliente.IdCliente;
             correoCliente = micliente.Email;
-    }
+            dgvMaster.DataSource = null;
+            dgvMaster.Rows.Clear();
+            dgvMaster.Refresh();
+        }
         private void TsbActualizar_Click(object sender, EventArgs e)
         {
             actualizarRegistro();
@@ -609,9 +612,14 @@ namespace El_Balcon_de_Chalita
         //Funcion que mostrara los datos de las reservas en un dataGrid al ejecutar evento de click en el boton de consulta reservas
         private void button1_Click(object sender, EventArgs e)
         {
-            if (micliente.IdCliente >= 0) {
-                miconsulta.ConsultarReservaciones(DgbReservaciones, micliente);
-            } else miconsulta.ConsultarReservaciones(DgbReservaciones);
+            limpiarTabla();
+            dgvMaster.Columns.Add("IdReservaciones", "IdReservaciones");
+            dgvMaster.Columns.Add("Cliente", "Cliente");
+            dgvMaster.Columns.Add("Fecha de Entrada", "Fecha de Entrada");
+            dgvMaster.Columns.Add("Fecha de Salida", "Fecha de Salida");
+            if (micliente.IdCliente >= 0) { // revisa el id del cliente seleccionado
+                miconsulta.ConsultarReservaciones(dgvMaster, micliente); // si esta seleccionado busca reservas del cliente
+            } else miconsulta.ConsultarReservaciones(dgvMaster); 
 
         }
 
@@ -975,16 +983,26 @@ namespace El_Balcon_de_Chalita
 
         private void tsbBuscarCliente_Click(object sender, EventArgs e)
         {
-            busquedaclientes ventanabusqueda = new busquedaclientes(micliente);
-            ventanabusqueda.dlgbalcon = this;
+            limpiarTabla();
+            //busquedaclientes ventanabusqueda = new busquedaclientes(micliente);
+            //ventanabusqueda.dlgbalcon = this;
             string busqueda = tstbBuscarCliente.Text;
-            ventanabusqueda.buscarClientes(busqueda);
-            ventanabusqueda.Show();
+            //ventanabusqueda.buscarClientes(busqueda);
+            //ventanabusqueda.Show();
+
+
+            dgvMaster.DataSource = miconsulta.ConsultarClientes(busqueda);
+
         }
 
         private void btnConsultarReservasAll_Click(object sender, EventArgs e)
         {
-            miconsulta.ConsultarReservaciones(DgbReservaciones);
+            limpiarTabla();
+            dgvMaster.Columns.Add("IdReservaciones", "IdReservaciones");
+            dgvMaster.Columns.Add("Cliente", "Cliente");
+            dgvMaster.Columns.Add("Fecha de Entrada", "Fecha de Entrada");
+            dgvMaster.Columns.Add("Fecha de Salida", "Fecha de Salida");
+            miconsulta.ConsultarReservaciones(dgvMaster);
         }
 
 
@@ -998,6 +1016,44 @@ namespace El_Balcon_de_Chalita
         {
             selectorContexto = TbcPrincipal.SelectedIndex;
             if (selectorContexto == 2) selectorContexto = TbcInventarioBalcon.SelectedIndex + 2; // Si la pestaña de inventario esta seleccionada se le suman las otras dos que tiene adentro.
+        }
+
+        private void dgvMaster_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvMaster.SelectedRows.Count > 0)
+            {
+                // Obtener la fila seleccionada
+                
+                tsbSeleccionar.Enabled = true;
+            }
+            else
+            {
+                tsbSeleccionar.Enabled = false;
+            }
+        }
+
+        private void tsbSeleccionar_Click(object sender, EventArgs e)
+        {
+            int selectedIndex = dgvMaster.CurrentCell.RowIndex;
+            micliente.IdCliente = Convert.ToInt32(dgvMaster[0, selectedIndex].Value);
+            micliente.Nombre = dgvMaster[1, selectedIndex].Value.ToString();
+            micliente.ApellidoPaterno = dgvMaster[2, selectedIndex].Value.ToString();
+            micliente.ApellidoMaterno = dgvMaster[3, selectedIndex].Value.ToString();
+            micliente.NumCelular = dgvMaster[4, selectedIndex].Value.ToString();
+            micliente.Email = dgvMaster[5, selectedIndex].Value.ToString();
+            micliente.CodigoCliente = dgvMaster[6, selectedIndex].Value.ToString();
+            micliente.Genero = dgvMaster[7, selectedIndex].Value.ToString();
+            micliente.LugarProcedencia = dgvMaster[8, selectedIndex].Value.ToString();
+            micliente.EstadoCivil = dgvMaster[9, selectedIndex].Value.ToString();
+            micliente.FechaNacimiento = dgvMaster[10, selectedIndex].Value.ToString();
+            ActualizarForm();
+        }
+
+        private void limpiarTabla()
+        {
+            dgvMaster.DataSource = null;
+            dgvMaster.Rows.Clear();
+            dgvMaster.Columns.Clear();
         }
     }
 }

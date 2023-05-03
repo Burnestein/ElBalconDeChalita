@@ -79,7 +79,7 @@ namespace El_Balcon_de_Chalita
             }
 
         }
-        
+
         public DataGridView ConsultarReservaciones(DataGridView tabla)
         {
             DataGridView DgbReservaciones = tabla;
@@ -102,7 +102,7 @@ namespace El_Balcon_de_Chalita
                     while (reader.Read())
                     {
                         string nombreCliente = reader.GetString(7) + " " + reader.GetString(8) + " " + reader.GetString(9);
-                        DataGridViewRow row = (DataGridViewRow)DgbReservaciones.Rows[contador].Clone();
+                        DataGridViewRow row = (DataGridViewRow)DgbReservaciones.Rows[contador].Clone(); //Error en esta linea
                         row.Cells[0].Value = reader.GetString(0);
                         row.Cells[1].Value = nombreCliente;
                         row.Cells[2].Value = reader.GetString(2);

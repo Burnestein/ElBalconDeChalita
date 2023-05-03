@@ -41,12 +41,12 @@ namespace El_Balcon_de_Chalita
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.TSLBienvenido = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.TsbNuevo = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.TsbGuardar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.TsbEliminar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.TsbGuardar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.TsbActualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
@@ -55,6 +55,11 @@ namespace El_Balcon_de_Chalita
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.TpgReservaciones = new System.Windows.Forms.TabPage();
             this.btnConsultarReservasAll = new System.Windows.Forms.Button();
+            this.DgbReservaciones = new System.Windows.Forms.DataGridView();
+            this.IdReservacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaDeEntrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaDeSalida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tlpClienteBoton2 = new System.Windows.Forms.TableLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
             this.cbxCompañias = new System.Windows.Forms.ComboBox();
@@ -63,11 +68,6 @@ namespace El_Balcon_de_Chalita
             this.label4 = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.btnConsultarReservas = new System.Windows.Forms.Button();
-            this.DgbReservaciones = new System.Windows.Forms.DataGridView();
-            this.IdReservacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaDeEntrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaDeSalida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnReservar = new System.Windows.Forms.Button();
             this.CbxClientes = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -75,29 +75,30 @@ namespace El_Balcon_de_Chalita
             this.CCheckOut = new System.Windows.Forms.MonthCalendar();
             this.CCheckIn = new System.Windows.Forms.MonthCalendar();
             this.TbgClientes = new System.Windows.Forms.TabPage();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.gbDatosCliente = new System.Windows.Forms.GroupBox();
+            this.LblNombre = new System.Windows.Forms.Label();
+            this.LblApellidoP = new System.Windows.Forms.Label();
             this.LblGenero = new System.Windows.Forms.Label();
+            this.TbxNombre = new System.Windows.Forms.TextBox();
             this.CbxGenero = new System.Windows.Forms.ComboBox();
+            this.TbxApellidoP = new System.Windows.Forms.TextBox();
             this.CbxAño = new System.Windows.Forms.ComboBox();
+            this.LblApellidoM = new System.Windows.Forms.Label();
             this.CbxMes = new System.Windows.Forms.ComboBox();
+            this.TbxApellidoM = new System.Windows.Forms.TextBox();
             this.CbxDia = new System.Windows.Forms.ComboBox();
+            this.LblCorreo = new System.Windows.Forms.Label();
             this.LblEstadoCivil = new System.Windows.Forms.Label();
             this.CbxEstadocivil = new System.Windows.Forms.ComboBox();
-            this.LblLugarProcedencia = new System.Windows.Forms.Label();
+            this.TbxCorreo = new System.Windows.Forms.TextBox();
+            this.LblFechaNacimiento = new System.Windows.Forms.Label();
             this.TbxLugarProcedencia = new System.Windows.Forms.TextBox();
             this.TbxCodigo = new System.Windows.Forms.TextBox();
-            this.TbxCorreo = new System.Windows.Forms.TextBox();
             this.TbxTelefonoMovil = new System.Windows.Forms.TextBox();
-            this.TbxApellidoM = new System.Windows.Forms.TextBox();
-            this.TbxApellidoP = new System.Windows.Forms.TextBox();
-            this.TbxNombre = new System.Windows.Forms.TextBox();
-            this.LblFechaNacimiento = new System.Windows.Forms.Label();
-            this.LblCodigo = new System.Windows.Forms.Label();
-            this.LblCorreo = new System.Windows.Forms.Label();
+            this.LblLugarProcedencia = new System.Windows.Forms.Label();
             this.LblTelefonoMovil = new System.Windows.Forms.Label();
-            this.LblApellidoM = new System.Windows.Forms.Label();
-            this.LblApellidoP = new System.Windows.Forms.Label();
-            this.LblNombre = new System.Windows.Forms.Label();
+            this.LblCodigo = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.TbcPrincipal = new System.Windows.Forms.TabControl();
             this.Inventario = new System.Windows.Forms.TabPage();
             this.TbcInventarioBalcon = new System.Windows.Forms.TabControl();
@@ -135,6 +136,11 @@ namespace El_Balcon_de_Chalita
             this.tsbQuitarCliente = new System.Windows.Forms.ToolStripButton();
             this.tstbBuscarCliente = new System.Windows.Forms.ToolStripTextBox();
             this.tsbBuscarCliente = new System.Windows.Forms.ToolStripButton();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
+            this.tsbSeleccionar = new System.Windows.Forms.ToolStripButton();
+            this.dgvMaster = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -142,6 +148,7 @@ namespace El_Balcon_de_Chalita
             this.TpgReservaciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgbReservaciones)).BeginInit();
             this.TbgClientes.SuspendLayout();
+            this.gbDatosCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.TbcPrincipal.SuspendLayout();
             this.Inventario.SuspendLayout();
@@ -152,6 +159,10 @@ namespace El_Balcon_de_Chalita
             ((System.ComponentModel.ISupportInitialize)(this.DgbInventarioCliente)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.toolStrip3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMaster)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -253,11 +264,6 @@ namespace El_Balcon_de_Chalita
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 72);
-            // 
             // TsbNuevo
             // 
             this.TsbNuevo.Image = ((System.Drawing.Image)(resources.GetObject("TsbNuevo.Image")));
@@ -266,6 +272,20 @@ namespace El_Balcon_de_Chalita
             this.TsbNuevo.Size = new System.Drawing.Size(115, 69);
             this.TsbNuevo.Text = "Crear Nuevo";
             this.TsbNuevo.Click += new System.EventHandler(this.TsbNuevo_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 72);
+            // 
+            // TsbGuardar
+            // 
+            this.TsbGuardar.Image = ((System.Drawing.Image)(resources.GetObject("TsbGuardar.Image")));
+            this.TsbGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TsbGuardar.Name = "TsbGuardar";
+            this.TsbGuardar.Size = new System.Drawing.Size(166, 69);
+            this.TsbGuardar.Text = "Guardar / Actualizar";
+            this.TsbGuardar.Click += new System.EventHandler(this.TsbGuardar_Click);
             // 
             // toolStripSeparator2
             // 
@@ -285,15 +305,6 @@ namespace El_Balcon_de_Chalita
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 72);
-            // 
-            // TsbGuardar
-            // 
-            this.TsbGuardar.Image = ((System.Drawing.Image)(resources.GetObject("TsbGuardar.Image")));
-            this.TsbGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.TsbGuardar.Name = "TsbGuardar";
-            this.TsbGuardar.Size = new System.Drawing.Size(166, 69);
-            this.TsbGuardar.Text = "Guardar / Actualizar";
-            this.TsbGuardar.Click += new System.EventHandler(this.TsbGuardar_Click);
             // 
             // toolStripSeparator4
             // 
@@ -346,6 +357,7 @@ namespace El_Balcon_de_Chalita
             // 
             this.TpgReservaciones.BackColor = System.Drawing.SystemColors.Control;
             this.TpgReservaciones.Controls.Add(this.btnConsultarReservasAll);
+            this.TpgReservaciones.Controls.Add(this.DgbReservaciones);
             this.TpgReservaciones.Controls.Add(this.tlpClienteBoton2);
             this.TpgReservaciones.Controls.Add(this.label6);
             this.TpgReservaciones.Controls.Add(this.cbxCompañias);
@@ -354,7 +366,6 @@ namespace El_Balcon_de_Chalita
             this.TpgReservaciones.Controls.Add(this.label4);
             this.TpgReservaciones.Controls.Add(this.txtTotal);
             this.TpgReservaciones.Controls.Add(this.btnConsultarReservas);
-            this.TpgReservaciones.Controls.Add(this.DgbReservaciones);
             this.TpgReservaciones.Controls.Add(this.BtnReservar);
             this.TpgReservaciones.Controls.Add(this.CbxClientes);
             this.TpgReservaciones.Controls.Add(this.label2);
@@ -365,105 +376,20 @@ namespace El_Balcon_de_Chalita
             this.TpgReservaciones.Margin = new System.Windows.Forms.Padding(4);
             this.TpgReservaciones.Name = "TpgReservaciones";
             this.TpgReservaciones.Padding = new System.Windows.Forms.Padding(4);
-            this.TpgReservaciones.Size = new System.Drawing.Size(1366, 553);
+            this.TpgReservaciones.Size = new System.Drawing.Size(947, 547);
             this.TpgReservaciones.TabIndex = 1;
             this.TpgReservaciones.Text = "Reservaciones";
             this.TpgReservaciones.Click += new System.EventHandler(this.TpgReservaciones_Click);
             // 
             // btnConsultarReservasAll
             // 
-            this.btnConsultarReservasAll.Location = new System.Drawing.Point(942, 349);
+            this.btnConsultarReservasAll.Location = new System.Drawing.Point(381, 374);
             this.btnConsultarReservasAll.Name = "btnConsultarReservasAll";
-            this.btnConsultarReservasAll.Size = new System.Drawing.Size(165, 55);
+            this.btnConsultarReservasAll.Size = new System.Drawing.Size(141, 52);
             this.btnConsultarReservasAll.TabIndex = 15;
             this.btnConsultarReservasAll.Text = "Ver todas";
             this.btnConsultarReservasAll.UseVisualStyleBackColor = true;
             this.btnConsultarReservasAll.Click += new System.EventHandler(this.btnConsultarReservasAll_Click);
-            // 
-            // tlpClienteBoton2
-            // 
-            this.tlpClienteBoton2.AutoSize = true;
-            this.tlpClienteBoton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tlpClienteBoton2.ColumnCount = 2;
-            this.tlpClienteBoton2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpClienteBoton2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpClienteBoton2.Location = new System.Drawing.Point(49, 11);
-            this.tlpClienteBoton2.Name = "tlpClienteBoton2";
-            this.tlpClienteBoton2.RowCount = 1;
-            this.tlpClienteBoton2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpClienteBoton2.Size = new System.Drawing.Size(0, 0);
-            this.tlpClienteBoton2.TabIndex = 14;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(205, 94);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(114, 17);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Empresa Afiliada";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // cbxCompañias
-            // 
-            this.cbxCompañias.FormattingEnabled = true;
-            this.cbxCompañias.Location = new System.Drawing.Point(209, 113);
-            this.cbxCompañias.Margin = new System.Windows.Forms.Padding(4);
-            this.cbxCompañias.Name = "cbxCompañias";
-            this.cbxCompañias.Size = new System.Drawing.Size(160, 24);
-            this.cbxCompañias.TabIndex = 12;
-            this.cbxCompañias.SelectedIndexChanged += new System.EventHandler(this.cbxCompañias_SelectedIndexChanged);
-            // 
-            // txtSubTotal
-            // 
-            this.txtSubTotal.Location = new System.Drawing.Point(49, 162);
-            this.txtSubTotal.Margin = new System.Windows.Forms.Padding(4);
-            this.txtSubTotal.Name = "txtSubTotal";
-            this.txtSubTotal.Size = new System.Drawing.Size(132, 22);
-            this.txtSubTotal.TabIndex = 11;
-            this.txtSubTotal.TextChanged += new System.EventHandler(this.txtSubTotal_TextChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(51, 142);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 17);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "SubTotal";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(51, 94);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 17);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Total";
-            // 
-            // txtTotal
-            // 
-            this.txtTotal.Location = new System.Drawing.Point(49, 113);
-            this.txtTotal.Margin = new System.Windows.Forms.Padding(4);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(132, 22);
-            this.txtTotal.TabIndex = 8;
-            this.txtTotal.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // btnConsultarReservas
-            // 
-            this.btnConsultarReservas.Location = new System.Drawing.Point(942, 287);
-            this.btnConsultarReservas.Margin = new System.Windows.Forms.Padding(4);
-            this.btnConsultarReservas.Name = "btnConsultarReservas";
-            this.btnConsultarReservas.Size = new System.Drawing.Size(165, 55);
-            this.btnConsultarReservas.TabIndex = 7;
-            this.btnConsultarReservas.Text = "Reservas de cliente";
-            this.btnConsultarReservas.UseVisualStyleBackColor = true;
-            this.btnConsultarReservas.Click += new System.EventHandler(this.button1_Click);
             // 
             // DgbReservaciones
             // 
@@ -474,12 +400,13 @@ namespace El_Balcon_de_Chalita
             this.Cliente,
             this.fechaDeEntrada,
             this.fechaDeSalida});
-            this.DgbReservaciones.Location = new System.Drawing.Point(113, 287);
+            this.DgbReservaciones.Location = new System.Drawing.Point(884, 8);
             this.DgbReservaciones.Margin = new System.Windows.Forms.Padding(4);
             this.DgbReservaciones.Name = "DgbReservaciones";
             this.DgbReservaciones.RowHeadersWidth = 51;
-            this.DgbReservaciones.Size = new System.Drawing.Size(821, 180);
+            this.DgbReservaciones.Size = new System.Drawing.Size(55, 20);
             this.DgbReservaciones.TabIndex = 5;
+            this.DgbReservaciones.Visible = false;
             this.DgbReservaciones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // IdReservacion
@@ -510,9 +437,94 @@ namespace El_Balcon_de_Chalita
             this.fechaDeSalida.Name = "fechaDeSalida";
             this.fechaDeSalida.Width = 125;
             // 
+            // tlpClienteBoton2
+            // 
+            this.tlpClienteBoton2.AutoSize = true;
+            this.tlpClienteBoton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tlpClienteBoton2.ColumnCount = 2;
+            this.tlpClienteBoton2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpClienteBoton2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpClienteBoton2.Location = new System.Drawing.Point(49, 11);
+            this.tlpClienteBoton2.Name = "tlpClienteBoton2";
+            this.tlpClienteBoton2.RowCount = 1;
+            this.tlpClienteBoton2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpClienteBoton2.Size = new System.Drawing.Size(0, 0);
+            this.tlpClienteBoton2.TabIndex = 14;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(378, 46);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(114, 17);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Empresa Afiliada";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // cbxCompañias
+            // 
+            this.cbxCompañias.FormattingEnabled = true;
+            this.cbxCompañias.Location = new System.Drawing.Point(381, 67);
+            this.cbxCompañias.Margin = new System.Windows.Forms.Padding(4);
+            this.cbxCompañias.Name = "cbxCompañias";
+            this.cbxCompañias.Size = new System.Drawing.Size(132, 24);
+            this.cbxCompañias.TabIndex = 12;
+            this.cbxCompañias.SelectedIndexChanged += new System.EventHandler(this.cbxCompañias_SelectedIndexChanged);
+            // 
+            // txtSubTotal
+            // 
+            this.txtSubTotal.Location = new System.Drawing.Point(381, 152);
+            this.txtSubTotal.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSubTotal.Name = "txtSubTotal";
+            this.txtSubTotal.Size = new System.Drawing.Size(132, 22);
+            this.txtSubTotal.TabIndex = 11;
+            this.txtSubTotal.TextChanged += new System.EventHandler(this.txtSubTotal_TextChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(378, 131);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 17);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "SubTotal";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(378, 179);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(40, 17);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Total";
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.Location = new System.Drawing.Point(381, 200);
+            this.txtTotal.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(132, 22);
+            this.txtTotal.TabIndex = 8;
+            this.txtTotal.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // btnConsultarReservas
+            // 
+            this.btnConsultarReservas.Location = new System.Drawing.Point(381, 310);
+            this.btnConsultarReservas.Margin = new System.Windows.Forms.Padding(4);
+            this.btnConsultarReservas.Name = "btnConsultarReservas";
+            this.btnConsultarReservas.Size = new System.Drawing.Size(141, 52);
+            this.btnConsultarReservas.TabIndex = 7;
+            this.btnConsultarReservas.Text = "Reservas de cliente";
+            this.btnConsultarReservas.UseVisualStyleBackColor = true;
+            this.btnConsultarReservas.Click += new System.EventHandler(this.button1_Click);
+            // 
             // BtnReservar
             // 
-            this.BtnReservar.Location = new System.Drawing.Point(193, 202);
+            this.BtnReservar.Location = new System.Drawing.Point(381, 250);
             this.BtnReservar.Margin = new System.Windows.Forms.Padding(4);
             this.BtnReservar.Name = "BtnReservar";
             this.BtnReservar.Size = new System.Drawing.Size(141, 52);
@@ -524,7 +536,7 @@ namespace El_Balcon_de_Chalita
             // CbxClientes
             // 
             this.CbxClientes.FormattingEnabled = true;
-            this.CbxClientes.Location = new System.Drawing.Point(49, 54);
+            this.CbxClientes.Location = new System.Drawing.Point(592, 4);
             this.CbxClientes.Margin = new System.Windows.Forms.Padding(4);
             this.CbxClientes.Name = "CbxClientes";
             this.CbxClientes.Size = new System.Drawing.Size(284, 24);
@@ -534,7 +546,7 @@ namespace El_Balcon_de_Chalita
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(517, 23);
+            this.label2.Location = new System.Drawing.Point(13, 22);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(121, 17);
@@ -545,7 +557,7 @@ namespace El_Balcon_de_Chalita
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(913, 23);
+            this.label1.Location = new System.Drawing.Point(13, 268);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(110, 17);
@@ -555,7 +567,7 @@ namespace El_Balcon_de_Chalita
             // 
             // CCheckOut
             // 
-            this.CCheckOut.Location = new System.Drawing.Point(817, 54);
+            this.CCheckOut.Location = new System.Drawing.Point(16, 296);
             this.CCheckOut.Margin = new System.Windows.Forms.Padding(12, 11, 12, 11);
             this.CCheckOut.Name = "CCheckOut";
             this.CCheckOut.TabIndex = 1;
@@ -563,7 +575,7 @@ namespace El_Balcon_de_Chalita
             // 
             // CCheckIn
             // 
-            this.CCheckIn.Location = new System.Drawing.Point(413, 54);
+            this.CCheckIn.Location = new System.Drawing.Point(16, 50);
             this.CCheckIn.Margin = new System.Windows.Forms.Padding(12, 11, 12, 11);
             this.CCheckIn.Name = "CCheckIn";
             this.CCheckIn.TabIndex = 0;
@@ -571,76 +583,115 @@ namespace El_Balcon_de_Chalita
             // 
             // TbgClientes
             // 
+            this.TbgClientes.Controls.Add(this.gbDatosCliente);
             this.TbgClientes.Controls.Add(this.pictureBox1);
-            this.TbgClientes.Controls.Add(this.LblGenero);
-            this.TbgClientes.Controls.Add(this.CbxGenero);
-            this.TbgClientes.Controls.Add(this.CbxAño);
-            this.TbgClientes.Controls.Add(this.CbxMes);
-            this.TbgClientes.Controls.Add(this.CbxDia);
-            this.TbgClientes.Controls.Add(this.LblEstadoCivil);
-            this.TbgClientes.Controls.Add(this.CbxEstadocivil);
-            this.TbgClientes.Controls.Add(this.LblLugarProcedencia);
-            this.TbgClientes.Controls.Add(this.TbxLugarProcedencia);
-            this.TbgClientes.Controls.Add(this.TbxCodigo);
-            this.TbgClientes.Controls.Add(this.TbxCorreo);
-            this.TbgClientes.Controls.Add(this.TbxTelefonoMovil);
-            this.TbgClientes.Controls.Add(this.TbxApellidoM);
-            this.TbgClientes.Controls.Add(this.TbxApellidoP);
-            this.TbgClientes.Controls.Add(this.TbxNombre);
-            this.TbgClientes.Controls.Add(this.LblFechaNacimiento);
-            this.TbgClientes.Controls.Add(this.LblCodigo);
-            this.TbgClientes.Controls.Add(this.LblCorreo);
-            this.TbgClientes.Controls.Add(this.LblTelefonoMovil);
-            this.TbgClientes.Controls.Add(this.LblApellidoM);
-            this.TbgClientes.Controls.Add(this.LblApellidoP);
-            this.TbgClientes.Controls.Add(this.LblNombre);
             this.TbgClientes.Location = new System.Drawing.Point(4, 54);
             this.TbgClientes.Margin = new System.Windows.Forms.Padding(4);
             this.TbgClientes.Name = "TbgClientes";
             this.TbgClientes.Padding = new System.Windows.Forms.Padding(4);
-            this.TbgClientes.Size = new System.Drawing.Size(1366, 553);
+            this.TbgClientes.Size = new System.Drawing.Size(947, 547);
             this.TbgClientes.TabIndex = 0;
             this.TbgClientes.Text = "Clientes";
             this.TbgClientes.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
+            // gbDatosCliente
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(4, 4);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(317, 545);
-            this.pictureBox1.TabIndex = 38;
-            this.pictureBox1.TabStop = false;
+            this.gbDatosCliente.Controls.Add(this.LblNombre);
+            this.gbDatosCliente.Controls.Add(this.LblApellidoP);
+            this.gbDatosCliente.Controls.Add(this.LblGenero);
+            this.gbDatosCliente.Controls.Add(this.TbxNombre);
+            this.gbDatosCliente.Controls.Add(this.CbxGenero);
+            this.gbDatosCliente.Controls.Add(this.TbxApellidoP);
+            this.gbDatosCliente.Controls.Add(this.CbxAño);
+            this.gbDatosCliente.Controls.Add(this.LblApellidoM);
+            this.gbDatosCliente.Controls.Add(this.CbxMes);
+            this.gbDatosCliente.Controls.Add(this.TbxApellidoM);
+            this.gbDatosCliente.Controls.Add(this.CbxDia);
+            this.gbDatosCliente.Controls.Add(this.LblCorreo);
+            this.gbDatosCliente.Controls.Add(this.LblEstadoCivil);
+            this.gbDatosCliente.Controls.Add(this.CbxEstadocivil);
+            this.gbDatosCliente.Controls.Add(this.TbxCorreo);
+            this.gbDatosCliente.Controls.Add(this.LblFechaNacimiento);
+            this.gbDatosCliente.Controls.Add(this.TbxLugarProcedencia);
+            this.gbDatosCliente.Controls.Add(this.TbxCodigo);
+            this.gbDatosCliente.Controls.Add(this.TbxTelefonoMovil);
+            this.gbDatosCliente.Controls.Add(this.LblLugarProcedencia);
+            this.gbDatosCliente.Controls.Add(this.LblTelefonoMovil);
+            this.gbDatosCliente.Controls.Add(this.LblCodigo);
+            this.gbDatosCliente.Location = new System.Drawing.Point(328, 7);
+            this.gbDatosCliente.Name = "gbDatosCliente";
+            this.gbDatosCliente.Size = new System.Drawing.Size(612, 536);
+            this.gbDatosCliente.TabIndex = 39;
+            this.gbDatosCliente.TabStop = false;
+            this.gbDatosCliente.Text = "Datos del Cliente";
+            // 
+            // LblNombre
+            // 
+            this.LblNombre.AutoSize = true;
+            this.LblNombre.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.LblNombre.Location = new System.Drawing.Point(15, 52);
+            this.LblNombre.Name = "LblNombre";
+            this.LblNombre.Size = new System.Drawing.Size(75, 17);
+            this.LblNombre.TabIndex = 16;
+            this.LblNombre.Text = "Nombre(s)";
+            // 
+            // LblApellidoP
+            // 
+            this.LblApellidoP.AutoSize = true;
+            this.LblApellidoP.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.LblApellidoP.Location = new System.Drawing.Point(16, 140);
+            this.LblApellidoP.Name = "LblApellidoP";
+            this.LblApellidoP.Size = new System.Drawing.Size(112, 17);
+            this.LblApellidoP.TabIndex = 18;
+            this.LblApellidoP.Text = "Apellido Paterno";
             // 
             // LblGenero
             // 
             this.LblGenero.AutoSize = true;
             this.LblGenero.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.LblGenero.Location = new System.Drawing.Point(928, 288);
+            this.LblGenero.Location = new System.Drawing.Point(360, 294);
             this.LblGenero.Name = "LblGenero";
             this.LblGenero.Size = new System.Drawing.Size(56, 17);
             this.LblGenero.TabIndex = 37;
             this.LblGenero.Text = "Genero";
             // 
+            // TbxNombre
+            // 
+            this.TbxNombre.Location = new System.Drawing.Point(18, 71);
+            this.TbxNombre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TbxNombre.Multiline = true;
+            this.TbxNombre.Name = "TbxNombre";
+            this.TbxNombre.Size = new System.Drawing.Size(201, 30);
+            this.TbxNombre.TabIndex = 15;
+            // 
             // CbxGenero
             // 
             this.CbxGenero.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbxGenero.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.CbxGenero.FormattingEnabled = true;
             this.CbxGenero.Items.AddRange(new object[] {
             "Masculino.",
             "Femenino.",
             "Otro."});
-            this.CbxGenero.Location = new System.Drawing.Point(924, 314);
+            this.CbxGenero.Location = new System.Drawing.Point(362, 313);
             this.CbxGenero.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CbxGenero.Name = "CbxGenero";
             this.CbxGenero.Size = new System.Drawing.Size(197, 24);
             this.CbxGenero.TabIndex = 36;
             // 
+            // TbxApellidoP
+            // 
+            this.TbxApellidoP.Location = new System.Drawing.Point(19, 159);
+            this.TbxApellidoP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TbxApellidoP.Multiline = true;
+            this.TbxApellidoP.Name = "TbxApellidoP";
+            this.TbxApellidoP.Size = new System.Drawing.Size(201, 30);
+            this.TbxApellidoP.TabIndex = 17;
+            // 
             // CbxAño
             // 
             this.CbxAño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbxAño.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.CbxAño.FormattingEnabled = true;
             this.CbxAño.Items.AddRange(new object[] {
             "1900\t",
@@ -767,15 +818,26 @@ namespace El_Balcon_de_Chalita
             "2019",
             "2020",
             "2021"});
-            this.CbxAño.Location = new System.Drawing.Point(795, 314);
+            this.CbxAño.Location = new System.Drawing.Point(374, 404);
             this.CbxAño.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CbxAño.Name = "CbxAño";
             this.CbxAño.Size = new System.Drawing.Size(77, 24);
             this.CbxAño.TabIndex = 35;
             // 
+            // LblApellidoM
+            // 
+            this.LblApellidoM.AutoSize = true;
+            this.LblApellidoM.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.LblApellidoM.Location = new System.Drawing.Point(247, 140);
+            this.LblApellidoM.Name = "LblApellidoM";
+            this.LblApellidoM.Size = new System.Drawing.Size(114, 17);
+            this.LblApellidoM.TabIndex = 20;
+            this.LblApellidoM.Text = "Apellido Materno";
+            // 
             // CbxMes
             // 
             this.CbxMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbxMes.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.CbxMes.FormattingEnabled = true;
             this.CbxMes.Items.AddRange(new object[] {
             "01",
@@ -790,15 +852,25 @@ namespace El_Balcon_de_Chalita
             "10",
             "11",
             "12"});
-            this.CbxMes.Location = new System.Drawing.Point(729, 314);
+            this.CbxMes.Location = new System.Drawing.Point(308, 404);
             this.CbxMes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CbxMes.Name = "CbxMes";
             this.CbxMes.Size = new System.Drawing.Size(59, 24);
             this.CbxMes.TabIndex = 34;
             // 
+            // TbxApellidoM
+            // 
+            this.TbxApellidoM.Location = new System.Drawing.Point(250, 159);
+            this.TbxApellidoM.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TbxApellidoM.Multiline = true;
+            this.TbxApellidoM.Name = "TbxApellidoM";
+            this.TbxApellidoM.Size = new System.Drawing.Size(201, 30);
+            this.TbxApellidoM.TabIndex = 19;
+            // 
             // CbxDia
             // 
             this.CbxDia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbxDia.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.CbxDia.FormattingEnabled = true;
             this.CbxDia.Items.AddRange(new object[] {
             "01",
@@ -832,17 +904,27 @@ namespace El_Balcon_de_Chalita
             "29",
             "30",
             "31"});
-            this.CbxDia.Location = new System.Drawing.Point(671, 314);
+            this.CbxDia.Location = new System.Drawing.Point(250, 404);
             this.CbxDia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CbxDia.Name = "CbxDia";
             this.CbxDia.Size = new System.Drawing.Size(52, 24);
             this.CbxDia.TabIndex = 33;
             // 
+            // LblCorreo
+            // 
+            this.LblCorreo.AutoSize = true;
+            this.LblCorreo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.LblCorreo.Location = new System.Drawing.Point(15, 217);
+            this.LblCorreo.Name = "LblCorreo";
+            this.LblCorreo.Size = new System.Drawing.Size(51, 17);
+            this.LblCorreo.TabIndex = 24;
+            this.LblCorreo.Text = "Correo";
+            // 
             // LblEstadoCivil
             // 
             this.LblEstadoCivil.AutoSize = true;
             this.LblEstadoCivil.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.LblEstadoCivil.Location = new System.Drawing.Point(393, 295);
+            this.LblEstadoCivil.Location = new System.Drawing.Point(16, 385);
             this.LblEstadoCivil.Name = "LblEstadoCivil";
             this.LblEstadoCivil.Size = new System.Drawing.Size(79, 17);
             this.LblEstadoCivil.TabIndex = 32;
@@ -851,29 +933,39 @@ namespace El_Balcon_de_Chalita
             // CbxEstadocivil
             // 
             this.CbxEstadocivil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbxEstadocivil.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.CbxEstadocivil.FormattingEnabled = true;
             this.CbxEstadocivil.Items.AddRange(new object[] {
             "Solteroa(a)",
             "Casada(o)"});
-            this.CbxEstadocivil.Location = new System.Drawing.Point(393, 314);
+            this.CbxEstadocivil.Location = new System.Drawing.Point(19, 404);
             this.CbxEstadocivil.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CbxEstadocivil.Name = "CbxEstadocivil";
             this.CbxEstadocivil.Size = new System.Drawing.Size(197, 24);
             this.CbxEstadocivil.TabIndex = 31;
             // 
-            // LblLugarProcedencia
+            // TbxCorreo
             // 
-            this.LblLugarProcedencia.AutoSize = true;
-            this.LblLugarProcedencia.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.LblLugarProcedencia.Location = new System.Drawing.Point(752, 171);
-            this.LblLugarProcedencia.Name = "LblLugarProcedencia";
-            this.LblLugarProcedencia.Size = new System.Drawing.Size(147, 17);
-            this.LblLugarProcedencia.TabIndex = 30;
-            this.LblLugarProcedencia.Text = "Lugar de procedencia";
+            this.TbxCorreo.Location = new System.Drawing.Point(18, 236);
+            this.TbxCorreo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TbxCorreo.Multiline = true;
+            this.TbxCorreo.Name = "TbxCorreo";
+            this.TbxCorreo.Size = new System.Drawing.Size(317, 30);
+            this.TbxCorreo.TabIndex = 23;
+            // 
+            // LblFechaNacimiento
+            // 
+            this.LblFechaNacimiento.AutoSize = true;
+            this.LblFechaNacimiento.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.LblFechaNacimiento.Location = new System.Drawing.Point(247, 385);
+            this.LblFechaNacimiento.Name = "LblFechaNacimiento";
+            this.LblFechaNacimiento.Size = new System.Drawing.Size(141, 17);
+            this.LblFechaNacimiento.TabIndex = 28;
+            this.LblFechaNacimiento.Text = "Fecha de Nacimiento";
             // 
             // TbxLugarProcedencia
             // 
-            this.TbxLugarProcedencia.Location = new System.Drawing.Point(744, 207);
+            this.TbxLugarProcedencia.Location = new System.Drawing.Point(18, 313);
             this.TbxLugarProcedencia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TbxLugarProcedencia.Multiline = true;
             this.TbxLugarProcedencia.Name = "TbxLugarProcedencia";
@@ -882,140 +974,74 @@ namespace El_Balcon_de_Chalita
             // 
             // TbxCodigo
             // 
-            this.TbxCodigo.Location = new System.Drawing.Point(1116, 116);
+            this.TbxCodigo.Location = new System.Drawing.Point(367, 71);
             this.TbxCodigo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TbxCodigo.Multiline = true;
             this.TbxCodigo.Name = "TbxCodigo";
             this.TbxCodigo.Size = new System.Drawing.Size(201, 30);
             this.TbxCodigo.TabIndex = 25;
             // 
-            // TbxCorreo
-            // 
-            this.TbxCorreo.Location = new System.Drawing.Point(388, 207);
-            this.TbxCorreo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TbxCorreo.Multiline = true;
-            this.TbxCorreo.Name = "TbxCorreo";
-            this.TbxCorreo.Size = new System.Drawing.Size(317, 30);
-            this.TbxCorreo.TabIndex = 23;
-            // 
             // TbxTelefonoMovil
             // 
-            this.TbxTelefonoMovil.Location = new System.Drawing.Point(1116, 207);
+            this.TbxTelefonoMovil.Location = new System.Drawing.Point(363, 236);
             this.TbxTelefonoMovil.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TbxTelefonoMovil.Multiline = true;
             this.TbxTelefonoMovil.Name = "TbxTelefonoMovil";
             this.TbxTelefonoMovil.Size = new System.Drawing.Size(201, 30);
             this.TbxTelefonoMovil.TabIndex = 21;
             // 
-            // TbxApellidoM
+            // LblLugarProcedencia
             // 
-            this.TbxApellidoM.Location = new System.Drawing.Point(800, 116);
-            this.TbxApellidoM.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TbxApellidoM.Multiline = true;
-            this.TbxApellidoM.Name = "TbxApellidoM";
-            this.TbxApellidoM.Size = new System.Drawing.Size(201, 30);
-            this.TbxApellidoM.TabIndex = 19;
-            // 
-            // TbxApellidoP
-            // 
-            this.TbxApellidoP.Location = new System.Drawing.Point(592, 116);
-            this.TbxApellidoP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TbxApellidoP.Multiline = true;
-            this.TbxApellidoP.Name = "TbxApellidoP";
-            this.TbxApellidoP.Size = new System.Drawing.Size(201, 30);
-            this.TbxApellidoP.TabIndex = 17;
-            // 
-            // TbxNombre
-            // 
-            this.TbxNombre.Location = new System.Drawing.Point(384, 116);
-            this.TbxNombre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TbxNombre.Multiline = true;
-            this.TbxNombre.Name = "TbxNombre";
-            this.TbxNombre.Size = new System.Drawing.Size(201, 30);
-            this.TbxNombre.TabIndex = 15;
-            // 
-            // LblFechaNacimiento
-            // 
-            this.LblFechaNacimiento.AutoSize = true;
-            this.LblFechaNacimiento.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.LblFechaNacimiento.Location = new System.Drawing.Point(673, 289);
-            this.LblFechaNacimiento.Name = "LblFechaNacimiento";
-            this.LblFechaNacimiento.Size = new System.Drawing.Size(141, 17);
-            this.LblFechaNacimiento.TabIndex = 28;
-            this.LblFechaNacimiento.Text = "Fecha de Nacimiento";
-            // 
-            // LblCodigo
-            // 
-            this.LblCodigo.AutoSize = true;
-            this.LblCodigo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.LblCodigo.Location = new System.Drawing.Point(1257, 97);
-            this.LblCodigo.Name = "LblCodigo";
-            this.LblCodigo.Size = new System.Drawing.Size(52, 17);
-            this.LblCodigo.TabIndex = 26;
-            this.LblCodigo.Text = "Codigo";
-            // 
-            // LblCorreo
-            // 
-            this.LblCorreo.AutoSize = true;
-            this.LblCorreo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.LblCorreo.Location = new System.Drawing.Point(384, 171);
-            this.LblCorreo.Name = "LblCorreo";
-            this.LblCorreo.Size = new System.Drawing.Size(51, 17);
-            this.LblCorreo.TabIndex = 24;
-            this.LblCorreo.Text = "Correo";
+            this.LblLugarProcedencia.AutoSize = true;
+            this.LblLugarProcedencia.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.LblLugarProcedencia.Location = new System.Drawing.Point(15, 294);
+            this.LblLugarProcedencia.Name = "LblLugarProcedencia";
+            this.LblLugarProcedencia.Size = new System.Drawing.Size(147, 17);
+            this.LblLugarProcedencia.TabIndex = 30;
+            this.LblLugarProcedencia.Text = "Lugar de procedencia";
             // 
             // LblTelefonoMovil
             // 
             this.LblTelefonoMovil.AutoSize = true;
             this.LblTelefonoMovil.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.LblTelefonoMovil.Location = new System.Drawing.Point(1120, 181);
+            this.LblTelefonoMovil.Location = new System.Drawing.Point(360, 217);
             this.LblTelefonoMovil.Name = "LblTelefonoMovil";
             this.LblTelefonoMovil.Size = new System.Drawing.Size(100, 17);
             this.LblTelefonoMovil.TabIndex = 22;
             this.LblTelefonoMovil.Text = "Telefono Movil";
             // 
-            // LblApellidoM
+            // LblCodigo
             // 
-            this.LblApellidoM.AutoSize = true;
-            this.LblApellidoM.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.LblApellidoM.Location = new System.Drawing.Point(825, 80);
-            this.LblApellidoM.Name = "LblApellidoM";
-            this.LblApellidoM.Size = new System.Drawing.Size(114, 17);
-            this.LblApellidoM.TabIndex = 20;
-            this.LblApellidoM.Text = "Apellido Materno";
+            this.LblCodigo.AutoSize = true;
+            this.LblCodigo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.LblCodigo.Location = new System.Drawing.Point(516, 52);
+            this.LblCodigo.Name = "LblCodigo";
+            this.LblCodigo.Size = new System.Drawing.Size(52, 17);
+            this.LblCodigo.TabIndex = 26;
+            this.LblCodigo.Text = "Codigo";
             // 
-            // LblApellidoP
+            // pictureBox1
             // 
-            this.LblApellidoP.AutoSize = true;
-            this.LblApellidoP.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.LblApellidoP.Location = new System.Drawing.Point(588, 80);
-            this.LblApellidoP.Name = "LblApellidoP";
-            this.LblApellidoP.Size = new System.Drawing.Size(112, 17);
-            this.LblApellidoP.TabIndex = 18;
-            this.LblApellidoP.Text = "Apellido Paterno";
-            // 
-            // LblNombre
-            // 
-            this.LblNombre.AutoSize = true;
-            this.LblNombre.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.LblNombre.Location = new System.Drawing.Point(388, 80);
-            this.LblNombre.Name = "LblNombre";
-            this.LblNombre.Size = new System.Drawing.Size(75, 17);
-            this.LblNombre.TabIndex = 16;
-            this.LblNombre.Text = "Nombre(s)";
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(317, 539);
+            this.pictureBox1.TabIndex = 38;
+            this.pictureBox1.TabStop = false;
             // 
             // TbcPrincipal
             // 
             this.TbcPrincipal.Controls.Add(this.TbgClientes);
             this.TbcPrincipal.Controls.Add(this.TpgReservaciones);
             this.TbcPrincipal.Controls.Add(this.Inventario);
-            this.TbcPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TbcPrincipal.ItemSize = new System.Drawing.Size(150, 50);
-            this.TbcPrincipal.Location = new System.Drawing.Point(4, 112);
+            this.TbcPrincipal.Location = new System.Drawing.Point(4, 4);
             this.TbcPrincipal.Margin = new System.Windows.Forms.Padding(4);
             this.TbcPrincipal.Name = "TbcPrincipal";
             this.TbcPrincipal.SelectedIndex = 0;
-            this.TbcPrincipal.Size = new System.Drawing.Size(1374, 611);
+            this.TbcPrincipal.Size = new System.Drawing.Size(955, 605);
             this.TbcPrincipal.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.TbcPrincipal.TabIndex = 4;
             this.TbcPrincipal.SelectedIndexChanged += new System.EventHandler(this.TbcPrincipal_SelectedIndexChanged);
@@ -1027,7 +1053,7 @@ namespace El_Balcon_de_Chalita
             this.Inventario.Margin = new System.Windows.Forms.Padding(4);
             this.Inventario.Name = "Inventario";
             this.Inventario.Padding = new System.Windows.Forms.Padding(4);
-            this.Inventario.Size = new System.Drawing.Size(1366, 553);
+            this.Inventario.Size = new System.Drawing.Size(947, 547);
             this.Inventario.TabIndex = 2;
             this.Inventario.Text = "Inventario";
             this.Inventario.UseVisualStyleBackColor = true;
@@ -1042,7 +1068,7 @@ namespace El_Balcon_de_Chalita
             this.TbcInventarioBalcon.Margin = new System.Windows.Forms.Padding(4);
             this.TbcInventarioBalcon.Name = "TbcInventarioBalcon";
             this.TbcInventarioBalcon.SelectedIndex = 0;
-            this.TbcInventarioBalcon.Size = new System.Drawing.Size(1358, 545);
+            this.TbcInventarioBalcon.Size = new System.Drawing.Size(939, 539);
             this.TbcInventarioBalcon.TabIndex = 0;
             this.TbcInventarioBalcon.SelectedIndexChanged += new System.EventHandler(this.TbcInventarioBalcon_SelectedIndexChanged);
             // 
@@ -1064,7 +1090,7 @@ namespace El_Balcon_de_Chalita
             this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Size = new System.Drawing.Size(1350, 492);
+            this.tabPage1.Size = new System.Drawing.Size(931, 486);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Inventario del Balcon";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1087,7 +1113,7 @@ namespace El_Balcon_de_Chalita
             this.nombreObjeto,
             this.cantidadObjeto,
             this.precioObjeto});
-            this.DgbInventarioBalcon.Location = new System.Drawing.Point(707, 25);
+            this.DgbInventarioBalcon.Location = new System.Drawing.Point(489, 25);
             this.DgbInventarioBalcon.Margin = new System.Windows.Forms.Padding(4);
             this.DgbInventarioBalcon.Name = "DgbInventarioBalcon";
             this.DgbInventarioBalcon.RowHeadersWidth = 51;
@@ -1229,7 +1255,7 @@ namespace El_Balcon_de_Chalita
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Size = new System.Drawing.Size(1350, 492);
+            this.tabPage2.Size = new System.Drawing.Size(931, 486);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Inventario de los clientes";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1342,9 +1368,9 @@ namespace El_Balcon_de_Chalita
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.TbcPrincipal, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.toolStrip2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.toolStrip1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -1392,7 +1418,7 @@ namespace El_Balcon_de_Chalita
             this.tstbBuscarCliente.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.tstbBuscarCliente.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tstbBuscarCliente.Name = "tstbBuscarCliente";
-            this.tstbBuscarCliente.Size = new System.Drawing.Size(200, 36);
+            this.tstbBuscarCliente.Size = new System.Drawing.Size(320, 36);
             // 
             // tsbBuscarCliente
             // 
@@ -1403,6 +1429,73 @@ namespace El_Balcon_de_Chalita
             this.tsbBuscarCliente.Size = new System.Drawing.Size(76, 33);
             this.tsbBuscarCliente.Text = "Buscar";
             this.tsbBuscarCliente.Click += new System.EventHandler(this.tsbBuscarCliente_Click);
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel2.Controls.Add(this.TbcPrincipal, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 1, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 111);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1376, 613);
+            this.tableLayoutPanel2.TabIndex = 6;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Controls.Add(this.toolStrip3, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.dgvMaster, 0, 1);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(966, 3);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 95F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(407, 607);
+            this.tableLayoutPanel3.TabIndex = 5;
+            // 
+            // toolStrip3
+            // 
+            this.toolStrip3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolStrip3.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbSeleccionar});
+            this.toolStrip3.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip3.Name = "toolStrip3";
+            this.toolStrip3.Size = new System.Drawing.Size(407, 30);
+            this.toolStrip3.TabIndex = 0;
+            this.toolStrip3.Text = "toolStrip3";
+            // 
+            // tsbSeleccionar
+            // 
+            this.tsbSeleccionar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbSeleccionar.Enabled = false;
+            this.tsbSeleccionar.Image = ((System.Drawing.Image)(resources.GetObject("tsbSeleccionar.Image")));
+            this.tsbSeleccionar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSeleccionar.Name = "tsbSeleccionar";
+            this.tsbSeleccionar.Size = new System.Drawing.Size(89, 27);
+            this.tsbSeleccionar.Text = "Seleccionar";
+            this.tsbSeleccionar.Click += new System.EventHandler(this.tsbSeleccionar_Click);
+            // 
+            // dgvMaster
+            // 
+            this.dgvMaster.BackgroundColor = System.Drawing.Color.LavenderBlush;
+            this.dgvMaster.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvMaster.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMaster.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvMaster.Location = new System.Drawing.Point(3, 33);
+            this.dgvMaster.Name = "dgvMaster";
+            this.dgvMaster.RowHeadersWidth = 51;
+            this.dgvMaster.RowTemplate.Height = 24;
+            this.dgvMaster.Size = new System.Drawing.Size(401, 571);
+            this.dgvMaster.TabIndex = 1;
+            this.dgvMaster.SelectionChanged += new System.EventHandler(this.dgvMaster_SelectionChanged);
             // 
             // DlgBalconDeChalita
             // 
@@ -1431,7 +1524,8 @@ namespace El_Balcon_de_Chalita
             this.TpgReservaciones.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgbReservaciones)).EndInit();
             this.TbgClientes.ResumeLayout(false);
-            this.TbgClientes.PerformLayout();
+            this.gbDatosCliente.ResumeLayout(false);
+            this.gbDatosCliente.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.TbcPrincipal.ResumeLayout(false);
             this.Inventario.ResumeLayout(false);
@@ -1446,6 +1540,12 @@ namespace El_Balcon_de_Chalita
             this.tableLayoutPanel1.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
+            this.toolStrip3.ResumeLayout(false);
+            this.toolStrip3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMaster)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1558,5 +1658,11 @@ namespace El_Balcon_de_Chalita
         private System.Windows.Forms.ToolStripButton tsbBuscarCliente;
         private System.Windows.Forms.ToolStripTextBox tstbBuscarCliente;
         private System.Windows.Forms.Button btnConsultarReservasAll;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.ToolStrip toolStrip3;
+        private System.Windows.Forms.ToolStripButton tsbSeleccionar;
+        private System.Windows.Forms.DataGridView dgvMaster;
+        private System.Windows.Forms.GroupBox gbDatosCliente;
     }
 }

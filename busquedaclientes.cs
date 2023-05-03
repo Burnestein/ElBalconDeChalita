@@ -26,6 +26,7 @@ namespace El_Balcon_de_Chalita
         public void buscarClientes(string busqueda)
         {
             dgvBuscCliente.DataSource = miconsulta.ConsultarClientes(busqueda);
+            
         }
 
         private void btnBuscCanc_Click(object sender, EventArgs e)
