@@ -26,7 +26,7 @@ namespace El_Balcon_de_Chalita
         private double totalReserva = 0;
         private string idCompañia = "";
         private int selectorContexto; // Determina en qué pestaña se encuentra el usuario.
-                                          // 0-Clientes 1-Reservaciones 2-Inventario 3-Inventario Clientes
+                                          // 0-Clientes 1-Reservaciones 2-Inventario 3-InventarioClientes 
         private cliente micliente;
         consulta miconsulta;
 
@@ -105,9 +105,21 @@ namespace El_Balcon_de_Chalita
         //---------------------------------------------------------------------
         private void TsbNuevo_Click(object sender, System.EventArgs e)
         {
-            limpiarCamposCliente();
-            limpiarCamposReservaciones();
-            limpiarCamposFormInventario();
+            DialogResult result = MessageBox.Show("Crear un nuevo registro borrará toda la información del formulario. ¿Estás seguro que quieres continuar?", "Crear Nuevo", MessageBoxButtons.OKCancel);
+            // Verificar la respuesta del usuario
+            if (result == DialogResult.OK)
+            {
+                // El usuario ha seleccionado "Aceptar"
+                // Realizar la acción deseada
+                limpiarCamposCliente();
+                limpiarCamposReservaciones();
+                limpiarCamposFormInventario();
+            }
+            else
+            {
+                // El usuario ha seleccionado "Cancelar"
+                // Cancelar la acción o realizar otra acción según sea necesario
+            }
             
         }
 
@@ -140,6 +152,10 @@ namespace El_Balcon_de_Chalita
                     guardarReservaBD();
                     break;
                 case 2: // La pestaña de Inventario esta seleccionada
+                    guardarObjetoBD();
+                    break;
+                case 3: // La pestaña de Inventario de Cliente esta seleccionada
+                    guardarObjetoClienteBD();
                     break;
                 default:
                     MessageBox.Show("Error con el selector de contexto.");
@@ -206,7 +222,21 @@ namespace El_Balcon_de_Chalita
                         {
                             //MessageBox.Show("Error durante la insercion del registro: " + ex.Message);
                             //Si no puede guardar intenta editar el registro
-                            actualizarRegistro();
+
+                            DialogResult result = MessageBox.Show("Ya extiste un registro con éste código. ¿Desea sobre escribirlo?", "Actualizar Datos", MessageBoxButtons.OKCancel);
+                            // Verificar la respuesta del usuario
+                            if (result == DialogResult.OK)
+                            {
+                                // El usuario ha seleccionado "Aceptar"
+                                // Realizar la acción deseada
+                                actualizarRegistro();
+                            }
+                            else
+                            {
+                                // El usuario ha seleccionado "Cancelar"
+                                // Cancelar la acción o realizar otra acción según sea necesario
+                            }
+                            
                         }
                     }
                     else
@@ -961,6 +991,13 @@ namespace El_Balcon_de_Chalita
         private void TbcPrincipal_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectorContexto = TbcPrincipal.SelectedIndex;
+            if (selectorContexto == 2) selectorContexto = TbcInventarioBalcon.SelectedIndex + 2; // Si la pestaña de inventario esta seleccionada se le suman las otras dos que tiene adentro.
+        }
+
+        private void TbcInventarioBalcon_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectorContexto = TbcPrincipal.SelectedIndex;
+            if (selectorContexto == 2) selectorContexto = TbcInventarioBalcon.SelectedIndex + 2; // Si la pestaña de inventario esta seleccionada se le suman las otras dos que tiene adentro.
         }
     }
 }

@@ -886,7 +886,6 @@ namespace El_Balcon_de_Chalita
             this.TbxCodigo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TbxCodigo.Multiline = true;
             this.TbxCodigo.Name = "TbxCodigo";
-            this.TbxCodigo.ReadOnly = true;
             this.TbxCodigo.Size = new System.Drawing.Size(201, 30);
             this.TbxCodigo.TabIndex = 25;
             // 
@@ -1045,6 +1044,7 @@ namespace El_Balcon_de_Chalita
             this.TbcInventarioBalcon.SelectedIndex = 0;
             this.TbcInventarioBalcon.Size = new System.Drawing.Size(1358, 545);
             this.TbcInventarioBalcon.TabIndex = 0;
+            this.TbcInventarioBalcon.SelectedIndexChanged += new System.EventHandler(this.TbcInventarioBalcon_SelectedIndexChanged);
             // 
             // tabPage1
             // 
