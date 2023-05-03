@@ -105,29 +105,12 @@ namespace El_Balcon_de_Chalita
         //---------------------------------------------------------------------
         private void TsbNuevo_Click(object sender, System.EventArgs e)
         {
-
-
-            {
-
-                TbxCodigo.Text = "";
-                TbxNombre.Text = "";
-                TbxApellidoP.Text = "";
-                TbxApellidoM.Text = "";
-                TbxTelefonoMovil.Text = "";
-                TbxCorreo.Text = "";
-                TbxLugarProcedencia.Text = "";
-                CbxAño.SelectedIndex = -1;
-                CbxMes.SelectedIndex = -1;
-                CbxDia.SelectedIndex = -1;
-                CbxEstadocivil.SelectedIndex = -1;
-                CbxGenero.SelectedIndex = -1;
-
-            }
-            //---------------------------------------------------------------------
-            //Elimina Un registro.
-            //----------------------------------------------------------------------
-
+            limpiarCamposCliente();
+            limpiarCamposReservaciones();
+            limpiarCamposFormInventario();
+            
         }
+
         /*
         Funcion para eliminar un cliente de la BD en base a su clave de registro
         @return void
@@ -140,13 +123,32 @@ namespace El_Balcon_de_Chalita
             cliente.asignarQueryEliminar("DELETE FROM clientes where codigoCliente= '" + codigo + "' ");
 
             cliente.eliminar();
-            limpiarCampos();
+            limpiarCamposCliente();
         }
 
         //---------------------------------------------------------------------
         //Funcion que inserta cliente en la BD
         //--
         private void TsbGuardar_Click(object sender, System.EventArgs e)
+        {
+            switch (selectorContexto)
+            {
+                case 0: // La pestaña de Clientes está seleccionada
+                    guardarClienteBD();
+                    break;
+                case 1: // La pestaña de Reservaciones está seleccionada
+                    guardarReservaBD();
+                    break;
+                case 2: // La pestaña de Inventario esta seleccionada
+                    break;
+                default:
+                    MessageBox.Show("Error con el selector de contexto.");
+                    break;
+            }
+            
+        }
+        
+        private void guardarClienteBD() // Realiza la insercion del cliente en la BD
         {
             //------------------------------------------------------------------------------
             //Primero realiza la accion del try catch, luego se realiza la accion del if.
@@ -195,7 +197,7 @@ namespace El_Balcon_de_Chalita
                             CbxClientes.Items.Add(codigo + "-" + nombre);
                             CbxClientesInventarioClientes.Items.Add(codigo + "-" + nombre);
                             //Ejecutamos funcion para limpiar los campos
-                            limpiarCampos();
+                            limpiarCamposCliente();
 
                         }
                         //Cacha alguna excepcion en la insecion de la bd
@@ -203,7 +205,7 @@ namespace El_Balcon_de_Chalita
 
                         {
                             //MessageBox.Show("Error durante la insercion del registro: " + ex.Message);
-                            //Intenta editar el registro
+                            //Si no puede guardar intenta editar el registro
                             actualizarRegistro();
                         }
                     }
@@ -222,10 +224,11 @@ namespace El_Balcon_de_Chalita
 
             //MessageBox.Show(sentenciaInsertar);
         }
+
         //---------------------------------------------------------------------
         //Funcion para limpiar todos los campos del formulario
         //----------------------------------------------------------------------
-        private void limpiarCampos()
+        private void limpiarCamposCliente()
         {
             TbxCodigo.Text = "";
             TbxNombre.Text = "";
@@ -242,8 +245,15 @@ namespace El_Balcon_de_Chalita
 
             tslCliente.Text = "Cliente:";
             tstbBuscarCliente.Text = "";
-            
 
+        }
+
+        private void limpiarCamposReservaciones()
+        {
+            txtTotal.Text = "";
+            cbxCompañias.SelectedIndex = -1;
+            txtSubTotal.Text = "";
+            DgbReservaciones.Rows.Clear();
         }
 
         public void LlenarFormulario(cliente micliente)
@@ -273,7 +283,9 @@ namespace El_Balcon_de_Chalita
         
         public void ActualizarForm()
         {
-            limpiarCampos();
+            limpiarCamposCliente();
+            limpiarCamposReservaciones();
+            limpiarCamposFormInventario();
             LlenarFormulario(micliente);
             idCliente = micliente.IdCliente;
             correoCliente = micliente.Email;
@@ -314,7 +326,7 @@ namespace El_Balcon_de_Chalita
                     //Ejecutamos el metodo que hara el update en BD
                     comando.ExecuteNonQuery();
                     MessageBox.Show("Registro modificado satisfactoriamente");
-                    limpiarCampos();
+                    limpiarCamposCliente();
 
                 }
                 catch (MySqlException ex)
@@ -509,6 +521,11 @@ namespace El_Balcon_de_Chalita
         //@return void
         private void btnReservar_Click(object sender, EventArgs e)
         {
+            guardarReservaBD();
+        }
+
+        private void guardarReservaBD() //realiza la insercion de la reserva en la BD
+        {
             //En caso de que todos los campos rqueridos sean llenados se procede a guardar la reserva
             if (idCliente != -1 && fechaEntrada != "" && fechaSalida != "" && cbxCompañias.SelectedIndex != -1)
             {
@@ -554,8 +571,6 @@ namespace El_Balcon_de_Chalita
 
             }
         }
-
-
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -591,6 +606,11 @@ namespace El_Balcon_de_Chalita
         }
 
         private void btnGuardarObjeto_Click(object sender, EventArgs e)
+        {
+            guardarObjetoBD();
+        }
+
+        private void guardarObjetoBD()
         {
             string nombreObjeto = txtNombreObjeto.Text;
             string cantidad = txtCantidadObjeto.Text;
@@ -706,6 +726,10 @@ namespace El_Balcon_de_Chalita
             txtCantidadObjeto.Text = "";
             txtNombreObjeto.Text = "";
             txtPrecioObjeto.Text = "";
+            DgbInventarioBalcon.Rows.Clear();
+            DgbInventarioCliente.Rows.Clear();
+            TxtNombreObjetoCliente.Text = "";
+            TxtCantidadObjetoCliente.Text = "";
         }
 
         private void btnVerInventarioBalcon_Click(object sender, EventArgs e)
@@ -749,6 +773,11 @@ namespace El_Balcon_de_Chalita
         }
 
         private void BtnGuardarObjetoCliente_Click(object sender, EventArgs e)
+        {
+            guardarObjetoClienteBD();
+        }
+
+        private void guardarObjetoClienteBD() // Realiza la insercion del objeto del cliente en BD
         {
             //Obtenemos el valor del input seleccionado
             //string nombreCliente = CbxClientesInventarioClientes.GetItemText(CbxClientesInventarioClientes.SelectedItem);

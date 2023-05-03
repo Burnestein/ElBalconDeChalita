@@ -233,12 +233,12 @@ namespace El_Balcon_de_Chalita
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripSeparator1,
             this.TsbNuevo,
+            this.toolStripSeparator1,
+            this.TsbGuardar,
             this.toolStripSeparator2,
             this.TsbEliminar,
             this.toolStripSeparator3,
-            this.TsbGuardar,
             this.toolStripSeparator4,
             this.TsbActualizar,
             this.toolStripSeparator5,
@@ -886,6 +886,7 @@ namespace El_Balcon_de_Chalita
             this.TbxCodigo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TbxCodigo.Multiline = true;
             this.TbxCodigo.Name = "TbxCodigo";
+            this.TbxCodigo.ReadOnly = true;
             this.TbxCodigo.Size = new System.Drawing.Size(201, 30);
             this.TbxCodigo.TabIndex = 25;
             // 
