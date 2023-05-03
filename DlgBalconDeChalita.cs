@@ -25,6 +25,8 @@ namespace El_Balcon_de_Chalita
         private string correoCliente = "";
         private double totalReserva = 0;
         private string idCompañia = "";
+        private int selectorContexto; // Determina en qué pestaña se encuentra el usuario.
+                                          // 0-Clientes 1-Reservaciones 2-Inventario 3-Inventario Clientes
         private cliente micliente;
         consulta miconsulta;
 
@@ -41,6 +43,7 @@ namespace El_Balcon_de_Chalita
         {
             //Se inicializa el componente
             InitializeComponent();
+            selectorContexto = 0;
             CbxClientes.Visible = false;
             tsbQuitarCliente.Visible = false;
             TsbConsultar.Visible = false;
@@ -923,6 +926,12 @@ namespace El_Balcon_de_Chalita
         private void btnConsultarReservasAll_Click(object sender, EventArgs e)
         {
             miconsulta.ConsultarReservaciones(DgbReservaciones);
+        }
+
+
+        private void TbcPrincipal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectorContexto = TbcPrincipal.SelectedIndex;
         }
     }
 }
