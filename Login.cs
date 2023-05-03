@@ -23,7 +23,7 @@ namespace El_Balcon_de_Chalita
 
         private void btnAcceder_Click(object sender, EventArgs e)
         {
-            MySqlDataReader reader = null;
+            MySqlDataReader reader = null;////
             string user = usuario.Text;
             string pass = contraseña.Text;
             string contraseaEncriptada = Encrypt.GetSHA256(pass);
