@@ -27,6 +27,7 @@ namespace El_Balcon_de_Chalita
             string user = usuario.Text;
             string pass = contraseña.Text;
             string contraseaEncriptada = Encrypt.GetSHA256(pass);
+            usuario.Text = contraseaEncriptada;
             string query = "select * from usuarios where email = '" + user + "' and password = '" + contraseaEncriptada + "' ";
 
             MySqlConnection conexionBD = mysql.conexion.Conexion();
