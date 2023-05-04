@@ -15,6 +15,7 @@ namespace El_Balcon_de_Chalita
         private string lugarProcedencia;
         private string estadoCivil;
         private string fechaNacimiento;
+        public string nombreCompleto { get; set; }
 
         public cliente()
         {
@@ -29,6 +30,7 @@ namespace El_Balcon_de_Chalita
             lugarProcedencia = "";
             estadoCivil = "";
             fechaNacimiento = "";
+            nombreCompleto = "";
         }
         public void asignarTablaConsulta(string tabla)
         {

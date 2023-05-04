@@ -5,6 +5,7 @@ using System;
 using System.Net;
 using System.Net.Mail;
 using System.Collections.Generic;
+using System.Drawing;
 
 using System.Text.RegularExpressions;
 
@@ -21,12 +22,15 @@ namespace El_Balcon_de_Chalita
         //---------------------------------------------------------------------
         private string fechaEntrada = "";
         private string fechaSalida = "";
-        private int idCliente;
+        private int idCliente = -1;
         private string correoCliente = "";
         private double totalReserva = 0;
         private string idCompañia = "";
+        private int selectorContexto; // Determina en qué pestaña se encuentra el usuario.
+                                          // 0-Clientes 1-Reservaciones 2-Inventario 3-InventarioClientes 
         private cliente micliente;
-        consulta miconsulta;
+        private consulta miconsulta;
+        private reservacion mireservacion;
 
         //---------------------------------------------------------------------
         //Atributo.
@@ -41,18 +45,27 @@ namespace El_Balcon_de_Chalita
         {
             //Se inicializa el componente
             InitializeComponent();
+            selectorContexto = 0;
             CbxClientes.Visible = false;
             tsbQuitarCliente.Visible = false;
             TsbConsultar.Visible = false;
             micliente = new cliente();
             miconsulta = new consulta();
+            mireservacion = new reservacion();
             //Generamos el codigo en automatico del cliente
             generarCodigoCliente();
             //Llenamos los combobox de los clientes y compañias afiliadas
             llenarComboBoxClientes();
             llenarComboBoxCompañiasAfiliadas();
             //this.micliente = micliente;
-            
+            tsbSeleccionar.Visible = true;
+            tsbSeleccionar.Enabled = false;
+            TsbNuevo.Visible = true;
+            TsbNuevo.Enabled = true;
+            TsbGuardar.Visible = true;
+            TsbGuardar.Enabled = true;
+            TsbEliminar.Visible = true;
+            TsbEliminar.Enabled = true;
 
         }
 
@@ -102,29 +115,24 @@ namespace El_Balcon_de_Chalita
         //---------------------------------------------------------------------
         private void TsbNuevo_Click(object sender, System.EventArgs e)
         {
-
-
+            DialogResult result = MessageBox.Show("Crear un nuevo registro borrará toda la información del formulario. ¿Estás seguro que quieres continuar?", "Crear Nuevo", MessageBoxButtons.OKCancel);
+            // Verificar la respuesta del usuario
+            if (result == DialogResult.OK)
             {
-
-                TbxCodigo.Text = "";
-                TbxNombre.Text = "";
-                TbxApellidoP.Text = "";
-                TbxApellidoM.Text = "";
-                TbxTelefonoMovil.Text = "";
-                TbxCorreo.Text = "";
-                TbxLugarProcedencia.Text = "";
-                CbxAño.SelectedIndex = -1;
-                CbxMes.SelectedIndex = -1;
-                CbxDia.SelectedIndex = -1;
-                CbxEstadocivil.SelectedIndex = -1;
-                CbxGenero.SelectedIndex = -1;
-
+                // El usuario ha seleccionado "Aceptar"
+                // Realizar la acción deseada
+                limpiarCamposCliente();
+                limpiarCamposReservaciones();
+                limpiarCamposFormInventario();
             }
-            //---------------------------------------------------------------------
-            //Elimina Un registro.
-            //----------------------------------------------------------------------
-
+            else
+            {
+                // El usuario ha seleccionado "Cancelar"
+                // Cancelar la acción o realizar otra acción según sea necesario
+            }
+            
         }
+
         /*
         Funcion para eliminar un cliente de la BD en base a su clave de registro
         @return void
@@ -137,13 +145,36 @@ namespace El_Balcon_de_Chalita
             cliente.asignarQueryEliminar("DELETE FROM clientes where codigoCliente= '" + codigo + "' ");
 
             cliente.eliminar();
-            limpiarCampos();
+            limpiarCamposCliente();
         }
 
         //---------------------------------------------------------------------
         //Funcion que inserta cliente en la BD
         //--
         private void TsbGuardar_Click(object sender, System.EventArgs e)
+        {
+            switch (selectorContexto)
+            {
+                case 0: // La pestaña de Clientes está seleccionada
+                    guardarClienteBD();
+                    break;
+                case 1: // La pestaña de Reservaciones está seleccionada
+                    guardarReservaBD();
+                    break;
+                case 2: // La pestaña de Inventario esta seleccionada
+                    guardarObjetoBD();
+                    break;
+                case 3: // La pestaña de Inventario de Cliente esta seleccionada
+                    guardarObjetoClienteBD();
+                    break;
+                default:
+                    MessageBox.Show("Error con el selector de contexto.");
+                    break;
+            }
+            
+        }
+        
+        private void guardarClienteBD() // Realiza la insercion del cliente en la BD
         {
             //------------------------------------------------------------------------------
             //Primero realiza la accion del try catch, luego se realiza la accion del if.
@@ -192,7 +223,7 @@ namespace El_Balcon_de_Chalita
                             CbxClientes.Items.Add(codigo + "-" + nombre);
                             CbxClientesInventarioClientes.Items.Add(codigo + "-" + nombre);
                             //Ejecutamos funcion para limpiar los campos
-                            limpiarCampos();
+                            limpiarCamposCliente();
 
                         }
                         //Cacha alguna excepcion en la insecion de la bd
@@ -200,8 +231,22 @@ namespace El_Balcon_de_Chalita
 
                         {
                             //MessageBox.Show("Error durante la insercion del registro: " + ex.Message);
-                            //Intenta editar el registro
-                            actualizarRegistro();
+                            //Si no puede guardar intenta editar el registro
+
+                            DialogResult result = MessageBox.Show("Ya extiste un registro con éste código. ¿Desea sobre escribirlo?", "Actualizar Datos", MessageBoxButtons.OKCancel);
+                            // Verificar la respuesta del usuario
+                            if (result == DialogResult.OK)
+                            {
+                                // El usuario ha seleccionado "Aceptar"
+                                // Realizar la acción deseada
+                                actualizarRegistro();
+                            }
+                            else
+                            {
+                                // El usuario ha seleccionado "Cancelar"
+                                // Cancelar la acción o realizar otra acción según sea necesario
+                            }
+                            
                         }
                     }
                     else
@@ -219,10 +264,11 @@ namespace El_Balcon_de_Chalita
 
             //MessageBox.Show(sentenciaInsertar);
         }
+
         //---------------------------------------------------------------------
         //Funcion para limpiar todos los campos del formulario
         //----------------------------------------------------------------------
-        private void limpiarCampos()
+        private void limpiarCamposCliente()
         {
             TbxCodigo.Text = "";
             TbxNombre.Text = "";
@@ -239,8 +285,15 @@ namespace El_Balcon_de_Chalita
 
             tslCliente.Text = "Cliente:";
             tstbBuscarCliente.Text = "";
-            
 
+        }
+
+        private void limpiarCamposReservaciones()
+        {
+            txtTotal.Text = "";
+            cbxCompañias.SelectedIndex = -1;
+            txtSubTotal.Text = "";
+            DgbReservaciones.Rows.Clear();
         }
 
         public void LlenarFormulario(cliente micliente)
@@ -270,11 +323,17 @@ namespace El_Balcon_de_Chalita
         
         public void ActualizarForm()
         {
-            limpiarCampos();
+            limpiarCamposCliente();
+            limpiarCamposReservaciones();
+            limpiarCamposFormInventario();
+            
             LlenarFormulario(micliente);
             idCliente = micliente.IdCliente;
             correoCliente = micliente.Email;
-    }
+            dgvMaster.DataSource = null;
+            dgvMaster.Rows.Clear();
+            dgvMaster.Refresh();
+        }
         private void TsbActualizar_Click(object sender, EventArgs e)
         {
             actualizarRegistro();
@@ -311,7 +370,7 @@ namespace El_Balcon_de_Chalita
                     //Ejecutamos el metodo que hara el update en BD
                     comando.ExecuteNonQuery();
                     MessageBox.Show("Registro modificado satisfactoriamente");
-                    limpiarCampos();
+                    limpiarCamposCliente();
 
                 }
                 catch (MySqlException ex)
@@ -506,6 +565,11 @@ namespace El_Balcon_de_Chalita
         //@return void
         private void btnReservar_Click(object sender, EventArgs e)
         {
+            guardarReservaBD();
+        }
+
+        private void guardarReservaBD() //realiza la insercion de la reserva en la BD
+        {
             //En caso de que todos los campos rqueridos sean llenados se procede a guardar la reserva
             if (idCliente != -1 && fechaEntrada != "" && fechaSalida != "" && cbxCompañias.SelectedIndex != -1)
             {
@@ -551,23 +615,10 @@ namespace El_Balcon_de_Chalita
 
             }
         }
-
-
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
-
-        //Funcion que mostrara los datos de las reservas en un dataGrid al ejecutar evento de click en el boton de consulta reservas
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (micliente.IdCliente >= 0) {
-                miconsulta.ConsultarReservaciones(DgbReservaciones, micliente);
-            } else miconsulta.ConsultarReservaciones(DgbReservaciones);
-
-        }
-
-
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
@@ -588,6 +639,11 @@ namespace El_Balcon_de_Chalita
         }
 
         private void btnGuardarObjeto_Click(object sender, EventArgs e)
+        {
+            guardarObjetoBD();
+        }
+
+        private void guardarObjetoBD()
         {
             string nombreObjeto = txtNombreObjeto.Text;
             string cantidad = txtCantidadObjeto.Text;
@@ -611,7 +667,21 @@ namespace El_Balcon_de_Chalita
                 }
                 catch (MySqlException ex)
                 {
-                    MessageBox.Show("Ocurrio un error insertando el elemento:" + ex.Message);
+                    //MessageBox.Show("Ocurrio un error insertando el elemento:" + ex.Message);
+                    DialogResult result = MessageBox.Show("Ya extiste un registro de este artículo. ¿Desea sobre escribirlo?", "Actualizar Datos", MessageBoxButtons.OKCancel);
+                    // Verificar la respuesta del usuario
+                    if (result == DialogResult.OK)
+                    {
+                        // El usuario ha seleccionado "Aceptar"
+                        // Realizar la acción deseada
+                        editarObjetoBD();
+                    }
+                    else
+                    {
+                        // El usuario ha seleccionado "Cancelar"
+                        // Cancelar la acción o realizar otra acción según sea necesario
+                    }
+                    
                 }
             }
             else
@@ -622,37 +692,19 @@ namespace El_Balcon_de_Chalita
 
         private void btnConsultarObjeto_Click(object sender, EventArgs e)
         {
-            MySqlDataReader reader = null;
-            string nombreObjeto = txtNombreObjeto.Text;
-            string query = "select * from inventariobalcon where nombre = '" + nombreObjeto + "' ";
-            MySqlConnection conexionBD = mysql.conexion.Conexion();
-            conexionBD.Open();
+            limpiarTabla();
+            dgvMaster.Columns.Add("nombreObjeto", "Articulo");
+            dgvMaster.Columns.Add("cantidadObjeto", "Cantidad");
+            dgvMaster.Columns.Add("precioObjeto", "Precio Unitario");
+            miconsulta.consultarInventario(dgvMaster, txtNombreObjeto.Text, txtCantidadObjeto.Text);
 
-            try
-            {
-                MySqlCommand comando = new MySqlCommand(query, conexionBD);
-                reader = comando.ExecuteReader();
-
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        txtCantidadObjeto.Text = reader.GetString(2);
-                        txtPrecioObjeto.Text = reader.GetString(3);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No hay objetos con ese nomnre.");
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
 
         private void btnEditarObjeto_Click(object sender, EventArgs e)
+        {
+            editarObjetoBD();
+        }
+        private void editarObjetoBD()
         {
             string nombre = txtNombreObjeto.Text;
             string precio = txtPrecioObjeto.Text;
@@ -692,6 +744,7 @@ namespace El_Balcon_de_Chalita
                 comando.ExecuteNonQuery();
                 MessageBox.Show("Objeto eliminado.");
                 limpiarCamposFormInventario();
+                dgvMaster.Refresh();
             }
             catch (MySqlException ex)
             {
@@ -703,6 +756,10 @@ namespace El_Balcon_de_Chalita
             txtCantidadObjeto.Text = "";
             txtNombreObjeto.Text = "";
             txtPrecioObjeto.Text = "";
+            DgbInventarioBalcon.Rows.Clear();
+            DgbInventarioCliente.Rows.Clear();
+            TxtNombreObjetoCliente.Text = "";
+            TxtCantidadObjetoCliente.Text = "";
         }
 
         private void btnVerInventarioBalcon_Click(object sender, EventArgs e)
@@ -747,6 +804,11 @@ namespace El_Balcon_de_Chalita
 
         private void BtnGuardarObjetoCliente_Click(object sender, EventArgs e)
         {
+            guardarObjetoClienteBD();
+        }
+
+        private void guardarObjetoClienteBD() // Realiza la insercion del objeto del cliente en BD
+        {
             //Obtenemos el valor del input seleccionado
             //string nombreCliente = CbxClientesInventarioClientes.GetItemText(CbxClientesInventarioClientes.SelectedItem);
             //Hacemos un split para obtener solamente la clave del cliente
@@ -754,23 +816,34 @@ namespace El_Balcon_de_Chalita
             //string idCliente = obtenerClaveCliente[0];
             string nombreObjetoCliente = TxtNombreObjetoCliente.Text;
             string cantidadObjetoCliente = TxtCantidadObjetoCliente.Text;
+
             if (idCliente > -1 && nombreObjetoCliente != "" && cantidadObjetoCliente != "")
             {
-
-                string query = "insert into inventarioclientes (nombreObjeto,cantidadObjeto,idCliente) values('" + nombreObjetoCliente + "','" + cantidadObjetoCliente + "','" + idCliente + "')";
-                MySqlConnection conexionBD = mysql.conexion.Conexion();
-                conexionBD.Open();
-
-                try
+                DialogResult result = MessageBox.Show("¿Desea guardar este articulo?", "Guardar Objeto de Cliente", MessageBoxButtons.OKCancel);
+                // Verificar la respuesta del usuario
+                if (result == DialogResult.OK)
                 {
-                    MySqlCommand comando = new MySqlCommand(query, conexionBD);
-                    comando.ExecuteNonQuery();
-                    MessageBox.Show("Objeto guardado en el inventario del cliente.");
+                    string query = "insert into inventarioclientes (nombreObjeto,cantidadObjeto,idCliente) values('" + nombreObjetoCliente + "','" + cantidadObjetoCliente + "','" + idCliente + "')";
+                    MySqlConnection conexionBD = mysql.conexion.Conexion();
+                    conexionBD.Open();
+
+                    try
+                    {
+                        MySqlCommand comando = new MySqlCommand(query, conexionBD);
+                        comando.ExecuteNonQuery();
+                        MessageBox.Show("Objeto guardado en el inventario del cliente.");
+                    }
+                    catch (MySqlException ex)
+                    {
+                        MessageBox.Show("Error al guardar el objeto: " + ex.Message);
+                    }
                 }
-                catch (MySqlException ex)
+                else
                 {
-                    MessageBox.Show("Error al guardar el objeto: " + ex.Message);
+                    // El usuario ha seleccionado "Cancelar"
+                    // Cancelar la acción o realizar otra acción según sea necesario
                 }
+                
             }
             else
             {
@@ -780,53 +853,11 @@ namespace El_Balcon_de_Chalita
 
         private void BtnConsultarInventarioCliente_Click(object sender, EventArgs e)
         {
-            MySqlDataReader reader = null;
-            //Obtenemos el valor del input seleccionado
-            //string nombreCliente = CbxClientesInventarioClientes.GetItemText(CbxClientesInventarioClientes.SelectedItem);
-            //Hacemos un split para obtener solamente la clave del cliente
-            //string[] obtenerClaveCliente = nombreCliente.Split('-');
-            //string idCliente = obtenerClaveCliente[0];
-            string query = "select * from inventarioclientes where idCliente = '" + idCliente + "' ";
-            int contador = 0;
-            if (idCliente > -1)
-            {
-                //Limpiamos el datagrid
-                DgbInventarioCliente.Rows.Clear();
-                DgbInventarioCliente.Refresh();
-
-                MySqlConnection conexionBD = mysql.conexion.Conexion();
-                conexionBD.Open();
-
-                try
-                {
-                    MySqlCommand comando = new MySqlCommand(query, conexionBD);
-                    reader = comando.ExecuteReader();
-
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            DataGridViewRow row = (DataGridViewRow)DgbInventarioCliente.Rows[contador].Clone();
-                            row.Cells[0].Value = reader.GetString(1);
-                            row.Cells[1].Value = reader.GetString(2);
-                            row.Cells[2].Value = reader.GetString(4);
-                            DgbInventarioCliente.Rows.Add(row);
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("El cliente aun no tiene inventario registrado");
-                    }
-                }
-                catch (MySqlException ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Debe seleccionar un cliente para la busqueda de su inventario");
-            }
+            limpiarTabla();
+            dgvMaster.Columns.Add("nombreObjeto", "Articulo");
+            dgvMaster.Columns.Add("cantidadObjeto", "Cantidad");
+            dgvMaster.Columns.Add("fechaRegistro", "Fecha de Registro");
+            miconsulta.consultarInventarioClientes(dgvMaster, micliente);
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -913,16 +944,246 @@ namespace El_Balcon_de_Chalita
 
         private void tsbBuscarCliente_Click(object sender, EventArgs e)
         {
-            busquedaclientes ventanabusqueda = new busquedaclientes(micliente);
-            ventanabusqueda.dlgbalcon = this;
+            limpiarTabla();
+            //busquedaclientes ventanabusqueda = new busquedaclientes(micliente);
+            //ventanabusqueda.dlgbalcon = this;
             string busqueda = tstbBuscarCliente.Text;
-            ventanabusqueda.buscarClientes(busqueda);
-            ventanabusqueda.Show();
+            //ventanabusqueda.buscarClientes(busqueda);
+            //ventanabusqueda.Show();
+
+
+            dgvMaster.DataSource = miconsulta.ConsultarClientes(busqueda);
+
+        }
+
+        //Funcion que mostrara los datos de las reservas en un dataGrid al ejecutar evento de click en el boton de consulta reservas
+        private void btnConsultarReservas_Click(object sender, EventArgs e)
+        {
+            limpiarTabla();
+            dgvMaster.Columns.Add("IdReservaciones", "IdReservaciones");
+            dgvMaster.Columns.Add("Cliente", "Cliente");
+            dgvMaster.Columns.Add("Fecha de Entrada", "Fecha de Entrada");
+            dgvMaster.Columns.Add("Fecha de Salida", "Fecha de Salida");
+            dgvMaster.Columns.Add("Empresa Afiliada", "Empresa Afiliada");
+            dgvMaster.Columns.Add("Id Afiliado", "Id Afiliado");
+            if (micliente.IdCliente >= 0)
+            { // revisa el id del cliente seleccionado
+                miconsulta.ConsultarReservaciones(dgvMaster, micliente); // si esta seleccionado busca reservas del cliente
+            }
+            else miconsulta.ConsultarReservaciones(dgvMaster);
+
         }
 
         private void btnConsultarReservasAll_Click(object sender, EventArgs e)
         {
-            miconsulta.ConsultarReservaciones(DgbReservaciones);
+            limpiarTabla();
+            dgvMaster.Columns.Add("IdReservaciones", "IdReservaciones");
+            dgvMaster.Columns.Add("Cliente", "Cliente");
+            dgvMaster.Columns.Add("Fecha de Entrada", "Fecha de Entrada");
+            dgvMaster.Columns.Add("Fecha de Salida", "Fecha de Salida");
+            dgvMaster.Columns.Add("Empresa Afiliada", "Empresa Afiliada");
+            dgvMaster.Columns.Add("Id Afiliado", "Id Afiliado");
+            miconsulta.ConsultarReservaciones(dgvMaster);
+        }
+
+
+        private void TbcPrincipal_SelectedIndexChanged(object sender, EventArgs e) // Cambia el selector de contexto dependiendo la pestaña abierta
+        {
+            limpiarTabla();
+            selectorContexto = TbcPrincipal.SelectedIndex;
+            if (selectorContexto == 2) selectorContexto = TbcInventarioBalcon.SelectedIndex + 2; // Si la pestaña de inventario esta seleccionada se le suman las otras dos que tiene adentro.
+            selectorContextoAcciones(selectorContexto);
+        }
+
+        private void TbcInventarioBalcon_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            limpiarTabla();
+            selectorContexto = TbcPrincipal.SelectedIndex;
+            if (selectorContexto == 2) selectorContexto = TbcInventarioBalcon.SelectedIndex + 2; // Si la pestaña de inventario esta seleccionada se le suman las otras dos que tiene adentro.
+            selectorContextoAcciones(selectorContexto);
+        }
+
+        private void selectorContextoAcciones(int selector)
+        {
+            switch (selector) // 0-Clientes 1-Reservaciones 2-Inventario 3-InventarioClientes 
+            {
+                case 0:
+                    tsbSeleccionar.Visible = true;
+                    tsbSeleccionar.Enabled = false;
+                    TsbNuevo.Visible = true;
+                    TsbNuevo.Enabled = true;
+                    TsbGuardar.Visible = true;
+                    TsbGuardar.Enabled = true;
+                    TsbEliminar.Visible = true;
+                    TsbEliminar.Enabled = true;
+
+                    break;
+                case 1:
+                    tsbSeleccionar.Visible = false;
+                    tsbSeleccionar.Enabled = false;
+                    TsbNuevo.Visible = true;
+                    TsbNuevo.Enabled = true;
+                    TsbGuardar.Visible = true;
+                    TsbGuardar.Enabled = true;
+                    TsbEliminar.Visible = true;
+                    TsbEliminar.Enabled = false;
+                    break;
+                case 2:
+                    tsbSeleccionar.Visible = false;
+                    tsbSeleccionar.Enabled = false;
+                    TsbNuevo.Visible = true;
+                    TsbNuevo.Enabled = true;
+                    TsbGuardar.Visible = true;
+                    TsbGuardar.Enabled = true;
+                    TsbEliminar.Visible = true;
+                    TsbEliminar.Enabled = false;
+                    break;
+                case 3:
+                    tsbSeleccionar.Visible = false;
+                    tsbSeleccionar.Enabled = false;
+                    TsbNuevo.Visible = true;
+                    TsbNuevo.Enabled = true;
+                    TsbGuardar.Visible = true;
+                    TsbGuardar.Enabled = true;
+                    TsbEliminar.Visible = true;
+                    TsbEliminar.Enabled = false;
+                    break;
+                default:
+                    tsbSeleccionar.Visible = true;
+                    tsbSeleccionar.Enabled = false;
+                    TsbNuevo.Visible = true;
+                    TsbNuevo.Enabled = false;
+                    TsbGuardar.Visible = true;
+                    TsbGuardar.Enabled = false;
+                    TsbEliminar.Visible = true;
+                    TsbEliminar.Enabled = false;
+                    break;
+            }
+        }
+
+        private void dgvMaster_SelectionChanged(object sender, EventArgs e) //Se acciona al seleccionar una fila en la tabla
+        {
+            int seleccion = dgvMaster.CurrentCell.RowIndex;
+            if (dgvMaster.SelectedRows.Count == 1 && dgvMaster[0,seleccion].Value != null)
+            {
+                // Obtener la fila seleccionada
+                switch (selectorContexto)
+                {
+                    case 0: // La pestaña de Clientes está seleccionada
+                        tsbSeleccionar.Enabled = true;
+                        tsbSeleccionar.BackColor = SystemColors.HotTrack;
+                        tsbSeleccionar.ForeColor = Color.White;
+                        break;
+                    case 1: // La pestaña de Reservaciones está seleccionada
+                        TsbEliminar.Enabled = true;
+
+                        mireservacion.idReservacion = Convert.ToInt32(dgvMaster[0, seleccion].Value);
+                        mireservacion.micliente.nombreCompleto = dgvMaster[1, seleccion].Value.ToString();
+                        mireservacion.fechaEntrada = dgvMaster[2, seleccion].Value.ToString();
+                        mireservacion.fechaSalida = dgvMaster[3, seleccion].Value.ToString();
+                        mireservacion.compAfiliada = dgvMaster[4, seleccion].Value.ToString();
+                        mireservacion.idAfiliado = Convert.ToInt32(dgvMaster[5, seleccion].Value)-1;
+
+                        cbxCompañias.SelectedIndex = mireservacion.idAfiliado;
+
+                        mireservacion.entradaAño = mireservacion.separarAño(mireservacion.fechaEntrada);
+                        mireservacion.entradaMes = mireservacion.separarMes(mireservacion.fechaEntrada);
+                        mireservacion.entradaDia = mireservacion.separarDia(mireservacion.fechaEntrada);
+                        DateTime fechaEntrada = new DateTime(mireservacion.entradaAño, mireservacion.entradaMes, mireservacion.entradaDia);
+                        CCheckIn.SetDate(fechaEntrada);
+
+
+                        break;
+                    case 2: // La pestaña de Inventario esta seleccionada
+                        TsbEliminar.Enabled = true;
+                        break;
+                    case 3: // La pestaña de Inventario de Cliente esta seleccionada
+                        TsbEliminar.Enabled = true;
+                        break;
+                    default:
+                        MessageBox.Show("Error con el selector de contexto.");
+                        break;
+                }
+                
+            }
+            else
+            {
+                switch (selectorContexto)
+                {
+                    case 0: // La pestaña de Clientes está seleccionada
+                        tsbSeleccionar.Enabled = false;
+                        tsbSeleccionar.BackColor = SystemColors.ControlLightLight;
+                        tsbSeleccionar.ForeColor = SystemColors.ControlDark;
+                        break;
+                    case 1: // La pestaña de Reservaciones está seleccionada
+                        TsbEliminar.Enabled = false;
+                        break;
+                    case 2: // La pestaña de Inventario esta seleccionada
+                        TsbEliminar.Enabled = false;
+                        break;
+                    case 3: // La pestaña de Inventario de Cliente esta seleccionada
+                        TsbEliminar.Enabled = false;
+                        break;
+                    default:
+                        MessageBox.Show("Error con el selector de contexto.");
+                        break;
+                }
+                
+            }
+        }
+
+        private void tsbSeleccionar_Click(object sender, EventArgs e)
+        {
+            switch (selectorContexto)
+            {
+                case 0: // La pestaña de Clientes está seleccionada
+                    seleccionarCliente();
+                    break;
+                case 1: // La pestaña de Reservaciones está seleccionada
+                    
+                    break;
+                case 2: // La pestaña de Inventario esta seleccionada
+                    
+                    break;
+                case 3: // La pestaña de Inventario de Cliente esta seleccionada
+                    
+                    break;
+                default:
+                    MessageBox.Show("Error con el selector de contexto.");
+                    break;
+            }
+            
+        }
+        private void seleccionarCliente()
+        {
+            int selectedIndex = dgvMaster.CurrentCell.RowIndex;
+            micliente.IdCliente = Convert.ToInt32(dgvMaster[0, selectedIndex].Value);
+            micliente.Nombre = dgvMaster[1, selectedIndex].Value.ToString();
+            micliente.ApellidoPaterno = dgvMaster[2, selectedIndex].Value.ToString();
+            micliente.ApellidoMaterno = dgvMaster[3, selectedIndex].Value.ToString();
+            micliente.NumCelular = dgvMaster[4, selectedIndex].Value.ToString();
+            micliente.Email = dgvMaster[5, selectedIndex].Value.ToString();
+            micliente.CodigoCliente = dgvMaster[6, selectedIndex].Value.ToString();
+            micliente.Genero = dgvMaster[7, selectedIndex].Value.ToString();
+            micliente.LugarProcedencia = dgvMaster[8, selectedIndex].Value.ToString();
+            micliente.EstadoCivil = dgvMaster[9, selectedIndex].Value.ToString();
+            micliente.FechaNacimiento = dgvMaster[10, selectedIndex].Value.ToString();
+            ActualizarForm();
+        }
+        private void seleccionarReserva()
+        {
+            
+            int selectedIndex = dgvMaster.CurrentCell.RowIndex;
+            mireservacion.id = Convert.ToInt32(dgvMaster[0, selectedIndex].Value);
+            mireservacion.micliente.nombreCompleto = dgvMaster[1, selectedIndex].Value.ToString();
+            mireservacion.fechaEntrada = dgvMaster[2, selectedIndex].Value.ToString();
+            mireservacion.fechaSalida = dgvMaster[3, selectedIndex].Value.ToString();
+        }
+        private void limpiarTabla()
+        {
+            dgvMaster.DataSource = null;
+            dgvMaster.Rows.Clear();
+            dgvMaster.Columns.Clear();
         }
     }
 }

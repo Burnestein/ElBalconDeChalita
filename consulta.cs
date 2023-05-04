@@ -13,7 +13,6 @@ namespace El_Balcon_de_Chalita
     public class consulta
     {
 
-
         public DataTable ConsultarClientes()
         {
             MySqlConnection conexionBD = mysql.conexion.Conexion();
@@ -42,9 +41,9 @@ namespace El_Balcon_de_Chalita
 
         }
 
-        public DataTable ConsultarClientes(string cadena)
+        public DataTable ConsultarClientes(string texto)
         {
-            string busqueda = cadena;
+            string busqueda = texto;
             MySqlConnection conexionBD = mysql.conexion.Conexion();
             conexionBD.Open();
 
@@ -79,12 +78,14 @@ namespace El_Balcon_de_Chalita
             }
 
         }
-        
+
         public DataGridView ConsultarReservaciones(DataGridView tabla)
         {
             DataGridView DgbReservaciones = tabla;
             //Query para obtener las reservas enlazadas con los id de los clientes en su respectiva tabla
-            string obtenerReservas = "select * from reservaciones left join clientes on reservaciones.cliente = clientes.idCliente";
+            string obtenerReservas = "SELECT * FROM reservaciones " +
+                                     "LEFT JOIN clientes ON reservaciones.cliente = clientes.idCliente " +
+                                     "LEFT JOIN compañiasafiliadas ON reservaciones.compañiaAfiliada = compañiasafiliadas.idCompañia";
             MySqlDataReader reader = null;
             MySqlConnection conexionBD = mysql.conexion.Conexion();
             conexionBD.Open();
@@ -102,11 +103,13 @@ namespace El_Balcon_de_Chalita
                     while (reader.Read())
                     {
                         string nombreCliente = reader.GetString(7) + " " + reader.GetString(8) + " " + reader.GetString(9);
-                        DataGridViewRow row = (DataGridViewRow)DgbReservaciones.Rows[contador].Clone();
+                        DataGridViewRow row = (DataGridViewRow)DgbReservaciones.Rows[contador].Clone(); 
                         row.Cells[0].Value = reader.GetString(0);
                         row.Cells[1].Value = nombreCliente;
                         row.Cells[2].Value = reader.GetString(2);
                         row.Cells[3].Value = reader.GetString(3);
+                        row.Cells[4].Value = reader.GetString(18);
+                        row.Cells[5].Value = reader.GetString(4);
                         DgbReservaciones.Rows.Add(row);
                         contador++;
                     }
@@ -133,7 +136,7 @@ namespace El_Balcon_de_Chalita
             int idCliente = cliente.IdCliente;
             //Query para obtener las reservas enlazadas con los id de los clientes en su respectiva tabla
             string obtenerReservas = "select * from reservaciones left join clientes on reservaciones.cliente = clientes.idCliente WHERE clientes.idCliente LIKE @idCliente";
-            
+
             MySqlDataReader reader = null;
             //Contador que sera el puntero para el numero de fila en la que se ira insertando la data de la BD
             int contador = 0;
@@ -155,6 +158,8 @@ namespace El_Balcon_de_Chalita
                         row.Cells[1].Value = nombreCliente;
                         row.Cells[2].Value = reader.GetString(2);
                         row.Cells[3].Value = reader.GetString(3);
+                        row.Cells[4].Value = reader.GetString(18);
+                        row.Cells[5].Value = reader.GetString(4);
                         DgbReservaciones.Rows.Add(row);
                         contador++;
                     }
@@ -172,7 +177,139 @@ namespace El_Balcon_de_Chalita
             }
 
         }
+
+        public void consultarInventario(DataGridView tabla, string insumo, string cantidad)
+        {
+            int contador = 0;
+            MySqlDataReader reader = null;
+            string query = "select * from inventariobalcon where nombre = '" + insumo + "' ";
+            MySqlConnection conexionBD = mysql.conexion.Conexion();
+            conexionBD.Open();
+
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(query, conexionBD);
+                reader = comando.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        DataGridViewRow row = (DataGridViewRow)tabla.Rows[contador].Clone();
+                        row.Cells[0].Value = reader.GetString(1);
+                        row.Cells[1].Value = reader.GetString(2);
+                        row.Cells[2].Value = reader.GetString(3);
+                        tabla.Rows.Add(row);
+                        contador++;
+                    }
+                }
+                else
+                {
+                    //MessageBox.Show("No hay objetos con ese nomnre.");
+                    consultarInventario(tabla);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conexionBD.Close();
+            }
+
+        }
+        public void consultarInventario(DataGridView tabla)
+        {
+            int contador = 0;
+            MySqlDataReader reader = null;
+            string query = "select * from inventariobalcon";
+            MySqlConnection conexionBD = mysql.conexion.Conexion();
+            conexionBD.Open();
+
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(query, conexionBD);
+                reader = comando.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        DataGridViewRow row = (DataGridViewRow)tabla.Rows[contador].Clone();
+                        row.Cells[0].Value = reader.GetString(1);
+                        row.Cells[1].Value = reader.GetString(2);
+                        row.Cells[2].Value = reader.GetString(3);
+                        tabla.Rows.Add(row);
+                        contador++;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No hay objetos con ese nomnre.");
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conexionBD.Close();
+            }
+        }
+
+        public void consultarInventarioClientes(DataGridView tabla, cliente micliente)
+        {
+            MySqlDataReader reader = null;
+            //Obtenemos el valor del input seleccionado
+            //string nombreCliente = CbxClientesInventarioClientes.GetItemText(CbxClientesInventarioClientes.SelectedItem);
+            //Hacemos un split para obtener solamente la clave del cliente
+            //string[] obtenerClaveCliente = nombreCliente.Split('-');
+            //string idCliente = obtenerClaveCliente[0];
+            int idCliente = micliente.IdCliente;
+            string query = "select * from inventarioclientes where idCliente = '" + idCliente + "' ";
+            int contador = 0;
+            if (idCliente > -1)
+            {
+                //Limpiamos el datagrid
+                tabla.Rows.Clear();
+                tabla.Refresh();
+
+                MySqlConnection conexionBD = mysql.conexion.Conexion();
+                conexionBD.Open();
+
+                try
+                {
+                    MySqlCommand comando = new MySqlCommand(query, conexionBD);
+                    reader = comando.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            DataGridViewRow row = (DataGridViewRow)tabla.Rows[contador].Clone();
+                            row.Cells[0].Value = reader.GetString(1);
+                            row.Cells[1].Value = reader.GetString(2);
+                            row.Cells[2].Value = reader.GetString(4);
+                            tabla.Rows.Add(row);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("El cliente no tiene inventario registrado");
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un cliente para la busqueda de su inventario");
+            }
+        }
+
     }
-
-
 }
