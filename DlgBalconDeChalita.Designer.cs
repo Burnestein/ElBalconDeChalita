@@ -1476,8 +1476,10 @@ namespace El_Balcon_de_Chalita
             // 
             // tsbSeleccionar
             // 
+            this.tsbSeleccionar.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tsbSeleccionar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.tsbSeleccionar.Enabled = false;
+            this.tsbSeleccionar.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tsbSeleccionar.Image = ((System.Drawing.Image)(resources.GetObject("tsbSeleccionar.Image")));
             this.tsbSeleccionar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSeleccionar.Name = "tsbSeleccionar";

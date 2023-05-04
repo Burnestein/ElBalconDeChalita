@@ -5,6 +5,7 @@ using System;
 using System.Net;
 using System.Net.Mail;
 using System.Collections.Generic;
+using System.Drawing;
 
 using System.Text.RegularExpressions;
 
@@ -28,7 +29,8 @@ namespace El_Balcon_de_Chalita
         private int selectorContexto; // Determina en qué pestaña se encuentra el usuario.
                                           // 0-Clientes 1-Reservaciones 2-Inventario 3-InventarioClientes 
         private cliente micliente;
-        consulta miconsulta;
+        private consulta miconsulta;
+        private reservacion mireservacion;
 
         //---------------------------------------------------------------------
         //Atributo.
@@ -49,13 +51,22 @@ namespace El_Balcon_de_Chalita
             TsbConsultar.Visible = false;
             micliente = new cliente();
             miconsulta = new consulta();
+            mireservacion = new reservacion();
             //Generamos el codigo en automatico del cliente
             generarCodigoCliente();
             //Llenamos los combobox de los clientes y compañias afiliadas
             llenarComboBoxClientes();
             llenarComboBoxCompañiasAfiliadas();
             //this.micliente = micliente;
-            
+            tsbSeleccionar.Visible = true;
+            tsbSeleccionar.Enabled = false;
+            TsbNuevo.Visible = true;
+            TsbNuevo.Enabled = true;
+            TsbGuardar.Visible = true;
+            TsbGuardar.Enabled = true;
+            TsbEliminar.Visible = true;
+            TsbEliminar.Enabled = true;
+
         }
 
         private void llenarComboBoxClientes()
@@ -972,33 +983,157 @@ namespace El_Balcon_de_Chalita
         }
 
 
-        private void TbcPrincipal_SelectedIndexChanged(object sender, EventArgs e)
+        private void TbcPrincipal_SelectedIndexChanged(object sender, EventArgs e) // Cambia el selector de contexto dependiendo la pestaña abierta
         {
+            limpiarTabla();
             selectorContexto = TbcPrincipal.SelectedIndex;
             if (selectorContexto == 2) selectorContexto = TbcInventarioBalcon.SelectedIndex + 2; // Si la pestaña de inventario esta seleccionada se le suman las otras dos que tiene adentro.
+            selectorContextoAcciones(selectorContexto);
         }
 
         private void TbcInventarioBalcon_SelectedIndexChanged(object sender, EventArgs e)
         {
+            limpiarTabla();
             selectorContexto = TbcPrincipal.SelectedIndex;
             if (selectorContexto == 2) selectorContexto = TbcInventarioBalcon.SelectedIndex + 2; // Si la pestaña de inventario esta seleccionada se le suman las otras dos que tiene adentro.
+            selectorContextoAcciones(selectorContexto);
         }
 
-        private void dgvMaster_SelectionChanged(object sender, EventArgs e)
+        private void selectorContextoAcciones(int selector)
         {
-            if (dgvMaster.SelectedRows.Count > 0)
+            switch (selector) // 0-Clientes 1-Reservaciones 2-Inventario 3-InventarioClientes 
+            {
+                case 0:
+                    tsbSeleccionar.Visible = true;
+                    tsbSeleccionar.Enabled = false;
+                    TsbNuevo.Visible = true;
+                    TsbNuevo.Enabled = true;
+                    TsbGuardar.Visible = true;
+                    TsbGuardar.Enabled = true;
+                    TsbEliminar.Visible = true;
+                    TsbEliminar.Enabled = true;
+
+                    break;
+                case 1:
+                    tsbSeleccionar.Visible = false;
+                    tsbSeleccionar.Enabled = false;
+                    TsbNuevo.Visible = true;
+                    TsbNuevo.Enabled = true;
+                    TsbGuardar.Visible = true;
+                    TsbGuardar.Enabled = true;
+                    TsbEliminar.Visible = true;
+                    TsbEliminar.Enabled = false;
+                    break;
+                case 2:
+                    tsbSeleccionar.Visible = false;
+                    tsbSeleccionar.Enabled = false;
+                    TsbNuevo.Visible = true;
+                    TsbNuevo.Enabled = true;
+                    TsbGuardar.Visible = true;
+                    TsbGuardar.Enabled = true;
+                    TsbEliminar.Visible = true;
+                    TsbEliminar.Enabled = false;
+                    break;
+                case 3:
+                    tsbSeleccionar.Visible = false;
+                    tsbSeleccionar.Enabled = false;
+                    TsbNuevo.Visible = true;
+                    TsbNuevo.Enabled = true;
+                    TsbGuardar.Visible = true;
+                    TsbGuardar.Enabled = true;
+                    TsbEliminar.Visible = true;
+                    TsbEliminar.Enabled = false;
+                    break;
+                default:
+                    tsbSeleccionar.Visible = true;
+                    tsbSeleccionar.Enabled = false;
+                    TsbNuevo.Visible = true;
+                    TsbNuevo.Enabled = false;
+                    TsbGuardar.Visible = true;
+                    TsbGuardar.Enabled = false;
+                    TsbEliminar.Visible = true;
+                    TsbEliminar.Enabled = false;
+                    break;
+            }
+        }
+
+        private void dgvMaster_SelectionChanged(object sender, EventArgs e) //Se acciona al seleccionar una fila en la tabla
+        {
+            int seleccion = dgvMaster.CurrentCell.RowIndex;
+            if (dgvMaster.SelectedRows.Count == 1 && dgvMaster[0,seleccion].Value != null)
             {
                 // Obtener la fila seleccionada
+                switch (selectorContexto)
+                {
+                    case 0: // La pestaña de Clientes está seleccionada
+                        tsbSeleccionar.Enabled = true;
+                        tsbSeleccionar.BackColor = SystemColors.HotTrack;
+                        tsbSeleccionar.ForeColor = Color.White;
+                        break;
+                    case 1: // La pestaña de Reservaciones está seleccionada
+                        TsbEliminar.Enabled = true;
+                        break;
+                    case 2: // La pestaña de Inventario esta seleccionada
+                        TsbEliminar.Enabled = true;
+                        break;
+                    case 3: // La pestaña de Inventario de Cliente esta seleccionada
+                        TsbEliminar.Enabled = true;
+                        break;
+                    default:
+                        MessageBox.Show("Error con el selector de contexto.");
+                        break;
+                }
                 
-                tsbSeleccionar.Enabled = true;
             }
             else
             {
-                tsbSeleccionar.Enabled = false;
+                switch (selectorContexto)
+                {
+                    case 0: // La pestaña de Clientes está seleccionada
+                        tsbSeleccionar.Enabled = false;
+                        tsbSeleccionar.BackColor = SystemColors.ControlLightLight;
+                        tsbSeleccionar.ForeColor = SystemColors.ControlDark;
+                        break;
+                    case 1: // La pestaña de Reservaciones está seleccionada
+                        TsbEliminar.Enabled = false;
+                        break;
+                    case 2: // La pestaña de Inventario esta seleccionada
+                        TsbEliminar.Enabled = false;
+                        break;
+                    case 3: // La pestaña de Inventario de Cliente esta seleccionada
+                        TsbEliminar.Enabled = false;
+                        break;
+                    default:
+                        MessageBox.Show("Error con el selector de contexto.");
+                        break;
+                }
+                
             }
         }
 
         private void tsbSeleccionar_Click(object sender, EventArgs e)
+        {
+            switch (selectorContexto)
+            {
+                case 0: // La pestaña de Clientes está seleccionada
+                    seleccionarCliente();
+                    break;
+                case 1: // La pestaña de Reservaciones está seleccionada
+                    
+                    break;
+                case 2: // La pestaña de Inventario esta seleccionada
+                    
+                    break;
+                case 3: // La pestaña de Inventario de Cliente esta seleccionada
+                    
+                    break;
+                default:
+                    MessageBox.Show("Error con el selector de contexto.");
+                    break;
+            }
+            
+        }
+        private void seleccionarCliente()
         {
             int selectedIndex = dgvMaster.CurrentCell.RowIndex;
             micliente.IdCliente = Convert.ToInt32(dgvMaster[0, selectedIndex].Value);
@@ -1014,7 +1149,15 @@ namespace El_Balcon_de_Chalita
             micliente.FechaNacimiento = dgvMaster[10, selectedIndex].Value.ToString();
             ActualizarForm();
         }
-
+        private void seleccionarReserva()
+        {
+            
+            int selectedIndex = dgvMaster.CurrentCell.RowIndex;
+            mireservacion.id = Convert.ToInt32(dgvMaster[0, selectedIndex].Value);
+            mireservacion.cliente.nombreCompleto = dgvMaster[1, selectedIndex].Value.ToString();
+            mireservacion.horaEntrada = dgvMaster[2, selectedIndex].Value.ToString();
+            mireservacion.horaSalida = dgvMaster[3, selectedIndex].Value.ToString();
+        }
         private void limpiarTabla()
         {
             dgvMaster.DataSource = null;
