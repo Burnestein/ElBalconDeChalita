@@ -253,5 +253,57 @@ namespace El_Balcon_de_Chalita
             }
         }
 
+        public void consultarInventarioClientes(DataGridView tabla, cliente micliente)
+        {
+            MySqlDataReader reader = null;
+            //Obtenemos el valor del input seleccionado
+            //string nombreCliente = CbxClientesInventarioClientes.GetItemText(CbxClientesInventarioClientes.SelectedItem);
+            //Hacemos un split para obtener solamente la clave del cliente
+            //string[] obtenerClaveCliente = nombreCliente.Split('-');
+            //string idCliente = obtenerClaveCliente[0];
+            int idCliente = micliente.IdCliente;
+            string query = "select * from inventarioclientes where idCliente = '" + idCliente + "' ";
+            int contador = 0;
+            if (idCliente > -1)
+            {
+                //Limpiamos el datagrid
+                tabla.Rows.Clear();
+                tabla.Refresh();
+
+                MySqlConnection conexionBD = mysql.conexion.Conexion();
+                conexionBD.Open();
+
+                try
+                {
+                    MySqlCommand comando = new MySqlCommand(query, conexionBD);
+                    reader = comando.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            DataGridViewRow row = (DataGridViewRow)tabla.Rows[contador].Clone();
+                            row.Cells[0].Value = reader.GetString(1);
+                            row.Cells[1].Value = reader.GetString(2);
+                            row.Cells[2].Value = reader.GetString(4);
+                            tabla.Rows.Add(row);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("El cliente no tiene inventario registrado");
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un cliente para la busqueda de su inventario");
+            }
+        }
+
     }
 }

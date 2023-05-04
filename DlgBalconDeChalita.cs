@@ -21,7 +21,7 @@ namespace El_Balcon_de_Chalita
         //---------------------------------------------------------------------
         private string fechaEntrada = "";
         private string fechaSalida = "";
-        private int idCliente;
+        private int idCliente = -1;
         private string correoCliente = "";
         private double totalReserva = 0;
         private string idCompañia = "";
@@ -749,6 +749,7 @@ namespace El_Balcon_de_Chalita
                 comando.ExecuteNonQuery();
                 MessageBox.Show("Objeto eliminado.");
                 limpiarCamposFormInventario();
+                dgvMaster.Refresh();
             }
             catch (MySqlException ex)
             {
@@ -820,23 +821,34 @@ namespace El_Balcon_de_Chalita
             //string idCliente = obtenerClaveCliente[0];
             string nombreObjetoCliente = TxtNombreObjetoCliente.Text;
             string cantidadObjetoCliente = TxtCantidadObjetoCliente.Text;
+
             if (idCliente > -1 && nombreObjetoCliente != "" && cantidadObjetoCliente != "")
             {
-
-                string query = "insert into inventarioclientes (nombreObjeto,cantidadObjeto,idCliente) values('" + nombreObjetoCliente + "','" + cantidadObjetoCliente + "','" + idCliente + "')";
-                MySqlConnection conexionBD = mysql.conexion.Conexion();
-                conexionBD.Open();
-
-                try
+                DialogResult result = MessageBox.Show("¿Desea guardar este articulo?", "Guardar Objeto de Cliente", MessageBoxButtons.OKCancel);
+                // Verificar la respuesta del usuario
+                if (result == DialogResult.OK)
                 {
-                    MySqlCommand comando = new MySqlCommand(query, conexionBD);
-                    comando.ExecuteNonQuery();
-                    MessageBox.Show("Objeto guardado en el inventario del cliente.");
+                    string query = "insert into inventarioclientes (nombreObjeto,cantidadObjeto,idCliente) values('" + nombreObjetoCliente + "','" + cantidadObjetoCliente + "','" + idCliente + "')";
+                    MySqlConnection conexionBD = mysql.conexion.Conexion();
+                    conexionBD.Open();
+
+                    try
+                    {
+                        MySqlCommand comando = new MySqlCommand(query, conexionBD);
+                        comando.ExecuteNonQuery();
+                        MessageBox.Show("Objeto guardado en el inventario del cliente.");
+                    }
+                    catch (MySqlException ex)
+                    {
+                        MessageBox.Show("Error al guardar el objeto: " + ex.Message);
+                    }
                 }
-                catch (MySqlException ex)
+                else
                 {
-                    MessageBox.Show("Error al guardar el objeto: " + ex.Message);
+                    // El usuario ha seleccionado "Cancelar"
+                    // Cancelar la acción o realizar otra acción según sea necesario
                 }
+                
             }
             else
             {
@@ -846,53 +858,11 @@ namespace El_Balcon_de_Chalita
 
         private void BtnConsultarInventarioCliente_Click(object sender, EventArgs e)
         {
-            MySqlDataReader reader = null;
-            //Obtenemos el valor del input seleccionado
-            //string nombreCliente = CbxClientesInventarioClientes.GetItemText(CbxClientesInventarioClientes.SelectedItem);
-            //Hacemos un split para obtener solamente la clave del cliente
-            //string[] obtenerClaveCliente = nombreCliente.Split('-');
-            //string idCliente = obtenerClaveCliente[0];
-            string query = "select * from inventarioclientes where idCliente = '" + idCliente + "' ";
-            int contador = 0;
-            if (idCliente > -1)
-            {
-                //Limpiamos el datagrid
-                DgbInventarioCliente.Rows.Clear();
-                DgbInventarioCliente.Refresh();
-
-                MySqlConnection conexionBD = mysql.conexion.Conexion();
-                conexionBD.Open();
-
-                try
-                {
-                    MySqlCommand comando = new MySqlCommand(query, conexionBD);
-                    reader = comando.ExecuteReader();
-
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            DataGridViewRow row = (DataGridViewRow)DgbInventarioCliente.Rows[contador].Clone();
-                            row.Cells[0].Value = reader.GetString(1);
-                            row.Cells[1].Value = reader.GetString(2);
-                            row.Cells[2].Value = reader.GetString(4);
-                            DgbInventarioCliente.Rows.Add(row);
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("El cliente aun no tiene inventario registrado");
-                    }
-                }
-                catch (MySqlException ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Debe seleccionar un cliente para la busqueda de su inventario");
-            }
+            limpiarTabla();
+            dgvMaster.Columns.Add("nombreObjeto", "Articulo");
+            dgvMaster.Columns.Add("cantidadObjeto", "Cantidad");
+            dgvMaster.Columns.Add("fechaRegistro", "Fecha de Registro");
+            miconsulta.consultarInventarioClientes(dgvMaster, micliente);
         }
 
         private void label1_Click(object sender, EventArgs e)

@@ -1263,10 +1263,10 @@ namespace El_Balcon_de_Chalita
             // 
             // BtnConsultarInventarioCliente
             // 
-            this.BtnConsultarInventarioCliente.Location = new System.Drawing.Point(733, 218);
+            this.BtnConsultarInventarioCliente.Location = new System.Drawing.Point(28, 232);
             this.BtnConsultarInventarioCliente.Margin = new System.Windows.Forms.Padding(4);
             this.BtnConsultarInventarioCliente.Name = "BtnConsultarInventarioCliente";
-            this.BtnConsultarInventarioCliente.Size = new System.Drawing.Size(308, 50);
+            this.BtnConsultarInventarioCliente.Size = new System.Drawing.Size(253, 50);
             this.BtnConsultarInventarioCliente.TabIndex = 7;
             this.BtnConsultarInventarioCliente.Text = "Consultar Inventario de Cliente";
             this.BtnConsultarInventarioCliente.UseVisualStyleBackColor = true;
@@ -1279,12 +1279,13 @@ namespace El_Balcon_de_Chalita
             this.nombreCliente,
             this.cantidad,
             this.FechaReg});
-            this.DgbInventarioCliente.Location = new System.Drawing.Point(439, 20);
+            this.DgbInventarioCliente.Location = new System.Drawing.Point(823, 4);
             this.DgbInventarioCliente.Margin = new System.Windows.Forms.Padding(4);
             this.DgbInventarioCliente.Name = "DgbInventarioCliente";
             this.DgbInventarioCliente.RowHeadersWidth = 51;
-            this.DgbInventarioCliente.Size = new System.Drawing.Size(603, 185);
+            this.DgbInventarioCliente.Size = new System.Drawing.Size(100, 17);
             this.DgbInventarioCliente.TabIndex = 1;
+            this.DgbInventarioCliente.Visible = false;
             // 
             // nombreCliente
             // 
@@ -1357,10 +1358,10 @@ namespace El_Balcon_de_Chalita
             // CbxClientesInventarioClientes
             // 
             this.CbxClientesInventarioClientes.FormattingEnabled = true;
-            this.CbxClientesInventarioClientes.Location = new System.Drawing.Point(439, 232);
+            this.CbxClientesInventarioClientes.Location = new System.Drawing.Point(823, 29);
             this.CbxClientesInventarioClientes.Margin = new System.Windows.Forms.Padding(4);
             this.CbxClientesInventarioClientes.Name = "CbxClientesInventarioClientes";
-            this.CbxClientesInventarioClientes.Size = new System.Drawing.Size(251, 24);
+            this.CbxClientesInventarioClientes.Size = new System.Drawing.Size(100, 24);
             this.CbxClientesInventarioClientes.TabIndex = 2;
             this.CbxClientesInventarioClientes.Visible = false;
             this.CbxClientesInventarioClientes.SelectedIndexChanged += new System.EventHandler(this.CbxClientesInventarioClientes_SelectedIndexChanged);
