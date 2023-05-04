@@ -672,7 +672,21 @@ namespace El_Balcon_de_Chalita
                 }
                 catch (MySqlException ex)
                 {
-                    MessageBox.Show("Ocurrio un error insertando el elemento:" + ex.Message);
+                    //MessageBox.Show("Ocurrio un error insertando el elemento:" + ex.Message);
+                    DialogResult result = MessageBox.Show("Ya extiste un registro de este artículo. ¿Desea sobre escribirlo?", "Actualizar Datos", MessageBoxButtons.OKCancel);
+                    // Verificar la respuesta del usuario
+                    if (result == DialogResult.OK)
+                    {
+                        // El usuario ha seleccionado "Aceptar"
+                        // Realizar la acción deseada
+                        editarObjetoBD();
+                    }
+                    else
+                    {
+                        // El usuario ha seleccionado "Cancelar"
+                        // Cancelar la acción o realizar otra acción según sea necesario
+                    }
+                    
                 }
             }
             else
@@ -692,6 +706,10 @@ namespace El_Balcon_de_Chalita
         }
 
         private void btnEditarObjeto_Click(object sender, EventArgs e)
+        {
+            editarObjetoBD();
+        }
+        private void editarObjetoBD()
         {
             string nombre = txtNombreObjeto.Text;
             string precio = txtPrecioObjeto.Text;

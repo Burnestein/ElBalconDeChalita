@@ -1113,12 +1113,13 @@ namespace El_Balcon_de_Chalita
             this.nombreObjeto,
             this.cantidadObjeto,
             this.precioObjeto});
-            this.DgbInventarioBalcon.Location = new System.Drawing.Point(489, 25);
+            this.DgbInventarioBalcon.Location = new System.Drawing.Point(820, 0);
             this.DgbInventarioBalcon.Margin = new System.Windows.Forms.Padding(4);
             this.DgbInventarioBalcon.Name = "DgbInventarioBalcon";
             this.DgbInventarioBalcon.RowHeadersWidth = 51;
-            this.DgbInventarioBalcon.Size = new System.Drawing.Size(457, 301);
+            this.DgbInventarioBalcon.Size = new System.Drawing.Size(103, 20);
             this.DgbInventarioBalcon.TabIndex = 10;
+            this.DgbInventarioBalcon.Visible = false;
             // 
             // nombreObjeto
             // 
