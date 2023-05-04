@@ -8,7 +8,8 @@ namespace El_Balcon_de_Chalita
 {
     public class reservacion
     {
-        public cliente cliente;
+        public cliente micliente { get; set; }
+        public int idReservacion { get; set; }
         public int entradaHora { get; set; }
         public int entradaMinuto { get; set; }
         public int entradaDia { get; set; }
@@ -20,12 +21,16 @@ namespace El_Balcon_de_Chalita
         public int salidaMes { get; set; }
         public int salidaAño { get; set; }
         public int id { get; set; }
-        public string horaEntrada { get; set; }
-        public string horaSalida { get; set; }
+        public string fechaEntrada { get; set; }
+        public string fechaSalida { get; set; }
+        public string compAfiliada { get; set; }
+
+        public int idAfiliado { get; set; }
 
         public reservacion()
         {
-            cliente micliente = new cliente();
+            micliente = new cliente();
+            idReservacion = -1;
             entradaHora = -1;
             entradaMinuto = -1;
             entradaDia = -1;
@@ -37,13 +42,15 @@ namespace El_Balcon_de_Chalita
             salidaMes = -1;
             salidaAño = -1;
             id = -1;
-            horaEntrada = "";
-            horaSalida = "";
+            fechaEntrada = "";
+            fechaSalida = "";
+            compAfiliada = "";
+            idAfiliado = -1;
         }
 
         public void limpiarAtributos()
         {
-            cliente micliente = new cliente();
+            micliente = new cliente();
             entradaHora = -1;
             entradaMinuto = -1;
             entradaDia = -1;
@@ -54,9 +61,23 @@ namespace El_Balcon_de_Chalita
             salidaMes = -1;
             salidaAño = -1;
             id = -1;
-            horaEntrada = "";
-            horaSalida = "";
+            fechaEntrada = "";
+            fechaSalida = "";
         }
-
+        public int separarAño(string fecha)
+        {
+            string año = fecha.Substring(0, 4);
+            return Convert.ToInt32(año);
+        }
+        public int separarMes(string fecha)
+        {
+            string mes = fecha.Substring(5, 2);
+            return Convert.ToInt32(mes);
+        }
+        public int separarDia(string fecha)
+        {
+            string dia = fecha.Substring(8, 2);
+            return Convert.ToInt32(dia);
+        }
     }
 }

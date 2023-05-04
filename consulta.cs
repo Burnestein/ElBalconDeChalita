@@ -41,9 +41,9 @@ namespace El_Balcon_de_Chalita
 
         }
 
-        public DataTable ConsultarClientes(string cadena)
+        public DataTable ConsultarClientes(string texto)
         {
-            string busqueda = cadena;
+            string busqueda = texto;
             MySqlConnection conexionBD = mysql.conexion.Conexion();
             conexionBD.Open();
 
@@ -83,7 +83,9 @@ namespace El_Balcon_de_Chalita
         {
             DataGridView DgbReservaciones = tabla;
             //Query para obtener las reservas enlazadas con los id de los clientes en su respectiva tabla
-            string obtenerReservas = "select * from reservaciones left join clientes on reservaciones.cliente = clientes.idCliente";
+            string obtenerReservas = "SELECT * FROM reservaciones " +
+                                     "LEFT JOIN clientes ON reservaciones.cliente = clientes.idCliente " +
+                                     "LEFT JOIN compañiasafiliadas ON reservaciones.compañiaAfiliada = compañiasafiliadas.idCompañia";
             MySqlDataReader reader = null;
             MySqlConnection conexionBD = mysql.conexion.Conexion();
             conexionBD.Open();
@@ -101,11 +103,13 @@ namespace El_Balcon_de_Chalita
                     while (reader.Read())
                     {
                         string nombreCliente = reader.GetString(7) + " " + reader.GetString(8) + " " + reader.GetString(9);
-                        DataGridViewRow row = (DataGridViewRow)DgbReservaciones.Rows[contador].Clone(); //Error en esta linea
+                        DataGridViewRow row = (DataGridViewRow)DgbReservaciones.Rows[contador].Clone(); 
                         row.Cells[0].Value = reader.GetString(0);
                         row.Cells[1].Value = nombreCliente;
                         row.Cells[2].Value = reader.GetString(2);
                         row.Cells[3].Value = reader.GetString(3);
+                        row.Cells[4].Value = reader.GetString(18);
+                        row.Cells[5].Value = reader.GetString(4);
                         DgbReservaciones.Rows.Add(row);
                         contador++;
                     }
@@ -154,6 +158,8 @@ namespace El_Balcon_de_Chalita
                         row.Cells[1].Value = nombreCliente;
                         row.Cells[2].Value = reader.GetString(2);
                         row.Cells[3].Value = reader.GetString(3);
+                        row.Cells[4].Value = reader.GetString(18);
+                        row.Cells[5].Value = reader.GetString(4);
                         DgbReservaciones.Rows.Add(row);
                         contador++;
                     }

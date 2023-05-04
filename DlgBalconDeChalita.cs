@@ -620,22 +620,6 @@ namespace El_Balcon_de_Chalita
 
         }
 
-        //Funcion que mostrara los datos de las reservas en un dataGrid al ejecutar evento de click en el boton de consulta reservas
-        private void button1_Click(object sender, EventArgs e)
-        {
-            limpiarTabla();
-            dgvMaster.Columns.Add("IdReservaciones", "IdReservaciones");
-            dgvMaster.Columns.Add("Cliente", "Cliente");
-            dgvMaster.Columns.Add("Fecha de Entrada", "Fecha de Entrada");
-            dgvMaster.Columns.Add("Fecha de Salida", "Fecha de Salida");
-            if (micliente.IdCliente >= 0) { // revisa el id del cliente seleccionado
-                miconsulta.ConsultarReservaciones(dgvMaster, micliente); // si esta seleccionado busca reservas del cliente
-            } else miconsulta.ConsultarReservaciones(dgvMaster); 
-
-        }
-
-
-
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             //Un objeto es la instancia de una clase
@@ -972,6 +956,24 @@ namespace El_Balcon_de_Chalita
 
         }
 
+        //Funcion que mostrara los datos de las reservas en un dataGrid al ejecutar evento de click en el boton de consulta reservas
+        private void btnConsultarReservas_Click(object sender, EventArgs e)
+        {
+            limpiarTabla();
+            dgvMaster.Columns.Add("IdReservaciones", "IdReservaciones");
+            dgvMaster.Columns.Add("Cliente", "Cliente");
+            dgvMaster.Columns.Add("Fecha de Entrada", "Fecha de Entrada");
+            dgvMaster.Columns.Add("Fecha de Salida", "Fecha de Salida");
+            dgvMaster.Columns.Add("Empresa Afiliada", "Empresa Afiliada");
+            dgvMaster.Columns.Add("Id Afiliado", "Id Afiliado");
+            if (micliente.IdCliente >= 0)
+            { // revisa el id del cliente seleccionado
+                miconsulta.ConsultarReservaciones(dgvMaster, micliente); // si esta seleccionado busca reservas del cliente
+            }
+            else miconsulta.ConsultarReservaciones(dgvMaster);
+
+        }
+
         private void btnConsultarReservasAll_Click(object sender, EventArgs e)
         {
             limpiarTabla();
@@ -979,6 +981,8 @@ namespace El_Balcon_de_Chalita
             dgvMaster.Columns.Add("Cliente", "Cliente");
             dgvMaster.Columns.Add("Fecha de Entrada", "Fecha de Entrada");
             dgvMaster.Columns.Add("Fecha de Salida", "Fecha de Salida");
+            dgvMaster.Columns.Add("Empresa Afiliada", "Empresa Afiliada");
+            dgvMaster.Columns.Add("Id Afiliado", "Id Afiliado");
             miconsulta.ConsultarReservaciones(dgvMaster);
         }
 
@@ -1072,6 +1076,23 @@ namespace El_Balcon_de_Chalita
                         break;
                     case 1: // La pestaña de Reservaciones está seleccionada
                         TsbEliminar.Enabled = true;
+
+                        mireservacion.idReservacion = Convert.ToInt32(dgvMaster[0, seleccion].Value);
+                        mireservacion.micliente.nombreCompleto = dgvMaster[1, seleccion].Value.ToString();
+                        mireservacion.fechaEntrada = dgvMaster[2, seleccion].Value.ToString();
+                        mireservacion.fechaSalida = dgvMaster[3, seleccion].Value.ToString();
+                        mireservacion.compAfiliada = dgvMaster[4, seleccion].Value.ToString();
+                        mireservacion.idAfiliado = Convert.ToInt32(dgvMaster[5, seleccion].Value)-1;
+
+                        cbxCompañias.SelectedIndex = mireservacion.idAfiliado;
+
+                        mireservacion.entradaAño = mireservacion.separarAño(mireservacion.fechaEntrada);
+                        mireservacion.entradaMes = mireservacion.separarMes(mireservacion.fechaEntrada);
+                        mireservacion.entradaDia = mireservacion.separarDia(mireservacion.fechaEntrada);
+                        DateTime fechaEntrada = new DateTime(mireservacion.entradaAño, mireservacion.entradaMes, mireservacion.entradaDia);
+                        CCheckIn.SetDate(fechaEntrada);
+
+
                         break;
                     case 2: // La pestaña de Inventario esta seleccionada
                         TsbEliminar.Enabled = true;
@@ -1154,9 +1175,9 @@ namespace El_Balcon_de_Chalita
             
             int selectedIndex = dgvMaster.CurrentCell.RowIndex;
             mireservacion.id = Convert.ToInt32(dgvMaster[0, selectedIndex].Value);
-            mireservacion.cliente.nombreCompleto = dgvMaster[1, selectedIndex].Value.ToString();
-            mireservacion.horaEntrada = dgvMaster[2, selectedIndex].Value.ToString();
-            mireservacion.horaSalida = dgvMaster[3, selectedIndex].Value.ToString();
+            mireservacion.micliente.nombreCompleto = dgvMaster[1, selectedIndex].Value.ToString();
+            mireservacion.fechaEntrada = dgvMaster[2, selectedIndex].Value.ToString();
+            mireservacion.fechaSalida = dgvMaster[3, selectedIndex].Value.ToString();
         }
         private void limpiarTabla()
         {

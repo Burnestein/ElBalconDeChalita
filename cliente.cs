@@ -30,6 +30,7 @@ namespace El_Balcon_de_Chalita
             lugarProcedencia = "";
             estadoCivil = "";
             fechaNacimiento = "";
+            nombreCompleto = "";
         }
         public void asignarTablaConsulta(string tabla)
         {

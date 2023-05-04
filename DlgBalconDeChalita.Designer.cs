@@ -520,7 +520,7 @@ namespace El_Balcon_de_Chalita
             this.btnConsultarReservas.TabIndex = 7;
             this.btnConsultarReservas.Text = "Reservas de cliente";
             this.btnConsultarReservas.UseVisualStyleBackColor = true;
-            this.btnConsultarReservas.Click += new System.EventHandler(this.button1_Click);
+            this.btnConsultarReservas.Click += new System.EventHandler(this.btnConsultarReservas_Click);
             // 
             // BtnReservar
             // 
