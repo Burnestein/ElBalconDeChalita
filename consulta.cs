@@ -132,7 +132,7 @@ namespace El_Balcon_de_Chalita
             int idCliente = cliente.IdCliente;
             //Query para obtener las reservas enlazadas con los id de los clientes en su respectiva tabla
             string obtenerReservas = "select * from reservaciones left join clientes on reservaciones.cliente = clientes.idCliente WHERE clientes.idCliente LIKE @idCliente";
-            
+
             MySqlDataReader reader = null;
             //Contador que sera el puntero para el numero de fila en la que se ira insertando la data de la BD
             int contador = 0;
@@ -172,8 +172,9 @@ namespace El_Balcon_de_Chalita
 
         }
 
-        public void consultarInventario(string insumo, string cantidad)
+        public void consultarInventario(DataGridView tabla, string insumo, string cantidad)
         {
+            int contador = 0;
             MySqlDataReader reader = null;
             string query = "select * from inventariobalcon where nombre = '" + insumo + "' ";
             MySqlConnection conexionBD = mysql.conexion.Conexion();
@@ -188,8 +189,53 @@ namespace El_Balcon_de_Chalita
                 {
                     while (reader.Read())
                     {
-                        cantidad = reader.GetString(2);
-                        cantidad = reader.GetString(3);
+                        DataGridViewRow row = (DataGridViewRow)tabla.Rows[contador].Clone();
+                        row.Cells[0].Value = reader.GetString(1);
+                        row.Cells[1].Value = reader.GetString(2);
+                        row.Cells[2].Value = reader.GetString(3);
+                        tabla.Rows.Add(row);
+                        contador++;
+                    }
+                }
+                else
+                {
+                    //MessageBox.Show("No hay objetos con ese nomnre.");
+                    consultarInventario(tabla);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conexionBD.Close();
+            }
+
+        }
+        public void consultarInventario(DataGridView tabla)
+        {
+            int contador = 0;
+            MySqlDataReader reader = null;
+            string query = "select * from inventariobalcon";
+            MySqlConnection conexionBD = mysql.conexion.Conexion();
+            conexionBD.Open();
+
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(query, conexionBD);
+                reader = comando.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        DataGridViewRow row = (DataGridViewRow)tabla.Rows[contador].Clone();
+                        row.Cells[0].Value = reader.GetString(1);
+                        row.Cells[1].Value = reader.GetString(2);
+                        row.Cells[2].Value = reader.GetString(3);
+                        tabla.Rows.Add(row);
+                        contador++;
                     }
                 }
                 else
@@ -201,8 +247,11 @@ namespace El_Balcon_de_Chalita
             {
                 MessageBox.Show(ex.Message);
             }
+            finally
+            {
+                conexionBD.Close();
+            }
         }
+
     }
-
-
 }

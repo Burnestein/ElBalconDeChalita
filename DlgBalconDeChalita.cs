@@ -683,7 +683,12 @@ namespace El_Balcon_de_Chalita
 
         private void btnConsultarObjeto_Click(object sender, EventArgs e)
         {
-            miconsulta.consultarInventario(txtNombreObjeto.Text, txtCantidadObjeto.Text);
+            limpiarTabla();
+            dgvMaster.Columns.Add("nombreObjeto", "Articulo");
+            dgvMaster.Columns.Add("cantidadObjeto", "Cantidad");
+            dgvMaster.Columns.Add("precioObjeto", "Precio Unitario");
+            miconsulta.consultarInventario(dgvMaster, txtNombreObjeto.Text, txtCantidadObjeto.Text);
+
         }
 
         private void btnEditarObjeto_Click(object sender, EventArgs e)
