@@ -13,7 +13,6 @@ namespace El_Balcon_de_Chalita
     public class consulta
     {
 
-
         public DataTable ConsultarClientes()
         {
             MySqlConnection conexionBD = mysql.conexion.Conexion();
@@ -171,6 +170,37 @@ namespace El_Balcon_de_Chalita
                 conexionBD.Close();
             }
 
+        }
+
+        public void consultarInventario(string insumo, string cantidad)
+        {
+            MySqlDataReader reader = null;
+            string query = "select * from inventariobalcon where nombre = '" + insumo + "' ";
+            MySqlConnection conexionBD = mysql.conexion.Conexion();
+            conexionBD.Open();
+
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(query, conexionBD);
+                reader = comando.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        cantidad = reader.GetString(2);
+                        cantidad = reader.GetString(3);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No hay objetos con ese nomnre.");
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 

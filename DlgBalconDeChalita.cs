@@ -683,34 +683,7 @@ namespace El_Balcon_de_Chalita
 
         private void btnConsultarObjeto_Click(object sender, EventArgs e)
         {
-            MySqlDataReader reader = null;
-            string nombreObjeto = txtNombreObjeto.Text;
-            string query = "select * from inventariobalcon where nombre = '" + nombreObjeto + "' ";
-            MySqlConnection conexionBD = mysql.conexion.Conexion();
-            conexionBD.Open();
-
-            try
-            {
-                MySqlCommand comando = new MySqlCommand(query, conexionBD);
-                reader = comando.ExecuteReader();
-
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        txtCantidadObjeto.Text = reader.GetString(2);
-                        txtPrecioObjeto.Text = reader.GetString(3);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No hay objetos con ese nomnre.");
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            miconsulta.consultarInventario(txtNombreObjeto.Text, txtCantidadObjeto.Text);
         }
 
         private void btnEditarObjeto_Click(object sender, EventArgs e)
