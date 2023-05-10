@@ -34,12 +34,14 @@ namespace El_Balcon_de_Chalita
             this.contraseña = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.btnAcceder = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.PbxCerrar = new System.Windows.Forms.PictureBox();
+            this.panelHeader = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            ((System.ComponentModel.ISupportInitialize)(this.PbxCerrar)).BeginInit();
+            this.panelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // usuario
@@ -77,6 +79,21 @@ namespace El_Balcon_de_Chalita
             this.label2.TabIndex = 4;
             this.label2.Text = "Contraseña :";
             // 
+            // btnAcceder
+            // 
+            this.btnAcceder.BackColor = System.Drawing.Color.Chocolate;
+            this.btnAcceder.FlatAppearance.BorderSize = 0;
+            this.btnAcceder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAcceder.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAcceder.ForeColor = System.Drawing.Color.White;
+            this.btnAcceder.Location = new System.Drawing.Point(492, 336);
+            this.btnAcceder.Name = "btnAcceder";
+            this.btnAcceder.Size = new System.Drawing.Size(137, 54);
+            this.btnAcceder.TabIndex = 6;
+            this.btnAcceder.Text = "Acceder";
+            this.btnAcceder.UseVisualStyleBackColor = false;
+            this.btnAcceder.Click += new System.EventHandler(this.btnAcceder_Click);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -88,17 +105,29 @@ namespace El_Balcon_de_Chalita
             this.label3.TabIndex = 5;
             this.label3.Text = "Login de Contabilidad";
             this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.label3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label3_MouseDown);
             // 
-            // btnAcceder
+            // PbxCerrar
             // 
-            this.btnAcceder.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAcceder.Location = new System.Drawing.Point(492, 336);
-            this.btnAcceder.Name = "btnAcceder";
-            this.btnAcceder.Size = new System.Drawing.Size(137, 54);
-            this.btnAcceder.TabIndex = 6;
-            this.btnAcceder.Text = "Acceder";
-            this.btnAcceder.UseVisualStyleBackColor = true;
-            this.btnAcceder.Click += new System.EventHandler(this.btnAcceder_Click);
+            this.PbxCerrar.Image = ((System.Drawing.Image)(resources.GetObject("PbxCerrar.Image")));
+            this.PbxCerrar.Location = new System.Drawing.Point(733, 2);
+            this.PbxCerrar.Name = "PbxCerrar";
+            this.PbxCerrar.Size = new System.Drawing.Size(20, 20);
+            this.PbxCerrar.TabIndex = 9;
+            this.PbxCerrar.TabStop = false;
+            this.PbxCerrar.Click += new System.EventHandler(this.PbxCerrar_Click);
+            // 
+            // panelHeader
+            // 
+            this.panelHeader.BackColor = System.Drawing.Color.Chocolate;
+            this.panelHeader.Controls.Add(this.PbxCerrar);
+            this.panelHeader.Controls.Add(this.label3);
+            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelHeader.Location = new System.Drawing.Point(0, 0);
+            this.panelHeader.Name = "panelHeader";
+            this.panelHeader.Size = new System.Drawing.Size(754, 66);
+            this.panelHeader.TabIndex = 8;
+            this.panelHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelHeader_MouseDown);
             // 
             // pictureBox1
             // 
@@ -109,16 +138,6 @@ namespace El_Balcon_de_Chalita
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.SaddleBrown;
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(754, 66);
-            this.panel1.TabIndex = 8;
-            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -126,7 +145,7 @@ namespace El_Balcon_de_Chalita
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(754, 520);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.btnAcceder);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -138,9 +157,10 @@ namespace El_Balcon_de_Chalita
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.PbxCerrar)).EndInit();
+            this.panelHeader.ResumeLayout(false);
+            this.panelHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,9 +172,10 @@ namespace El_Balcon_de_Chalita
         private System.Windows.Forms.TextBox contraseña;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnAcceder;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox PbxCerrar;
+        private System.Windows.Forms.Panel panelHeader;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panel1;
     }
 }

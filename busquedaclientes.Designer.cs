@@ -39,18 +39,18 @@ namespace El_Balcon_de_Chalita
             // dgvBuscCliente
             // 
             this.dgvBuscCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBuscCliente.Location = new System.Drawing.Point(16, 71);
+            this.dgvBuscCliente.Location = new System.Drawing.Point(18, 89);
             this.dgvBuscCliente.Name = "dgvBuscCliente";
             this.dgvBuscCliente.RowHeadersWidth = 51;
             this.dgvBuscCliente.RowTemplate.Height = 24;
-            this.dgvBuscCliente.Size = new System.Drawing.Size(608, 360);
+            this.dgvBuscCliente.Size = new System.Drawing.Size(684, 449);
             this.dgvBuscCliente.TabIndex = 0;
             // 
             // btnBuscAcept
             // 
-            this.btnBuscAcept.Location = new System.Drawing.Point(631, 352);
+            this.btnBuscAcept.Location = new System.Drawing.Point(710, 440);
             this.btnBuscAcept.Name = "btnBuscAcept";
-            this.btnBuscAcept.Size = new System.Drawing.Size(157, 38);
+            this.btnBuscAcept.Size = new System.Drawing.Size(177, 48);
             this.btnBuscAcept.TabIndex = 1;
             this.btnBuscAcept.Text = "Aceptar";
             this.btnBuscAcept.UseVisualStyleBackColor = true;
@@ -58,9 +58,9 @@ namespace El_Balcon_de_Chalita
             // 
             // btnBuscCanc
             // 
-            this.btnBuscCanc.Location = new System.Drawing.Point(631, 396);
+            this.btnBuscCanc.Location = new System.Drawing.Point(710, 495);
             this.btnBuscCanc.Name = "btnBuscCanc";
-            this.btnBuscCanc.Size = new System.Drawing.Size(157, 35);
+            this.btnBuscCanc.Size = new System.Drawing.Size(177, 43);
             this.btnBuscCanc.TabIndex = 2;
             this.btnBuscCanc.Text = "Cancelar";
             this.btnBuscCanc.UseVisualStyleBackColor = true;
@@ -69,22 +69,23 @@ namespace El_Balcon_de_Chalita
             // lblBuscCliente
             // 
             this.lblBuscCliente.AutoSize = true;
-            this.lblBuscCliente.Location = new System.Drawing.Point(13, 27);
+            this.lblBuscCliente.Location = new System.Drawing.Point(15, 34);
             this.lblBuscCliente.Name = "lblBuscCliente";
-            this.lblBuscCliente.Size = new System.Drawing.Size(163, 17);
+            this.lblBuscCliente.Size = new System.Drawing.Size(191, 20);
             this.lblBuscCliente.TabIndex = 3;
             this.lblBuscCliente.Text = "Seleccione un elemento:";
             // 
             // busquedaclientes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(900, 563);
             this.ControlBox = false;
             this.Controls.Add(this.lblBuscCliente);
             this.Controls.Add(this.btnBuscCanc);
             this.Controls.Add(this.btnBuscAcept);
             this.Controls.Add(this.dgvBuscCliente);
+            this.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "busquedaclientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
