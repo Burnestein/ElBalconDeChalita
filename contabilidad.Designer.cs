@@ -29,6 +29,8 @@ namespace El_Balcon_de_Chalita
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(contabilidad));
             this.TbcContabilidad = new System.Windows.Forms.TabControl();
             this.TpgIngresos = new System.Windows.Forms.TabPage();
@@ -41,20 +43,23 @@ namespace El_Balcon_de_Chalita
             this.LblEgresosTotales = new System.Windows.Forms.Label();
             this.txtEgresos = new System.Windows.Forms.TextBox();
             this.DgbEgresos = new System.Windows.Forms.DataGridView();
+            this.TpgGanancias = new System.Windows.Forms.TabPage();
+            this.txtGanancias = new System.Windows.Forms.TextBox();
+            this.LblGananciasTotales = new System.Windows.Forms.Label();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.compañia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.porcentaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gasto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.limpieza = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TpgGanancias = new System.Windows.Forms.TabPage();
-            this.txtGanancias = new System.Windows.Forms.TextBox();
-            this.LblGananciasTotales = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.TbcContabilidad.SuspendLayout();
             this.TpgIngresos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgbIngresos)).BeginInit();
             this.TpgEgresos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgbEgresos)).BeginInit();
             this.TpgGanancias.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // TbcContabilidad
@@ -63,31 +68,33 @@ namespace El_Balcon_de_Chalita
             this.TbcContabilidad.Controls.Add(this.TpgEgresos);
             this.TbcContabilidad.Controls.Add(this.TpgGanancias);
             this.TbcContabilidad.ItemSize = new System.Drawing.Size(100, 35);
-            this.TbcContabilidad.Location = new System.Drawing.Point(12, 12);
+            this.TbcContabilidad.Location = new System.Drawing.Point(14, 77);
+            this.TbcContabilidad.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TbcContabilidad.Name = "TbcContabilidad";
             this.TbcContabilidad.SelectedIndex = 0;
-            this.TbcContabilidad.Size = new System.Drawing.Size(782, 437);
+            this.TbcContabilidad.Size = new System.Drawing.Size(912, 476);
             this.TbcContabilidad.TabIndex = 0;
             // 
             // TpgIngresos
             // 
+            this.TpgIngresos.BackColor = System.Drawing.Color.White;
             this.TpgIngresos.Controls.Add(this.LblIngresosTotales);
             this.TpgIngresos.Controls.Add(this.txtIngresos);
             this.TpgIngresos.Controls.Add(this.DgbIngresos);
             this.TpgIngresos.Location = new System.Drawing.Point(4, 39);
+            this.TpgIngresos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TpgIngresos.Name = "TpgIngresos";
-            this.TpgIngresos.Padding = new System.Windows.Forms.Padding(3);
-            this.TpgIngresos.Size = new System.Drawing.Size(774, 394);
+            this.TpgIngresos.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TpgIngresos.Size = new System.Drawing.Size(904, 433);
             this.TpgIngresos.TabIndex = 0;
             this.TpgIngresos.Text = "Ingresos";
-            this.TpgIngresos.UseVisualStyleBackColor = true;
             this.TpgIngresos.Click += new System.EventHandler(this.Ingresos_Click);
             // 
             // LblIngresosTotales
             // 
             this.LblIngresosTotales.AutoSize = true;
             this.LblIngresosTotales.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblIngresosTotales.Location = new System.Drawing.Point(298, 104);
+            this.LblIngresosTotales.Location = new System.Drawing.Point(357, 37);
             this.LblIngresosTotales.Name = "LblIngresosTotales";
             this.LblIngresosTotales.Size = new System.Drawing.Size(148, 24);
             this.LblIngresosTotales.TabIndex = 2;
@@ -96,20 +103,30 @@ namespace El_Balcon_de_Chalita
             // 
             // txtIngresos
             // 
-            this.txtIngresos.Location = new System.Drawing.Point(296, 145);
+            this.txtIngresos.Location = new System.Drawing.Point(304, 82);
+            this.txtIngresos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtIngresos.Name = "txtIngresos";
-            this.txtIngresos.Size = new System.Drawing.Size(226, 20);
+            this.txtIngresos.Size = new System.Drawing.Size(263, 21);
             this.txtIngresos.TabIndex = 1;
             // 
             // DgbIngresos
             // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Chocolate;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgbIngresos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DgbIngresos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgbIngresos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idReservacion,
             this.Ingreso});
-            this.DgbIngresos.Location = new System.Drawing.Point(15, 44);
+            this.DgbIngresos.Location = new System.Drawing.Point(293, 138);
+            this.DgbIngresos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DgbIngresos.Name = "DgbIngresos";
-            this.DgbIngresos.Size = new System.Drawing.Size(244, 121);
+            this.DgbIngresos.Size = new System.Drawing.Size(285, 149);
             this.DgbIngresos.TabIndex = 0;
             this.DgbIngresos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgbIngresos_CellContentClick);
             // 
@@ -125,22 +142,23 @@ namespace El_Balcon_de_Chalita
             // 
             // TpgEgresos
             // 
+            this.TpgEgresos.BackColor = System.Drawing.Color.White;
             this.TpgEgresos.Controls.Add(this.LblEgresosTotales);
             this.TpgEgresos.Controls.Add(this.txtEgresos);
             this.TpgEgresos.Controls.Add(this.DgbEgresos);
             this.TpgEgresos.Location = new System.Drawing.Point(4, 39);
+            this.TpgEgresos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TpgEgresos.Name = "TpgEgresos";
-            this.TpgEgresos.Padding = new System.Windows.Forms.Padding(3);
-            this.TpgEgresos.Size = new System.Drawing.Size(774, 394);
+            this.TpgEgresos.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TpgEgresos.Size = new System.Drawing.Size(904, 433);
             this.TpgEgresos.TabIndex = 1;
             this.TpgEgresos.Text = "Egresos";
-            this.TpgEgresos.UseVisualStyleBackColor = true;
             // 
             // LblEgresosTotales
             // 
             this.LblEgresosTotales.AutoSize = true;
             this.LblEgresosTotales.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblEgresosTotales.Location = new System.Drawing.Point(16, 242);
+            this.LblEgresosTotales.Location = new System.Drawing.Point(380, 26);
             this.LblEgresosTotales.Name = "LblEgresosTotales";
             this.LblEgresosTotales.Size = new System.Drawing.Size(146, 24);
             this.LblEgresosTotales.TabIndex = 2;
@@ -148,13 +166,22 @@ namespace El_Balcon_de_Chalita
             // 
             // txtEgresos
             // 
-            this.txtEgresos.Location = new System.Drawing.Point(20, 280);
+            this.txtEgresos.Location = new System.Drawing.Point(361, 74);
+            this.txtEgresos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtEgresos.Name = "txtEgresos";
-            this.txtEgresos.Size = new System.Drawing.Size(142, 20);
+            this.txtEgresos.Size = new System.Drawing.Size(165, 21);
             this.txtEgresos.TabIndex = 1;
             // 
             // DgbEgresos
             // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Chocolate;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgbEgresos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.DgbEgresos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgbEgresos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
@@ -162,10 +189,43 @@ namespace El_Balcon_de_Chalita
             this.porcentaje,
             this.Gasto,
             this.limpieza});
-            this.DgbEgresos.Location = new System.Drawing.Point(20, 20);
+            this.DgbEgresos.Location = new System.Drawing.Point(128, 122);
+            this.DgbEgresos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DgbEgresos.Name = "DgbEgresos";
-            this.DgbEgresos.Size = new System.Drawing.Size(544, 150);
+            this.DgbEgresos.Size = new System.Drawing.Size(635, 185);
             this.DgbEgresos.TabIndex = 0;
+            // 
+            // TpgGanancias
+            // 
+            this.TpgGanancias.BackColor = System.Drawing.Color.White;
+            this.TpgGanancias.Controls.Add(this.txtGanancias);
+            this.TpgGanancias.Controls.Add(this.LblGananciasTotales);
+            this.TpgGanancias.Location = new System.Drawing.Point(4, 39);
+            this.TpgGanancias.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TpgGanancias.Name = "TpgGanancias";
+            this.TpgGanancias.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TpgGanancias.Size = new System.Drawing.Size(904, 433);
+            this.TpgGanancias.TabIndex = 2;
+            this.TpgGanancias.Text = "Ganancias";
+            // 
+            // txtGanancias
+            // 
+            this.txtGanancias.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGanancias.Location = new System.Drawing.Point(314, 183);
+            this.txtGanancias.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtGanancias.Name = "txtGanancias";
+            this.txtGanancias.Size = new System.Drawing.Size(261, 38);
+            this.txtGanancias.TabIndex = 1;
+            // 
+            // LblGananciasTotales
+            // 
+            this.LblGananciasTotales.AutoSize = true;
+            this.LblGananciasTotales.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblGananciasTotales.Location = new System.Drawing.Point(319, 114);
+            this.LblGananciasTotales.Name = "LblGananciasTotales";
+            this.LblGananciasTotales.Size = new System.Drawing.Size(241, 31);
+            this.LblGananciasTotales.TabIndex = 0;
+            this.LblGananciasTotales.Text = "Ganancias Totales";
             // 
             // id
             // 
@@ -179,7 +239,7 @@ namespace El_Balcon_de_Chalita
             // 
             // porcentaje
             // 
-            this.porcentaje.HeaderText = "Porcentaje de Ganancias de la Compañia";
+            this.porcentaje.HeaderText = "% de Ganancias de la Compañia";
             this.porcentaje.Name = "porcentaje";
             // 
             // Gasto
@@ -192,45 +252,41 @@ namespace El_Balcon_de_Chalita
             this.limpieza.HeaderText = "Gastos de Limpieza";
             this.limpieza.Name = "limpieza";
             // 
-            // TpgGanancias
+            // panel1
             // 
-            this.TpgGanancias.Controls.Add(this.txtGanancias);
-            this.TpgGanancias.Controls.Add(this.LblGananciasTotales);
-            this.TpgGanancias.Location = new System.Drawing.Point(4, 39);
-            this.TpgGanancias.Name = "TpgGanancias";
-            this.TpgGanancias.Padding = new System.Windows.Forms.Padding(3);
-            this.TpgGanancias.Size = new System.Drawing.Size(774, 394);
-            this.TpgGanancias.TabIndex = 2;
-            this.TpgGanancias.Text = "Ganancias";
-            this.TpgGanancias.UseVisualStyleBackColor = true;
+            this.panel1.BackColor = System.Drawing.Color.Chocolate;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(933, 70);
+            this.panel1.TabIndex = 1;
             // 
-            // txtGanancias
+            // label1
             // 
-            this.txtGanancias.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGanancias.Location = new System.Drawing.Point(228, 190);
-            this.txtGanancias.Name = "txtGanancias";
-            this.txtGanancias.Size = new System.Drawing.Size(224, 38);
-            this.txtGanancias.TabIndex = 1;
-            // 
-            // LblGananciasTotales
-            // 
-            this.LblGananciasTotales.AutoSize = true;
-            this.LblGananciasTotales.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblGananciasTotales.Location = new System.Drawing.Point(222, 145);
-            this.LblGananciasTotales.Name = "LblGananciasTotales";
-            this.LblGananciasTotales.Size = new System.Drawing.Size(241, 31);
-            this.LblGananciasTotales.TabIndex = 0;
-            this.LblGananciasTotales.Text = "Ganancias Totales";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(383, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(166, 25);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "CONTABILIDAD";
             // 
             // contabilidad
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(933, 554);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.TbcContabilidad);
+            this.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "contabilidad";
-            this.Text = "contabilidad";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "  ";
             this.Load += new System.EventHandler(this.contabilidad_Load);
             this.TbcContabilidad.ResumeLayout(false);
             this.TpgIngresos.ResumeLayout(false);
@@ -241,6 +297,8 @@ namespace El_Balcon_de_Chalita
             ((System.ComponentModel.ISupportInitialize)(this.DgbEgresos)).EndInit();
             this.TpgGanancias.ResumeLayout(false);
             this.TpgGanancias.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -259,12 +317,14 @@ namespace El_Balcon_de_Chalita
         private System.Windows.Forms.Label LblEgresosTotales;
         private System.Windows.Forms.TextBox txtEgresos;
         private System.Windows.Forms.DataGridView DgbEgresos;
+        private System.Windows.Forms.TextBox txtGanancias;
+        private System.Windows.Forms.Label LblGananciasTotales;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn compañia;
         private System.Windows.Forms.DataGridViewTextBoxColumn porcentaje;
         private System.Windows.Forms.DataGridViewTextBoxColumn Gasto;
         private System.Windows.Forms.DataGridViewTextBoxColumn limpieza;
-        private System.Windows.Forms.TextBox txtGanancias;
-        private System.Windows.Forms.Label LblGananciasTotales;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
     }
 }
