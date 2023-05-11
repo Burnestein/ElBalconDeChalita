@@ -332,6 +332,7 @@ namespace El_Balcon_de_Chalita
             LlenarFormulario(micliente);
             idCliente = micliente.IdCliente;
             correoCliente = micliente.Email;
+            tsbQuitarCliente.Visible = false;
             dgvMaster.DataSource = null;
             dgvMaster.Rows.Clear();
             dgvMaster.Refresh();
@@ -923,12 +924,14 @@ namespace El_Balcon_de_Chalita
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             quitarCliente();
+            
         }
 
         public void quitarCliente()
         {
             micliente = new cliente();
             micliente.IdCliente = -1;
+            
             ActualizarForm();
         }
 
@@ -1085,7 +1088,7 @@ namespace El_Balcon_de_Chalita
                     case 0: // La pestaña de Clientes está seleccionada
 
                         tsbSeleccionar.Enabled = true;
-                        tsbSeleccionar.BackColor = SystemColors.HotTrack;
+                        tsbSeleccionar.BackColor = System.Drawing.ColorTranslator.FromHtml("#F4A261");
                         tsbSeleccionar.ForeColor = Color.White;
                         break;
                     case 1: // La pestaña de Reservaciones está seleccionada

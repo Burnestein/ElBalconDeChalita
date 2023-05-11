@@ -373,7 +373,7 @@ namespace El_Balcon_de_Chalita
             // 
             // btnRptRes
             // 
-            this.btnRptRes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(196)))), ((int)(((byte)(106)))));
+            this.btnRptRes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(111)))), ((int)(((byte)(81)))));
             this.btnRptRes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRptRes.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRptRes.ForeColor = System.Drawing.Color.White;
@@ -1159,15 +1159,15 @@ namespace El_Balcon_de_Chalita
             // 
             // btnRptInv
             // 
-            this.btnRptInv.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(162)))), ((int)(((byte)(97)))));
+            this.btnRptInv.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(111)))), ((int)(((byte)(81)))));
             this.btnRptInv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRptInv.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRptInv.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRptInv.ForeColor = System.Drawing.Color.White;
-            this.btnRptInv.Location = new System.Drawing.Point(318, 89);
+            this.btnRptInv.Location = new System.Drawing.Point(170, 215);
             this.btnRptInv.Name = "btnRptInv";
-            this.btnRptInv.Size = new System.Drawing.Size(124, 40);
+            this.btnRptInv.Size = new System.Drawing.Size(124, 73);
             this.btnRptInv.TabIndex = 12;
-            this.btnRptInv.Text = "Reporte";
+            this.btnRptInv.Text = "Generar Reporte";
             this.btnRptInv.UseVisualStyleBackColor = false;
             this.btnRptInv.Click += new System.EventHandler(this.btnRptInv_Click);
             // 
@@ -1221,11 +1221,11 @@ namespace El_Balcon_de_Chalita
             // 
             // btnConsultarObjeto
             // 
-            this.btnConsultarObjeto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(162)))), ((int)(((byte)(97)))));
+            this.btnConsultarObjeto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(196)))), ((int)(((byte)(106)))));
             this.btnConsultarObjeto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConsultarObjeto.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConsultarObjeto.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConsultarObjeto.ForeColor = System.Drawing.Color.White;
-            this.btnConsultarObjeto.Location = new System.Drawing.Point(318, 22);
+            this.btnConsultarObjeto.Location = new System.Drawing.Point(170, 168);
             this.btnConsultarObjeto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnConsultarObjeto.Name = "btnConsultarObjeto";
             this.btnConsultarObjeto.Size = new System.Drawing.Size(124, 40);
@@ -1236,11 +1236,11 @@ namespace El_Balcon_de_Chalita
             // 
             // btnEditarObjeto
             // 
-            this.btnEditarObjeto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(162)))), ((int)(((byte)(97)))));
+            this.btnEditarObjeto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(196)))), ((int)(((byte)(106)))));
             this.btnEditarObjeto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditarObjeto.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarObjeto.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditarObjeto.ForeColor = System.Drawing.Color.White;
-            this.btnEditarObjeto.Location = new System.Drawing.Point(457, 22);
+            this.btnEditarObjeto.Location = new System.Drawing.Point(546, 24);
             this.btnEditarObjeto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnEditarObjeto.Name = "btnEditarObjeto";
             this.btnEditarObjeto.Size = new System.Drawing.Size(124, 40);
@@ -1251,11 +1251,11 @@ namespace El_Balcon_de_Chalita
             // 
             // btnEliminarObjeto
             // 
-            this.btnEliminarObjeto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(162)))), ((int)(((byte)(97)))));
+            this.btnEliminarObjeto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(196)))), ((int)(((byte)(106)))));
             this.btnEliminarObjeto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminarObjeto.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarObjeto.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminarObjeto.ForeColor = System.Drawing.Color.White;
-            this.btnEliminarObjeto.Location = new System.Drawing.Point(600, 22);
+            this.btnEliminarObjeto.Location = new System.Drawing.Point(689, 24);
             this.btnEliminarObjeto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnEliminarObjeto.Name = "btnEliminarObjeto";
             this.btnEliminarObjeto.Size = new System.Drawing.Size(124, 40);
@@ -1266,11 +1266,11 @@ namespace El_Balcon_de_Chalita
             // 
             // btnGuardarObjeto
             // 
-            this.btnGuardarObjeto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(162)))), ((int)(((byte)(97)))));
+            this.btnGuardarObjeto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(196)))), ((int)(((byte)(106)))));
             this.btnGuardarObjeto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardarObjeto.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarObjeto.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardarObjeto.ForeColor = System.Drawing.Color.White;
-            this.btnGuardarObjeto.Location = new System.Drawing.Point(457, 89);
+            this.btnGuardarObjeto.Location = new System.Drawing.Point(407, 24);
             this.btnGuardarObjeto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnGuardarObjeto.Name = "btnGuardarObjeto";
             this.btnGuardarObjeto.Size = new System.Drawing.Size(124, 40);
@@ -1312,7 +1312,7 @@ namespace El_Balcon_de_Chalita
             this.txtPrecioObjeto.Location = new System.Drawing.Point(170, 132);
             this.txtPrecioObjeto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPrecioObjeto.Name = "txtPrecioObjeto";
-            this.txtPrecioObjeto.Size = new System.Drawing.Size(116, 28);
+            this.txtPrecioObjeto.Size = new System.Drawing.Size(186, 28);
             this.txtPrecioObjeto.TabIndex = 2;
             // 
             // txtCantidadObjeto
@@ -1321,7 +1321,7 @@ namespace El_Balcon_de_Chalita
             this.txtCantidadObjeto.Location = new System.Drawing.Point(170, 85);
             this.txtCantidadObjeto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCantidadObjeto.Name = "txtCantidadObjeto";
-            this.txtCantidadObjeto.Size = new System.Drawing.Size(116, 28);
+            this.txtCantidadObjeto.Size = new System.Drawing.Size(186, 28);
             this.txtCantidadObjeto.TabIndex = 1;
             // 
             // txtNombreObjeto
@@ -1329,7 +1329,7 @@ namespace El_Balcon_de_Chalita
             this.txtNombreObjeto.Location = new System.Drawing.Point(170, 29);
             this.txtNombreObjeto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtNombreObjeto.Name = "txtNombreObjeto";
-            this.txtNombreObjeto.Size = new System.Drawing.Size(116, 28);
+            this.txtNombreObjeto.Size = new System.Drawing.Size(186, 28);
             this.txtNombreObjeto.TabIndex = 0;
             // 
             // tabPage2
@@ -1474,6 +1474,7 @@ namespace El_Balcon_de_Chalita
             // 
             // toolStrip2
             // 
+            this.toolStrip2.AutoSize = false;
             this.toolStrip2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(157)))), ((int)(((byte)(143)))));
             this.toolStrip2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStrip2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1522,12 +1523,16 @@ namespace El_Balcon_de_Chalita
             // tsbBuscarCliente
             // 
             this.tsbBuscarCliente.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbBuscarCliente.AutoSize = false;
+            this.tsbBuscarCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(196)))), ((int)(((byte)(106)))));
+            this.tsbBuscarCliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.tsbBuscarCliente.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsbBuscarCliente.Image = global::El_Balcon_de_Chalita.Properties.Resources.search;
             this.tsbBuscarCliente.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbBuscarCliente.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbBuscarCliente.Margin = new System.Windows.Forms.Padding(5, 1, 5, 2);
             this.tsbBuscarCliente.Name = "tsbBuscarCliente";
-            this.tsbBuscarCliente.Size = new System.Drawing.Size(80, 48);
+            this.tsbBuscarCliente.Size = new System.Drawing.Size(80, 25);
             this.tsbBuscarCliente.Text = "Buscar";
             this.tsbBuscarCliente.Click += new System.EventHandler(this.tsbBuscarCliente_Click);
             // 
