@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Data;
 
 using System.Text.RegularExpressions;
 
@@ -566,6 +567,7 @@ namespace El_Balcon_de_Chalita
         private void btnReservar_Click(object sender, EventArgs e)
         {
             guardarReservaBD();
+
         }
 
         private void guardarReservaBD() //realiza la insercion de la reserva en la BD
@@ -1184,6 +1186,82 @@ namespace El_Balcon_de_Chalita
             dgvMaster.DataSource = null;
             dgvMaster.Rows.Clear();
             dgvMaster.Columns.Clear();
+        }
+
+        public void BindReportInv()
+        {
+            MySqlConnection conexionBD = mysql.conexion.Conexion();
+            conexionBD.Open();
+
+            try
+            {
+                string consulta = "SELECT * FROM inventariobalcon";
+                MySqlCommand comando = new MySqlCommand(consulta, conexionBD);
+
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                DataSet tablaClientes = new DataSet();
+                adaptador.Fill(tablaClientes, "inventario");
+
+                rptReservaciones rpt = new rptReservaciones();
+                rptInventario rptinv = new rptInventario();
+                //rpt.SetDataSource(tablaClientes);
+                rptinv.SetDataSource(tablaClientes);
+
+                frmReport frm = new frmReport();
+                frm.crystalReportViewer1.ReportSource = rptinv;
+                frm.ShowDialog();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error al realizar la consulta:" + ex.Message);
+
+            }
+            finally
+            {
+                conexionBD.Close();
+            }
+        }
+
+        public void BindReportRes()
+        {
+            MySqlConnection conexionBD = mysql.conexion.Conexion();
+            conexionBD.Open();
+
+            try
+            {
+                string consulta = "SELECT * FROM reservaciones";
+                MySqlCommand comando = new MySqlCommand(consulta, conexionBD);
+
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                DataSet tablaClientes = new DataSet();
+                adaptador.Fill(tablaClientes, "reservaciones");
+
+                rptReservaciones rpt = new rptReservaciones();
+                rpt.SetDataSource(tablaClientes);
+
+                frmReport frm = new frmReport();
+                frm.crystalReportViewer1.ReportSource = rpt;
+                frm.ShowDialog();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error al realizar la consulta:" + ex.Message);
+
+            }
+            finally
+            {
+                conexionBD.Close();
+            }
+        }
+
+        private void btnRptInv_Click(object sender, EventArgs e)
+        {
+            BindReportInv();
+        }
+
+        private void btnRptRes_Click(object sender, EventArgs e)
+        {
+            BindReportRes();
         }
     }
 }
