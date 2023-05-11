@@ -125,6 +125,7 @@
       <DependentUpon>rptReservaciones.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="user.cs" />
     <EmbeddedResource Include="busquedaclientes.resx">
       <DependentUpon>busquedaclientes.cs</DependentUpon>
     </EmbeddedResource>
@@ -218,6 +219,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\BalconChalitaLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons\delete-user.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

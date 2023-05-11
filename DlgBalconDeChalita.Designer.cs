@@ -41,14 +41,9 @@ namespace El_Balcon_de_Chalita
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.TSLBienvenido = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.TsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.TsbGuardar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.TsbEliminar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.TsbCerrar = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.TpgReservaciones = new System.Windows.Forms.TabPage();
             this.btnRptRes = new System.Windows.Forms.Button();
             this.btnConsultarReservasAll = new System.Windows.Forms.Button();
@@ -95,7 +90,6 @@ namespace El_Balcon_de_Chalita
             this.LblLugarProcedencia = new System.Windows.Forms.Label();
             this.LblTelefonoMovil = new System.Windows.Forms.Label();
             this.LblCodigo = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.TbcPrincipal = new System.Windows.Forms.TabControl();
             this.Inventario = new System.Windows.Forms.TabPage();
             this.TbcInventarioBalcon = new System.Windows.Forms.TabControl();
@@ -131,15 +125,23 @@ namespace El_Balcon_de_Chalita
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.tslCliente = new System.Windows.Forms.ToolStripLabel();
-            this.tsbQuitarCliente = new System.Windows.Forms.ToolStripButton();
             this.tstbBuscarCliente = new System.Windows.Forms.ToolStripTextBox();
-            this.tsbBuscarCliente = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
-            this.tsbSeleccionar = new System.Windows.Forms.ToolStripButton();
             this.dgvMaster = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.tslUsuario = new System.Windows.Forms.ToolStripLabel();
+            this.tsbQuitarCliente = new System.Windows.Forms.ToolStripButton();
+            this.tsbBuscarCliente = new System.Windows.Forms.ToolStripButton();
+            this.TsbNuevo = new System.Windows.Forms.ToolStripButton();
+            this.TsbGuardar = new System.Windows.Forms.ToolStripButton();
+            this.TsbEliminar = new System.Windows.Forms.ToolStripButton();
+            this.TsbCerrar = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.tsbCerrarSesion = new System.Windows.Forms.ToolStripButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tsbSeleccionar = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -147,7 +149,6 @@ namespace El_Balcon_de_Chalita
             ((System.ComponentModel.ISupportInitialize)(this.DgbReservaciones)).BeginInit();
             this.TbgClientes.SuspendLayout();
             this.gbDatosCliente.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.TbcPrincipal.SuspendLayout();
             this.Inventario.SuspendLayout();
             this.TbcInventarioBalcon.SuspendLayout();
@@ -161,6 +162,7 @@ namespace El_Balcon_de_Chalita
             this.tableLayoutPanel3.SuspendLayout();
             this.toolStrip3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMaster)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -252,7 +254,9 @@ namespace El_Balcon_de_Chalita
             this.TsbEliminar,
             this.toolStripSeparator3,
             this.TsbCerrar,
-            this.toolStripButton1});
+            this.toolStripButton1,
+            this.tsbCerrarSesion,
+            this.tslUsuario});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1582, 102);
@@ -261,19 +265,6 @@ namespace El_Balcon_de_Chalita
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
-            // TsbNuevo
-            // 
-            this.TsbNuevo.BackColor = System.Drawing.Color.Transparent;
-            this.TsbNuevo.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TsbNuevo.ForeColor = System.Drawing.Color.White;
-            this.TsbNuevo.Image = global::El_Balcon_de_Chalita.Properties.Resources.add_document__1_;
-            this.TsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.TsbNuevo.Margin = new System.Windows.Forms.Padding(5, 1, 5, 2);
-            this.TsbNuevo.Name = "TsbNuevo";
-            this.TsbNuevo.Size = new System.Drawing.Size(176, 99);
-            this.TsbNuevo.Text = "Crear Nuevo";
-            this.TsbNuevo.Click += new System.EventHandler(this.TsbNuevo_Click);
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.BackColor = System.Drawing.Color.Transparent;
@@ -281,65 +272,16 @@ namespace El_Balcon_de_Chalita
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 102);
             // 
-            // TsbGuardar
-            // 
-            this.TsbGuardar.BackColor = System.Drawing.Color.Transparent;
-            this.TsbGuardar.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TsbGuardar.ForeColor = System.Drawing.Color.White;
-            this.TsbGuardar.Image = global::El_Balcon_de_Chalita.Properties.Resources.disk1;
-            this.TsbGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.TsbGuardar.Margin = new System.Windows.Forms.Padding(5, 1, 5, 2);
-            this.TsbGuardar.Name = "TsbGuardar";
-            this.TsbGuardar.Size = new System.Drawing.Size(260, 99);
-            this.TsbGuardar.Text = "Guardar / Actualizar";
-            this.TsbGuardar.Click += new System.EventHandler(this.TsbGuardar_Click);
-            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 102);
             // 
-            // TsbEliminar
-            // 
-            this.TsbEliminar.BackColor = System.Drawing.Color.Transparent;
-            this.TsbEliminar.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TsbEliminar.ForeColor = System.Drawing.Color.White;
-            this.TsbEliminar.Image = global::El_Balcon_de_Chalita.Properties.Resources.trash__1_;
-            this.TsbEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.TsbEliminar.Margin = new System.Windows.Forms.Padding(5, 1, 5, 2);
-            this.TsbEliminar.Name = "TsbEliminar";
-            this.TsbEliminar.Size = new System.Drawing.Size(126, 99);
-            this.TsbEliminar.Text = "Eliminar";
-            this.TsbEliminar.Click += new System.EventHandler(this.TsbEliminar_Click);
-            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 102);
-            // 
-            // TsbCerrar
-            // 
-            this.TsbCerrar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.TsbCerrar.AutoSize = false;
-            this.TsbCerrar.Image = global::El_Balcon_de_Chalita.Properties.Resources.cross;
-            this.TsbCerrar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.TsbCerrar.Name = "TsbCerrar";
-            this.TsbCerrar.Size = new System.Drawing.Size(69, 69);
-            this.TsbCerrar.Click += new System.EventHandler(this.TsbCerrar_Click);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.BackColor = System.Drawing.Color.Transparent;
-            this.toolStripButton1.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripButton1.ForeColor = System.Drawing.Color.White;
-            this.toolStripButton1.Image = global::El_Balcon_de_Chalita.Properties.Resources.calculator2;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Margin = new System.Windows.Forms.Padding(5, 1, 5, 2);
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(177, 99);
-            this.toolStripButton1.Text = "Contabilidad";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // TpgReservaciones
             // 
@@ -1076,18 +1018,6 @@ namespace El_Balcon_de_Chalita
             this.LblCodigo.TabIndex = 26;
             this.LblCodigo.Text = "Codigo";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(3, 4);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(346, 798);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 38;
-            this.pictureBox1.TabStop = false;
-            // 
             // TbcPrincipal
             // 
             this.TbcPrincipal.Controls.Add(this.TbgClientes);
@@ -1501,17 +1431,6 @@ namespace El_Balcon_de_Chalita
             this.tslCliente.Text = "Cliente:";
             this.tslCliente.TextChanged += new System.EventHandler(this.tslCliente_TextChanged);
             // 
-            // tsbQuitarCliente
-            // 
-            this.tsbQuitarCliente.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbQuitarCliente.Image = global::El_Balcon_de_Chalita.Properties.Resources.circle_xmark;
-            this.tsbQuitarCliente.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbQuitarCliente.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbQuitarCliente.Name = "tsbQuitarCliente";
-            this.tsbQuitarCliente.Size = new System.Drawing.Size(29, 48);
-            this.tsbQuitarCliente.Text = "toolStripButton2";
-            this.tsbQuitarCliente.Click += new System.EventHandler(this.toolStripButton2_Click);
-            // 
             // tstbBuscarCliente
             // 
             this.tstbBuscarCliente.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -1519,22 +1438,6 @@ namespace El_Balcon_de_Chalita
             this.tstbBuscarCliente.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tstbBuscarCliente.Name = "tstbBuscarCliente";
             this.tstbBuscarCliente.Size = new System.Drawing.Size(280, 51);
-            // 
-            // tsbBuscarCliente
-            // 
-            this.tsbBuscarCliente.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbBuscarCliente.AutoSize = false;
-            this.tsbBuscarCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(196)))), ((int)(((byte)(106)))));
-            this.tsbBuscarCliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.tsbBuscarCliente.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsbBuscarCliente.Image = global::El_Balcon_de_Chalita.Properties.Resources.search;
-            this.tsbBuscarCliente.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbBuscarCliente.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbBuscarCliente.Margin = new System.Windows.Forms.Padding(5, 1, 5, 2);
-            this.tsbBuscarCliente.Name = "tsbBuscarCliente";
-            this.tsbBuscarCliente.Size = new System.Drawing.Size(80, 25);
-            this.tsbBuscarCliente.Text = "Buscar";
-            this.tsbBuscarCliente.Click += new System.EventHandler(this.tsbBuscarCliente_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -1580,20 +1483,6 @@ namespace El_Balcon_de_Chalita
             this.toolStrip3.TabIndex = 0;
             this.toolStrip3.Text = "toolStrip3";
             // 
-            // tsbSeleccionar
-            // 
-            this.tsbSeleccionar.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tsbSeleccionar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbSeleccionar.Enabled = false;
-            this.tsbSeleccionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsbSeleccionar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tsbSeleccionar.Image = ((System.Drawing.Image)(resources.GetObject("tsbSeleccionar.Image")));
-            this.tsbSeleccionar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbSeleccionar.Name = "tsbSeleccionar";
-            this.tsbSeleccionar.Size = new System.Drawing.Size(114, 40);
-            this.tsbSeleccionar.Text = "Seleccionar";
-            this.tsbSeleccionar.Click += new System.EventHandler(this.tsbSeleccionar_Click);
-            // 
             // dgvMaster
             // 
             this.dgvMaster.BackgroundColor = System.Drawing.Color.LavenderBlush;
@@ -1608,6 +1497,145 @@ namespace El_Balcon_de_Chalita
             this.dgvMaster.Size = new System.Drawing.Size(624, 821);
             this.dgvMaster.TabIndex = 1;
             this.dgvMaster.SelectionChanged += new System.EventHandler(this.dgvMaster_SelectionChanged);
+            // 
+            // tslUsuario
+            // 
+            this.tslUsuario.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tslUsuario.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tslUsuario.ForeColor = System.Drawing.Color.White;
+            this.tslUsuario.Name = "tslUsuario";
+            this.tslUsuario.Size = new System.Drawing.Size(64, 99);
+            this.tslUsuario.Text = "Usuario:";
+            this.tslUsuario.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            // 
+            // tsbQuitarCliente
+            // 
+            this.tsbQuitarCliente.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbQuitarCliente.Image = global::El_Balcon_de_Chalita.Properties.Resources.circle_xmark;
+            this.tsbQuitarCliente.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbQuitarCliente.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbQuitarCliente.Name = "tsbQuitarCliente";
+            this.tsbQuitarCliente.Size = new System.Drawing.Size(29, 48);
+            this.tsbQuitarCliente.Text = "toolStripButton2";
+            this.tsbQuitarCliente.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
+            // tsbBuscarCliente
+            // 
+            this.tsbBuscarCliente.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbBuscarCliente.AutoSize = false;
+            this.tsbBuscarCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(196)))), ((int)(((byte)(106)))));
+            this.tsbBuscarCliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.tsbBuscarCliente.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsbBuscarCliente.Image = global::El_Balcon_de_Chalita.Properties.Resources.search;
+            this.tsbBuscarCliente.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbBuscarCliente.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbBuscarCliente.Margin = new System.Windows.Forms.Padding(5, 1, 5, 2);
+            this.tsbBuscarCliente.Name = "tsbBuscarCliente";
+            this.tsbBuscarCliente.Size = new System.Drawing.Size(80, 25);
+            this.tsbBuscarCliente.Text = "Buscar";
+            this.tsbBuscarCliente.Click += new System.EventHandler(this.tsbBuscarCliente_Click);
+            // 
+            // TsbNuevo
+            // 
+            this.TsbNuevo.BackColor = System.Drawing.Color.Transparent;
+            this.TsbNuevo.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TsbNuevo.ForeColor = System.Drawing.Color.White;
+            this.TsbNuevo.Image = global::El_Balcon_de_Chalita.Properties.Resources.add_document__1_;
+            this.TsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TsbNuevo.Margin = new System.Windows.Forms.Padding(5, 1, 5, 2);
+            this.TsbNuevo.Name = "TsbNuevo";
+            this.TsbNuevo.Size = new System.Drawing.Size(176, 99);
+            this.TsbNuevo.Text = "Crear Nuevo";
+            this.TsbNuevo.Click += new System.EventHandler(this.TsbNuevo_Click);
+            // 
+            // TsbGuardar
+            // 
+            this.TsbGuardar.BackColor = System.Drawing.Color.Transparent;
+            this.TsbGuardar.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TsbGuardar.ForeColor = System.Drawing.Color.White;
+            this.TsbGuardar.Image = global::El_Balcon_de_Chalita.Properties.Resources.disk1;
+            this.TsbGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TsbGuardar.Margin = new System.Windows.Forms.Padding(5, 1, 5, 2);
+            this.TsbGuardar.Name = "TsbGuardar";
+            this.TsbGuardar.Size = new System.Drawing.Size(260, 99);
+            this.TsbGuardar.Text = "Guardar / Actualizar";
+            this.TsbGuardar.Click += new System.EventHandler(this.TsbGuardar_Click);
+            // 
+            // TsbEliminar
+            // 
+            this.TsbEliminar.BackColor = System.Drawing.Color.Transparent;
+            this.TsbEliminar.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TsbEliminar.ForeColor = System.Drawing.Color.White;
+            this.TsbEliminar.Image = global::El_Balcon_de_Chalita.Properties.Resources.trash__1_;
+            this.TsbEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TsbEliminar.Margin = new System.Windows.Forms.Padding(5, 1, 5, 2);
+            this.TsbEliminar.Name = "TsbEliminar";
+            this.TsbEliminar.Size = new System.Drawing.Size(126, 99);
+            this.TsbEliminar.Text = "Eliminar";
+            this.TsbEliminar.Click += new System.EventHandler(this.TsbEliminar_Click);
+            // 
+            // TsbCerrar
+            // 
+            this.TsbCerrar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.TsbCerrar.AutoSize = false;
+            this.TsbCerrar.Image = global::El_Balcon_de_Chalita.Properties.Resources.cross;
+            this.TsbCerrar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TsbCerrar.Name = "TsbCerrar";
+            this.TsbCerrar.Size = new System.Drawing.Size(69, 69);
+            this.TsbCerrar.Click += new System.EventHandler(this.TsbCerrar_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.BackColor = System.Drawing.Color.Transparent;
+            this.toolStripButton1.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripButton1.ForeColor = System.Drawing.Color.White;
+            this.toolStripButton1.Image = global::El_Balcon_de_Chalita.Properties.Resources.calculator2;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Margin = new System.Windows.Forms.Padding(5, 1, 5, 2);
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(177, 99);
+            this.toolStripButton1.Text = "Contabilidad";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // tsbCerrarSesion
+            // 
+            this.tsbCerrarSesion.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbCerrarSesion.AutoSize = false;
+            this.tsbCerrarSesion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsbCerrarSesion.ForeColor = System.Drawing.Color.White;
+            this.tsbCerrarSesion.Image = global::El_Balcon_de_Chalita.Properties.Resources.delete_user;
+            this.tsbCerrarSesion.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbCerrarSesion.Margin = new System.Windows.Forms.Padding(2, 1, 2, 2);
+            this.tsbCerrarSesion.Name = "tsbCerrarSesion";
+            this.tsbCerrarSesion.Size = new System.Drawing.Size(120, 30);
+            this.tsbCerrarSesion.Text = "Cerrar Sesion";
+            this.tsbCerrarSesion.Click += new System.EventHandler(this.tsbCerrarSesion_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(3, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(346, 798);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 38;
+            this.pictureBox1.TabStop = false;
+            // 
+            // tsbSeleccionar
+            // 
+            this.tsbSeleccionar.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tsbSeleccionar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbSeleccionar.Enabled = false;
+            this.tsbSeleccionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsbSeleccionar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tsbSeleccionar.Image = ((System.Drawing.Image)(resources.GetObject("tsbSeleccionar.Image")));
+            this.tsbSeleccionar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSeleccionar.Name = "tsbSeleccionar";
+            this.tsbSeleccionar.Size = new System.Drawing.Size(114, 40);
+            this.tsbSeleccionar.Text = "Seleccionar";
+            this.tsbSeleccionar.Click += new System.EventHandler(this.tsbSeleccionar_Click);
             // 
             // DlgBalconDeChalita
             // 
@@ -1641,7 +1669,6 @@ namespace El_Balcon_de_Chalita
             this.TbgClientes.PerformLayout();
             this.gbDatosCliente.ResumeLayout(false);
             this.gbDatosCliente.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.TbcPrincipal.ResumeLayout(false);
             this.Inventario.ResumeLayout(false);
             this.TbcInventarioBalcon.ResumeLayout(false);
@@ -1661,6 +1688,7 @@ namespace El_Balcon_de_Chalita
             this.toolStrip3.ResumeLayout(false);
             this.toolStrip3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMaster)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1722,7 +1750,6 @@ namespace El_Balcon_de_Chalita
         private System.Windows.Forms.Label LblApellidoM;
         private System.Windows.Forms.Label LblApellidoP;
         private System.Windows.Forms.Label LblNombre;
-        private System.Windows.Forms.TabControl TbcPrincipal;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.TextBox txtSubTotal;
         private System.Windows.Forms.Label label5;
@@ -1731,7 +1758,6 @@ namespace El_Balcon_de_Chalita
         private System.Windows.Forms.ComboBox cbxCompañias;
         private System.Windows.Forms.TabPage Inventario;
         private System.Windows.Forms.TabControl TbcInventarioBalcon;
-        private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtPrecioObjeto;
@@ -1777,5 +1803,9 @@ namespace El_Balcon_de_Chalita
         private System.Windows.Forms.GroupBox gbDatosCliente;
         private System.Windows.Forms.Button btnRptInv;
         private System.Windows.Forms.Button btnRptRes;
+        private System.Windows.Forms.ToolStripLabel tslUsuario;
+        public System.Windows.Forms.TabControl TbcPrincipal;
+        public System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.ToolStripButton tsbCerrarSesion;
     }
 }

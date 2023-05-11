@@ -33,7 +33,7 @@ namespace El_Balcon_de_Chalita
         private consulta miconsulta;
         private reservacion mireservacion;
         private BuscaIndice mibuscaindice;
-
+        private user miusuario;
         //---------------------------------------------------------------------
         //Atributo.
         //---------------------------------------------------------------------
@@ -42,11 +42,12 @@ namespace El_Balcon_de_Chalita
         //---------------------------------------------------------------------
         //Constructor-Es lo primero que se ejecuta al abrir el programa con esta clase
         //---------------------------------------------------------------------
-        public DlgBalconDeChalita()
+        public DlgBalconDeChalita(user miusuario)
 
         {
             //Se inicializa el componente
             InitializeComponent();
+            this.miusuario = miusuario;
             selectorContexto = 0;
             CbxClientes.Visible = false;
             tsbQuitarCliente.Visible = false;
@@ -68,9 +69,54 @@ namespace El_Balcon_de_Chalita
             TsbGuardar.Enabled = true;
             TsbEliminar.Visible = true;
             TsbEliminar.Enabled = true;
+            tslUsuario.Text = "Usuario: " + miusuario.usuario;
+            SeleccionarTipoUsuario();
+            
+
 
         }
 
+        private void SeleccionarTipoUsuario()
+        {
+            int tipoUsuario = miusuario.tipoUsuario;
+            switch (tipoUsuario)
+            {
+                case 0:
+                    break;
+                case 1: //Si es usuario tipo 1 es Administrador
+                    tsbSeleccionar.Visible = true;
+                    tsbSeleccionar.Enabled = false;
+                    TsbNuevo.Visible = true;
+                    TsbNuevo.Enabled = true;
+                    TsbGuardar.Visible = true;
+                    TsbGuardar.Enabled = true;
+                    TsbGuardar.Text = "Guardar / Actualizar";
+                    TsbEliminar.Visible = true;
+                    TsbEliminar.Enabled = true;
+                    toolStripButton1.Visible = true;
+                    toolStripButton1.Enabled = true;
+                    
+
+
+                    break;
+                case 2: //Si es usuario tipo 2 es Recepcion
+                    tsbSeleccionar.Visible = true;
+                    tsbSeleccionar.Enabled = false;
+                    TsbNuevo.Visible = true;
+                    TsbNuevo.Enabled = true;
+                    TsbGuardar.Visible = true;
+                    TsbGuardar.Enabled = true;
+                    TsbGuardar.Text = "Guardar";
+                    TsbEliminar.Visible = false;
+                    TsbEliminar.Enabled = false;
+                    toolStripButton1.Visible = false;
+                    toolStripButton1.Enabled = false;
+                    TbcPrincipal.TabPages.Remove(TbcPrincipal.TabPages[2]);
+                    break;
+                default:
+                    break;
+            }
+        }
         private void llenarComboBoxClientes()
         {
             cliente cliente = new cliente();
@@ -1021,60 +1067,133 @@ namespace El_Balcon_de_Chalita
 
         private void selectorContextoAcciones(int selector)
         {
-            switch (selector) // 0-Clientes 1-Reservaciones 2-Inventario 3-InventarioClientes 
+            int tipoUsuario = miusuario.tipoUsuario;
+            switch (tipoUsuario) //La interfaz interactua diferente dependiendo del usuario.
             {
                 case 0:
-                    tsbSeleccionar.Visible = true;
-                    tsbSeleccionar.Enabled = false;
-                    TsbNuevo.Visible = true;
-                    TsbNuevo.Enabled = true;
-                    TsbGuardar.Visible = true;
-                    TsbGuardar.Enabled = true;
-                    TsbEliminar.Visible = true;
-                    TsbEliminar.Enabled = true;
+                    break;
+                case 1: //ADMINISTRADOR
+                    switch (selector) // 0-Clientes 1-Reservaciones 2-Inventario 3-InventarioClientes 
+                    {
+                        case 0: //CLIENTES
+                            tsbSeleccionar.Visible = true;
+                            tsbSeleccionar.Enabled = false;
+                            TsbNuevo.Visible = true;
+                            TsbNuevo.Enabled = true;
+                            TsbGuardar.Visible = true;
+                            TsbGuardar.Enabled = true;
+                            TsbGuardar.Text = "Guardar / Actualizar";
+                            TsbEliminar.Visible = true;
+                            TsbEliminar.Enabled = true;
+                            toolStripButton1.Visible = true;
+                            toolStripButton1.Enabled = true;
 
+                            break;
+                        case 1: //RESERVACIONES
+                            tsbSeleccionar.Visible = false;
+                            tsbSeleccionar.Enabled = false;
+                            TsbNuevo.Visible = true;
+                            TsbNuevo.Enabled = true;
+                            TsbGuardar.Visible = true;
+                            TsbGuardar.Enabled = true;
+                            TsbEliminar.Visible = true;
+                            TsbEliminar.Enabled = false;
+                            break;
+                        case 2: //INVENTARIO
+                            tsbSeleccionar.Visible = false;
+                            tsbSeleccionar.Enabled = false;
+                            TsbNuevo.Visible = true;
+                            TsbNuevo.Enabled = true;
+                            TsbGuardar.Visible = true;
+                            TsbGuardar.Enabled = true;
+                            TsbEliminar.Visible = true;
+                            TsbEliminar.Enabled = false;
+                            break;
+                        case 3: //INVENTARIO CLIENTES
+                            tsbSeleccionar.Visible = false;
+                            tsbSeleccionar.Enabled = false;
+                            TsbNuevo.Visible = true;
+                            TsbNuevo.Enabled = true;
+                            TsbGuardar.Visible = true;
+                            TsbGuardar.Enabled = true;
+                            TsbEliminar.Visible = true;
+                            TsbEliminar.Enabled = false;
+                            break;
+                        default:
+                            tsbSeleccionar.Visible = true;
+                            tsbSeleccionar.Enabled = false;
+                            TsbNuevo.Visible = true;
+                            TsbNuevo.Enabled = false;
+                            TsbGuardar.Visible = true;
+                            TsbGuardar.Enabled = false;
+                            TsbEliminar.Visible = true;
+                            TsbEliminar.Enabled = false;
+                            break;
+                    }
                     break;
-                case 1:
-                    tsbSeleccionar.Visible = false;
-                    tsbSeleccionar.Enabled = false;
-                    TsbNuevo.Visible = true;
-                    TsbNuevo.Enabled = true;
-                    TsbGuardar.Visible = true;
-                    TsbGuardar.Enabled = true;
-                    TsbEliminar.Visible = true;
-                    TsbEliminar.Enabled = false;
-                    break;
-                case 2:
-                    tsbSeleccionar.Visible = false;
-                    tsbSeleccionar.Enabled = false;
-                    TsbNuevo.Visible = true;
-                    TsbNuevo.Enabled = true;
-                    TsbGuardar.Visible = true;
-                    TsbGuardar.Enabled = true;
-                    TsbEliminar.Visible = true;
-                    TsbEliminar.Enabled = false;
-                    break;
-                case 3:
-                    tsbSeleccionar.Visible = false;
-                    tsbSeleccionar.Enabled = false;
-                    TsbNuevo.Visible = true;
-                    TsbNuevo.Enabled = true;
-                    TsbGuardar.Visible = true;
-                    TsbGuardar.Enabled = true;
-                    TsbEliminar.Visible = true;
-                    TsbEliminar.Enabled = false;
+                case 2: //USUARIO ESTANDAR
+                    switch (selector) // 0-Clientes 1-Reservaciones 2-Inventario 3-InventarioClientes 
+                    {
+                        case 0: //CLIENTES
+                            tsbSeleccionar.Visible = true;
+                            tsbSeleccionar.Enabled = false;
+                            TsbNuevo.Visible = true;
+                            TsbNuevo.Enabled = true;
+                            TsbGuardar.Visible = true;
+                            TsbGuardar.Enabled = true;
+                            TsbGuardar.Text = "Guardar";
+                            TsbEliminar.Visible = false;
+                            TsbEliminar.Enabled = false;
+                            toolStripButton1.Visible = false;
+                            toolStripButton1.Enabled = false;
+
+                            break;
+                        case 1: //RESERVACIONES
+                            tsbSeleccionar.Visible = false;
+                            tsbSeleccionar.Enabled = false;
+                            TsbNuevo.Visible = true;
+                            TsbNuevo.Enabled = true;
+                            TsbGuardar.Visible = true;
+                            TsbGuardar.Enabled = true;
+                            TsbEliminar.Visible = true;
+                            TsbEliminar.Enabled = false;
+                            break;
+                        case 2: //INVENTARIO
+                            tsbSeleccionar.Visible = false;
+                            tsbSeleccionar.Enabled = false;
+                            TsbNuevo.Visible = true;
+                            TsbNuevo.Enabled = true;
+                            TsbGuardar.Visible = true;
+                            TsbGuardar.Enabled = true;
+                            TsbEliminar.Visible = true;
+                            TsbEliminar.Enabled = false;
+                            break;
+                        case 3: //INVENTARIO CLIENTES
+                            tsbSeleccionar.Visible = false;
+                            tsbSeleccionar.Enabled = false;
+                            TsbNuevo.Visible = true;
+                            TsbNuevo.Enabled = true;
+                            TsbGuardar.Visible = true;
+                            TsbGuardar.Enabled = true;
+                            TsbEliminar.Visible = true;
+                            TsbEliminar.Enabled = false;
+                            break;
+                        default:
+                            tsbSeleccionar.Visible = true;
+                            tsbSeleccionar.Enabled = false;
+                            TsbNuevo.Visible = true;
+                            TsbNuevo.Enabled = false;
+                            TsbGuardar.Visible = true;
+                            TsbGuardar.Enabled = false;
+                            TsbEliminar.Visible = true;
+                            TsbEliminar.Enabled = false;
+                            break;
+                    }
                     break;
                 default:
-                    tsbSeleccionar.Visible = true;
-                    tsbSeleccionar.Enabled = false;
-                    TsbNuevo.Visible = true;
-                    TsbNuevo.Enabled = false;
-                    TsbGuardar.Visible = true;
-                    TsbGuardar.Enabled = false;
-                    TsbEliminar.Visible = true;
-                    TsbEliminar.Enabled = false;
                     break;
             }
+            
         }
 
         private void dgvMaster_SelectionChanged(object sender, EventArgs e) //Se acciona al seleccionar una fila en la tabla
@@ -1304,6 +1423,13 @@ namespace El_Balcon_de_Chalita
         private void btnRptRes_Click(object sender, EventArgs e)
         {
             BindReportRes();
+        }
+
+        private void tsbCerrarSesion_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Login login = new Login();
+            login.Show();
         }
     }
 }

@@ -7,9 +7,13 @@ namespace El_Balcon_de_Chalita
 {
     public partial class Login : Form
     {
+        private user miusuario;
+        private consulta miconsulta;
         public Login()
         {
             InitializeComponent();
+            miconsulta = new consulta();
+            miusuario = new user();
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -28,6 +32,7 @@ namespace El_Balcon_de_Chalita
             string user = usuario.Text;
             string pass = contraseña.Text;
             string contraseaEncriptada = Encrypt.GetSHA256(pass);
+            //usuario.Text = contraseaEncriptada;
             string query = "select * from usuarios where email = '" + user + "' and password = '" + contraseaEncriptada + "' ";
 
             MySqlConnection conexionBD = mysql.conexion.Conexion();
@@ -41,19 +46,13 @@ namespace El_Balcon_de_Chalita
                 //Si la consulta trae resultados, se llenara el combobox de clientes
                 if (reader.HasRows)
                 {
-                    MessageBox.Show("Login exitoso");
-                    contabilidad contab = new contabilidad();
-                    //contab.Show();
-                    DlgBalconDeChalita mibalcon = new DlgBalconDeChalita();
+                    miusuario.usuario = user;
+                    miusuario.tipoUsuario = miconsulta.TipoUsuario(user);
+                    MessageBox.Show("Inicio de sesion exitoso");
+                    DlgBalconDeChalita mibalcon = new DlgBalconDeChalita(miusuario);
                     mibalcon.Show();
                     this.Visible = false;
 
-                    while (reader.Read())
-                    {
-                        //cbxClientes.Items.Add(reader.GetString(6) + "-" + reader.GetString(1));
-
-                    }
-                    //cbxClientes.SelectedIndex = 0;
                 }
                 else
                 {
