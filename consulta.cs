@@ -135,7 +135,10 @@ namespace El_Balcon_de_Chalita
             DataGridView DgbReservaciones = tabla;
             int idCliente = cliente.IdCliente;
             //Query para obtener las reservas enlazadas con los id de los clientes en su respectiva tabla
-            string obtenerReservas = "select * from reservaciones left join clientes on reservaciones.cliente = clientes.idCliente WHERE clientes.idCliente LIKE @idCliente";
+            string obtenerReservas = "SELECT * FROM reservaciones " +
+                                     "LEFT JOIN clientes ON reservaciones.cliente = clientes.idCliente " +
+                                     "LEFT JOIN compañiasafiliadas ON reservaciones.compañiaAfiliada = compañiasafiliadas.idCompañia " +
+                                     "WHERE clientes.idCliente LIKE @idCliente";
 
             MySqlDataReader reader = null;
             //Contador que sera el puntero para el numero de fila en la que se ira insertando la data de la BD
