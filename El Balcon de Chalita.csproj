@@ -64,6 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuscaIndice.cs" />
     <Compile Include="busquedaclientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +206,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons\calculator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons\add-document-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons\add-document %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons\trash %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BalconChalitaLogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

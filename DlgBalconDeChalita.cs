@@ -32,6 +32,7 @@ namespace El_Balcon_de_Chalita
         private cliente micliente;
         private consulta miconsulta;
         private reservacion mireservacion;
+        private BuscaIndice mibuscaindice;
 
         //---------------------------------------------------------------------
         //Atributo.
@@ -52,6 +53,7 @@ namespace El_Balcon_de_Chalita
             micliente = new cliente();
             miconsulta = new consulta();
             mireservacion = new reservacion();
+            mibuscaindice = new BuscaIndice();
             //Generamos el codigo en automatico del cliente
             generarCodigoCliente();
             //Llenamos los combobox de los clientes y compañias afiliadas
@@ -471,6 +473,12 @@ namespace El_Balcon_de_Chalita
             DateTime dt1 = CCheckIn.SelectionRange.Start;
 
             DateTime dt2 = CCheckOut.SelectionRange.Start;
+            obtenerSubtotal(dt1, dt2);
+        }
+
+        private void obtenerSubtotal(DateTime dt1, DateTime dt2)
+        {
+
             TimeSpan difer = dt2 - dt1;
             double costo = 1500 * difer.TotalDays;
             txtTotal.Text = "$" + costo.ToString();
@@ -482,8 +490,6 @@ namespace El_Balcon_de_Chalita
             txtSubTotal.Text = subtotal.ToString();
             //MessageBox.Show(fechaSalida);
         }
-
-        
         //Funcion para obtener la info del cliente que seleccionemos en el combobox
         private void cbxClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -947,6 +953,7 @@ namespace El_Balcon_de_Chalita
         private void tsbBuscarCliente_Click(object sender, EventArgs e)
         {
             limpiarTabla();
+            selectorContexto = 0;
             //busquedaclientes ventanabusqueda = new busquedaclientes(micliente);
             //ventanabusqueda.dlgbalcon = this;
             string busqueda = tstbBuscarCliente.Text;
@@ -962,6 +969,7 @@ namespace El_Balcon_de_Chalita
         private void btnConsultarReservas_Click(object sender, EventArgs e)
         {
             limpiarTabla();
+            selectorContexto = 1;
             dgvMaster.Columns.Add("IdReservaciones", "IdReservaciones");
             dgvMaster.Columns.Add("Cliente", "Cliente");
             dgvMaster.Columns.Add("Fecha de Entrada", "Fecha de Entrada");
@@ -979,6 +987,7 @@ namespace El_Balcon_de_Chalita
         private void btnConsultarReservasAll_Click(object sender, EventArgs e)
         {
             limpiarTabla();
+            selectorContexto = 1;
             dgvMaster.Columns.Add("IdReservaciones", "IdReservaciones");
             dgvMaster.Columns.Add("Cliente", "Cliente");
             dgvMaster.Columns.Add("Fecha de Entrada", "Fecha de Entrada");
@@ -993,6 +1002,7 @@ namespace El_Balcon_de_Chalita
         {
             limpiarTabla();
             selectorContexto = TbcPrincipal.SelectedIndex;
+            limpiarCamposReservaciones();
             if (selectorContexto == 2) selectorContexto = TbcInventarioBalcon.SelectedIndex + 2; // Si la pestaña de inventario esta seleccionada se le suman las otras dos que tiene adentro.
             selectorContextoAcciones(selectorContexto);
         }
@@ -1001,6 +1011,7 @@ namespace El_Balcon_de_Chalita
         {
             limpiarTabla();
             selectorContexto = TbcPrincipal.SelectedIndex;
+            limpiarCamposReservaciones();
             if (selectorContexto == 2) selectorContexto = TbcInventarioBalcon.SelectedIndex + 2; // Si la pestaña de inventario esta seleccionada se le suman las otras dos que tiene adentro.
             selectorContextoAcciones(selectorContexto);
         }
@@ -1066,34 +1077,52 @@ namespace El_Balcon_de_Chalita
         private void dgvMaster_SelectionChanged(object sender, EventArgs e) //Se acciona al seleccionar una fila en la tabla
         {
             int seleccion = dgvMaster.CurrentCell.RowIndex;
-            if (dgvMaster.SelectedRows.Count == 1 && dgvMaster[0,seleccion].Value != null)
+            if (dgvMaster.SelectedRows.Count == 1 && dgvMaster[0, seleccion].Value != null)
             {
                 // Obtener la fila seleccionada
                 switch (selectorContexto)
                 {
                     case 0: // La pestaña de Clientes está seleccionada
+
                         tsbSeleccionar.Enabled = true;
                         tsbSeleccionar.BackColor = SystemColors.HotTrack;
                         tsbSeleccionar.ForeColor = Color.White;
                         break;
                     case 1: // La pestaña de Reservaciones está seleccionada
-                        TsbEliminar.Enabled = true;
+                        if (selectorContexto != 0) // el boton Buscar puede cambiar el selector a 0 como si estuviera en la pestaña de Clientes.
+                        {
+                            TsbEliminar.Enabled = true;
 
-                        mireservacion.idReservacion = Convert.ToInt32(dgvMaster[0, seleccion].Value);
-                        mireservacion.micliente.nombreCompleto = dgvMaster[1, seleccion].Value.ToString();
-                        mireservacion.fechaEntrada = dgvMaster[2, seleccion].Value.ToString();
-                        mireservacion.fechaSalida = dgvMaster[3, seleccion].Value.ToString();
-                        mireservacion.compAfiliada = dgvMaster[4, seleccion].Value.ToString();
-                        mireservacion.idAfiliado = Convert.ToInt32(dgvMaster[5, seleccion].Value)-1;
+                            mireservacion.idReservacion = Convert.ToInt32(dgvMaster[0, seleccion].Value);
+                            mireservacion.micliente.nombreCompleto = dgvMaster[1, seleccion].Value.ToString();
+                            mireservacion.fechaEntrada = dgvMaster[2, seleccion].Value.ToString();
+                            mireservacion.fechaSalida = dgvMaster[3, seleccion].Value.ToString();
+                            mireservacion.compAfiliada = dgvMaster[4, seleccion].Value.ToString();
+                            mireservacion.idAfiliado = Convert.ToInt32(dgvMaster[5, seleccion].Value) - 1;
 
-                        cbxCompañias.SelectedIndex = mireservacion.idAfiliado;
+                            cbxCompañias.SelectedIndex = mireservacion.idAfiliado;
 
-                        mireservacion.entradaAño = mireservacion.separarAño(mireservacion.fechaEntrada);
-                        mireservacion.entradaMes = mireservacion.separarMes(mireservacion.fechaEntrada);
-                        mireservacion.entradaDia = mireservacion.separarDia(mireservacion.fechaEntrada);
-                        DateTime fechaEntrada = new DateTime(mireservacion.entradaAño, mireservacion.entradaMes, mireservacion.entradaDia);
-                        CCheckIn.SetDate(fechaEntrada);
+                            mireservacion.entradaAño = mireservacion.separarAño(mireservacion.fechaEntrada);
+                            mireservacion.entradaMes = mireservacion.separarMes(mireservacion.fechaEntrada);
+                            mireservacion.entradaDia = mireservacion.separarDia(mireservacion.fechaEntrada);
+                            DateTime fechaEntrada = new DateTime(mireservacion.entradaAño, mireservacion.entradaMes, mireservacion.entradaDia);
+                            CCheckIn.SetDate(fechaEntrada);
 
+                            mireservacion.salidaAño = mireservacion.separarAño(mireservacion.fechaSalida);
+                            mireservacion.salidaMes = mireservacion.separarMes(mireservacion.fechaSalida);
+                            mireservacion.salidaDia = mireservacion.separarDia(mireservacion.fechaSalida);
+                            DateTime fechaSalida = new DateTime(mireservacion.salidaAño, mireservacion.salidaMes, mireservacion.salidaDia);
+                            CCheckOut.SetDate(fechaSalida);
+
+                            obtenerSubtotal(fechaEntrada, fechaSalida);
+                        }
+                        else
+                        {
+                            tsbSeleccionar.Visible = true;
+                            tsbSeleccionar.Enabled = true;
+                            tsbSeleccionar.BackColor = SystemColors.HotTrack;
+                            tsbSeleccionar.ForeColor = Color.White;
+                        }
 
                         break;
                     case 2: // La pestaña de Inventario esta seleccionada
@@ -1106,31 +1135,35 @@ namespace El_Balcon_de_Chalita
                         MessageBox.Show("Error con el selector de contexto.");
                         break;
                 }
-                
+
             }
             else
             {
                 switch (selectorContexto)
                 {
                     case 0: // La pestaña de Clientes está seleccionada
+                        tsbSeleccionar.Visible = true;
                         tsbSeleccionar.Enabled = false;
                         tsbSeleccionar.BackColor = SystemColors.ControlLightLight;
                         tsbSeleccionar.ForeColor = SystemColors.ControlDark;
                         break;
                     case 1: // La pestaña de Reservaciones está seleccionada
                         TsbEliminar.Enabled = false;
+                        tsbSeleccionar.Visible = false;
                         break;
                     case 2: // La pestaña de Inventario esta seleccionada
                         TsbEliminar.Enabled = false;
+                        tsbSeleccionar.Visible = false;
                         break;
                     case 3: // La pestaña de Inventario de Cliente esta seleccionada
                         TsbEliminar.Enabled = false;
+                        tsbSeleccionar.Visible = false;
                         break;
                     default:
                         MessageBox.Show("Error con el selector de contexto.");
                         break;
                 }
-                
+
             }
         }
 
@@ -1170,6 +1203,7 @@ namespace El_Balcon_de_Chalita
             micliente.LugarProcedencia = dgvMaster[8, selectedIndex].Value.ToString();
             micliente.EstadoCivil = dgvMaster[9, selectedIndex].Value.ToString();
             micliente.FechaNacimiento = dgvMaster[10, selectedIndex].Value.ToString();
+            CbxGenero.SelectedIndex = mibuscaindice.indiceCbxGenero(micliente);
             ActualizarForm();
         }
         private void seleccionarReserva()
