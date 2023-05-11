@@ -40,7 +40,44 @@ namespace El_Balcon_de_Chalita
             }
 
         }
+        public int TipoUsuario(string usuario)
+        {
+            MySqlConnection conexionBD = mysql.conexion.Conexion();
 
+            // Define la consulta SQL para buscar el usuario y contraseña
+            string sqlQuery = "SELECT id_rol FROM usuarios WHERE email=@usuario";
+
+            // Crea un objeto MySqlCommand para ejecutar la consulta SQL
+            MySqlCommand command = new MySqlCommand(sqlQuery, conexionBD);
+
+            // Añade los parámetros de la consulta SQL
+            command.Parameters.AddWithValue("@usuario", usuario);
+
+            // Abre la conexión a la base de datos
+            conexionBD.Open();
+
+            // Ejecuta la consulta SQL y obtiene el resultado
+            object result = command.ExecuteScalar();
+
+            // Cierra la conexión a la base de datos
+            conexionBD.Close();
+
+            // Verifica si el resultado es nulo
+            if (result != null)
+            {
+                // Convierte el resultado a entero y guárdalo en una variable
+                int idRol = Convert.ToInt32(result);
+                //MessageBox.Show(idRol.ToString());
+                return idRol;
+                // Hace lo que necesites con el idRol obtenido
+            }
+            else
+            {
+                // Si el resultado es nulo, significa que el usuario y/o contraseña no son correctos
+                // Agrega aquí el código para mostrar un mensaje de error al usuario
+                return -1;
+            }
+        }
         public DataTable ConsultarClientes(string texto)
         {
             string busqueda = texto;
@@ -78,6 +115,7 @@ namespace El_Balcon_de_Chalita
             }
 
         }
+
 
         public DataGridView ConsultarReservaciones(DataGridView tabla)
         {
@@ -135,7 +173,10 @@ namespace El_Balcon_de_Chalita
             DataGridView DgbReservaciones = tabla;
             int idCliente = cliente.IdCliente;
             //Query para obtener las reservas enlazadas con los id de los clientes en su respectiva tabla
-            string obtenerReservas = "select * from reservaciones left join clientes on reservaciones.cliente = clientes.idCliente WHERE clientes.idCliente LIKE @idCliente";
+            string obtenerReservas = "SELECT * FROM reservaciones " +
+                                     "LEFT JOIN clientes ON reservaciones.cliente = clientes.idCliente " +
+                                     "LEFT JOIN compañiasafiliadas ON reservaciones.compañiaAfiliada = compañiasafiliadas.idCompañia " +
+                                     "WHERE clientes.idCliente LIKE @idCliente";
 
             MySqlDataReader reader = null;
             //Contador que sera el puntero para el numero de fila en la que se ira insertando la data de la BD
