@@ -16,7 +16,7 @@ namespace El_Balcon_de_Chalita
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DlgBalconDeChalita());
+            Application.Run(new Login());
         }
     }
 }

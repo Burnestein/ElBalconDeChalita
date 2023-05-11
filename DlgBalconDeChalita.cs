@@ -49,7 +49,6 @@ namespace El_Balcon_de_Chalita
             selectorContexto = 0;
             CbxClientes.Visible = false;
             tsbQuitarCliente.Visible = false;
-            TsbConsultar.Visible = false;
             micliente = new cliente();
             miconsulta = new consulta();
             mireservacion = new reservacion();
@@ -315,7 +314,7 @@ namespace El_Balcon_de_Chalita
         private void TsbCerrar_Click(object sender, System.EventArgs e)
         {
             {
-                Close();
+                Application.Exit();
             }
 
         }
@@ -625,8 +624,9 @@ namespace El_Balcon_de_Chalita
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             //Un objeto es la instancia de una clase
-            Login login = new Login();
-            login.Show();
+            //Login login = new Login();
+            contabilidad micontabilidad = new contabilidad();
+            micontabilidad.ShowDialog();
 
         }
 

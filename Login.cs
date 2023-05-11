@@ -43,8 +43,10 @@ namespace El_Balcon_de_Chalita
                 {
                     MessageBox.Show("Login exitoso");
                     contabilidad contab = new contabilidad();
-                    contab.Show();
-                    this.Close();
+                    //contab.Show();
+                    DlgBalconDeChalita mibalcon = new DlgBalconDeChalita();
+                    mibalcon.Show();
+                    this.Visible = false;
 
                     while (reader.Read())
                     {

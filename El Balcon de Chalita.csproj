@@ -194,5 +194,17 @@
   <ItemGroup>
     <None Include="Resources\icons\search.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons\add-document.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons\disk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons\trash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons\calculator.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
