@@ -1229,12 +1229,17 @@ namespace El_Balcon_de_Chalita
 
             try
             {
-                string consulta = "SELECT * FROM reservaciones";
+                string consulta = "SELECT * FROM reservaciones ";
                 MySqlCommand comando = new MySqlCommand(consulta, conexionBD);
 
                 MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
                 DataSet tablaClientes = new DataSet();
                 adaptador.Fill(tablaClientes, "reservaciones");
+
+                consulta = "SELECT * FROM clientes";
+                MySqlCommand comando2 = new MySqlCommand(consulta, conexionBD);
+                MySqlDataAdapter adaptador2 = new MySqlDataAdapter(comando2);
+                adaptador2.Fill(tablaClientes, "clientes");
 
                 rptReservaciones rpt = new rptReservaciones();
                 rpt.SetDataSource(tablaClientes);

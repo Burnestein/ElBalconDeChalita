@@ -30,6 +30,8 @@ namespace El_Balcon_de_Chalita {
         
         private reservacionesDataTable tablereservaciones;
         
+        private global::System.Data.DataRelation relationFK_reservaciones_clientes;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -242,6 +244,7 @@ namespace El_Balcon_de_Chalita {
                     this.tablereservaciones.InitVars();
                 }
             }
+            this.relationFK_reservaciones_clientes = this.Relations["FK_reservaciones_clientes"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -258,6 +261,18 @@ namespace El_Balcon_de_Chalita {
             base.Tables.Add(this.tableinventario);
             this.tablereservaciones = new reservacionesDataTable();
             base.Tables.Add(this.tablereservaciones);
+            global::System.Data.ForeignKeyConstraint fkc;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_reservaciones_clientes", new global::System.Data.DataColumn[] {
+                        this.tablereservaciones.clienteColumn}, new global::System.Data.DataColumn[] {
+                        this.tableclientes.idClienteColumn});
+            this.tableclientes.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            this.relationFK_reservaciones_clientes = new global::System.Data.DataRelation("FK_reservaciones_clientes", new global::System.Data.DataColumn[] {
+                        this.tablereservaciones.clienteColumn}, new global::System.Data.DataColumn[] {
+                        this.tableclientes.idClienteColumn}, false);
+            this.Relations.Add(this.relationFK_reservaciones_clientes);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1263,11 +1278,14 @@ namespace El_Balcon_de_Chalita {
                 base.Columns.Add(this.columncostoReservacion);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnidReservacion}, false));
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
+                                this.columncliente}, false));
                 this.columnidReservacion.AutoIncrement = true;
                 this.columnidReservacion.AutoIncrementSeed = -1;
                 this.columnidReservacion.AutoIncrementStep = -1;
                 this.columnidReservacion.Unique = true;
                 this.columncliente.AllowDBNull = false;
+                this.columncliente.Unique = true;
                 this.columnfechaEntrada.AllowDBNull = false;
                 this.columnfechaEntrada.MaxLength = 300;
                 this.columnfechaSalida.AllowDBNull = false;
@@ -1543,6 +1561,17 @@ namespace El_Balcon_de_Chalita {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public reservacionesRow reservacionesRow {
+                get {
+                    return ((reservacionesRow)(this.GetParentRow(this.Table.ParentRelations["FK_reservaciones_clientes"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_reservaciones_clientes"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsidClienteNull() {
                 return this.IsNull(this.tableclientes.idClienteColumn);
             }
@@ -1753,6 +1782,17 @@ namespace El_Balcon_de_Chalita {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetidReservacionNull() {
                 this[this.tablereservaciones.idReservacionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public clientesRow[] GetclientesRows() {
+                if ((this.Table.ChildRelations["FK_reservaciones_clientes"] == null)) {
+                    return new clientesRow[0];
+                }
+                else {
+                    return ((clientesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_reservaciones_clientes"])));
+                }
             }
         }
         
