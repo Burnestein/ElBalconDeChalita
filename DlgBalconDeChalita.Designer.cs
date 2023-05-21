@@ -1582,7 +1582,7 @@ namespace El_Balcon_de_Chalita
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 95F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(875, 870);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(866, 870);
             this.tableLayoutPanel3.TabIndex = 5;
             // 
             // toolStrip3
@@ -1593,7 +1593,7 @@ namespace El_Balcon_de_Chalita
             this.tsbSeleccionar});
             this.toolStrip3.Location = new System.Drawing.Point(0, 0);
             this.toolStrip3.Name = "toolStrip3";
-            this.toolStrip3.Size = new System.Drawing.Size(875, 43);
+            this.toolStrip3.Size = new System.Drawing.Size(866, 43);
             this.toolStrip3.TabIndex = 0;
             this.toolStrip3.Text = "toolStrip3";
             // 
@@ -1622,7 +1622,7 @@ namespace El_Balcon_de_Chalita
             this.dgvMaster.Name = "dgvMaster";
             this.dgvMaster.RowHeadersWidth = 51;
             this.dgvMaster.RowTemplate.Height = 24;
-            this.dgvMaster.Size = new System.Drawing.Size(871, 823);
+            this.dgvMaster.Size = new System.Drawing.Size(862, 823);
             this.dgvMaster.TabIndex = 1;
             this.dgvMaster.SelectionChanged += new System.EventHandler(this.dgvMaster_SelectionChanged);
             // 
@@ -1643,7 +1643,7 @@ namespace El_Balcon_de_Chalita
             this.splitContainer1.Panel2MinSize = 0;
             this.splitContainer1.Size = new System.Drawing.Size(1776, 870);
             this.splitContainer1.SplitterDistance = 895;
-            this.splitContainer1.SplitterWidth = 6;
+            this.splitContainer1.SplitterWidth = 15;
             this.splitContainer1.TabIndex = 6;
             // 
             // tableLayoutPanel2
