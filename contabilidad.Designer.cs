@@ -337,6 +337,7 @@ namespace El_Balcon_de_Chalita
             // btnContaReporte
             // 
             this.btnContaReporte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(111)))), ((int)(((byte)(81)))));
+            this.btnContaReporte.Enabled = false;
             this.btnContaReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnContaReporte.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnContaReporte.ForeColor = System.Drawing.Color.Transparent;
@@ -344,8 +345,9 @@ namespace El_Balcon_de_Chalita
             this.btnContaReporte.Name = "btnContaReporte";
             this.btnContaReporte.Size = new System.Drawing.Size(148, 49);
             this.btnContaReporte.TabIndex = 2;
-            this.btnContaReporte.Text = "Generar Reporte";
+            this.btnContaReporte.Text = "Generar Reporte (Inhabilitado)";
             this.btnContaReporte.UseVisualStyleBackColor = false;
+            this.btnContaReporte.Visible = false;
             this.btnContaReporte.Click += new System.EventHandler(this.btnContaReporte_Click);
             // 
             // label2
