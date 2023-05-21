@@ -32,81 +32,74 @@ namespace El_Balcon_de_Chalita
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(contabilidad));
-            this.TbcContabilidad = new System.Windows.Forms.TabControl();
-            this.TpgIngresos = new System.Windows.Forms.TabPage();
             this.LblIngresosTotales = new System.Windows.Forms.Label();
             this.txtIngresos = new System.Windows.Forms.TextBox();
             this.DgbIngresos = new System.Windows.Forms.DataGridView();
-            this.idReservacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ingreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TpgEgresos = new System.Windows.Forms.TabPage();
             this.LblEgresosTotales = new System.Windows.Forms.Label();
             this.txtEgresos = new System.Windows.Forms.TextBox();
             this.DgbEgresos = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.compañia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.porcentaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gasto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.limpieza = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TpgGanancias = new System.Windows.Forms.TabPage();
             this.txtGanancias = new System.Windows.Forms.TextBox();
             this.LblGananciasTotales = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.TbcContabilidad.SuspendLayout();
-            this.TpgIngresos.SuspendLayout();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnContaConsulta = new System.Windows.Forms.Button();
+            this.btnContaReporte = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dtpContaDe = new System.Windows.Forms.DateTimePicker();
+            this.dtpContaHasta = new System.Windows.Forms.DateTimePicker();
+            this.idReservacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaEntrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ingreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.compañia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.porcentaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gasto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.limpieza = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgbIngresos)).BeginInit();
-            this.TpgEgresos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgbEgresos)).BeginInit();
-            this.TpgGanancias.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // TbcContabilidad
-            // 
-            this.TbcContabilidad.Controls.Add(this.TpgIngresos);
-            this.TbcContabilidad.Controls.Add(this.TpgEgresos);
-            this.TbcContabilidad.Controls.Add(this.TpgGanancias);
-            this.TbcContabilidad.ItemSize = new System.Drawing.Size(100, 35);
-            this.TbcContabilidad.Location = new System.Drawing.Point(14, 77);
-            this.TbcContabilidad.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.TbcContabilidad.Name = "TbcContabilidad";
-            this.TbcContabilidad.SelectedIndex = 0;
-            this.TbcContabilidad.Size = new System.Drawing.Size(912, 476);
-            this.TbcContabilidad.TabIndex = 0;
-            // 
-            // TpgIngresos
-            // 
-            this.TpgIngresos.BackColor = System.Drawing.Color.White;
-            this.TpgIngresos.Controls.Add(this.LblIngresosTotales);
-            this.TpgIngresos.Controls.Add(this.txtIngresos);
-            this.TpgIngresos.Controls.Add(this.DgbIngresos);
-            this.TpgIngresos.Location = new System.Drawing.Point(4, 39);
-            this.TpgIngresos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.TpgIngresos.Name = "TpgIngresos";
-            this.TpgIngresos.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.TpgIngresos.Size = new System.Drawing.Size(904, 433);
-            this.TpgIngresos.TabIndex = 0;
-            this.TpgIngresos.Text = "Ingresos";
-            this.TpgIngresos.Click += new System.EventHandler(this.Ingresos_Click);
             // 
             // LblIngresosTotales
             // 
+            this.LblIngresosTotales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LblIngresosTotales.AutoSize = true;
             this.LblIngresosTotales.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblIngresosTotales.Location = new System.Drawing.Point(357, 37);
+            this.LblIngresosTotales.Location = new System.Drawing.Point(168, 0);
             this.LblIngresosTotales.Name = "LblIngresosTotales";
-            this.LblIngresosTotales.Size = new System.Drawing.Size(193, 29);
+            this.LblIngresosTotales.Size = new System.Drawing.Size(106, 29);
             this.LblIngresosTotales.TabIndex = 2;
-            this.LblIngresosTotales.Text = "Ingresos Totales";
+            this.LblIngresosTotales.Text = "Ingresos";
+            this.LblIngresosTotales.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.LblIngresosTotales.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtIngresos
             // 
-            this.txtIngresos.Location = new System.Drawing.Point(304, 82);
+            this.txtIngresos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtIngresos.Location = new System.Drawing.Point(0, 33);
             this.txtIngresos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtIngresos.Name = "txtIngresos";
-            this.txtIngresos.Size = new System.Drawing.Size(263, 23);
+            this.txtIngresos.ReadOnly = true;
+            this.txtIngresos.Size = new System.Drawing.Size(274, 23);
             this.txtIngresos.TabIndex = 1;
             // 
             // DgbIngresos
@@ -122,59 +115,38 @@ namespace El_Balcon_de_Chalita
             this.DgbIngresos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgbIngresos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idReservacion,
+            this.fechaEntrada,
             this.Ingreso});
-            this.DgbIngresos.Location = new System.Drawing.Point(293, 138);
+            this.DgbIngresos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DgbIngresos.Location = new System.Drawing.Point(0, 0);
             this.DgbIngresos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DgbIngresos.Name = "DgbIngresos";
             this.DgbIngresos.RowHeadersWidth = 51;
-            this.DgbIngresos.Size = new System.Drawing.Size(301, 149);
+            this.DgbIngresos.Size = new System.Drawing.Size(647, 155);
             this.DgbIngresos.TabIndex = 0;
             this.DgbIngresos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgbIngresos_CellContentClick);
             // 
-            // idReservacion
-            // 
-            this.idReservacion.HeaderText = "IdReserva";
-            this.idReservacion.MinimumWidth = 6;
-            this.idReservacion.Name = "idReservacion";
-            this.idReservacion.Width = 125;
-            // 
-            // Ingreso
-            // 
-            this.Ingreso.HeaderText = "Ingreso de la Reserva";
-            this.Ingreso.MinimumWidth = 6;
-            this.Ingreso.Name = "Ingreso";
-            this.Ingreso.Width = 125;
-            // 
-            // TpgEgresos
-            // 
-            this.TpgEgresos.BackColor = System.Drawing.Color.White;
-            this.TpgEgresos.Controls.Add(this.LblEgresosTotales);
-            this.TpgEgresos.Controls.Add(this.txtEgresos);
-            this.TpgEgresos.Controls.Add(this.DgbEgresos);
-            this.TpgEgresos.Location = new System.Drawing.Point(4, 39);
-            this.TpgEgresos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.TpgEgresos.Name = "TpgEgresos";
-            this.TpgEgresos.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.TpgEgresos.Size = new System.Drawing.Size(904, 433);
-            this.TpgEgresos.TabIndex = 1;
-            this.TpgEgresos.Text = "Egresos";
-            // 
             // LblEgresosTotales
             // 
+            this.LblEgresosTotales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LblEgresosTotales.AutoSize = true;
             this.LblEgresosTotales.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblEgresosTotales.Location = new System.Drawing.Point(380, 26);
+            this.LblEgresosTotales.Location = new System.Drawing.Point(171, 0);
             this.LblEgresosTotales.Name = "LblEgresosTotales";
-            this.LblEgresosTotales.Size = new System.Drawing.Size(190, 29);
+            this.LblEgresosTotales.Size = new System.Drawing.Size(103, 29);
             this.LblEgresosTotales.TabIndex = 2;
-            this.LblEgresosTotales.Text = "Egresos Totales";
+            this.LblEgresosTotales.Text = "Egresos";
+            this.LblEgresosTotales.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // txtEgresos
             // 
-            this.txtEgresos.Location = new System.Drawing.Point(361, 74);
+            this.txtEgresos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtEgresos.Location = new System.Drawing.Point(0, 33);
             this.txtEgresos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtEgresos.Name = "txtEgresos";
-            this.txtEgresos.Size = new System.Drawing.Size(165, 23);
+            this.txtEgresos.ReadOnly = true;
+            this.txtEgresos.Size = new System.Drawing.Size(277, 23);
             this.txtEgresos.TabIndex = 1;
             // 
             // DgbEgresos
@@ -190,16 +162,250 @@ namespace El_Balcon_de_Chalita
             this.DgbEgresos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgbEgresos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
+            this.dataGridViewTextBoxColumn1,
             this.compañia,
             this.porcentaje,
             this.Gasto,
             this.limpieza});
-            this.DgbEgresos.Location = new System.Drawing.Point(122, 119);
+            this.DgbEgresos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DgbEgresos.Location = new System.Drawing.Point(0, 0);
             this.DgbEgresos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DgbEgresos.Name = "DgbEgresos";
             this.DgbEgresos.RowHeadersWidth = 51;
-            this.DgbEgresos.Size = new System.Drawing.Size(681, 185);
+            this.DgbEgresos.Size = new System.Drawing.Size(647, 155);
             this.DgbEgresos.TabIndex = 0;
+            // 
+            // txtGanancias
+            // 
+            this.txtGanancias.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtGanancias.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGanancias.Location = new System.Drawing.Point(0, 43);
+            this.txtGanancias.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtGanancias.Name = "txtGanancias";
+            this.txtGanancias.ReadOnly = true;
+            this.txtGanancias.Size = new System.Drawing.Size(274, 45);
+            this.txtGanancias.TabIndex = 1;
+            this.txtGanancias.TextChanged += new System.EventHandler(this.txtGanancias_TextChanged);
+            // 
+            // LblGananciasTotales
+            // 
+            this.LblGananciasTotales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.LblGananciasTotales.AutoSize = true;
+            this.LblGananciasTotales.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblGananciasTotales.Location = new System.Drawing.Point(181, 0);
+            this.LblGananciasTotales.Name = "LblGananciasTotales";
+            this.LblGananciasTotales.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.LblGananciasTotales.Size = new System.Drawing.Size(93, 39);
+            this.LblGananciasTotales.TabIndex = 0;
+            this.LblGananciasTotales.Text = "Total";
+            this.LblGananciasTotales.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Chocolate;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(933, 70);
+            this.panel1.TabIndex = 1;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(273, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(413, 51);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "INGRESOS Y EGRESOS";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Click += new System.EventHandler(this.label1_Click_1);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panel4, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.panel5, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel6, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panel7, 1, 2);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 70);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(933, 484);
+            this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.DgbIngresos);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(647, 155);
+            this.panel2.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.DgbEgresos);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 164);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(647, 155);
+            this.panel3.TabIndex = 1;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.btnContaReporte);
+            this.panel4.Controls.Add(this.btnContaConsulta);
+            this.panel4.Controls.Add(this.groupBox1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(3, 325);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(647, 156);
+            this.panel4.TabIndex = 2;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.LblIngresosTotales);
+            this.panel5.Controls.Add(this.txtIngresos);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(656, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(274, 155);
+            this.panel5.TabIndex = 3;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.LblEgresosTotales);
+            this.panel6.Controls.Add(this.txtEgresos);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(656, 164);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(274, 155);
+            this.panel6.TabIndex = 4;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.txtGanancias);
+            this.panel7.Controls.Add(this.LblGananciasTotales);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel7.Location = new System.Drawing.Point(656, 325);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(274, 156);
+            this.panel7.TabIndex = 5;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dtpContaHasta);
+            this.groupBox1.Controls.Add(this.dtpContaDe);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.groupBox1.Location = new System.Drawing.Point(314, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(333, 156);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Fecha:";
+            // 
+            // btnContaConsulta
+            // 
+            this.btnContaConsulta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(196)))), ((int)(((byte)(106)))));
+            this.btnContaConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnContaConsulta.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnContaConsulta.ForeColor = System.Drawing.Color.Transparent;
+            this.btnContaConsulta.Location = new System.Drawing.Point(9, 43);
+            this.btnContaConsulta.Name = "btnContaConsulta";
+            this.btnContaConsulta.Size = new System.Drawing.Size(148, 31);
+            this.btnContaConsulta.TabIndex = 1;
+            this.btnContaConsulta.Text = "Consultar Fechas";
+            this.btnContaConsulta.UseVisualStyleBackColor = false;
+            this.btnContaConsulta.Click += new System.EventHandler(this.btnContaConsulta_Click);
+            // 
+            // btnContaReporte
+            // 
+            this.btnContaReporte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(111)))), ((int)(((byte)(81)))));
+            this.btnContaReporte.Enabled = false;
+            this.btnContaReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnContaReporte.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnContaReporte.ForeColor = System.Drawing.Color.Transparent;
+            this.btnContaReporte.Location = new System.Drawing.Point(9, 80);
+            this.btnContaReporte.Name = "btnContaReporte";
+            this.btnContaReporte.Size = new System.Drawing.Size(148, 49);
+            this.btnContaReporte.TabIndex = 2;
+            this.btnContaReporte.Text = "Generar Reporte (Inhabilitado)";
+            this.btnContaReporte.UseVisualStyleBackColor = false;
+            this.btnContaReporte.Visible = false;
+            this.btnContaReporte.Click += new System.EventHandler(this.btnContaReporte_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 32);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(30, 17);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "De:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 95);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 17);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Hasta:";
+            // 
+            // dtpContaDe
+            // 
+            this.dtpContaDe.CalendarFont = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpContaDe.Location = new System.Drawing.Point(70, 26);
+            this.dtpContaDe.Name = "dtpContaDe";
+            this.dtpContaDe.Size = new System.Drawing.Size(257, 23);
+            this.dtpContaDe.TabIndex = 3;
+            this.dtpContaDe.Value = new System.DateTime(2023, 5, 21, 1, 36, 45, 0);
+            // 
+            // dtpContaHasta
+            // 
+            this.dtpContaHasta.CalendarFont = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpContaHasta.Location = new System.Drawing.Point(70, 89);
+            this.dtpContaHasta.Name = "dtpContaHasta";
+            this.dtpContaHasta.Size = new System.Drawing.Size(257, 23);
+            this.dtpContaHasta.TabIndex = 4;
+            this.dtpContaHasta.Value = new System.DateTime(2023, 5, 21, 1, 36, 50, 0);
+            // 
+            // idReservacion
+            // 
+            this.idReservacion.HeaderText = "IdReserva";
+            this.idReservacion.MinimumWidth = 6;
+            this.idReservacion.Name = "idReservacion";
+            this.idReservacion.Width = 125;
+            // 
+            // fechaEntrada
+            // 
+            this.fechaEntrada.HeaderText = "Fecha Reserva";
+            this.fechaEntrada.MinimumWidth = 6;
+            this.fechaEntrada.Name = "fechaEntrada";
+            this.fechaEntrada.Width = 125;
+            // 
+            // Ingreso
+            // 
+            this.Ingreso.HeaderText = "Ingreso de la Reserva";
+            this.Ingreso.MinimumWidth = 6;
+            this.Ingreso.Name = "Ingreso";
+            this.Ingreso.Width = 125;
             // 
             // id
             // 
@@ -207,6 +413,13 @@ namespace El_Balcon_de_Chalita
             this.id.MinimumWidth = 6;
             this.id.Name = "id";
             this.id.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Fecha Reservacion";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 125;
             // 
             // compañia
             // 
@@ -236,67 +449,14 @@ namespace El_Balcon_de_Chalita
             this.limpieza.Name = "limpieza";
             this.limpieza.Width = 125;
             // 
-            // TpgGanancias
-            // 
-            this.TpgGanancias.BackColor = System.Drawing.Color.White;
-            this.TpgGanancias.Controls.Add(this.txtGanancias);
-            this.TpgGanancias.Controls.Add(this.LblGananciasTotales);
-            this.TpgGanancias.Location = new System.Drawing.Point(4, 39);
-            this.TpgGanancias.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.TpgGanancias.Name = "TpgGanancias";
-            this.TpgGanancias.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.TpgGanancias.Size = new System.Drawing.Size(904, 433);
-            this.TpgGanancias.TabIndex = 2;
-            this.TpgGanancias.Text = "Ganancias";
-            // 
-            // txtGanancias
-            // 
-            this.txtGanancias.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGanancias.Location = new System.Drawing.Point(314, 183);
-            this.txtGanancias.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtGanancias.Name = "txtGanancias";
-            this.txtGanancias.Size = new System.Drawing.Size(261, 45);
-            this.txtGanancias.TabIndex = 1;
-            // 
-            // LblGananciasTotales
-            // 
-            this.LblGananciasTotales.AutoSize = true;
-            this.LblGananciasTotales.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblGananciasTotales.Location = new System.Drawing.Point(319, 114);
-            this.LblGananciasTotales.Name = "LblGananciasTotales";
-            this.LblGananciasTotales.Size = new System.Drawing.Size(301, 39);
-            this.LblGananciasTotales.TabIndex = 0;
-            this.LblGananciasTotales.Text = "Ganancias Totales";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Chocolate;
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(933, 70);
-            this.panel1.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(383, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(229, 31);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "CONTABILIDAD";
-            // 
             // contabilidad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(933, 554);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.TbcContabilidad);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -304,43 +464,59 @@ namespace El_Balcon_de_Chalita
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  ";
             this.Load += new System.EventHandler(this.contabilidad_Load);
-            this.TbcContabilidad.ResumeLayout(false);
-            this.TpgIngresos.ResumeLayout(false);
-            this.TpgIngresos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgbIngresos)).EndInit();
-            this.TpgEgresos.ResumeLayout(false);
-            this.TpgEgresos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgbEgresos)).EndInit();
-            this.TpgGanancias.ResumeLayout(false);
-            this.TpgGanancias.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TabControl TbcContabilidad;
-        private System.Windows.Forms.TabPage TpgIngresos;
-        private System.Windows.Forms.TabPage TpgEgresos;
-        private System.Windows.Forms.TabPage TpgGanancias;
         private System.Windows.Forms.Label LblIngresosTotales;
         private System.Windows.Forms.TextBox txtIngresos;
         private System.Windows.Forms.DataGridView DgbIngresos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idReservacion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ingreso;
         private System.Windows.Forms.Label LblEgresosTotales;
         private System.Windows.Forms.TextBox txtEgresos;
         private System.Windows.Forms.DataGridView DgbEgresos;
         private System.Windows.Forms.TextBox txtGanancias;
         private System.Windows.Forms.Label LblGananciasTotales;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Button btnContaReporte;
+        private System.Windows.Forms.Button btnContaConsulta;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DateTimePicker dtpContaHasta;
+        private System.Windows.Forms.DateTimePicker dtpContaDe;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idReservacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaEntrada;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ingreso;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn compañia;
         private System.Windows.Forms.DataGridViewTextBoxColumn porcentaje;
         private System.Windows.Forms.DataGridViewTextBoxColumn Gasto;
         private System.Windows.Forms.DataGridViewTextBoxColumn limpieza;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
     }
 }
