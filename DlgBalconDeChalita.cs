@@ -1431,5 +1431,10 @@ namespace El_Balcon_de_Chalita
             Login login = new Login();
             login.Show();
         }
+
+        private void CbxDia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
