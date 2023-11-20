@@ -7,18 +7,18 @@ namespace El_Balcon_de_Chalita.mysql
     {
         public static MySqlConnection Conexion()
         {
-            /*//LOCALHOST
+            //LOCALHOST
             string servidor = "127.0.0.1";
             string basededatos = "bdbalcon";
             string usuario = "root";
             string password = "";
-            */
-
+            
+            /*
             string servidor = "212.1.212.103";
             string basededatos = "u784049580_balconchali13";
             string usuario = "u784049580_balcondechali";
             string password = "Amoareyna1310";
-
+            */
 
             string cadenaConexion = "Database=" + basededatos + "; Data Source=" + servidor + "; User Id= " + usuario + "; Password=" + password + "";
 
