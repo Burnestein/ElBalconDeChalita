@@ -96,6 +96,8 @@ namespace El_Balcon_de_Chalita
                     TsbEliminar.Enabled = true;
                     toolStripButton1.Visible = true;
                     toolStripButton1.Enabled = true;
+                    tsbQuitarCliente.Enabled = true;
+                    tsbQuitarCliente.Visible = false;
                     
 
 
@@ -112,7 +114,10 @@ namespace El_Balcon_de_Chalita
                     TsbEliminar.Enabled = false;
                     toolStripButton1.Visible = false;
                     toolStripButton1.Enabled = false;
+                    tsbQuitarCliente.Enabled = true;
+                    tsbQuitarCliente.Visible = false;
                     TbcPrincipal.TabPages.Remove(TbcPrincipal.TabPages[2]);
+                    
                     break;
                 default:
                     break;
@@ -379,7 +384,6 @@ namespace El_Balcon_de_Chalita
             LlenarFormulario(micliente);
             idCliente = micliente.IdCliente;
             correoCliente = micliente.Email;
-            tsbQuitarCliente.Visible = false;
             dgvMaster.DataSource = null;
             dgvMaster.Rows.Clear();
             dgvMaster.Refresh();
@@ -677,7 +681,6 @@ namespace El_Balcon_de_Chalita
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            //Un objeto es la instancia de una clase
             //Login login = new Login();
             contabilidad micontabilidad = new contabilidad();
             micontabilidad.ShowDialog();
@@ -986,11 +989,15 @@ namespace El_Balcon_de_Chalita
         {
             if (micliente.IdCliente > -1)
             {
+                Console.WriteLine("Texto cambio, id>-1, boton visible");
+                Console.WriteLine("Id cliente: " + micliente.IdCliente);
                 tsbQuitarCliente.Visible = true;
             }
 
             else
             {
+                Console.WriteLine("Texto cambio, id<=-1, boton NO visible");
+                Console.WriteLine("Id cliente: " + micliente.IdCliente);
                 tsbQuitarCliente.Visible = false;
             }
         }
@@ -1380,6 +1387,43 @@ namespace El_Balcon_de_Chalita
         }
 
         public void BindReportRes()
+        {
+            MySqlConnection conexionBD = mysql.conexion.Conexion();
+            conexionBD.Open();
+
+            try
+            {
+                string consulta = "SELECT * FROM reservaciones ";
+                MySqlCommand comando = new MySqlCommand(consulta, conexionBD);
+
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                DataSet tablaClientes = new DataSet();
+                adaptador.Fill(tablaClientes, "reservaciones");
+
+                consulta = "SELECT * FROM clientes";
+                MySqlCommand comando2 = new MySqlCommand(consulta, conexionBD);
+                MySqlDataAdapter adaptador2 = new MySqlDataAdapter(comando2);
+                adaptador2.Fill(tablaClientes, "clientes");
+
+                rptReservaciones rpt = new rptReservaciones();
+                rpt.SetDataSource(tablaClientes);
+
+                frmReport frm = new frmReport();
+                frm.crystalReportViewer1.ReportSource = rpt;
+                frm.ShowDialog();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error al realizar la consulta:" + ex.Message);
+
+            }
+            finally
+            {
+                conexionBD.Close();
+            }
+        }
+
+        public void BindReportIE()
         {
             MySqlConnection conexionBD = mysql.conexion.Conexion();
             conexionBD.Open();

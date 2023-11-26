@@ -1645,9 +1645,9 @@ namespace El_Balcon_de_Chalita
             this.toolStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tslCliente,
-            this.tsbQuitarCliente,
             this.tstbBuscarCliente,
-            this.tsbBuscarCliente});
+            this.tsbBuscarCliente,
+            this.tsbQuitarCliente});
             this.toolStrip2.Location = new System.Drawing.Point(0, 102);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(1782, 51);
@@ -1666,13 +1666,13 @@ namespace El_Balcon_de_Chalita
             // 
             // tsbQuitarCliente
             // 
-            this.tsbQuitarCliente.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbQuitarCliente.AutoSize = false;
             this.tsbQuitarCliente.Image = global::El_Balcon_de_Chalita.Properties.Resources.circle_xmark;
             this.tsbQuitarCliente.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbQuitarCliente.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbQuitarCliente.Margin = new System.Windows.Forms.Padding(0);
             this.tsbQuitarCliente.Name = "tsbQuitarCliente";
             this.tsbQuitarCliente.Size = new System.Drawing.Size(29, 48);
-            this.tsbQuitarCliente.Text = "toolStripButton2";
             this.tsbQuitarCliente.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // tstbBuscarCliente
