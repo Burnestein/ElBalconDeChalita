@@ -682,7 +682,7 @@ namespace El_Balcon_de_Chalita
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             //Login login = new Login();
-            contabilidad micontabilidad = new contabilidad();
+            contabilidad micontabilidad = new contabilidad(miusuario);
             micontabilidad.ShowDialog();
 
         }
@@ -1442,7 +1442,7 @@ namespace El_Balcon_de_Chalita
                 MySqlDataAdapter adaptador2 = new MySqlDataAdapter(comando2);
                 adaptador2.Fill(tablaClientes, "clientes");
 
-                rptReservaciones rpt = new rptReservaciones();
+                rptIngresosEgresos rpt = new rptIngresosEgresos();
                 rpt.SetDataSource(tablaClientes);
 
                 frmReport frm = new frmReport();
