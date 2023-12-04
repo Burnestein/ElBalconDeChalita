@@ -52,6 +52,8 @@ namespace El_Balcon_de_Chalita
             this.tsbCerrarSesion = new System.Windows.Forms.ToolStripButton();
             this.tslUsuario = new System.Windows.Forms.ToolStripLabel();
             this.TpgReservaciones = new System.Windows.Forms.TabPage();
+            this.lblnombrereserva = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.dtpContaHasta = new System.Windows.Forms.DateTimePicker();
             this.dtpContaDe = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
@@ -149,8 +151,6 @@ namespace El_Balcon_de_Chalita
             this.tsbBuscarCliente = new System.Windows.Forms.ToolStripButton();
             this.tsbQuitarCliente = new System.Windows.Forms.ToolStripButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.label13 = new System.Windows.Forms.Label();
-            this.lblnombrereserva = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -420,6 +420,27 @@ namespace El_Balcon_de_Chalita
             this.TpgReservaciones.Text = "Reservaciones";
             this.TpgReservaciones.Click += new System.EventHandler(this.TpgReservaciones_Click);
             // 
+            // lblnombrereserva
+            // 
+            this.lblnombrereserva.AutoSize = true;
+            this.lblnombrereserva.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblnombrereserva.Location = new System.Drawing.Point(191, 13);
+            this.lblnombrereserva.Name = "lblnombrereserva";
+            this.lblnombrereserva.Size = new System.Drawing.Size(0, 28);
+            this.lblnombrereserva.TabIndex = 22;
+            this.lblnombrereserva.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(41, 13);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(127, 28);
+            this.label13.TabIndex = 21;
+            this.label13.Text = "Reservado a:";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // dtpContaHasta
             // 
             this.dtpContaHasta.CalendarFont = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -681,6 +702,7 @@ namespace El_Balcon_de_Chalita
             this.CCheckOut.Name = "CCheckOut";
             this.CCheckOut.TabIndex = 1;
             this.CCheckOut.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.calendario2_DateChanged);
+            this.CCheckOut.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.CCheckOut_DateSelected);
             // 
             // CCheckIn
             // 
@@ -690,6 +712,7 @@ namespace El_Balcon_de_Chalita
             this.CCheckIn.Name = "CCheckIn";
             this.CCheckIn.TabIndex = 0;
             this.CCheckIn.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.calendario1_DateChanged);
+            this.CCheckIn.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.CCheckIn_DateSelected);
             // 
             // TbgClientes
             // 
@@ -1692,27 +1715,6 @@ namespace El_Balcon_de_Chalita
             this.tsbQuitarCliente.Name = "tsbQuitarCliente";
             this.tsbQuitarCliente.Size = new System.Drawing.Size(29, 48);
             this.tsbQuitarCliente.Click += new System.EventHandler(this.toolStripButton2_Click);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(41, 13);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(127, 28);
-            this.label13.TabIndex = 21;
-            this.label13.Text = "Reservado a:";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lblnombrereserva
-            // 
-            this.lblnombrereserva.AutoSize = true;
-            this.lblnombrereserva.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblnombrereserva.Location = new System.Drawing.Point(191, 13);
-            this.lblnombrereserva.Name = "lblnombrereserva";
-            this.lblnombrereserva.Size = new System.Drawing.Size(0, 28);
-            this.lblnombrereserva.TabIndex = 22;
-            this.lblnombrereserva.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // DlgBalconDeChalita
             // 

@@ -35,6 +35,9 @@ namespace El_Balcon_de_Chalita
         private reservacion mireservacion;
         private BuscaIndice mibuscaindice;
         private user miusuario;
+
+        private DateTime inicioReserva;
+        private DateTime finReserva;
         //---------------------------------------------------------------------
         //Atributo.
         //---------------------------------------------------------------------
@@ -563,7 +566,7 @@ namespace El_Balcon_de_Chalita
             fechaEntrada = CCheckIn.SelectionStart.Date.ToString("yyyy/MM/dd");
             if (fechaEntrada == fechaSalida)
             {
-                MessageBox.Show("Debe elegir una fecha distinta.");
+                //MessageBox.Show("Debe elegir una fecha distinta.");
 
             }
 
@@ -576,7 +579,7 @@ namespace El_Balcon_de_Chalita
             fechaSalida = CCheckOut.SelectionStart.Date.ToString("yyyy/MM/dd");
             if (fechaEntrada == fechaSalida)
             {
-                MessageBox.Show("Debe elegir una fecha distinta a la fecha de entrada.");
+                //MessageBox.Show("Debe elegir una fecha distinta a la fecha de entrada.");
 
             }
             if (CCheckOut.SelectionRange.Start < CCheckIn.SelectionRange.Start)
@@ -593,15 +596,27 @@ namespace El_Balcon_de_Chalita
         {
 
             TimeSpan difer = dt2 - dt1;
-            double costo = 1500 * difer.TotalDays;
-            txtTotal.Text = "$" + costo.ToString();
-            totalReserva = costo;
+            if (difer.TotalDays == 0)
+            {
+                double costo = 1500;
+                txtTotal.Text = "$" + costo.ToString();
+                totalReserva = costo;
+                double subtotal = totalReserva;
+                txtSubTotal.Text = subtotal.ToString();
+            }
+            else if (difer.TotalDays > 0)
+            {
+                double costo = 1500 * difer.TotalDays;
+                txtTotal.Text = "$" + costo.ToString();
+                totalReserva = costo;
 
-            //double iva = (totalReserva / 100) * 16;
-            //double subtotal = totalReserva + iva;
-            double subtotal = totalReserva;
-            txtSubTotal.Text = subtotal.ToString();
-            //MessageBox.Show(fechaSalida);
+                //double iva = (totalReserva / 100) * 16;
+                //double subtotal = totalReserva + iva;
+                double subtotal = totalReserva;
+                txtSubTotal.Text = subtotal.ToString();
+                //MessageBox.Show(fechaSalida);
+            }
+
         }
         //Funcion para obtener la info del cliente que seleccionemos en el combobox
         private void cbxClientes_SelectedIndexChanged(object sender, EventArgs e)
@@ -693,7 +708,11 @@ namespace El_Balcon_de_Chalita
         private void btnReservar_Click(object sender, EventArgs e)
         {
             guardarReservaBD();
-
+            inicioReserva = DateTime.Today;
+            finReserva = DateTime.Today;
+            cbxCompañias.SelectedIndex = -1;
+            txtTotal.Text = "";
+            txtSubTotal.Text = "";
         }
 
         private void guardarReservaBD() //realiza la insercion de la reserva en la BD
@@ -701,7 +720,7 @@ namespace El_Balcon_de_Chalita
             Console.WriteLine(fechaDeEntrada);
             Console.WriteLine(fechaDeSalida);
             //En caso de que todos los campos rqueridos sean llenados se procede a guardar la reserva
-            if (idCliente != -1 && fechaEntrada != "" && fechaSalida != "" && cbxCompañias.SelectedIndex != -1)
+            if (idCliente != -1 && fechaEntrada != "" && fechaSalida != "" && cbxCompañias.SelectedIndex != -1 && finReserva >= inicioReserva)
             {
                 Boolean reservaDisponible = verificarFechaDisponible();
                 if (reservaDisponible) { Console.WriteLine("reserva disponible"); } else Console.WriteLine("Reserva NO disponible");
@@ -780,6 +799,10 @@ namespace El_Balcon_de_Chalita
                 {
                     MessageBox.Show("Estas fechas ya no se encuentran dsiponibles para su reserva");
                 }
+            }
+            else if (finReserva < inicioReserva)
+            {
+                MessageBox.Show("La fecha de Entrada no puede ser menor que la Salida.");
             }
             else
             {
@@ -1680,6 +1703,24 @@ namespace El_Balcon_de_Chalita
             txtNombreObjeto.Text = dgvMaster[0, selectedIndex].Value.ToString();
             txtCantidadObjeto.Text = dgvMaster[1, selectedIndex].Value.ToString();
             txtPrecioObjeto.Text = dgvMaster[2, selectedIndex].Value.ToString();
+        }
+
+        private void CCheckIn_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            // Obtener la fecha seleccionada cuando el usuario elige una fecha en el calendario
+            inicioReserva = CCheckIn.SelectionStart;
+
+            // Puedes trabajar con la fecha seleccionada aquí
+            Console.WriteLine("Inicio Reserva: " + inicioReserva.ToString("yyyy-MM-dd"));
+        }
+
+        private void CCheckOut_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            // Obtener la fecha seleccionada cuando el usuario elige una fecha en el calendario
+            finReserva = CCheckOut.SelectionStart;
+
+            // Puedes trabajar con la fecha seleccionada aquí
+            Console.WriteLine("Fin Reserva: " + finReserva.ToString("yyyy-MM-dd"));
         }
     }
 }
