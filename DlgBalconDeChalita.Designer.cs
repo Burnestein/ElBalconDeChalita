@@ -350,8 +350,8 @@ namespace El_Balcon_de_Chalita
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Margin = new System.Windows.Forms.Padding(5, 1, 5, 2);
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(177, 99);
-            this.toolStripButton1.Text = "Contabilidad";
+            this.toolStripButton1.Size = new System.Drawing.Size(82, 99);
+            this.toolStripButton1.Text = "I / E";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // tsbCerrarSesion
