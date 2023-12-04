@@ -141,9 +141,9 @@ namespace El_Balcon_de_Chalita
             this.dgvMaster = new System.Windows.Forms.DataGridView();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.tslCliente = new System.Windows.Forms.ToolStripLabel();
-            this.tsbQuitarCliente = new System.Windows.Forms.ToolStripButton();
             this.tstbBuscarCliente = new System.Windows.Forms.ToolStripTextBox();
             this.tsbBuscarCliente = new System.Windows.Forms.ToolStripButton();
+            this.tsbQuitarCliente = new System.Windows.Forms.ToolStripButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -938,48 +938,6 @@ namespace El_Balcon_de_Chalita
             this.CbxAño.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.CbxAño.FormattingEnabled = true;
             this.CbxAño.Items.AddRange(new object[] {
-            "1900\t",
-            "1901",
-            "1902\t",
-            "1903\t",
-            "1904\t",
-            "1905\t",
-            "1906\t",
-            "1907\t",
-            "1908\t",
-            "1909  ",
-            "1910\t\t",
-            "1911\t",
-            "1912\t",
-            "1913\t",
-            "1914\t",
-            "1915\t",
-            "1916\t",
-            "1917\t",
-            "1918\t",
-            "1919",
-            "1920\t",
-            "1920\t",
-            "1921\t",
-            "1922\t",
-            "1923\t",
-            "1924\t",
-            "1925\t",
-            "1926\t",
-            "1927\t",
-            "1928\t",
-            "1929",
-            "1930\t",
-            "1930\t",
-            "1931\t",
-            "1932\t",
-            "1933\t",
-            "1934\t",
-            "1935\t",
-            "1936\t",
-            "1937\t",
-            "1938\t",
-            "1939",
             "1940\t\t",
             "1941\t",
             "1942\t",
@@ -1045,23 +1003,7 @@ namespace El_Balcon_de_Chalita
             "2002\t",
             "2003\t",
             "2004\t",
-            "2005\t",
-            "2006\t",
-            "2007\t",
-            "2008\t",
-            "2009",
-            "2010",
-            "2011",
-            "2012",
-            "2013",
-            "2014",
-            "2015",
-            "2016",
-            "2017",
-            "2018",
-            "2019",
-            "2020",
-            "2021"});
+            "2005"});
             this.CbxAño.Location = new System.Drawing.Point(167, 480);
             this.CbxAño.Margin = new System.Windows.Forms.Padding(2);
             this.CbxAño.Name = "CbxAño";
@@ -1072,6 +1014,7 @@ namespace El_Balcon_de_Chalita
             // 
             this.TbxCodigo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.TbxCodigo.Enabled = false;
             this.TbxCodigo.Location = new System.Drawing.Point(18, 65);
             this.TbxCodigo.Margin = new System.Windows.Forms.Padding(2);
             this.TbxCodigo.Multiline = true;
@@ -1664,17 +1607,6 @@ namespace El_Balcon_de_Chalita
             this.tslCliente.Text = "Cliente:";
             this.tslCliente.TextChanged += new System.EventHandler(this.tslCliente_TextChanged);
             // 
-            // tsbQuitarCliente
-            // 
-            this.tsbQuitarCliente.AutoSize = false;
-            this.tsbQuitarCliente.Image = global::El_Balcon_de_Chalita.Properties.Resources.circle_xmark;
-            this.tsbQuitarCliente.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbQuitarCliente.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbQuitarCliente.Margin = new System.Windows.Forms.Padding(0);
-            this.tsbQuitarCliente.Name = "tsbQuitarCliente";
-            this.tsbQuitarCliente.Size = new System.Drawing.Size(29, 48);
-            this.tsbQuitarCliente.Click += new System.EventHandler(this.toolStripButton2_Click);
-            // 
             // tstbBuscarCliente
             // 
             this.tstbBuscarCliente.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -1698,6 +1630,17 @@ namespace El_Balcon_de_Chalita
             this.tsbBuscarCliente.Size = new System.Drawing.Size(80, 25);
             this.tsbBuscarCliente.Text = "Buscar";
             this.tsbBuscarCliente.Click += new System.EventHandler(this.tsbBuscarCliente_Click);
+            // 
+            // tsbQuitarCliente
+            // 
+            this.tsbQuitarCliente.AutoSize = false;
+            this.tsbQuitarCliente.Image = global::El_Balcon_de_Chalita.Properties.Resources.circle_xmark;
+            this.tsbQuitarCliente.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbQuitarCliente.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbQuitarCliente.Margin = new System.Windows.Forms.Padding(0);
+            this.tsbQuitarCliente.Name = "tsbQuitarCliente";
+            this.tsbQuitarCliente.Size = new System.Drawing.Size(29, 48);
+            this.tsbQuitarCliente.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // DlgBalconDeChalita
             // 
