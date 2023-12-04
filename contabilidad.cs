@@ -257,7 +257,11 @@ namespace El_Balcon_de_Chalita
 
         private void btnContaReporte_Click(object sender, EventArgs e)
         {
-            mibalcon.BindReportIE();
+            string fechaInicio = dtpContaDe.Value.ToString("yyyy/MM/dd");
+            Console.WriteLine(dtpContaDe);
+            string fechaFin = dtpContaHasta.Value.ToString("yyyy/MM/dd");
+            Console.WriteLine(dtpContaHasta);
+            mibalcon.BindReportIE(fechaInicio, fechaFin);
         }
         private void ganancias()
         {

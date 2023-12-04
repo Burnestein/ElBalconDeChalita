@@ -145,6 +145,10 @@ namespace El_Balcon_de_Chalita
             this.tsbBuscarCliente = new System.Windows.Forms.ToolStripButton();
             this.tsbQuitarCliente = new System.Windows.Forms.ToolStripButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.dtpContaHasta = new System.Windows.Forms.DateTimePicker();
+            this.dtpContaDe = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -381,6 +385,10 @@ namespace El_Balcon_de_Chalita
             // TpgReservaciones
             // 
             this.TpgReservaciones.BackColor = System.Drawing.SystemColors.Control;
+            this.TpgReservaciones.Controls.Add(this.dtpContaHasta);
+            this.TpgReservaciones.Controls.Add(this.dtpContaDe);
+            this.TpgReservaciones.Controls.Add(this.label3);
+            this.TpgReservaciones.Controls.Add(this.label10);
             this.TpgReservaciones.Controls.Add(this.btnRptRes);
             this.TpgReservaciones.Controls.Add(this.btnConsultarReservasAll);
             this.TpgReservaciones.Controls.Add(this.DgbReservaciones);
@@ -414,9 +422,9 @@ namespace El_Balcon_de_Chalita
             this.btnRptRes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRptRes.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRptRes.ForeColor = System.Drawing.Color.White;
-            this.btnRptRes.Location = new System.Drawing.Point(427, 404);
+            this.btnRptRes.Location = new System.Drawing.Point(363, 567);
             this.btnRptRes.Name = "btnRptRes";
-            this.btnRptRes.Size = new System.Drawing.Size(170, 64);
+            this.btnRptRes.Size = new System.Drawing.Size(137, 57);
             this.btnRptRes.TabIndex = 16;
             this.btnRptRes.Text = "Reporte";
             this.btnRptRes.UseVisualStyleBackColor = false;
@@ -523,7 +531,7 @@ namespace El_Balcon_de_Chalita
             // 
             // txtSubTotal
             // 
-            this.txtSubTotal.Location = new System.Drawing.Point(632, 448);
+            this.txtSubTotal.Location = new System.Drawing.Point(628, 289);
             this.txtSubTotal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSubTotal.Name = "txtSubTotal";
             this.txtSubTotal.Size = new System.Drawing.Size(116, 24);
@@ -534,7 +542,7 @@ namespace El_Balcon_de_Chalita
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(628, 420);
+            this.label5.Location = new System.Drawing.Point(624, 261);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(85, 24);
             this.label5.TabIndex = 10;
@@ -544,7 +552,7 @@ namespace El_Balcon_de_Chalita
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(628, 352);
+            this.label4.Location = new System.Drawing.Point(624, 193);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 24);
             this.label4.TabIndex = 9;
@@ -552,7 +560,7 @@ namespace El_Balcon_de_Chalita
             // 
             // txtTotal
             // 
-            this.txtTotal.Location = new System.Drawing.Point(632, 380);
+            this.txtTotal.Location = new System.Drawing.Point(628, 221);
             this.txtTotal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(116, 24);
@@ -1642,6 +1650,42 @@ namespace El_Balcon_de_Chalita
             this.tsbQuitarCliente.Size = new System.Drawing.Size(29, 48);
             this.tsbQuitarCliente.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
+            // dtpContaHasta
+            // 
+            this.dtpContaHasta.CalendarFont = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpContaHasta.Location = new System.Drawing.Point(100, 600);
+            this.dtpContaHasta.Name = "dtpContaHasta";
+            this.dtpContaHasta.Size = new System.Drawing.Size(257, 24);
+            this.dtpContaHasta.TabIndex = 20;
+            this.dtpContaHasta.Value = new System.DateTime(2023, 5, 21, 1, 36, 50, 0);
+            // 
+            // dtpContaDe
+            // 
+            this.dtpContaDe.CalendarFont = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpContaDe.Location = new System.Drawing.Point(100, 567);
+            this.dtpContaDe.Name = "dtpContaDe";
+            this.dtpContaDe.Size = new System.Drawing.Size(257, 24);
+            this.dtpContaDe.TabIndex = 19;
+            this.dtpContaDe.Value = new System.DateTime(2023, 5, 21, 1, 36, 45, 0);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(43, 605);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(51, 18);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Hasta:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(43, 572);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(31, 18);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "De:";
+            // 
             // DlgBalconDeChalita
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -1820,5 +1864,9 @@ namespace El_Balcon_de_Chalita
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DateTimePicker dtpContaHasta;
+        private System.Windows.Forms.DateTimePicker dtpContaDe;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label10;
     }
 }
