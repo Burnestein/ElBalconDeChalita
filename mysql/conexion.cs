@@ -9,7 +9,7 @@ namespace El_Balcon_de_Chalita.mysql
         {
             //LOCALHOST
             string servidor = "127.0.0.1";
-            string basededatos = "bdbalcon";
+            string basededatos = "bdbalcon2";
             string usuario = "root";
             string password = "";
             

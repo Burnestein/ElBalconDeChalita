@@ -198,48 +198,59 @@ namespace El_Balcon_de_Chalita
             switch (selectorContexto)
             {
                 case 0: // La pestaña de Clientes está seleccionada
-                    string codigo = TbxCodigo.Text;
-                    cliente cliente = new cliente();
-                    cliente.asignarQueryEliminar("DELETE FROM clientes where codigoCliente= '" + codigo + "' ");
+                    DialogResult result = MessageBox.Show("¿Desea Eliminar Cliente?", "Eliminar", MessageBoxButtons.OKCancel);
+                    if (result == DialogResult.OK)
+                    {
+                        string codigo = TbxCodigo.Text;
+                        cliente cliente = new cliente();
+                        cliente.asignarQueryEliminar("DELETE FROM clientes where codigoCliente= '" + codigo + "' ");
 
-                    cliente.eliminar();
-                    limpiarCamposCliente();
+                        cliente.eliminar();
+                        limpiarCamposCliente();
+                    }
+                    
                     break;
                 case 1: // La pestaña de Reservaciones está seleccionada
                     if (mireservacion.idReservacion > 0)
                     {
-                        string query = "delete from reservaciones where idReservacion= '" + mireservacion.idReservacion + "'";
-
-                        MySqlConnection conexionBD = mysql.conexion.Conexion();
-                        conexionBD.Open();
-
-                        try
+                        DialogResult result2 = MessageBox.Show("¿Desea Eliminar la reservación selecionada? Numero Id: "+mireservacion.idReservacion, "Eliminar", MessageBoxButtons.OKCancel);
+                        if (result2 == DialogResult.OK)
                         {
-                            MySqlCommand comando = new MySqlCommand(query, conexionBD);
-                            comando.ExecuteNonQuery();
-                            MessageBox.Show("Reserva eliminada.");
-                            limpiarCamposFormInventario();
-                            dgvMaster.Refresh();
+                            string query = "delete from reservaciones where idReservacion= '" + mireservacion.idReservacion + "'";
+
+                            MySqlConnection conexionBD = mysql.conexion.Conexion();
+                            conexionBD.Open();
+
+                            try
+                            {
+                                MySqlCommand comando = new MySqlCommand(query, conexionBD);
+                                comando.ExecuteNonQuery();
+                                MessageBox.Show("Reserva eliminada.");
+                                limpiarCamposFormInventario();
+                                dgvMaster.Refresh();
+                            }
+                            catch (MySqlException ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+                            limpiarTabla();
+                            selectorContexto = 1;
+                            dgvMaster.Columns.Add("IdReservaciones", "IdReservaciones");
+                            dgvMaster.Columns.Add("Cliente", "Cliente");
+                            dgvMaster.Columns.Add("Fecha de Entrada", "Fecha de Entrada");
+                            dgvMaster.Columns.Add("Fecha de Salida", "Fecha de Salida");
+                            dgvMaster.Columns.Add("Empresa Afiliada", "Empresa Afiliada");
+                            dgvMaster.Columns.Add("Id Afiliado", "Id Afiliado");
+                            dgvMaster.Columns.Add("Id Cliente", "Id Cliente");
+                            miconsulta.ConsultarReservaciones(dgvMaster);
+                            mireservacion.idReservacion = -1;
                         }
-                        catch (MySqlException ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
-                        limpiarTabla();
-                        selectorContexto = 1;
-                        dgvMaster.Columns.Add("IdReservaciones", "IdReservaciones");
-                        dgvMaster.Columns.Add("Cliente", "Cliente");
-                        dgvMaster.Columns.Add("Fecha de Entrada", "Fecha de Entrada");
-                        dgvMaster.Columns.Add("Fecha de Salida", "Fecha de Salida");
-                        dgvMaster.Columns.Add("Empresa Afiliada", "Empresa Afiliada");
-                        dgvMaster.Columns.Add("Id Afiliado", "Id Afiliado");
-                        dgvMaster.Columns.Add("Id Cliente", "Id Cliente");
-                        miconsulta.ConsultarReservaciones(dgvMaster);
-                        mireservacion.idReservacion = -1;
+                        
                     }
+                    deseleccionarReserva();
                     break;
                 case 2: // La pestaña de Inventario esta seleccionada
-                    
+                    eliminarInventario();
                     break;
                 case 3: // La pestaña de Inventario de Cliente esta seleccionada
                     
@@ -263,6 +274,7 @@ namespace El_Balcon_de_Chalita
                     break;
                 case 1: // La pestaña de Reservaciones está seleccionada
                     guardarReservaBD();
+                    deseleccionarReserva();
                     break;
                 case 2: // La pestaña de Inventario esta seleccionada
                     guardarObjetoBD();
@@ -858,6 +870,11 @@ namespace El_Balcon_de_Chalita
             {
                 MessageBox.Show("Debe llenar todos los campos");
             }
+            limpiarTabla();
+            dgvMaster.Columns.Add("nombreObjeto", "Articulo");
+            dgvMaster.Columns.Add("cantidadObjeto", "Cantidad");
+            dgvMaster.Columns.Add("precioObjeto", "Precio Unitario");
+            miconsulta.consultarInventario(dgvMaster, txtNombreObjeto.Text, txtCantidadObjeto.Text);
         }
 
         private void btnConsultarObjeto_Click(object sender, EventArgs e)
@@ -896,30 +913,49 @@ namespace El_Balcon_de_Chalita
             {
                 MessageBox.Show(ex.Message);
             }
+            limpiarTabla();
+            dgvMaster.Columns.Add("nombreObjeto", "Articulo");
+            dgvMaster.Columns.Add("cantidadObjeto", "Cantidad");
+            dgvMaster.Columns.Add("precioObjeto", "Precio Unitario");
+            miconsulta.consultarInventario(dgvMaster, txtNombreObjeto.Text, txtCantidadObjeto.Text);
         }
         private void btnEliminarObjeto_Click(object sender, EventArgs e)
         {
+            eliminarInventario();
+        }
+
+        private void eliminarInventario()
+        {
+
             string nombre = txtNombreObjeto.Text;
             string precio = txtPrecioObjeto.Text;
             string cantidad = txtCantidadObjeto.Text;
-
-            string query = "delete from inventariobalcon where nombre= '" + nombre + "'";
-
-            MySqlConnection conexionBD = mysql.conexion.Conexion();
-            conexionBD.Open();
-
-            try
+            DialogResult result = MessageBox.Show("¿Desea Eliminar "+ nombre +" de inventario?", "Eliminar", MessageBoxButtons.OKCancel);
+            if(result == DialogResult.OK)
             {
-                MySqlCommand comando = new MySqlCommand(query, conexionBD);
-                comando.ExecuteNonQuery();
-                MessageBox.Show("Objeto eliminado.");
-                limpiarCamposFormInventario();
-                dgvMaster.Refresh();
+                string query = "delete from inventariobalcon where nombre= '" + nombre + "'";
+
+                MySqlConnection conexionBD = mysql.conexion.Conexion();
+                conexionBD.Open();
+
+                try
+                {
+                    MySqlCommand comando = new MySqlCommand(query, conexionBD);
+                    comando.ExecuteNonQuery();
+                    MessageBox.Show("Objeto eliminado.");
+                    limpiarCamposFormInventario();
+                    dgvMaster.Refresh();
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            limpiarTabla();
+            dgvMaster.Columns.Add("nombreObjeto", "Articulo");
+            dgvMaster.Columns.Add("cantidadObjeto", "Cantidad");
+            dgvMaster.Columns.Add("precioObjeto", "Precio Unitario");
+            miconsulta.consultarInventario(dgvMaster, txtNombreObjeto.Text, txtCantidadObjeto.Text);
         }
         private void limpiarCamposFormInventario()
         {
@@ -1459,6 +1495,20 @@ namespace El_Balcon_de_Chalita
             mireservacion.micliente.nombreCompleto = dgvMaster[1, selectedIndex].Value.ToString();
             mireservacion.fechaEntrada = dgvMaster[2, selectedIndex].Value.ToString();
             mireservacion.fechaSalida = dgvMaster[3, selectedIndex].Value.ToString();
+            string nombre = mireservacion.micliente.nombreCompleto;
+            lblnombrereserva.Text = nombre;
+        }
+
+        private void deseleccionarReserva()
+        {
+
+            int selectedIndex = -1;
+            mireservacion.id = selectedIndex;
+            mireservacion.micliente.nombreCompleto = "";
+            mireservacion.fechaEntrada = "";
+            mireservacion.fechaSalida = "";
+            string nombre = mireservacion.micliente.nombreCompleto;
+            lblnombrereserva.Text = nombre;
         }
         private void limpiarTabla()
         {
@@ -1600,6 +1650,36 @@ namespace El_Balcon_de_Chalita
         private void CbxDia_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgvMaster_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            switch (selectorContexto)
+            {
+                case 0: // La pestaña de Clientes está seleccionada
+                    seleccionarCliente();
+                    break;
+                case 1: // La pestaña de Reservaciones está seleccionada
+                    seleccionarReserva();
+                    break;
+                case 2: // La pestaña de Inventario esta seleccionada
+                    seleccionarInventario();
+                    break;
+                case 3: // La pestaña de Inventario de Cliente esta seleccionada
+
+                    break;
+                default:
+                    MessageBox.Show("Error con el selector de contexto.");
+                    break;
+            }
+        }
+
+        private void seleccionarInventario()
+        {
+            int selectedIndex = dgvMaster.CurrentCell.RowIndex;
+            txtNombreObjeto.Text = dgvMaster[0, selectedIndex].Value.ToString();
+            txtCantidadObjeto.Text = dgvMaster[1, selectedIndex].Value.ToString();
+            txtPrecioObjeto.Text = dgvMaster[2, selectedIndex].Value.ToString();
         }
     }
 }

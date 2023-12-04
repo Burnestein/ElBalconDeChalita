@@ -52,6 +52,10 @@ namespace El_Balcon_de_Chalita
             this.tsbCerrarSesion = new System.Windows.Forms.ToolStripButton();
             this.tslUsuario = new System.Windows.Forms.ToolStripLabel();
             this.TpgReservaciones = new System.Windows.Forms.TabPage();
+            this.dtpContaHasta = new System.Windows.Forms.DateTimePicker();
+            this.dtpContaDe = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.btnRptRes = new System.Windows.Forms.Button();
             this.btnConsultarReservasAll = new System.Windows.Forms.Button();
             this.DgbReservaciones = new System.Windows.Forms.DataGridView();
@@ -145,10 +149,8 @@ namespace El_Balcon_de_Chalita
             this.tsbBuscarCliente = new System.Windows.Forms.ToolStripButton();
             this.tsbQuitarCliente = new System.Windows.Forms.ToolStripButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.dtpContaHasta = new System.Windows.Forms.DateTimePicker();
-            this.dtpContaDe = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.lblnombrereserva = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -189,7 +191,7 @@ namespace El_Balcon_de_Chalita
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1582, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1782, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.Visible = false;
@@ -385,6 +387,8 @@ namespace El_Balcon_de_Chalita
             // TpgReservaciones
             // 
             this.TpgReservaciones.BackColor = System.Drawing.SystemColors.Control;
+            this.TpgReservaciones.Controls.Add(this.lblnombrereserva);
+            this.TpgReservaciones.Controls.Add(this.label13);
             this.TpgReservaciones.Controls.Add(this.dtpContaHasta);
             this.TpgReservaciones.Controls.Add(this.dtpContaDe);
             this.TpgReservaciones.Controls.Add(this.label3);
@@ -416,13 +420,51 @@ namespace El_Balcon_de_Chalita
             this.TpgReservaciones.Text = "Reservaciones";
             this.TpgReservaciones.Click += new System.EventHandler(this.TpgReservaciones_Click);
             // 
+            // dtpContaHasta
+            // 
+            this.dtpContaHasta.CalendarFont = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpContaHasta.CustomFormat = "";
+            this.dtpContaHasta.Location = new System.Drawing.Point(487, 531);
+            this.dtpContaHasta.Name = "dtpContaHasta";
+            this.dtpContaHasta.Size = new System.Drawing.Size(257, 24);
+            this.dtpContaHasta.TabIndex = 20;
+            this.dtpContaHasta.Value = new System.DateTime(2023, 12, 4, 0, 0, 0, 0);
+            // 
+            // dtpContaDe
+            // 
+            this.dtpContaDe.CalendarFont = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpContaDe.CustomFormat = "";
+            this.dtpContaDe.Location = new System.Drawing.Point(487, 498);
+            this.dtpContaDe.Name = "dtpContaDe";
+            this.dtpContaDe.Size = new System.Drawing.Size(257, 24);
+            this.dtpContaDe.TabIndex = 19;
+            this.dtpContaDe.Value = new System.DateTime(2023, 12, 4, 0, 0, 0, 0);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(430, 536);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(51, 18);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Hasta:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(430, 503);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(31, 18);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "De:";
+            // 
             // btnRptRes
             // 
             this.btnRptRes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(111)))), ((int)(((byte)(81)))));
             this.btnRptRes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRptRes.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRptRes.ForeColor = System.Drawing.Color.White;
-            this.btnRptRes.Location = new System.Drawing.Point(363, 567);
+            this.btnRptRes.Location = new System.Drawing.Point(750, 498);
             this.btnRptRes.Name = "btnRptRes";
             this.btnRptRes.Size = new System.Drawing.Size(137, 57);
             this.btnRptRes.TabIndex = 16;
@@ -437,7 +479,7 @@ namespace El_Balcon_de_Chalita
             this.btnConsultarReservasAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConsultarReservasAll.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConsultarReservasAll.ForeColor = System.Drawing.Color.White;
-            this.btnConsultarReservasAll.Location = new System.Drawing.Point(427, 263);
+            this.btnConsultarReservasAll.Location = new System.Drawing.Point(427, 299);
             this.btnConsultarReservasAll.Margin = new System.Windows.Forms.Padding(2);
             this.btnConsultarReservasAll.Name = "btnConsultarReservasAll";
             this.btnConsultarReservasAll.Size = new System.Drawing.Size(170, 64);
@@ -455,7 +497,7 @@ namespace El_Balcon_de_Chalita
             this.Cliente,
             this.fechaDeEntrada,
             this.fechaDeSalida});
-            this.DgbReservaciones.Location = new System.Drawing.Point(773, 7);
+            this.DgbReservaciones.Location = new System.Drawing.Point(683, 112);
             this.DgbReservaciones.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DgbReservaciones.Name = "DgbReservaciones";
             this.DgbReservaciones.RowHeadersWidth = 51;
@@ -511,7 +553,7 @@ namespace El_Balcon_de_Chalita
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(423, 106);
+            this.label6.Location = new System.Drawing.Point(423, 142);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(162, 28);
             this.label6.TabIndex = 13;
@@ -522,7 +564,7 @@ namespace El_Balcon_de_Chalita
             // cbxCompañias
             // 
             this.cbxCompañias.FormattingEnabled = true;
-            this.cbxCompañias.Location = new System.Drawing.Point(427, 134);
+            this.cbxCompañias.Location = new System.Drawing.Point(427, 170);
             this.cbxCompañias.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbxCompañias.Name = "cbxCompañias";
             this.cbxCompañias.Size = new System.Drawing.Size(147, 26);
@@ -531,7 +573,7 @@ namespace El_Balcon_de_Chalita
             // 
             // txtSubTotal
             // 
-            this.txtSubTotal.Location = new System.Drawing.Point(628, 289);
+            this.txtSubTotal.Location = new System.Drawing.Point(628, 325);
             this.txtSubTotal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSubTotal.Name = "txtSubTotal";
             this.txtSubTotal.Size = new System.Drawing.Size(116, 24);
@@ -542,7 +584,7 @@ namespace El_Balcon_de_Chalita
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(624, 261);
+            this.label5.Location = new System.Drawing.Point(624, 297);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(85, 24);
             this.label5.TabIndex = 10;
@@ -552,7 +594,7 @@ namespace El_Balcon_de_Chalita
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(624, 193);
+            this.label4.Location = new System.Drawing.Point(624, 229);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 24);
             this.label4.TabIndex = 9;
@@ -560,7 +602,7 @@ namespace El_Balcon_de_Chalita
             // 
             // txtTotal
             // 
-            this.txtTotal.Location = new System.Drawing.Point(628, 221);
+            this.txtTotal.Location = new System.Drawing.Point(628, 257);
             this.txtTotal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(116, 24);
@@ -574,7 +616,7 @@ namespace El_Balcon_de_Chalita
             this.btnConsultarReservas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConsultarReservas.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConsultarReservas.ForeColor = System.Drawing.Color.White;
-            this.btnConsultarReservas.Location = new System.Drawing.Point(427, 193);
+            this.btnConsultarReservas.Location = new System.Drawing.Point(427, 229);
             this.btnConsultarReservas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnConsultarReservas.Name = "btnConsultarReservas";
             this.btnConsultarReservas.Size = new System.Drawing.Size(170, 64);
@@ -590,7 +632,7 @@ namespace El_Balcon_de_Chalita
             this.BtnReservar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnReservar.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnReservar.ForeColor = System.Drawing.Color.White;
-            this.BtnReservar.Location = new System.Drawing.Point(427, 333);
+            this.BtnReservar.Location = new System.Drawing.Point(427, 369);
             this.BtnReservar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnReservar.Name = "BtnReservar";
             this.BtnReservar.Size = new System.Drawing.Size(170, 64);
@@ -602,7 +644,7 @@ namespace El_Balcon_de_Chalita
             // CbxClientes
             // 
             this.CbxClientes.FormattingEnabled = true;
-            this.CbxClientes.Location = new System.Drawing.Point(518, 7);
+            this.CbxClientes.Location = new System.Drawing.Point(428, 112);
             this.CbxClientes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CbxClientes.Name = "CbxClientes";
             this.CbxClientes.Size = new System.Drawing.Size(249, 26);
@@ -613,7 +655,7 @@ namespace El_Balcon_de_Chalita
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(41, 22);
+            this.label2.Location = new System.Drawing.Point(41, 58);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(167, 28);
             this.label2.TabIndex = 3;
@@ -624,7 +666,7 @@ namespace El_Balcon_de_Chalita
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(39, 277);
+            this.label1.Location = new System.Drawing.Point(39, 313);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(152, 28);
             this.label1.TabIndex = 2;
@@ -634,7 +676,7 @@ namespace El_Balcon_de_Chalita
             // CCheckOut
             // 
             this.CCheckOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CCheckOut.Location = new System.Drawing.Point(43, 312);
+            this.CCheckOut.Location = new System.Drawing.Point(43, 348);
             this.CCheckOut.Margin = new System.Windows.Forms.Padding(10, 11, 10, 11);
             this.CCheckOut.Name = "CCheckOut";
             this.CCheckOut.TabIndex = 1;
@@ -643,7 +685,7 @@ namespace El_Balcon_de_Chalita
             // CCheckIn
             // 
             this.CCheckIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CCheckIn.Location = new System.Drawing.Point(43, 50);
+            this.CCheckIn.Location = new System.Drawing.Point(43, 86);
             this.CCheckIn.Margin = new System.Windows.Forms.Padding(10, 11, 10, 11);
             this.CCheckIn.Name = "CCheckIn";
             this.CCheckIn.TabIndex = 0;
@@ -1192,7 +1234,7 @@ namespace El_Balcon_de_Chalita
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage1.Size = new System.Drawing.Size(873, 751);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Inventario del Balcón";
+            this.tabPage1.Text = "Inventario de Cabaña";
             // 
             // btnRptInv
             // 
@@ -1200,7 +1242,7 @@ namespace El_Balcon_de_Chalita
             this.btnRptInv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRptInv.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRptInv.ForeColor = System.Drawing.Color.White;
-            this.btnRptInv.Location = new System.Drawing.Point(170, 215);
+            this.btnRptInv.Location = new System.Drawing.Point(407, 268);
             this.btnRptInv.Name = "btnRptInv";
             this.btnRptInv.Size = new System.Drawing.Size(124, 73);
             this.btnRptInv.TabIndex = 12;
@@ -1262,7 +1304,7 @@ namespace El_Balcon_de_Chalita
             this.btnConsultarObjeto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConsultarObjeto.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConsultarObjeto.ForeColor = System.Drawing.Color.White;
-            this.btnConsultarObjeto.Location = new System.Drawing.Point(170, 168);
+            this.btnConsultarObjeto.Location = new System.Drawing.Point(407, 205);
             this.btnConsultarObjeto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnConsultarObjeto.Name = "btnConsultarObjeto";
             this.btnConsultarObjeto.Size = new System.Drawing.Size(124, 40);
@@ -1277,7 +1319,7 @@ namespace El_Balcon_de_Chalita
             this.btnEditarObjeto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditarObjeto.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditarObjeto.ForeColor = System.Drawing.Color.White;
-            this.btnEditarObjeto.Location = new System.Drawing.Point(546, 24);
+            this.btnEditarObjeto.Location = new System.Drawing.Point(407, 85);
             this.btnEditarObjeto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnEditarObjeto.Name = "btnEditarObjeto";
             this.btnEditarObjeto.Size = new System.Drawing.Size(124, 40);
@@ -1292,7 +1334,7 @@ namespace El_Balcon_de_Chalita
             this.btnEliminarObjeto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarObjeto.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminarObjeto.ForeColor = System.Drawing.Color.White;
-            this.btnEliminarObjeto.Location = new System.Drawing.Point(689, 24);
+            this.btnEliminarObjeto.Location = new System.Drawing.Point(407, 144);
             this.btnEliminarObjeto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnEliminarObjeto.Name = "btnEliminarObjeto";
             this.btnEliminarObjeto.Size = new System.Drawing.Size(124, 40);
@@ -1385,7 +1427,7 @@ namespace El_Balcon_de_Chalita
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Size = new System.Drawing.Size(873, 751);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Inventario de los clientes";
+            this.tabPage2.Text = "Objetos Olvidados";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // BtnConsultarInventarioCliente
@@ -1393,9 +1435,9 @@ namespace El_Balcon_de_Chalita
             this.BtnConsultarInventarioCliente.Location = new System.Drawing.Point(288, 103);
             this.BtnConsultarInventarioCliente.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnConsultarInventarioCliente.Name = "BtnConsultarInventarioCliente";
-            this.BtnConsultarInventarioCliente.Size = new System.Drawing.Size(222, 50);
+            this.BtnConsultarInventarioCliente.Size = new System.Drawing.Size(222, 67);
             this.BtnConsultarInventarioCliente.TabIndex = 7;
-            this.BtnConsultarInventarioCliente.Text = "Consultar Inventario de Cliente";
+            this.BtnConsultarInventarioCliente.Text = "Consultar";
             this.BtnConsultarInventarioCliente.UseVisualStyleBackColor = true;
             this.BtnConsultarInventarioCliente.Click += new System.EventHandler(this.BtnConsultarInventarioCliente_Click);
             // 
@@ -1440,7 +1482,7 @@ namespace El_Balcon_de_Chalita
             this.BtnGuardarObjetoCliente.Location = new System.Drawing.Point(26, 103);
             this.BtnGuardarObjetoCliente.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnGuardarObjetoCliente.Name = "BtnGuardarObjetoCliente";
-            this.BtnGuardarObjetoCliente.Size = new System.Drawing.Size(220, 50);
+            this.BtnGuardarObjetoCliente.Size = new System.Drawing.Size(220, 67);
             this.BtnGuardarObjetoCliente.TabIndex = 6;
             this.BtnGuardarObjetoCliente.Text = "Guardar en el inventario";
             this.BtnGuardarObjetoCliente.UseVisualStyleBackColor = true;
@@ -1456,7 +1498,7 @@ namespace El_Balcon_de_Chalita
             // 
             // TxtCantidadObjetoCliente
             // 
-            this.TxtCantidadObjetoCliente.Location = new System.Drawing.Point(288, 52);
+            this.TxtCantidadObjetoCliente.Location = new System.Drawing.Point(288, 48);
             this.TxtCantidadObjetoCliente.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtCantidadObjetoCliente.Name = "TxtCantidadObjetoCliente";
             this.TxtCantidadObjetoCliente.Size = new System.Drawing.Size(220, 28);
@@ -1465,7 +1507,7 @@ namespace El_Balcon_de_Chalita
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(285, 20);
+            this.label12.Location = new System.Drawing.Point(284, 20);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(84, 24);
             this.label12.TabIndex = 3;
@@ -1584,6 +1626,7 @@ namespace El_Balcon_de_Chalita
             this.dgvMaster.RowTemplate.Height = 24;
             this.dgvMaster.Size = new System.Drawing.Size(862, 823);
             this.dgvMaster.TabIndex = 1;
+            this.dgvMaster.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaster_CellClick);
             this.dgvMaster.SelectionChanged += new System.EventHandler(this.dgvMaster_SelectionChanged);
             // 
             // toolStrip2
@@ -1635,8 +1678,8 @@ namespace El_Balcon_de_Chalita
             this.tsbBuscarCliente.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbBuscarCliente.Margin = new System.Windows.Forms.Padding(5, 1, 5, 2);
             this.tsbBuscarCliente.Name = "tsbBuscarCliente";
-            this.tsbBuscarCliente.Size = new System.Drawing.Size(80, 25);
-            this.tsbBuscarCliente.Text = "Buscar";
+            this.tsbBuscarCliente.Size = new System.Drawing.Size(100, 25);
+            this.tsbBuscarCliente.Text = "Clientes";
             this.tsbBuscarCliente.Click += new System.EventHandler(this.tsbBuscarCliente_Click);
             // 
             // tsbQuitarCliente
@@ -1650,41 +1693,26 @@ namespace El_Balcon_de_Chalita
             this.tsbQuitarCliente.Size = new System.Drawing.Size(29, 48);
             this.tsbQuitarCliente.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
-            // dtpContaHasta
+            // label13
             // 
-            this.dtpContaHasta.CalendarFont = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpContaHasta.Location = new System.Drawing.Point(100, 600);
-            this.dtpContaHasta.Name = "dtpContaHasta";
-            this.dtpContaHasta.Size = new System.Drawing.Size(257, 24);
-            this.dtpContaHasta.TabIndex = 20;
-            this.dtpContaHasta.Value = new System.DateTime(2023, 5, 21, 1, 36, 50, 0);
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(41, 13);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(127, 28);
+            this.label13.TabIndex = 21;
+            this.label13.Text = "Reservado a:";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // dtpContaDe
+            // lblnombrereserva
             // 
-            this.dtpContaDe.CalendarFont = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpContaDe.Location = new System.Drawing.Point(100, 567);
-            this.dtpContaDe.Name = "dtpContaDe";
-            this.dtpContaDe.Size = new System.Drawing.Size(257, 24);
-            this.dtpContaDe.TabIndex = 19;
-            this.dtpContaDe.Value = new System.DateTime(2023, 5, 21, 1, 36, 45, 0);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(43, 605);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 18);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "Hasta:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(43, 572);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(31, 18);
-            this.label10.TabIndex = 17;
-            this.label10.Text = "De:";
+            this.lblnombrereserva.AutoSize = true;
+            this.lblnombrereserva.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblnombrereserva.Location = new System.Drawing.Point(191, 13);
+            this.lblnombrereserva.Name = "lblnombrereserva";
+            this.lblnombrereserva.Size = new System.Drawing.Size(0, 28);
+            this.lblnombrereserva.TabIndex = 22;
+            this.lblnombrereserva.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // DlgBalconDeChalita
             // 
@@ -1696,7 +1724,6 @@ namespace El_Balcon_de_Chalita
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -1868,5 +1895,7 @@ namespace El_Balcon_de_Chalita
         private System.Windows.Forms.DateTimePicker dtpContaDe;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblnombrereserva;
+        private System.Windows.Forms.Label label13;
     }
 }
