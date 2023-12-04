@@ -148,6 +148,7 @@ namespace El_Balcon_de_Chalita
                         row.Cells[3].Value = reader.GetString(3);
                         row.Cells[4].Value = reader.GetString(18);
                         row.Cells[5].Value = reader.GetString(4);
+                        row.Cells[6].Value = reader.GetString(6);
                         DgbReservaciones.Rows.Add(row);
                         contador++;
                     }
@@ -201,6 +202,7 @@ namespace El_Balcon_de_Chalita
                         row.Cells[3].Value = reader.GetString(3);
                         row.Cells[4].Value = reader.GetString(18);
                         row.Cells[5].Value = reader.GetString(4);
+                        row.Cells[6].Value = reader.GetString(6);
                         DgbReservaciones.Rows.Add(row);
                         contador++;
                     }

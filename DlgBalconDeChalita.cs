@@ -233,6 +233,7 @@ namespace El_Balcon_de_Chalita
                         dgvMaster.Columns.Add("Fecha de Salida", "Fecha de Salida");
                         dgvMaster.Columns.Add("Empresa Afiliada", "Empresa Afiliada");
                         dgvMaster.Columns.Add("Id Afiliado", "Id Afiliado");
+                        dgvMaster.Columns.Add("Id Cliente", "Id Cliente");
                         miconsulta.ConsultarReservaciones(dgvMaster);
                         mireservacion.idReservacion = -1;
                     }
@@ -630,7 +631,11 @@ namespace El_Balcon_de_Chalita
 
         public Boolean verificarFechaDisponible()
         {
-            int idreserva = mireservacion.idReservacion;
+            int idreserva = -1;
+            Console.WriteLine("idCiente: "+micliente.IdCliente);
+            Console.WriteLine("idCliente reservacion:" +mireservacion.micliente.IdCliente);
+            if (micliente.IdCliente == mireservacion.micliente.IdCliente) idreserva = mireservacion.idReservacion;
+            Console.WriteLine("idreserva = " + idreserva);
             MySqlDataReader reader = null;
             //string query = "select* from reservaciones where '" + fechaEntrada + "' <= fechaSalida and '" + fechaSalida + "' >= fechaEntrada";
             string query = "SELECT * FROM reservaciones WHERE " +
@@ -685,8 +690,8 @@ namespace El_Balcon_de_Chalita
             if (idCliente != -1 && fechaEntrada != "" && fechaSalida != "" && cbxCompañias.SelectedIndex != -1)
             {
                 Boolean reservaDisponible = verificarFechaDisponible();
-                Console.WriteLine("reserva disponible");
-                if (reservaDisponible && mireservacion.idReservacion > 0)
+                if (reservaDisponible) { Console.WriteLine("reserva disponible"); } else Console.WriteLine("Reserva NO disponible");
+                if (reservaDisponible && mireservacion.idReservacion > 0 && idCliente == mireservacion.micliente.IdCliente)
                 {
                     Console.WriteLine("Actualiza la reserva");
                     //Se arma query de insercion a la BD en la tabla de reservaciones
@@ -767,6 +772,16 @@ namespace El_Balcon_de_Chalita
                 MessageBox.Show("Debe seleccionar todos los datos para su reserva.");
 
             }
+            limpiarTabla();
+            selectorContexto = 1;
+            dgvMaster.Columns.Add("IdReservaciones", "IdReservaciones");
+            dgvMaster.Columns.Add("Cliente", "Cliente");
+            dgvMaster.Columns.Add("Fecha de Entrada", "Fecha de Entrada");
+            dgvMaster.Columns.Add("Fecha de Salida", "Fecha de Salida");
+            dgvMaster.Columns.Add("Empresa Afiliada", "Empresa Afiliada");
+            dgvMaster.Columns.Add("Id Afiliado", "Id Afiliado");
+            dgvMaster.Columns.Add("Id Cliente", "Id Cliente");
+            miconsulta.ConsultarReservaciones(dgvMaster);
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -1127,6 +1142,7 @@ namespace El_Balcon_de_Chalita
             dgvMaster.Columns.Add("Fecha de Salida", "Fecha de Salida");
             dgvMaster.Columns.Add("Empresa Afiliada", "Empresa Afiliada");
             dgvMaster.Columns.Add("Id Afiliado", "Id Afiliado");
+            dgvMaster.Columns.Add("Id Cliente", "Id Cliente");
             if (micliente.IdCliente >= 0)
             { // revisa el id del cliente seleccionado
                 miconsulta.ConsultarReservaciones(dgvMaster, micliente); // si esta seleccionado busca reservas del cliente
@@ -1145,6 +1161,7 @@ namespace El_Balcon_de_Chalita
             dgvMaster.Columns.Add("Fecha de Salida", "Fecha de Salida");
             dgvMaster.Columns.Add("Empresa Afiliada", "Empresa Afiliada");
             dgvMaster.Columns.Add("Id Afiliado", "Id Afiliado");
+            dgvMaster.Columns.Add("Id Cliente", "Id Cliente");
             miconsulta.ConsultarReservaciones(dgvMaster);
         }
 
@@ -1324,6 +1341,7 @@ namespace El_Balcon_de_Chalita
                             mireservacion.fechaSalida = dgvMaster[3, seleccion].Value.ToString();
                             mireservacion.compAfiliada = dgvMaster[4, seleccion].Value.ToString();
                             mireservacion.idAfiliado = Convert.ToInt32(dgvMaster[5, seleccion].Value) - 1;
+                            mireservacion.micliente.IdCliente = Convert.ToInt32(dgvMaster[6, seleccion].Value);
 
                             cbxCompañias.SelectedIndex = mireservacion.idAfiliado;
 

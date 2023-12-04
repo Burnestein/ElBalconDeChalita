@@ -349,7 +349,7 @@ namespace El_Balcon_de_Chalita
             this.btnContaReporte.Name = "btnContaReporte";
             this.btnContaReporte.Size = new System.Drawing.Size(148, 49);
             this.btnContaReporte.TabIndex = 2;
-            this.btnContaReporte.Text = "Generar Reporte (Inhabilitado)";
+            this.btnContaReporte.Text = "Generar Reporte";
             this.btnContaReporte.UseVisualStyleBackColor = false;
             this.btnContaReporte.Click += new System.EventHandler(this.btnContaReporte_Click);
             // 
