@@ -686,6 +686,8 @@ namespace El_Balcon_de_Chalita
 
         private void guardarReservaBD() //realiza la insercion de la reserva en la BD
         {
+            Console.WriteLine(fechaDeEntrada);
+            Console.WriteLine(fechaDeSalida);
             //En caso de que todos los campos rqueridos sean llenados se procede a guardar la reserva
             if (idCliente != -1 && fechaEntrada != "" && fechaSalida != "" && cbxCompañias.SelectedIndex != -1)
             {
@@ -1499,14 +1501,14 @@ namespace El_Balcon_de_Chalita
             }
         }
 
-        public void BindReportRes()
+        public void BindReportRes(string fechaInicio, string fechaFin)
         {
             MySqlConnection conexionBD = mysql.conexion.Conexion();
             conexionBD.Open();
 
             try
             {
-                string consulta = "SELECT * FROM reservaciones ";
+                string consulta = "SELECT * FROM reservaciones where '" + fechaInicio + "' <= fechaSalida and '" + fechaFin + "' >= fechaEntrada";
                 MySqlCommand comando = new MySqlCommand(consulta, conexionBD);
 
                 MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
@@ -1536,14 +1538,15 @@ namespace El_Balcon_de_Chalita
             }
         }
 
-        public void BindReportIE()
+        public void BindReportIE(string fechaInicio, string fechaFin)
         {
+            
             MySqlConnection conexionBD = mysql.conexion.Conexion();
             conexionBD.Open();
 
             try
             {
-                string consulta = "SELECT * FROM reservaciones ";
+                string consulta = "SELECT * FROM reservaciones where '" + fechaInicio + "' <= fechaSalida and '" + fechaFin + "' >= fechaEntrada";
                 MySqlCommand comando = new MySqlCommand(consulta, conexionBD);
 
                 MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
@@ -1580,7 +1583,11 @@ namespace El_Balcon_de_Chalita
 
         private void btnRptRes_Click(object sender, EventArgs e)
         {
-            BindReportRes();
+            string fechaInicio = dtpContaDe.Value.ToString("yyyy/MM/dd");
+            Console.WriteLine(dtpContaDe);
+            string fechaFin = dtpContaHasta.Value.ToString("yyyy/MM/dd");
+            Console.WriteLine(dtpContaHasta);
+            BindReportRes(fechaInicio, fechaFin);
         }
 
         private void tsbCerrarSesion_Click(object sender, EventArgs e)
