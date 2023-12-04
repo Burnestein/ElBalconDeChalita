@@ -16,12 +16,16 @@ namespace El_Balcon_de_Chalita
     {
         private float totalIngresos = 0;
         private float totalEgresos = 0;
-        public contabilidad()
+        private DlgBalconDeChalita mibalcon;
+
+        public contabilidad(user miusuario)
         {
             InitializeComponent();
             ingresos();
             egresos();
             ganancias();
+            mibalcon = new DlgBalconDeChalita(miusuario);
+
         }
 
         private void ingresos()
@@ -54,6 +58,7 @@ namespace El_Balcon_de_Chalita
                         contador++;
 
                     }
+                    
                     //cbxClientes.SelectedIndex = 0;
                 }
                 DgbIngresos.Sort(DgbIngresos.Columns[1], ListSortDirection.Descending);
@@ -184,6 +189,8 @@ namespace El_Balcon_de_Chalita
                 DgbIngresos.Sort(DgbIngresos.Columns[1], ListSortDirection.Descending);
                 txtIngresos.Text = "$" + totalIngresos.ToString();
 
+                
+
             }
             catch (MySqlException ex)
             {
@@ -250,7 +257,7 @@ namespace El_Balcon_de_Chalita
 
         private void btnContaReporte_Click(object sender, EventArgs e)
         {
-
+            mibalcon.BindReportIE();
         }
         private void ganancias()
         {

@@ -96,6 +96,8 @@ namespace El_Balcon_de_Chalita
                     TsbEliminar.Enabled = true;
                     toolStripButton1.Visible = true;
                     toolStripButton1.Enabled = true;
+                    tsbQuitarCliente.Enabled = true;
+                    tsbQuitarCliente.Visible = false;
                     
 
 
@@ -112,7 +114,10 @@ namespace El_Balcon_de_Chalita
                     TsbEliminar.Enabled = false;
                     toolStripButton1.Visible = false;
                     toolStripButton1.Enabled = false;
+                    tsbQuitarCliente.Enabled = true;
+                    tsbQuitarCliente.Visible = false;
                     TbcPrincipal.TabPages.Remove(TbcPrincipal.TabPages[2]);
+                    
                     break;
                 default:
                     break;
@@ -150,7 +155,8 @@ namespace El_Balcon_de_Chalita
         {
             //Creamos el objeto para crear el codigo a partir de la clase generadorRandom()
             generadorRandom random = new generadorRandom();
-            int claveRandom = random.generarNumeroRandom();
+            //int claveRandom = random.generarNumeroRandom();
+            string claveRandom = random.GenerarCodigoAlfanumerico(20);
 
             string contraseaEncriptada = Encrypt.GetSHA256("karmen");
             //MessageBox.Show(contraseaEncriptada);
@@ -173,6 +179,7 @@ namespace El_Balcon_de_Chalita
                 limpiarCamposCliente();
                 limpiarCamposReservaciones();
                 limpiarCamposFormInventario();
+                generarCodigoCliente();
             }
             else
             {
@@ -188,13 +195,59 @@ namespace El_Balcon_de_Chalita
         */
         private void TsbEliminar_Click(object sender, System.EventArgs e)
         {
+            switch (selectorContexto)
+            {
+                case 0: // La pestaña de Clientes está seleccionada
+                    string codigo = TbxCodigo.Text;
+                    cliente cliente = new cliente();
+                    cliente.asignarQueryEliminar("DELETE FROM clientes where codigoCliente= '" + codigo + "' ");
 
-            string codigo = TbxCodigo.Text;
-            cliente cliente = new cliente();
-            cliente.asignarQueryEliminar("DELETE FROM clientes where codigoCliente= '" + codigo + "' ");
+                    cliente.eliminar();
+                    limpiarCamposCliente();
+                    break;
+                case 1: // La pestaña de Reservaciones está seleccionada
+                    if (mireservacion.idReservacion > 0)
+                    {
+                        string query = "delete from reservaciones where idReservacion= '" + mireservacion.idReservacion + "'";
 
-            cliente.eliminar();
-            limpiarCamposCliente();
+                        MySqlConnection conexionBD = mysql.conexion.Conexion();
+                        conexionBD.Open();
+
+                        try
+                        {
+                            MySqlCommand comando = new MySqlCommand(query, conexionBD);
+                            comando.ExecuteNonQuery();
+                            MessageBox.Show("Reserva eliminada.");
+                            limpiarCamposFormInventario();
+                            dgvMaster.Refresh();
+                        }
+                        catch (MySqlException ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                        limpiarTabla();
+                        selectorContexto = 1;
+                        dgvMaster.Columns.Add("IdReservaciones", "IdReservaciones");
+                        dgvMaster.Columns.Add("Cliente", "Cliente");
+                        dgvMaster.Columns.Add("Fecha de Entrada", "Fecha de Entrada");
+                        dgvMaster.Columns.Add("Fecha de Salida", "Fecha de Salida");
+                        dgvMaster.Columns.Add("Empresa Afiliada", "Empresa Afiliada");
+                        dgvMaster.Columns.Add("Id Afiliado", "Id Afiliado");
+                        miconsulta.ConsultarReservaciones(dgvMaster);
+                        mireservacion.idReservacion = -1;
+                    }
+                    break;
+                case 2: // La pestaña de Inventario esta seleccionada
+                    
+                    break;
+                case 3: // La pestaña de Inventario de Cliente esta seleccionada
+                    
+                    break;
+                default:
+                    MessageBox.Show("Error con el selector de contexto.");
+                    break;
+            }
+            
         }
 
         //---------------------------------------------------------------------
@@ -379,7 +432,6 @@ namespace El_Balcon_de_Chalita
             LlenarFormulario(micliente);
             idCliente = micliente.IdCliente;
             correoCliente = micliente.Email;
-            tsbQuitarCliente.Visible = false;
             dgvMaster.DataSource = null;
             dgvMaster.Rows.Clear();
             dgvMaster.Refresh();
@@ -578,9 +630,13 @@ namespace El_Balcon_de_Chalita
 
         public Boolean verificarFechaDisponible()
         {
+            int idreserva = mireservacion.idReservacion;
             MySqlDataReader reader = null;
-            string query = "select* from reservaciones where '" + fechaEntrada + "' <= fechaSalida and '" + fechaSalida + "' >= fechaEntrada";
-
+            //string query = "select* from reservaciones where '" + fechaEntrada + "' <= fechaSalida and '" + fechaSalida + "' >= fechaEntrada";
+            string query = "SELECT * FROM reservaciones WHERE " +
+                   "('" + fechaEntrada + "' <= fechaSalida) AND " +
+                   "('" + fechaSalida + "' >= fechaEntrada) AND " +
+                   "(idReservacion != " + idreserva + ")";
             //Instanciamos la clase de MysqlConnection 
             MySqlConnection conexionBD = mysql.conexion.Conexion();
             //Abrimos la conexion a la BD
@@ -629,11 +685,53 @@ namespace El_Balcon_de_Chalita
             if (idCliente != -1 && fechaEntrada != "" && fechaSalida != "" && cbxCompañias.SelectedIndex != -1)
             {
                 Boolean reservaDisponible = verificarFechaDisponible();
-                if (reservaDisponible)
+                Console.WriteLine("reserva disponible");
+                if (reservaDisponible && mireservacion.idReservacion > 0)
                 {
+                    Console.WriteLine("Actualiza la reserva");
+                    //Se arma query de insercion a la BD en la tabla de reservaciones
+                    //string sql = "INSERT INTO reservaciones(cliente,fechaEntrada,fechaSalida,compañiaAfiliada,costoReservacion" +
+                    //    ") VALUES('" + idCliente + "','" + fechaEntrada + "','" + fechaSalida + "','" + idCompañia + "','" + txtSubTotal.Text + "')  ";
+                    string sql = "UPDATE reservaciones SET " +
+                     "cliente = '" + idCliente + "', " +
+                     "fechaEntrada = '" + fechaEntrada + "', " +
+                     "fechaSalida = '" + fechaSalida + "', " +
+                     "compañiaAfiliada = '" + idCompañia + "', " +
+                     "costoReservacion = '" + txtSubTotal.Text + "' " +
+                     "WHERE idReservacion = " + mireservacion.idReservacion;
+
+                    //Se entabla la conexion a la BD
+                    MySqlConnection conexionBD = mysql.conexion.Conexion();
+                    conexionBD.Open();
+
+                    try
+                    {
+                        //Se instancia la clase que ejecutara el query
+                        MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                        //Se ejecuta el query
+                        comando.ExecuteNonQuery();
+                        MessageBox.Show("Reservacion guardada exitosamente");
+                        //Una vez hecha la reserva mandamos correo al servidor SMTP de MailTrap
+                        correo mandarCorreo = new correo();
+                        mandarCorreo.nombreCorreo = correoCliente;
+                        //Llamamos al metodo mandarCorreo
+                        mandarCorreo.mandarCorreo();
+
+                    }
+
+                    catch (MySqlException ex)
+
+                    {
+                        MessageBox.Show("Error durante la insercion del registro: " + ex.Message);
+                    }
+                }
+                else if (reservaDisponible)
+                {
+                    Console.WriteLine("Crea nueva reserva");
                     //Se arma query de insercion a la BD en la tabla de reservaciones
                     string sql = "INSERT INTO reservaciones(cliente,fechaEntrada,fechaSalida,compañiaAfiliada,costoReservacion" +
                         ") VALUES('" + idCliente + "','" + fechaEntrada + "','" + fechaSalida + "','" + idCompañia + "','" + txtSubTotal.Text + "')  ";
+                    
                     //Se entabla la conexion a la BD
                     MySqlConnection conexionBD = mysql.conexion.Conexion();
                     conexionBD.Open();
@@ -677,9 +775,8 @@ namespace El_Balcon_de_Chalita
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            //Un objeto es la instancia de una clase
             //Login login = new Login();
-            contabilidad micontabilidad = new contabilidad();
+            contabilidad micontabilidad = new contabilidad(miusuario);
             micontabilidad.ShowDialog();
 
         }
@@ -986,11 +1083,15 @@ namespace El_Balcon_de_Chalita
         {
             if (micliente.IdCliente > -1)
             {
+                Console.WriteLine("Texto cambio, id>-1, boton visible");
+                Console.WriteLine("Id cliente: " + micliente.IdCliente);
                 tsbQuitarCliente.Visible = true;
             }
 
             else
             {
+                Console.WriteLine("Texto cambio, id<=-1, boton NO visible");
+                Console.WriteLine("Id cliente: " + micliente.IdCliente);
                 tsbQuitarCliente.Visible = false;
             }
         }
@@ -1217,6 +1318,7 @@ namespace El_Balcon_de_Chalita
                             TsbEliminar.Enabled = true;
 
                             mireservacion.idReservacion = Convert.ToInt32(dgvMaster[0, seleccion].Value);
+                            Console.WriteLine("El id seleccionado es: " + mireservacion.idReservacion);
                             mireservacion.micliente.nombreCompleto = dgvMaster[1, seleccion].Value.ToString();
                             mireservacion.fechaEntrada = dgvMaster[2, seleccion].Value.ToString();
                             mireservacion.fechaSalida = dgvMaster[3, seleccion].Value.ToString();
@@ -1399,6 +1501,43 @@ namespace El_Balcon_de_Chalita
                 adaptador2.Fill(tablaClientes, "clientes");
 
                 rptReservaciones rpt = new rptReservaciones();
+                rpt.SetDataSource(tablaClientes);
+
+                frmReport frm = new frmReport();
+                frm.crystalReportViewer1.ReportSource = rpt;
+                frm.ShowDialog();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error al realizar la consulta:" + ex.Message);
+
+            }
+            finally
+            {
+                conexionBD.Close();
+            }
+        }
+
+        public void BindReportIE()
+        {
+            MySqlConnection conexionBD = mysql.conexion.Conexion();
+            conexionBD.Open();
+
+            try
+            {
+                string consulta = "SELECT * FROM reservaciones ";
+                MySqlCommand comando = new MySqlCommand(consulta, conexionBD);
+
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                DataSet tablaClientes = new DataSet();
+                adaptador.Fill(tablaClientes, "reservaciones");
+
+                consulta = "SELECT * FROM clientes";
+                MySqlCommand comando2 = new MySqlCommand(consulta, conexionBD);
+                MySqlDataAdapter adaptador2 = new MySqlDataAdapter(comando2);
+                adaptador2.Fill(tablaClientes, "clientes");
+
+                rptIngresosEgresos rpt = new rptIngresosEgresos();
                 rpt.SetDataSource(tablaClientes);
 
                 frmReport frm = new frmReport();
